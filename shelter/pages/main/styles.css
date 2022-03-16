@@ -335,7 +335,6 @@ body {
 .pets_heading {
   width: 400px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -467,5 +466,105 @@ body {
 
 .btn-right {
   margin-left: 8px;
+}
+
+.help {
+  width: 100%;
+  height: 611px;
+  background-color: #ffffff;
+  padding: 80px 40px 100px 40px;
+}
+
+.help .help-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.help .help-content .help-list {
+  height: 331px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 1026px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.help .help-content .help-list .help-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 120px;
+}
+
+.help .help-content .help-list .help-icons img {
+  margin-bottom: 30px;
+}
+
+.help .help-content .help-list .help-icons:nth-child(5) {
+  margin-right: 0;
+}
+
+.help .help-content .help-list .help-icons:nth-child(9) {
+  margin-right: 0;
+}
+
+.help .help-content .help-list .help-icons .help-list-text {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  letter-spacing: 0.055em;
+  color: #545454;
+}
+
+.vit {
+  margin-left: 84px;
+}
+
+.help-heading {
+  width: 308px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  letter-spacing: 0.055em;
+  color: #545454;
+  margin-bottom: 60px;
+  margin-top: 0;
 }
 /*# sourceMappingURL=styles.css.map */
