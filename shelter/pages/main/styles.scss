@@ -14,7 +14,7 @@ ol {
 }
 
 body {
-  background-color: rgb(17, 195, 240);
+  background-color: $color-light-s;
 }
 
 .wrapper_mainpages {
@@ -76,21 +76,25 @@ body {
     justify-content: space-between;
     .nav_link {
       font-family: $font_text;
-      color: $color-light-xl;
+      color: $color-dark-s;
       font-weight: 400;
       font-size: 15px;
       text-decoration: none;
       cursor: pointer;
       &:hover {
-        color: $color-primary-light;
+        color: $color-light-s;
+      }
+      &:active {
+        color: $color-light-s;
       }
     }
   }
 }
 
-.link_active {
+.active {
   border-bottom: 3px solid $color-primary;
   padding-bottom: 2px;
+  color: $color-light-s !important;
 }
 
 .main_main-pages {
@@ -460,7 +464,7 @@ body {
   margin-right: 30px;
   content: "";
   width: 505px;
-  height: 261px;
+  height: 275px;
   background-repeat: no-repeat;
   background-position: center 10px;
   background-image: url(/shelter/assets/images/donation-dog.png);
@@ -472,6 +476,9 @@ body {
   height: 43px;
   padding: 10px 15px;
   margin-bottom: 20px;
+  &:hover {
+    background-color: $color-primary-light;
+  }
 }
 .don-subheading {
   font-family: $font_Headings;
@@ -494,4 +501,145 @@ body {
   display: flex;
   align-items: center;
   color: $color-dark-m;
+}
+
+.footer_main-pages {
+  width: 100%;
+  height: 350px;
+  background-image: url(/shelter/assets/images/Footer.png);
+  padding: 40px 40px 0 40px;
+  .footer-content {
+    width: 1200px;
+    height: 310px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .contact {
+      width: 278px;
+      height: 234px;
+      display: flex;
+      flex-direction: column;
+    }
+    .location {
+      width: 302px;
+      height: 234px;
+    }
+  }
+}
+
+.title {
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.059em;
+  color: #ffffff;
+  margin-bottom: 39px;
+  margin-top: 17px;
+}
+
+.loc-heading {
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin-bottom: 32px;
+  margin-top: 18px;
+}
+
+.mail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  a {
+    text-decoration: none;
+    color: $color-primary;
+
+    font-family: $font_Headings;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: $color-primary;
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+}
+.phone {
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: $color-primary;
+
+    text-decoration: none;
+    color: $color-primary;
+    font-family: $font_Headings;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: $color-primary;
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+}
+
+.loc-boston {
+  display: flex;
+  align-items: center;
+  margin-bottom: 31px;
+  a {
+    text-decoration: none;
+    color: $color-primary;
+
+    text-decoration: none;
+    color: $color-primary;
+    font-family: $font_Headings;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: $color-primary;
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+}
+
+.boston-adr {
+  margin-right: 0;
+}
+.loc-london {
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: $color-primary;
+    text-decoration: none;
+    color: $color-primary;
+    font-family: $font_Headings;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: $color-primary;
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+}
+
+.marg {
+  margin-right: 20px;
 }

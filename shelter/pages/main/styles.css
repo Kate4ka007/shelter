@@ -14,7 +14,7 @@ ol {
 }
 
 body {
-  background-color: #11c3f0;
+  background-color: #fafafa;
 }
 
 .wrapper_mainpages {
@@ -107,7 +107,7 @@ body {
 
 .nav_main-pages .list_main-pages .nav_link {
   font-family: Arial, Helvetica, sans-serif;
-  color: #ffffff;
+  color: #cdcdcd;
   font-weight: 400;
   font-size: 15px;
   text-decoration: none;
@@ -115,12 +115,17 @@ body {
 }
 
 .nav_main-pages .list_main-pages .nav_link:hover {
-  color: #fddcc4;
+  color: #fafafa;
 }
 
-.link_active {
+.nav_main-pages .list_main-pages .nav_link:active {
+  color: #fafafa;
+}
+
+.active {
   border-bottom: 3px solid #f1cdb3;
   padding-bottom: 2px;
+  color: #fafafa !important;
 }
 
 .main_main-pages {
@@ -617,7 +622,7 @@ body {
   margin-right: 30px;
   content: "";
   width: 505px;
-  height: 261px;
+  height: 275px;
   background-repeat: no-repeat;
   background-position: center 10px;
   background-image: url(/shelter/assets/images/donation-dog.png);
@@ -630,6 +635,10 @@ body {
   height: 43px;
   padding: 10px 15px;
   margin-bottom: 20px;
+}
+
+.don-card:hover {
+  background-color: #fddcc4;
 }
 
 .don-subheading {
@@ -662,5 +671,184 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: #b2b2b2;
+}
+
+.footer_main-pages {
+  width: 100%;
+  height: 350px;
+  background-image: url(/shelter/assets/images/Footer.png);
+  padding: 40px 40px 0 40px;
+}
+
+.footer_main-pages .footer-content {
+  width: 1200px;
+  height: 310px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer_main-pages .footer-content .contact {
+  width: 278px;
+  height: 234px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.footer_main-pages .footer-content .location {
+  width: 302px;
+  height: 234px;
+}
+
+.title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.059em;
+  color: #ffffff;
+  margin-bottom: 39px;
+  margin-top: 17px;
+}
+
+.loc-heading {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin-bottom: 32px;
+  margin-top: 18px;
+}
+
+.mail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 36px;
+}
+
+.mail a {
+  text-decoration: none;
+  color: #f1cdb3;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+}
+
+.mail a:hover {
+  color: #fddcc4;
+}
+
+.phone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.phone a {
+  text-decoration: none;
+  color: #f1cdb3;
+  text-decoration: none;
+  color: #f1cdb3;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+}
+
+.phone a:hover {
+  color: #fddcc4;
+}
+
+.loc-boston {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 31px;
+}
+
+.loc-boston a {
+  text-decoration: none;
+  color: #f1cdb3;
+  text-decoration: none;
+  color: #f1cdb3;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+}
+
+.loc-boston a:hover {
+  color: #fddcc4;
+}
+
+.boston-adr {
+  margin-right: 0;
+}
+
+.loc-london {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loc-london a {
+  text-decoration: none;
+  color: #f1cdb3;
+  text-decoration: none;
+  color: #f1cdb3;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #f1cdb3;
+}
+
+.loc-london a:hover {
+  color: #fddcc4;
+}
+
+.marg {
+  margin-right: 20px;
 }
 /*# sourceMappingURL=styles.css.map */
