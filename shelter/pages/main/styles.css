@@ -1,9 +1,12 @@
 html,
 body,
+p,
 ul,
 ol {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -13,5 +16,103 @@ body {
 .wrapper_mainpages {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.logo {
+  width: 184px;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.logo .logo_title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #f1cdb3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 0.05em;
+  line-height: 110%;
+  padding-bottom: 10px;
+}
+
+.logo .logo_subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 0.1em;
+  line-height: 15px;
+}
+
+.header_main-pages {
+  padding: 60px 40px 0 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-image: url(/shelter/assets/images/start_screen.jpg);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav_main-pages {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 443px;
+}
+
+.nav_main-pages .list_main-pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nav_main-pages .list_main-pages .nav_link {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav_main-pages .list_main-pages .nav_link:hover {
+  color: #f1cdb3;
+}
+
+.link_active {
+  border-bottom: 3px solid #f1cdb3;
 }
 /*# sourceMappingURL=styles.css.map */

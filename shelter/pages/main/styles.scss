@@ -1,9 +1,13 @@
+@import "partials/variables";
+
 html,
 body,
+p,
 ul,
 ol {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,4 +17,72 @@ body {
 .wrapper_mainpages {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.logo {
+  width: 184px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  .logo_title {
+    font-family: $font_Headings;
+    font-weight: 400;
+    font-size: 32px;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    line-height: 110%;
+    padding-bottom: 10px;
+  }
+  .logo_subtitle {
+    font-family: $font_text;
+    font-weight: 400;
+    font-size: 13px;
+    color: $color-light-xl;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    line-height: 15px;
+  }
+}
+
+.header_main-pages {
+  padding: 60px 40px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-image: url(/shelter/assets/images/start_screen.jpg);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav_main-pages {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  width: 443px;
+  .list_main-pages {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-between;
+    .nav_link {
+      font-family: $font_text;
+      color: $color-light-xl;
+      font-weight: 400;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.link_active {
+  border-bottom: 3px solid $color-primary;
 }
