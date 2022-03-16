@@ -13,6 +13,10 @@ ol {
           box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #fafafa;
 }
@@ -760,6 +764,7 @@ body {
 
 .mail a:hover {
   color: #fddcc4;
+  text-decoration: underline;
 }
 
 .phone {
@@ -787,6 +792,7 @@ body {
 
 .phone a:hover {
   color: #fddcc4;
+  text-decoration: underline;
 }
 
 .loc-boston {
@@ -815,6 +821,7 @@ body {
 
 .loc-boston a:hover {
   color: #fddcc4;
+  text-decoration: underline;
 }
 
 .boston-adr {
@@ -846,6 +853,7 @@ body {
 
 .loc-london a:hover {
   color: #fddcc4;
+  text-decoration: underline;
 }
 
 .marg {

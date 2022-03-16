@@ -12,6 +12,9 @@ ol {
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: $color-light-s;
@@ -568,6 +571,7 @@ body {
     color: $color-primary;
     &:hover {
       color: $color-primary-light;
+      text-decoration: underline;
     }
   }
 }
@@ -589,6 +593,7 @@ body {
     color: $color-primary;
     &:hover {
       color: $color-primary-light;
+      text-decoration: underline;
     }
   }
 }
@@ -612,6 +617,7 @@ body {
     color: $color-primary;
     &:hover {
       color: $color-primary-light;
+      text-decoration: underline;
     }
   }
 }
@@ -636,6 +642,7 @@ body {
     color: $color-primary;
     &:hover {
       color: $color-primary-light;
+      text-decoration: underline;
     }
   }
 }
