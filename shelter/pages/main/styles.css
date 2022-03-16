@@ -115,7 +115,7 @@ body {
 }
 
 .nav_main-pages .list_main-pages .nav_link:hover {
-  color: #f1cdb3;
+  color: #fddcc4;
 }
 
 .link_active {
@@ -173,7 +173,7 @@ body {
   margin-top: 42px;
 }
 
-.start_screen_content .start_screen_button .button_primary {
+.button_primary {
   width: 207px;
   height: 52px;
   border-radius: 100px;
@@ -199,8 +199,12 @@ body {
           align-items: center;
 }
 
-.start_screen_content .start_screen_button .button_primary:hover {
-  background-color: #e9b188;
+.button_primary:hover {
+  background-color: #fddcc4;
+}
+
+.pets-button .button_primary {
+  width: 261px;
 }
 
 .start_screen_puppy {
@@ -301,5 +305,167 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: #4c4c4c;
+}
+
+.pets {
+  width: 100%;
+  height: 877px;
+  background-color: #f6f6f6;
+  padding: 80px 40px 100px 40px;
+}
+
+.pets-content {
+  width: 1200px;
+  height: 697px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pets_heading {
+  width: 400px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 435px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slider .pets_card {
+  width: 270px;
+  height: 435px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fafafa;
+  margin: 0 45px;
+}
+
+.slider .pets_card:hover {
+  border: 2px solid #f1cdb3;
+  -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+}
+
+.button_secondary {
+  width: 187px;
+  height: 52px;
+  padding: 13px 44px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #f1cdb3;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 100px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  text-indent: -3px;
+  color: #292929;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.button_secondary:hover {
+  background-color: #fddcc4;
+}
+
+.card-title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin-bottom: 30px;
+}
+
+.card-image {
+  margin-bottom: 32px;
+  width: 99%;
+}
+
+.button-arow {
+  width: 52px;
+  height: 52px;
+  border: 2px solid #f1cdb3;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.button-arow:hover {
+  background-color: #fddcc4;
+}
+
+.btn-left {
+  margin-right: 8px;
+}
+
+.btn-right {
+  margin-left: 8px;
 }
 /*# sourceMappingURL=styles.css.map */
