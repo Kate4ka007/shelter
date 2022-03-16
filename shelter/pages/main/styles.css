@@ -1,0 +1,17 @@
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #11c3f0;
+}
+
+.wrapper_mainpages {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=styles.css.map */
