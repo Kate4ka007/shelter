@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Georgia";
+  src: url(/shelter/assets/fonts/Georgia/georgia.ttf);
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url(/shelter/assets/fonts/Arial.ttf);
+}
+
 html,
 body,
 p,
@@ -39,7 +49,7 @@ body {
 }
 
 .logo .logo_title {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-weight: 400;
   font-size: 32px;
   color: #f1cdb3;
@@ -55,7 +65,7 @@ body {
 }
 
 .logo .logo_subtitle {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial;
   font-weight: 400;
   font-size: 13px;
   color: #ffffff;
@@ -110,7 +120,7 @@ body {
 }
 
 .nav_main-pages .list_main-pages .nav_link {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial;
   color: #cdcdcd;
   font-weight: 400;
   font-size: 15px;
@@ -120,6 +130,8 @@ body {
 
 .nav_main-pages .list_main-pages .nav_link:hover {
   color: #fafafa;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .nav_main-pages .list_main-pages .nav_link:active {
@@ -161,7 +173,7 @@ body {
 
 .start_screen_content .start_screen_heading {
   width: 310px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-weight: 400;
   font-size: 44px;
   color: #ffffff;
@@ -171,7 +183,7 @@ body {
 }
 
 .start_screen_content .start_screen_subheading {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial;
   font-weight: 400;
   font-size: 15px;
   color: #cdcdcd;
@@ -188,7 +200,7 @@ body {
   border-radius: 100px;
   background-color: #f1cdb3;
   padding: 15px 45px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-weight: 400;
   font-size: 17px;
   line-height: 130%;
@@ -210,6 +222,8 @@ body {
 
 .button_primary:hover {
   background-color: #fddcc4;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .pets-button .button_primary {
@@ -268,7 +282,7 @@ body {
 
 .about .about-content .about-text .about_heading {
   width: 370px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -343,7 +357,7 @@ body {
 
 .pets_heading {
   width: 400px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -417,7 +431,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 100px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
@@ -431,10 +445,12 @@ body {
 
 .button_secondary:hover {
   background-color: #fddcc4;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .card-title {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -467,6 +483,8 @@ body {
 
 .button-arow:hover {
   background-color: #fddcc4;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .btn-left {
@@ -537,7 +555,7 @@ body {
 }
 
 .help .help-content .help-list .help-icons .help-list-text {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -559,7 +577,7 @@ body {
 
 .help-heading {
   width: 308px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -606,7 +624,7 @@ body {
 }
 
 .donation .donation-content .don-content .don-heading {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -643,10 +661,12 @@ body {
 
 .don-card:hover {
   background-color: #fddcc4;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .don-subheading {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -663,7 +683,7 @@ body {
 }
 
 .don-information {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial;
   font-style: italic;
   font-weight: 400;
   font-size: 12px;
@@ -717,7 +737,7 @@ body {
 }
 
 .title {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -729,7 +749,7 @@ body {
 }
 
 .loc-heading {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -753,7 +773,7 @@ body {
 .mail a {
   text-decoration: none;
   color: #f1cdb3;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -781,7 +801,7 @@ body {
   color: #f1cdb3;
   text-decoration: none;
   color: #f1cdb3;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -793,6 +813,8 @@ body {
 .phone a:hover {
   color: #fddcc4;
   text-decoration: underline;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .loc-boston {
@@ -810,7 +832,7 @@ body {
   color: #f1cdb3;
   text-decoration: none;
   color: #f1cdb3;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -822,6 +844,8 @@ body {
 .loc-boston a:hover {
   color: #fddcc4;
   text-decoration: underline;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .boston-adr {
@@ -842,7 +866,7 @@ body {
   color: #f1cdb3;
   text-decoration: none;
   color: #f1cdb3;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -854,6 +878,8 @@ body {
 .loc-london a:hover {
   color: #fddcc4;
   text-decoration: underline;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .marg {
