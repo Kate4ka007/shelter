@@ -1,7 +1,5 @@
-
-
-@import "partials/variables2";
-@import "partials/fonts2";
+@use "/shelter/pages/main/partials/variables";
+@use "/shelter/pages/main/partials/fonts";
 
 html,
 body,
@@ -102,6 +100,12 @@ body {
   border-bottom: 3px solid $color-primary;
   padding-bottom: 2px;
   color: $color-light-s !important;
+}
+
+a.disabled {
+  pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+  cursor: default; /*  курсор в виде стрелки */
+  color: #888; /* цвет текста серый */
 }
 
 .main_main-pages {
