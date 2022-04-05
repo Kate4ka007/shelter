@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  background-color: $color-light-s;
+  background-color: $color-primary;
 }
 
 .wrapper_mainpages {
@@ -62,7 +62,7 @@ body {
   justify-content: space-between;
   width: 100%;
   height: 180px;
-  background-image: url(../..//assets/images/start_screen.jpg);
+  background-image: url(../../assets/images/start_screen.jpg);
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -174,7 +174,10 @@ body {
     width: 261px;
   }
 }
-
+.pets-button-link {
+  text-decoration: none;
+  color: #000;
+}
 .start_screen_puppy {
   content: "";
   width: 698px;
@@ -475,7 +478,7 @@ body {
   height: 275px;
   background-repeat: no-repeat;
   background-position: center 10px;
-  background-image: url(/shelter/assets/images/donation-dog.png);
+  background-image: url(../../assets/images/donation-dog.png);
 }
 .don-card {
   background-color: $color-primary;
@@ -515,7 +518,7 @@ body {
 .footer_main-pages {
   width: 100%;
   height: 350px;
-  background-image: url(/shelter/assets/images/Footer.png);
+  background-image: url(../../assets/images/Footer.png);
   padding: 40px 40px 0 40px;
   .footer-content {
     width: 1200px;

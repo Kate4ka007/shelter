@@ -1,12 +1,12 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Georgia";
-  src: url(/shelter/assets/fonts/Georgia/georgia.ttf);
+  src: url(../../assets/fonts/Georgia/georgia.ttf);
 }
 
 @font-face {
   font-family: "Arial";
-  src: url(/shelter/assets/fonts/Arial.ttf);
+  src: url(../../assets/fonts/Arial/arialmt.ttf);
 }
 
 html,
@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  background-color: #fafafa;
+  background-color: #f1cdb3;
 }
 
 .wrapper_mainpages {
@@ -53,7 +53,7 @@ body {
   font-family: Georgia;
   font-weight: 400;
   font-size: 32px;
-  color: #f1cdb3;
+  color: #545454;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,7 +69,7 @@ body {
   font-family: Arial;
   font-weight: 400;
   font-size: 13px;
-  color: #ffffff;
+  color: #292929;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,10 +92,7 @@ body {
           justify-content: space-between;
   width: 100%;
   height: 180px;
-  background-image: url(/shelter/assets/images/start_screen.jpg);
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #ffffff;
 }
 
 .nav_main-pages {
@@ -122,27 +119,26 @@ body {
 
 .nav_main-pages .list_main-pages .nav_link {
   font-family: Arial;
-  color: #cdcdcd;
+  color: #545454;
   font-weight: 400;
   font-size: 15px;
   text-decoration: none;
   cursor: pointer;
+  /*&:active {
+        color: $color-dark-3xl;
+      }*/
 }
 
 .nav_main-pages .list_main-pages .nav_link:hover {
-  color: #fafafa;
+  color: #292929;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
-}
-
-.nav_main-pages .list_main-pages .nav_link:active {
-  color: #fafafa;
 }
 
 .active {
   border-bottom: 3px solid #f1cdb3;
   padding-bottom: 2px;
-  color: #fafafa !important;
+  color: #292929 !important;
 }
 
 a.disabled {
@@ -196,14 +192,27 @@ a.disabled {
 
 .pets {
   width: 100%;
-  height: 877px;
+  height: 1342px;
   background-color: #f6f6f6;
-  padding: 80px 40px 100px 40px;
+}
+
+.slider__container {
+  width: 1200px;
+  height: 930px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (435px)[2];
+  -ms-grid-columns: (270px)[4];
+      grid-template: repeat(2, 435px)/repeat(4, 270px);
+  gap: 30px 40px;
+  margin-bottom: 45px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pets-content {
   width: 1200px;
-  height: 697px;
+  height: 930px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -217,6 +226,8 @@ a.disabled {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pets_heading {
@@ -235,26 +246,26 @@ a.disabled {
   text-align: center;
   letter-spacing: 0.06em;
   color: #545454;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 80px;
+  margin-bottom: 60px;
 }
 
 .slider {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
-  height: 435px;
+  height: 930px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.slider .pets_card {
+.pets_card {
   width: 270px;
   height: 435px;
   display: -webkit-box;
@@ -268,13 +279,21 @@ a.disabled {
       -ms-flex-align: center;
           align-items: center;
   background-color: #fafafa;
-  margin: 0 45px;
 }
 
-.slider .pets_card:hover {
+.pets_card:hover {
   border: 2px solid #f1cdb3;
   -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+}
+
+.slider__navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 340px;
+  height: 52px;
+  gap: 20px;
 }
 
 .button_secondary {
@@ -337,32 +356,29 @@ a.disabled {
 }
 
 .button-arow {
+  background: none;
   width: 52px;
   height: 52px;
-  border: 2px solid #f1cdb3;
   border-radius: 100px;
+  padding: 0;
+  border: none;
   cursor: pointer;
-  background-color: #ffffff;
 }
 
-.button-arow:hover {
+.button-arow_active:hover {
   background-color: #fddcc4;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
 
-.btn-left {
-  margin-right: 8px;
-}
-
-.btn-right {
-  margin-left: 8px;
+.button-arow_disable {
+  cursor: no-drop;
 }
 
 .footer_main-pages {
   width: 100%;
   height: 350px;
-  background-image: url(/shelter/assets/images/Footer.png);
+  background-image: url(../../assets/images/Footer.png);
   padding: 40px 40px 0 40px;
 }
 
