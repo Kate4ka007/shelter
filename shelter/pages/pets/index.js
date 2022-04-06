@@ -96,7 +96,7 @@ const pets = [
     }
   ]
   console.log(pets[0].img)
-
+/*
 buttonRight.addEventListener('click', () => {
     slide();
     backOne.classList.remove("button-arow_disable");
@@ -119,4 +119,10 @@ function slide() {
     
     }
    
-}
+} */
+
+const logo = document.querySelector('.logo')
+
+logo.addEventListener('click', () => {
+  window.location.href = "../main/index.html"
+})

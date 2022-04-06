@@ -19,7 +19,8 @@ html {
 }
 
 body {
-  background-color: $color-primary;
+ background-color: $color-primary;
+ 
 }
 
 .wrapper_mainpages {
@@ -31,6 +32,7 @@ body {
   width: 184px;
   height: 60px;
   display: flex;
+  cursor: pointer;
 
   flex-direction: column;
   .logo_title {
@@ -53,31 +55,35 @@ body {
     align-items: center;
     letter-spacing: 0.1em;
     line-height: 15px;
+    text-indent: 2px;
   }
 }
 
 .header_main-pages {
   width: 100%;
   max-width: 1280px;
-  padding: 60px 40px 60px 40px;
+  padding: 30px 40px;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 180px;
+  height: 120px;
   background-color: $color-light-xl;
 
 }
 
 .nav_main-pages {
-  height: 60px;
+  height: 27px;
   display: flex;
   align-items: center;
-  width: 443px;
+  width: 442px;
   .list_main-pages {
     display: flex;
     list-style: none;
     width: 100%;
     justify-content: space-between;
+    margin-top: 29px;
+    margin-right: 3px;
+    text-indent: -2px;
     .nav_link {
       font-family: $font_text;
       color: $color-dark-l;
@@ -98,7 +104,7 @@ body {
 
 .active {
   border-bottom: 3px solid $color-primary;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   color: $color-dark-3xl !important;
 }
 
@@ -151,9 +157,10 @@ a.disabled {
   display: grid;
   grid-template: repeat(2, 435px) /repeat(4, 270px);
  gap: 30px 40px;
- margin-bottom: 45px;
+ margin-bottom: 60px;
  margin-left: auto;
  margin-right: auto;
+ padding-top: 16px;
 }
 
 .pets-content {
@@ -180,7 +187,7 @@ a.disabled {
   letter-spacing: 0.06em;
   color: $color-dark-l;
   margin-top: 80px;
-  margin-bottom: 60px;
+  margin-bottom: 45px;
 }
 
 .slider {
@@ -198,12 +205,17 @@ a.disabled {
   flex-direction: column;
   align-items: center;
   background-color: $color-light-s;
+  border-radius: 9px;
   
   &:hover {
     border: 2px solid $color-primary;
     -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    .button_secondary {
+      background-color: $color-primary-light;
+      transition-duration: 0.2s;
+    }
   }
 }
 
@@ -212,14 +224,24 @@ display: flex;
 width: 340px;
 height: 52px;
 gap: 20px;
+}
 
-
+.slider_page:hover {
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  &:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  }
 }
 
 .button_secondary {
   width: 187px;
   height: 52px;
-  padding: 13px 44px;
+  padding: 14px 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,13 +254,14 @@ gap: 20px;
   font-size: 17px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  text-indent: -3px;
+  text-indent: -3.5px;
   color: $color-dark-3xl;
   background-color: $color-light-xl;
   cursor: pointer;
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;
+
   }
 }
 
@@ -257,7 +280,7 @@ gap: 20px;
 }
 
 .card-image {
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   width: 99%;
 }
 
@@ -283,7 +306,7 @@ gap: 20px;
 }
 
 .button-arow_disable {
-  cursor:no-drop;
+  cursor:default;
 }
 
 
@@ -319,7 +342,7 @@ gap: 20px;
   line-height: 130%;
   letter-spacing: 0.059em;
   color: #ffffff;
-  margin-bottom: 39px;
+  margin-bottom: 36px;
   margin-top: 17px;
 }
 
@@ -332,7 +355,7 @@ gap: 20px;
   letter-spacing: 0.06em;
   color: #ffffff;
   margin-bottom: 32px;
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .mail {

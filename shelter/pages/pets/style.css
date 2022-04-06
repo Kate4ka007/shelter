@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Arial";
-  src: url(../../assets/fonts/Arial/arialmt.ttf);
+  src: url(../../assets/fonts/Arial/arial.ttf);
 }
 
 html,
@@ -43,6 +43,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  cursor: pointer;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -78,12 +79,13 @@ body {
           align-items: center;
   letter-spacing: 0.1em;
   line-height: 15px;
+  text-indent: 2px;
 }
 
 .header_main-pages {
   width: 100%;
   max-width: 1280px;
-  padding: 60px 40px 60px 40px;
+  padding: 30px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,19 +93,19 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  height: 180px;
+  height: 120px;
   background-color: #ffffff;
 }
 
 .nav_main-pages {
-  height: 60px;
+  height: 27px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 443px;
+  width: 442px;
 }
 
 .nav_main-pages .list_main-pages {
@@ -115,6 +117,9 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 29px;
+  margin-right: 3px;
+  text-indent: -2px;
 }
 
 .nav_main-pages .list_main-pages .nav_link {
@@ -137,7 +142,7 @@ body {
 
 .active {
   border-bottom: 3px solid #f1cdb3;
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   color: #292929 !important;
 }
 
@@ -205,9 +210,10 @@ a.disabled {
   -ms-grid-columns: (270px)[4];
       grid-template: repeat(2, 435px)/repeat(4, 270px);
   gap: 30px 40px;
-  margin-bottom: 45px;
+  margin-bottom: 60px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 16px;
 }
 
 .pets-content {
@@ -247,7 +253,7 @@ a.disabled {
   letter-spacing: 0.06em;
   color: #545454;
   margin-top: 80px;
-  margin-bottom: 60px;
+  margin-bottom: 45px;
 }
 
 .slider {
@@ -279,12 +285,19 @@ a.disabled {
       -ms-flex-align: center;
           align-items: center;
   background-color: #fafafa;
+  border-radius: 9px;
 }
 
 .pets_card:hover {
   border: 2px solid #f1cdb3;
   -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+}
+
+.pets_card:hover .button_secondary {
+  background-color: #fddcc4;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .slider__navigation {
@@ -296,10 +309,22 @@ a.disabled {
   gap: 20px;
 }
 
+.slider_page:hover {
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+}
+
+.slider_page:hover:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+}
+
 .button_secondary {
   width: 187px;
   height: 52px;
-  padding: 13px 44px;
+  padding: 14px 44px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -320,7 +345,7 @@ a.disabled {
   font-size: 17px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  text-indent: -3px;
+  text-indent: -3.5px;
   color: #292929;
   background-color: #ffffff;
   cursor: pointer;
@@ -351,7 +376,7 @@ a.disabled {
 }
 
 .card-image {
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   width: 99%;
 }
 
@@ -372,7 +397,7 @@ a.disabled {
 }
 
 .button-arow_disable {
-  cursor: no-drop;
+  cursor: default;
 }
 
 .footer_main-pages {
@@ -422,7 +447,7 @@ a.disabled {
   line-height: 130%;
   letter-spacing: 0.059em;
   color: #ffffff;
-  margin-bottom: 39px;
+  margin-bottom: 36px;
   margin-top: 17px;
 }
 
@@ -435,7 +460,7 @@ a.disabled {
   letter-spacing: 0.06em;
   color: #ffffff;
   margin-bottom: 32px;
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .mail {
