@@ -206,9 +206,9 @@ a.disabled {
   height: 930px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: (435px)[2];
-  -ms-grid-columns: (270px)[4];
-      grid-template: repeat(2, 435px)/repeat(4, 270px);
+  -ms-grid-rows: 435px 435px;
+  -ms-grid-columns: 270px 270px 270px 270px;
+      grid-template: 435px 435px /270px 270px 270px 270px;
   gap: 30px 40px;
   margin-bottom: 60px;
   margin-left: auto;
@@ -347,7 +347,7 @@ a.disabled {
   letter-spacing: 0.06em;
   text-indent: -3.5px;
   color: #292929;
-  background-color: #ffffff;
+  background: none;
   cursor: pointer;
 }
 

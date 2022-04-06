@@ -155,7 +155,7 @@ a.disabled {
   width: 1200px;
   height: 930px;
   display: grid;
-  grid-template: repeat(2, 435px) /repeat(4, 270px);
+  grid-template: 435px 435px /270px 270px 270px 270px;
  gap: 30px 40px;
  margin-bottom: 60px;
  margin-left: auto;
@@ -256,7 +256,7 @@ gap: 20px;
   letter-spacing: 0.06em;
   text-indent: -3.5px;
   color: $color-dark-3xl;
-  background-color: $color-light-xl;
+  background: none;
   cursor: pointer;
   &:hover {
     background-color: $color-primary-light;

@@ -332,10 +332,9 @@ align-items: center;
   font-weight: 400;
   font-size: 17px;
   line-height: 130%;
-  letter-spacing: 0.06em;
-  
+  letter-spacing: 0.06em;  
   color: $color-dark-3xl;
-  background-color: $color-light-xl;
+  background: none;
   cursor: pointer;
   /*&:hover {
     background-color: $color-primary-light;
@@ -368,7 +367,7 @@ align-items: center;
   border: 2px solid #f1cdb3;
   border-radius: 100px;
   cursor: pointer;
-  background-color: $color-light-xl;
+  background: none;
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;

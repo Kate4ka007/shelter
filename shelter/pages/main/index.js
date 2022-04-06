@@ -10,19 +10,19 @@ petsCard1.addEventListener('mouseover',() => {
     buttonSecondary1.style.backgroundColor = "#fddcc4";
 });
 petsCard1.addEventListener('mouseout', () => {
-    buttonSecondary1.style.backgroundColor = "#ffffff";
+    buttonSecondary1.style.background = "none";
 });
 petsCard2.addEventListener('mouseover',() => {
     buttonSecondary2.style.backgroundColor = "#fddcc4";
 });
 petsCard2.addEventListener('mouseout', () => {
-    buttonSecondary2.style.backgroundColor = "#ffffff";
+    buttonSecondary2.style.background = "none";
 });
 petsCard3.addEventListener('mouseover',() => {
     buttonSecondary3.style.backgroundColor = "#fddcc4";
 });
 petsCard3.addEventListener('mouseout', () => {
-    buttonSecondary3.style.backgroundColor = "#ffffff";
+    buttonSecondary3.style.background = "none";
 });
 
 
