@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../../node_modules/normalize.css/normalize.css">
     <title>Pets</title>
 </head>
 <body>
@@ -18,8 +19,8 @@
             <ul class="list_main-pages">
                 <li><a class="nav_link" href="../../pages/main/index.html">About the shelter</a></li>
                 <li><a class="nav_link active" href="#pets">Our pets</a></li>
-                <li><a class="nav_link disabled" href="#help">Help the shelter</a></li>
-                <li><a class="nav_link disabled" href="#comtacts">Contacts</a></li>
+                <li><a class="nav_link " href="../main/index.html#help">Help the shelter</a></li>
+                <li><a class="nav_link " href="../main/index.html#comtacts">Contacts</a></li>
             </ul>
         </nav>
     </header>
@@ -28,9 +29,10 @@
         
         <section class="pets" id="pets">
             <div class="pets-content">
-                <h2 class="pets_heading">Our friends who <br> are looking for a house</h2>
+                <h1 class="pets_heading">Our friends who <br> are looking for a house</h1>
                 <div class="slider">
-                    <div class="btn-left"><button class="button-arow"><img src="../../assets/images/Arrow-left.svg" alt=""></button></div>
+                    
+                    <div class="slider__container slider-container">
                     <div class="pets_card">
                         <img  class="card-image" src="../../assets/images/pets-katrine.jpg" alt="grey cat">
                         <span class="card-title">Katrine</span>
@@ -46,9 +48,44 @@
                         <span class="card-title">Woody</span>
                         <div class="card-button"><button class="button_secondary">Learn more</button></div>
                     </div>
-                    <div class="btn-right"><button class="button-arow"><img src="../../assets/images/Arrow-right.svg" alt=""></button></div>
+                    <div class="pets_card">
+                        <img  class="card-image" src="../../assets/images/sophia.png" alt="grey cat">
+                        <span class="card-title">Sophia</span>
+                        <div class="card-button"><button class="button_secondary">Learn more</button></div>
+                    </div>
+                    <div class="pets_card">
+                        <img  class="card-image" src="../../assets/images/timmy.png" alt="grey cat">
+                        <span class="card-title">Timmy</span>
+                        <div class="card-button"><button class="button_secondary">Learn more</button></div>
+                    </div>
+                    <div class="pets_card">
+                        <img  class="card-image" src="../../assets/images/charly.png" alt="grey cat">
+                        <span class="card-title">Charly</span>
+                        <div class="card-button"><button class="button_secondary">Learn more</button></div>
+                    </div>
+                    <div class="pets_card">
+                        <img  class="card-image" src="../../assets/images/scarlett.png" alt="grey cat">
+                        <span class="card-title">Scarlett</span>
+                        <div class="card-button"><button class="button_secondary">Learn more</button></div>
+                    </div>
+                    <div class="pets_card">
+                        <img  class="card-image" src="../../assets/images/freddie.png" alt="grey cat">
+                        <span class="card-title">Freddie</span>
+                        <div class="card-button"><button class="button_secondary">Learn more</button></div>
+                    </div>
+                    
                 </div>
-                <div class="pets-button"><button class="button_primary">Get to know the rest</button></div>
+                <div class="slider__navigation">
+                <div class="btn-left"><button class="button-arow back_more button-arow_disable"><img src="../../assets/images/button_paginator_left1.png" alt=""></button></div>
+                <div class="btn-right"><button class="button-arow back_one button-arow_disable"><img src="../../assets/images/button_paginator_left2.png" alt=""></button></div>
+                <div class="btn-left"><div class="slider_page "><img src="../../assets/images/button_paginator_active.png" alt=""></div></div>
+                <div class="btn-right"><button class="button-arow button_right button-arow_active"><img src="../../assets/images/button_paginator_right1.png" alt=""></button></div>
+                <div class="btn-right"><button class="button-arow button-arow_active"><img src="../../assets/images/button_paginator_right2.png" alt=""></button></div>
+                </div>
+                
+                </div>
+                
+                
             </div>
         </section>
         
@@ -86,6 +123,6 @@
         </div>
     </footer>
     </div>
-    <script src="./index.js" ></script>
+   <script src="./index.js" ></script>
 </body>
 </html>
