@@ -8,21 +8,27 @@ const buttonSecondary3 = document.querySelector('.button_secondary3');
 
 petsCard1.addEventListener('mouseover',() => {
     buttonSecondary1.style.backgroundColor = "#fddcc4";
+    petsCard1.style.cursor = 'pointer';
 });
 petsCard1.addEventListener('mouseout', () => {
     buttonSecondary1.style.background = "none";
+    petsCard1.style.cursor = 'default';
 });
 petsCard2.addEventListener('mouseover',() => {
     buttonSecondary2.style.backgroundColor = "#fddcc4";
+    petsCard2.style.cursor = 'pointer';
 });
 petsCard2.addEventListener('mouseout', () => {
     buttonSecondary2.style.background = "none";
+    petsCard2.style.cursor = 'default';
 });
 petsCard3.addEventListener('mouseover',() => {
     buttonSecondary3.style.backgroundColor = "#fddcc4";
+    petsCard3.style.cursor = 'pointer';
 });
 petsCard3.addEventListener('mouseout', () => {
     buttonSecondary3.style.background = "none";
+    petsCard3.style.cursor = 'default';
 });
 
 

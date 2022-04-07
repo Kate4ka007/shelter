@@ -421,12 +421,14 @@ body {
           align-items: center;
   background-color: #fafafa;
   margin: 0 45px;
+  border-radius: 6px;
 }
 
 .slider .pets_card:hover {
   border: 2px solid #f1cdb3;
   -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  background-color: #ffffff;
 }
 
 .button_secondary {
