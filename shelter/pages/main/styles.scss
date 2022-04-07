@@ -307,11 +307,13 @@ align-items: center;
     align-items: center;
     background-color: $color-light-s;
     margin: 0 45px;
+    border-radius: 6px;
     &:hover {
       border: 2px solid $color-primary;
       -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
       -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
       box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+      background-color: $color-light-xl;
       
     }
   }
