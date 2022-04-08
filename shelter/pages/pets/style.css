@@ -83,6 +83,10 @@ body {
 }
 
 .header_main-pages {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   max-width: 1280px;
   padding: 30px 40px;
@@ -285,7 +289,7 @@ a.disabled {
       -ms-flex-align: center;
           align-items: center;
   background-color: #fafafa;
-  border-radius: 6px;
+  border-radius: 9px;
 }
 
 .pets_card:hover {
@@ -379,6 +383,7 @@ a.disabled {
 .card-image {
   margin-bottom: 30px;
   width: 99%;
+  border-radius: 9px;
 }
 
 .button-arow {
