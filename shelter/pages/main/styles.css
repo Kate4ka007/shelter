@@ -421,7 +421,7 @@ body {
           align-items: center;
   background-color: #fafafa;
   margin: 0 45px;
-  border-radius: 6px;
+  border-radius: 9px;
 }
 
 .slider .pets_card:hover {
@@ -485,6 +485,7 @@ body {
 .card-image {
   margin-bottom: 32px;
   width: 99%;
+  border-radius: 9px;
 }
 
 .button-arow {
