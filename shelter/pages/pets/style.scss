@@ -29,7 +29,7 @@ body {
 }
 
 .logo {
-  width: 184px;
+  width: 187px;
   height: 60px;
   display: flex;
   cursor: pointer;
@@ -42,9 +42,10 @@ body {
     color: $color-dark-l;
     display: flex;
     align-items: center;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     line-height: 110%;
-    padding-bottom: 10px;
+    padding-bottom: 9px;
+    padding-top: 1px;
   }
   .logo_subtitle {
     font-family: $font_text;
@@ -55,7 +56,7 @@ body {
     align-items: center;
     letter-spacing: 0.1em;
     line-height: 15px;
-    text-indent: 2px;
+    text-indent: 4px;
   }
 }
 
@@ -65,7 +66,7 @@ body {
   left: 0;
   width: 100%;
   max-width: 1280px;
-  padding: 30px 40px;
+  padding: 30px 39px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -98,9 +99,8 @@ body {
         color: $color-dark-3xl;
         transition-duration: 0.2s;
       }
-      /*&:active {
-        color: $color-dark-3xl;
-      }*/
+
+     
     }
   }
 }
@@ -112,9 +112,9 @@ body {
 }
 
 a.disabled {
-  pointer-events: none; /* делаем элемент неактивным для взаимодействия */
-  cursor: default; /*  курсор в виде стрелки */
-  color: #888; /* цвет текста серый */
+  pointer-events: none; 
+  cursor: default;
+  color: #888; 
 }
 
 .main_main-pages {
@@ -163,7 +163,7 @@ a.disabled {
  margin-bottom: 60px;
  margin-left: auto;
  margin-right: auto;
- padding-top: 16px;
+ padding-top: 13px;
 }
 
 .pets-content {
@@ -201,6 +201,12 @@ a.disabled {
   align-items: center; 
 }
 
+.card-image {
+  margin-bottom: 30px;
+  width: 100%;
+  //border-radius: 9px;
+}
+
 .pets_card {
   width: 270px;
   height: 435px;
@@ -209,6 +215,7 @@ a.disabled {
   align-items: center;
   background-color: $color-light-s;
   border-radius: 9px;
+  overflow: hidden;
 
   
   &:hover {
@@ -221,6 +228,7 @@ a.disabled {
       background-color: $color-primary-light;
       transition-duration: 0.2s;
     }
+   
   }
 }
 
@@ -246,7 +254,7 @@ gap: 20px;
 .button_secondary {
   width: 187px;
   height: 52px;
-  padding: 14px 44px;
+  padding: 14px 42px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -259,7 +267,7 @@ gap: 20px;
   font-size: 17px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  text-indent: -3.5px;
+  
   color: $color-dark-3xl;
   background: none;
   cursor: pointer;
@@ -284,11 +292,7 @@ gap: 20px;
   margin-bottom: 30px;
 }
 
-.card-image {
-  margin-bottom: 30px;
-  width: 99%;
-  border-radius: 9px;
-}
+
 
 .button-arow {
   background:none;
@@ -299,21 +303,20 @@ gap: 20px;
  padding: 0;
  border: none;
   cursor: pointer;
-  //background-color: $color-light-xl;
+ 
   
 }
 .button-arow_active:hover {
   background-color: $color-primary-light;
   transition-duration: 0.2s;
- // transform: scale(1.1);
- // -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
- // -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-  //box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+
 }
 
 .button-arow_disable {
   cursor:default;
 }
+
+
 
 
 .footer_main-pages {

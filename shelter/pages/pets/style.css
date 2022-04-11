@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Georgia";
   src: url(../../assets/fonts/Georgia/georgia.ttf);
@@ -38,7 +37,7 @@ body {
 }
 
 .logo {
-  width: 184px;
+  width: 187px;
   height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -61,9 +60,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   line-height: 110%;
-  padding-bottom: 10px;
+  padding-bottom: 9px;
+  padding-top: 1px;
 }
 
 .logo .logo_subtitle {
@@ -79,7 +79,7 @@ body {
           align-items: center;
   letter-spacing: 0.1em;
   line-height: 15px;
-  text-indent: 2px;
+  text-indent: 4px;
 }
 
 .header_main-pages {
@@ -89,7 +89,7 @@ body {
   left: 0;
   width: 100%;
   max-width: 1280px;
-  padding: 30px 40px;
+  padding: 30px 39px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -133,9 +133,6 @@ body {
   font-size: 15px;
   text-decoration: none;
   cursor: pointer;
-  /*&:active {
-        color: $color-dark-3xl;
-      }*/
 }
 
 .nav_main-pages .list_main-pages .nav_link:hover {
@@ -152,11 +149,8 @@ body {
 
 a.disabled {
   pointer-events: none;
-  /* делаем элемент неактивным для взаимодействия */
   cursor: default;
-  /*  курсор в виде стрелки */
   color: #888;
-  /* цвет текста серый */
 }
 
 .main_main-pages {
@@ -217,7 +211,7 @@ a.disabled {
   margin-bottom: 60px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 16px;
+  padding-top: 13px;
 }
 
 .pets-content {
@@ -275,6 +269,11 @@ a.disabled {
           align-items: center;
 }
 
+.card-image {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
 .pets_card {
   width: 270px;
   height: 435px;
@@ -290,6 +289,7 @@ a.disabled {
           align-items: center;
   background-color: #fafafa;
   border-radius: 9px;
+  overflow: hidden;
 }
 
 .pets_card:hover {
@@ -329,7 +329,7 @@ a.disabled {
 .button_secondary {
   width: 187px;
   height: 52px;
-  padding: 14px 44px;
+  padding: 14px 42px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -350,7 +350,6 @@ a.disabled {
   font-size: 17px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  text-indent: -3.5px;
   color: #292929;
   background: none;
   cursor: pointer;
@@ -378,12 +377,6 @@ a.disabled {
   letter-spacing: 0.06em;
   color: #545454;
   margin-bottom: 30px;
-}
-
-.card-image {
-  margin-bottom: 30px;
-  width: 99%;
-  border-radius: 9px;
 }
 
 .button-arow {
