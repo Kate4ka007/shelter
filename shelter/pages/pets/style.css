@@ -314,18 +314,18 @@ a.disabled {
   gap: 20px;
 }
 
+/*
 .slider_page:hover {
   border-radius: 50%;
   width: 52px;
   height: 52px;
-}
-
-.slider_page:hover:hover {
+  &:hover {
   cursor: pointer;
   -webkit-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
-}
-
+    -moz-box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
+  }
+}*/
 .button_secondary {
   width: 187px;
   height: 52px;
