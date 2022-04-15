@@ -73,6 +73,10 @@ body {
   height: 120px;
   background-color: $color-light-xl;
 
+  @media screen and (max-width: 1279px) {
+    padding: 30px 29px;
+  }
+
 }
 
 .nav_main-pages {
@@ -152,10 +156,15 @@ a.disabled {
   height: 1342px;
   background-color: $color-light-l;
   //padding: 80px 40px 100px 40px;
+  @media screen and (max-width: 1279px) {
+   
+    height: auto;
+   
+   }
 }
 
 .slider__container {
-  width: 1200px;
+ // width: 1200px;
   height: 930px;
   display: grid;
   grid-template: 435px 435px /270px 270px 270px 270px;
@@ -164,6 +173,18 @@ a.disabled {
  margin-left: auto;
  margin-right: auto;
  padding-top: 13px;
+ @media screen and (max-width: 1279px) {
+  grid-template: 435px 435px 435px /270px 270px ;
+  overflow: hidden;
+  height: 1400px;
+  margin: 0 auto;
+ }
+ @media screen and (max-width: 767px) {
+  grid-template: 435px 435px 435px /270px;
+  overflow: hidden;
+  height: 1400px;
+  margin: 0 auto;
+ }
 }
 
 .pets-content {
@@ -175,6 +196,10 @@ a.disabled {
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
+  @media screen and (max-width: 1279px) {
+    width: 100%;
+    height: auto;
+   }
 }
 
 .pets_heading {
@@ -191,6 +216,10 @@ a.disabled {
   color: $color-dark-l;
   margin-top: 80px;
   margin-bottom: 45px;
+
+  @media screen and (max-width: 1279px) {
+    margin-bottom: 16px;
+  }
 }
 
 .slider {
@@ -199,6 +228,11 @@ a.disabled {
   width: 100%;
   height: 930px;
   align-items: center; 
+  @media screen and (max-width: 1279px) {
+    padding-bottom: 77px;
+    height: auto;
+   
+   }
 }
 
 .card-image {
@@ -237,6 +271,10 @@ display: flex;
 width: 340px;
 height: 52px;
 gap: 20px;
+
+@media screen and (max-width: 1279px){
+  margin-top: 18px;
+}
 }
 /*
 .slider_page:hover {
@@ -324,12 +362,29 @@ gap: 20px;
   height: 350px;
   background-image: url(../../assets/images/Footer.png);
   padding: 40px 40px 0 40px;
+  @media screen and (max-width: 1279px){
+    padding: 13px 64px 0 64px;
+    height: 638px;
+    background-image: url(../../assets/images/footer_768.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .footer-content {
     width: 1200px;
     height: 310px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    @media screen and (max-width: 1279px){
+      width: 640px;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
+    @media screen and (max-width: 767px){
+      width: 300px;
+      
+    }
+    
     .contact {
       width: 278px;
       height: 234px;
@@ -465,4 +520,125 @@ gap: 20px;
 
 .marg {
   margin-right: 20px;
+}
+
+.footer-puppy {
+  @media screen and (max-width: 1279px){
+    align-self: center;
+    margin: 0 auto;
+    margin-top: 81px;
+  }
+  
+}
+
+
+
+
+
+
+.toggleButton {
+  display: none;
+  @media screen and (max-width: 767px ){
+    display: block;
+    position: absolute;
+    top: 42px;
+    right: 53px;
+    z-index: 10;
+  }
+}
+.owerlof {
+  display: none;
+}
+
+.hide {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4979px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+
+
+@media screen and (max-width: 767px ){
+  .nav_main-pages {
+    display: none;
+  }
+}
+
+
+.burger-menu_active {
+  display: none;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100vh;
+  background-color: $color-dark-3xl;
+  z-index: 7;
+  align-items: flex-start;
+  //justify-content: center;
+  //padding: 0 0 0 39px;
+  flex-direction: column;
+
+  .logo_burger {
+    display: none;
+    position: relative;
+    top: 33px;
+    left: 11px;
+    
+  }
+  @media screen and (max-width: 374px){
+    width: 100%;
+  }
+}
+
+.toggleButton div,
+.toggleButton:before,
+.toggleButton:after {
+  width: 30px;
+  height: 3px;
+  content: "";
+  background-color: $color-primary;
+  display: block;  
+  border-radius: 0px;
+  margin: 7px 0;
+  transition: 0.5s;
+}
+
+
+.active_menu {
+  position: absolute;
+  top: 41px;
+  right: 43px;
+}
+
+
+.active_menu:before {
+  transform: translateY(-50%) rotateZ(-90deg);
+  margin-top: 20px ;
+margin-left: 15px;
+
+}
+.active_menu:after {
+  transform: translateY(-50%) rotateZ(-90deg);
+  
+  margin-top: -10px ;
+  margin-left: 36px;
+}
+.active_menu div {
+  transform: translateY(-50%) rotateZ(-90deg);
+  margin-top: -10px ;
+  margin-left: 25px;
+  
+}
+
+.logo_burger {
+  display: none;
 }
