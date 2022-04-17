@@ -128,6 +128,13 @@ body {
   width: 443px;
 }
 
+.nav_main-pages .logo_burger {
+  display: none;
+  position: relative;
+  top: 33px;
+  left: 11px;
+}
+
 .nav_main-pages .list_main-pages {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -187,6 +194,30 @@ body {
 @media screen and (max-width: 1279px) {
   .nav_main-pages {
     margin-top: -1px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav_main-pages {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -120%;
+    width: 320px;
+    height: 100vh;
+    background-color: #292929;
+    z-index: 7;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
 }
 
@@ -643,7 +674,7 @@ body {
 
 @media screen and (max-width: 1279px) {
   .pets {
-    padding: 81px 30px 100px 30px;
+    padding: 81px 20px 100px 20px;
     overflow: hidden;
   }
 }
@@ -724,6 +755,8 @@ body {
         -ms-flex-pack: justify;
             justify-content: space-between;
     margin-top: -5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -743,6 +776,11 @@ body {
   background-color: #fafafa;
   margin: 0 45px;
   border-radius: 9px;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 @media screen and (max-width: 1279px) {
@@ -788,7 +826,7 @@ body {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     width: 270px;
-    height: 507px;
+    min-height: 507px;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
@@ -1715,21 +1753,14 @@ body {
   z-index: 5;
 }
 
-@media screen and (max-width: 767px) {
-  .nav_main-pages {
-    display: none;
-  }
-}
-
 .burger-menu_active {
-  display: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: fixed;
   top: 0;
   right: 0;
-  width: 80%;
+  width: 320px;
   height: 100vh;
   background-color: #292929;
   z-index: 7;
@@ -1770,7 +1801,7 @@ body {
 }
 
 .active_menu {
-  position: absolute;
+  position: fixed;
   top: 41px;
   right: 43px;
 }
