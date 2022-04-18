@@ -271,10 +271,15 @@ body {
 
 @media screen and (max-width: 767px) {
   .start_screen {
-    background-position: 0;
     padding-left: 10px;
     padding-right: 10px;
     background-image: url(../../assets/images/start_screen_320.png);
+  }
+}
+
+@media (max-width: 767px) and (min-width: 460px) {
+  .start_screen {
+    background-position: 0px 0px;
   }
 }
 
@@ -1749,7 +1754,7 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(41, 41, 41, 0.6);
   z-index: 5;
 }
 
@@ -1771,6 +1776,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  /*
+  @media screen and (max-width: 374px) {
+    width: 100%;
+  }*/
 }
 
 .burger-menu_active .logo_burger {
@@ -1778,12 +1787,6 @@ body {
   position: relative;
   top: 33px;
   left: 11px;
-}
-
-@media screen and (max-width: 374px) {
-  .burger-menu_active {
-    width: 100%;
-  }
 }
 
 .toggleButton div,

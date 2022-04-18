@@ -184,10 +184,13 @@ body {
   }
 
   @media screen and (max-width: 767px) {
-    background-position: 0;
+    //background-position: 0px 0px;
     padding-left: 10px;
     padding-right: 10px;
     background-image: url(../../assets/images/start_screen_320.png);
+  }
+  @media (max-width: 767px) and (min-width: 460px) {
+    background-position: 0px 0px;
   }
 }
 
@@ -1227,7 +1230,7 @@ div.pets_card.pets_card2 {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(41, 41, 41, 0.6);
   z-index: 5;
 }
 
