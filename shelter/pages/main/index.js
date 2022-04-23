@@ -53,7 +53,6 @@ window.addEventListener("resize", function () {
 });
 
 const pets_cards = document.querySelectorAll(".pets_card");
-
 const btnR = document.querySelector(".btn-right");
 const btnL = document.querySelector(".btn-left");
 

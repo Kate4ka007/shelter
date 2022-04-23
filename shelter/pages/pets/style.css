@@ -971,4 +971,235 @@ a.disabled {
 .logo_burger {
   display: none;
 }
+
+/*modal*/
+.modal-window {
+  width: 952px;
+  height: 552px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: none;
+  z-index: 500;
+  border-radius: 9px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-window {
+    width: 682px;
+    height: 402px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal-window {
+    width: 271px;
+    height: 392px;
+  }
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(41, 41, 41, 0.6);
+  z-index: 400;
+}
+
+.modal-close-button {
+  width: 52px;
+  height: 52px;
+  background-image: url(../../assets/images/modal_close_button.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.modal-close-button:hover {
+  background-color: #fddcc4;
+  border-radius: 50px;
+}
+
+.modal-content {
+  width: 900px;
+  background-color: #fafafa;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-radius: 19px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-content {
+    width: 630px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal-content {
+    width: 240px;
+    padding: 10px;
+  }
+}
+
+.modal-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 20px;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-info {
+    margin-top: 10px;
+    margin-right: 9px;
+  }
+}
+
+.pets_card.activated {
+  background: #ccc;
+}
+
+.modal-image {
+  width: 500px;
+  height: 500px;
+  margin-right: 29px;
+  border-radius: 9px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-image {
+    width: 350px;
+    height: 350px;
+    margin-right: 11px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal-image {
+    display: none;
+  }
+}
+
+.modal-title {
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .modal-title {
+    text-align: center;
+  }
+}
+
+.modal-subtitle {
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-subtitle {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal-subtitle {
+    text-align: center;
+  }
+}
+
+.modal-description {
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-description {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal-description {
+    text-align: justify;
+  }
+}
+
+.modal-list {
+  list-style: #f1cdb3;
+  margin-left: 20px;
+}
+
+.modal-list-item {
+  color: #f1cdb3;
+  margin-bottom: 11px;
+}
+
+@media screen and (max-width: 1279px) {
+  .modal-list-item {
+    margin-bottom: 6px;
+  }
+}
+
+.list-span-title {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+
+.list-span-info {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
+}
+
+.close-button-hover {
+  background-color: #fddcc4;
+  border-radius: 50px;
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
