@@ -4,7 +4,7 @@ const backOne = document.querySelector(".back_one");
 const backMore = document.querySelector(".back_more");
 const buttonRight = document.querySelector(".button_right");
 
-const pets = [
+const pets = [  
   {
     name: "Jennifer",
     img: "../../assets/images/jennifer.png",
@@ -100,19 +100,7 @@ const pets = [
     inoculations: ["bordetella bronchiseptica", "leptospirosis"],
     diseases: ["deafness", "blindness"],
     parasites: ["lice", "fleas"],
-  },
-  {
-    name: "Jennifer",
-    img: "../../assets/images/jennifer.png",
-    type: "Dog",
-    breed: "Labrador",
-    description:
-      "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
-    age: "2 months",
-    inoculations: ["none"],
-    diseases: ["none"],
-    parasites: ["none"],
-  },
+  },  /*
   {
     name: "Sophia",
     img: "../../assets/images/sophia.png",
@@ -196,21 +184,21 @@ const pets = [
     inoculations: ["bordetella bronchiseptica", "leptospirosis"],
     diseases: ["deafness", "blindness"],
     parasites: ["lice", "fleas"],
-  },
+  },*/
 ];
 console.log(pets[0].img);
 
-/* buttonRight.addEventListener("click", () => {
+buttonRight.addEventListener("click", () => {
   slide();
   backOne.classList.remove("button-arow_disable");
   backOne.classList.add("button-arow_active");
   backMore.classList.remove("button-arow_disable");
   backMore.classList.add("button-arow_active");
-  op = op + 8;
-  bv = bv + 8;
-}); */
+ /*  op = op + 8;
+  bv = bv + 8; */
+}); 
 
-/* function numberCards() {
+function numberCards() {
   if (window.innerWidth > 1279) {
     num = 8;
   } else if (window.innerWidth > 767 && window.innerWidth < 1280) {
@@ -219,8 +207,8 @@ console.log(pets[0].img);
     num = 3;
   }
   return num;
-}*/
-/*
+}
+
 window.addEventListener("resize", () => {
   if (window.innerWidth > 1279) {
     for (let i = 0; i < 8; i++) {
@@ -259,8 +247,8 @@ window.addEventListener("resize", () => {
   slide();
 });
 
-let op = 0;
-let bv = 0;
+/* let op = 0;
+let bv = 0; */
 
 function slide() {
   console.log(sliderContainer);
@@ -294,10 +282,10 @@ buttonRight.addEventListener("click", () => {
   backOne.classList.add("button-arow_active");
   backMore.classList.remove("button-arow_disable");
   backMore.classList.add("button-arow_active");
-  op = op + 6;
-  bv = bv + 6;
+  //op = op + 6;
+  //bv = bv + 6;
 });
-*/
+
 const logo = document.querySelector(".logo");
 
 logo.addEventListener("click", () => {
