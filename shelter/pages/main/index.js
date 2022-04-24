@@ -10,6 +10,7 @@ function toggleMenu() {
   if (windowWidth < 768) {
     navMenu.classList.toggle("burger-menu_active");
     toggleButton.classList.toggle("active_menu");
+    document.body.style.overflow = "hidden"
 
     setTimeout(() => owerlof.classList.toggle("hide"), 200);
     // owerlof.classList.toggle('hide')
@@ -25,6 +26,7 @@ function closeMenu() {
   navMenu.classList.remove("burger-menu_active");
   toggleButton.classList.remove("active_menu");
   logo_burger.style.display = "none";
+  document.body.style.overflow = "visible"
 }
 
 owerlof.addEventListener("click", () => {
@@ -242,15 +244,49 @@ const createModalWindow = (i) => {
 })
 
 const modalBackground = document.querySelectorAll('.modal-background');
-modalBackground.forEach(el => {
+
+/* modalBackground.forEach(el => {
   el.addEventListener('click', function () {
     document.body.style.overflow = "visible"
     document.body.removeChild(modal)
   })
 })
+ */
 
-const modalClose = document.querySelector('.modal-close-button')
+
+
 modalBackground.forEach(el => {
+  el.onclick = (e)=>{
+    if (e.target == el){
+      document.body.style.overflow = "visible"
+      document.body.removeChild(modal)
+    }  
+  }
+})
+
+modalBackground.forEach(el => {
+  el.onmouseover = (e)=>{
+    if (e.target == el){
+      modalCloseButton.forEach(item => {
+        item.classList.add('close-button-hover')
+      })   
+    } 
+  }
+
+  el.onmouseout = (e)=>{
+    if (e.target == el){
+      modalCloseButton.forEach(item => {
+        item.classList.remove('close-button-hover')
+      })   
+    } 
+  }
+
+
+})
+const modalClose = document.querySelector('.modal-close-button')
+
+
+/* modalBackground.forEach(el => {
   el.onmouseover = function() {
     modalCloseButton.forEach(item => {
       item.classList.add('close-button-hover')
@@ -266,7 +302,7 @@ modalBackground.forEach(el => {
       
     })       
   }
-})
+}) */
 
 }
 

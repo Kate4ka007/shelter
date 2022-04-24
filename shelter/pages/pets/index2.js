@@ -14,6 +14,7 @@ function toggleMenu() {
   if (windowWidth < 768) {
     navMenu.classList.toggle("burger-menu_active");
     toggleButton.classList.toggle("active_menu");
+    document.body.style.overflow = "hidden"
 
     setTimeout(() => owerlof.classList.toggle("hide"), 300);
     //owerlof.classList.toggle('hide')
@@ -29,6 +30,7 @@ function closeMenu() {
   navMenu.classList.remove("burger-menu_active");
   toggleButton.classList.remove("active_menu");
   logo_burger.style.display = "none";
+  document.body.style.overflow = "visible"
 }
 
 owerlof.addEventListener("click", () => {
@@ -139,6 +141,12 @@ const pets = [{
                      
 const sliderContainer = document.querySelector('.slider-container');
 const pets_cards = document.querySelectorAll(".pets_card");
+const navigation_page = document.querySelector('.navigation_page');
+const btnNextPage = document.querySelector('.btn_nextPage')
+const pageNumberSpan = document.querySelector('.page_number_span')
+const button_right = document.querySelector('.button_right')
+const buttonActive = document.querySelector('.button-arow_active')
+const btnEnd = document.querySelector('.btn-end')
 
 
 
@@ -150,8 +158,36 @@ const createCardTemplate = (i) => {
     return card;
 };
 
-let i = 0;   
+const getShuffleCards = (arr) => {
+  arr.sort(() => Math.random() - 0.5)
+  return arr;
+} 
+
+let shuffleCards1 = pets.sort(() => Math.random() - 0.5)
+
+let shuffleCards2 = shuffleCards1.map(el => el)
+shuffleCards2 = shuffleCards2.sort(() => Math.random() - 0.5)
+
+let shuffleCards3 = shuffleCards2.map(el => el)
+shuffleCards3 = shuffleCards3.sort(() => Math.random() - 0.5)
+
+let shuffleCards4 = shuffleCards3.map(el => el)
+shuffleCards4 = shuffleCards4.sort(() => Math.random() - 0.5)
+
+let shuffleCards5 = shuffleCards4.map(el => el)
+shuffleCards5 = shuffleCards5.sort(() => Math.random() - 0.5)
+
+let shuffleCards6 = shuffleCards5.map(el => el)
+shuffleCards6 = shuffleCards6.sort(() => Math.random() - 0.5)
+
+let petsAllCards = shuffleCards1.concat(shuffleCards2, shuffleCards3, shuffleCards4, shuffleCards5, shuffleCards6);
+console.log(petsAllCards);
+
+
+
+let i = 0  
 let k = 0;
+
 
 
 const createAllCards = () => {
@@ -159,8 +195,8 @@ const createAllCards = () => {
   for (let j = 0; j < 8; j++) {    
     card = createCardTemplate(k);
     card.innerHTML = `
-    <img class="card-image" src="${pets[k].img}" alt="${pets[k].name}" data-name="${pets[k].name}" data-description="${pets[k].description}">    
-    <span class="card-title">${pets[k].name}</span>
+    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}" data-name="${petsAllCards[k].name}" data-description="${petsAllCards[k].description}">    
+    <span class="card-title">${petsAllCards[k].name}</span>
     <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     sliderContainer.appendChild(card);
     
@@ -170,12 +206,14 @@ const createAllCards = () => {
       createModalWindow(idx);
     })
     k++;
-    if (k >= 8) {
+    if (k >= 48) {
       k = 0;
     }
+    console.log('then1', k)
   }
 }
 createAllCards()
+console.log('then2', k)
 
 
 
@@ -186,55 +224,174 @@ const createModalWindow = (i) => {
     modal.innerHTML = `
     <div class="modal-window"><div class ="modal-close-button"></div>
     <div class="modal-content">        
-    <img class="modal-image" src="${pets[i].img}" alt = "${pets[i].name}">
+    <img class="modal-image" src="${petsAllCards[i].img}" alt = "${petsAllCards[i].name}">
     <div class = "modal-info">
-    <div class = "modal-title">${pets[i].name}</div>
-    <div class = "modal-subtitle">${pets[i].type} - ${pets[i].breed}</div>
-    <div class = "modal-description">${pets[i].description}</div>
+    <div class = "modal-title">${petsAllCards[i].name}</div>
+    <div class = "modal-subtitle">${petsAllCards[i].type} - ${petsAllCards[i].breed}</div>
+    <div class = "modal-description">${petsAllCards[i].description}</div>
     <ul class= "modal-list">
-    <li class = "modal-list-item"><span class = "list-span-title">Age:</span><span class = "list-span-info"> ${pets[i].age}</span></li>
-    <li class = "modal-list-item"><span class = "list-span-title">Inoculations:</span><span class = "list-span-info"> ${pets[i].inoculations}</span></li>
-    <li class = "modal-list-item"><span class = "list-span-title">Diseases:</span><span class = "list-span-info"> ${pets[i].diseases}</span></li>
-    <li class = "modal-list-item"><span class = "list-span-title">Parasites:</span><span class = "list-span-info"> ${pets[i].parasites}</span></li>
+    <li class = "modal-list-item"><span class = "list-span-title">Age:</span><span class = "list-span-info"> ${petsAllCards[i].age}</span></li>
+    <li class = "modal-list-item"><span class = "list-span-title">Inoculations:</span><span class = "list-span-info"> ${petsAllCards[i].inoculations}</span></li>
+    <li class = "modal-list-item"><span class = "list-span-title">Diseases:</span><span class = "list-span-info"> ${petsAllCards[i].diseases}</span></li>
+    <li class = "modal-list-item"><span class = "list-span-title">Parasites:</span><span class = "list-span-info"> ${petsAllCards[i].parasites}</span></li>
     </ul>
     </div>
     </div>
-    </div>`
-  
+    </div>`  
     document.body.append(modal);
+
+    
+
     const modalCloseButton = document.querySelectorAll('.modal-close-button')
     modalCloseButton.forEach(el => {
     el.addEventListener('click', function () {
       document.body.style.overflow = "visible"
       document.body.removeChild(modal)
+   
+
     })
   })
   
   const modalBackground = document.querySelectorAll('.modal-background');
-  modalBackground.forEach(el => {
-    el.addEventListener('click', function () {
-      document.body.style.overflow = "visible"
-      document.body.removeChild(modal)
-    })
-  })  
+
  
   modalBackground.forEach(el => {
-    el.onmouseover = function() {
+  el.onclick = (e)=>{
+    if (e.target == el){
+      document.body.style.overflow = "visible"
+      document.body.removeChild(modal)
+    }  
+  }
+})
+
+modalBackground.forEach(el => {
+  el.onmouseover = (e)=>{
+    if (e.target == el){
       modalCloseButton.forEach(item => {
         item.classList.add('close-button-hover')
       })   
-        console.log('hover')      
-    }
-  
-    el.onmouseout = function() {
+    } 
+  }
+
+  el.onmouseout = (e)=>{
+    if (e.target == el){
       modalCloseButton.forEach(item => {
-          
-          item.classList.remove('close-button-hover')
-          console.log('nothover')         
-      })       
-    }
-  })  
- }
+        item.classList.remove('close-button-hover')
+      })   
+    } 
+  }
+
+
+})
+
+  
+
+}
+
+let numberCardsonPage;
+
+
+if (window.innerWidth > 767 && window.innerWidth < 1280) {
+    numberCardsonPage = 6;
+    //console.log(numberCardsonPage)
+} else if (window.innerWidth > 1279) {
+    numberCardsonPage = 8;
+   // console.log(numberCardsonPage)
+} else {
+    numberCardsonPage = 3;
+   // console.log(numberCardsonPage)
+}    
+
+console.log('количесто на странице -', numberCardsonPage)
+
+
+
+
+
+
+
+
+let count = 48;
+let numberPage = 1;
+var countPages = 6;
+
+window.addEventListener("resize", () => {    
+    if (window.innerWidth > 1279) {
+        numberCardsonPage = 8;
+        //console.log(numberCardsonPage)
+    } else if (window.innerWidth > 767 && window.innerWidth < 1280) {
+        numberCardsonPage = 6;
+       // console.log(numberCardsonPage)
+    } else {
+        numberCardsonPage = 3;
+       // console.log(numberCardsonPage)
+    }    
+
+    countPages = Math.ceil(count/numberCardsonPage)
+    console.log(countPages)
+    return numberCardsonPage
+});
+
+
+console.log(countPages)
+petsAllCards[k].name
+
+
+  
+
+const nextPage = () => {   
+    sliderContainer.innerHTML = ""  
+    for (let j = 0; j < numberCardsonPage; j++) {  
+      console.log('then3', k)  
+      card = createCardTemplate(k);
+      card.innerHTML = `
+      <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
+      <span class="card-title">${petsAllCards[k].name}</span>
+      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+      sliderContainer.appendChild(card);
+      
+      card.addEventListener('click', function() {      
+        const idx = this.dataset.index;
+        document.body.style.overflow = "hidden";
+        createModalWindow(idx);
+      })
+      k++;    
+      if (k >= 48) {
+        k = 0;
+      }
+    }  
+}
+console.log('then4', k)
+console.log('макс страниц - ', countPages)
+console.log('текущ страниц - ', numberPage)
+
+
+
+buttonActive.addEventListener('click', function nex() {
+    nextPage()    
+   numberPage++;  
+   if (numberPage == countPages) {
+        console.log('last page')         
+        pageNumberSpan.innerText = `${numberPage}`
+        buttonActive.classList.remove('button-arow_active')
+        document.getElementById("next-button").disabled = true;
+        document.getElementById("next-button").style.cursor = "default"
+        btnEnd.classList.remove('button-arow_active')
+
+        //deleteEvent()
+  
+   } else  {
+        console.log('макс страниц - ', countPages)
+        console.log('текущ страниц - ', numberPage)
+        pageNumberSpan.innerText = `${numberPage}`
+   }
+ 
+})
+
+
+
+
+
 
 
 
