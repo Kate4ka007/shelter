@@ -733,10 +733,9 @@ a.disabled {
 }
 
 
-/*modal*/
 .modal-window {
   width: 900px;
-  height: 500px;
+  //height: 500px;
   position: fixed;  
   top: 50%;
   left: 50%;
@@ -746,12 +745,12 @@ a.disabled {
   border-radius: 9px;
 
   @media screen and (max-width:1279px){
-    width: 682px;
-    height: 402px;
+    width: 630px;
+    //height: 402px;
   }
   @media screen and (max-width:767px){
-    width: 271px;
-    height: auto;
+    width: 250px;
+    height: 392px;
   }
 }
 

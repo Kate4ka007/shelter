@@ -969,10 +969,8 @@ a.disabled {
   display: none;
 }
 
-/*modal*/
 .modal-window {
   width: 900px;
-  height: 500px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -985,15 +983,14 @@ a.disabled {
 
 @media screen and (max-width: 1279px) {
   .modal-window {
-    width: 682px;
-    height: 402px;
+    width: 630px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .modal-window {
-    width: 271px;
-    height: auto;
+    width: 250px;
+    height: 392px;
   }
 }
 

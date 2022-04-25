@@ -2118,7 +2118,6 @@ body {
 
 .modal-window {
   width: 900px;
-  height: 500px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -2131,14 +2130,13 @@ body {
 
 @media screen and (max-width: 1279px) {
   .modal-window {
-    width: 682px;
-    height: 402px;
+    width: 630px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .modal-window {
-    width: 271px;
+    width: 250px;
     height: 392px;
   }
 }
@@ -2160,7 +2158,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  margin-left: auto;
   position: absolute;
   right: -52px;
   top: -52px;
@@ -2172,6 +2169,14 @@ body {
   position: absolute;
   right: -52px;
   top: -52px;
+}
+
+@media screen and (max-widht: 1279) {
+  .modal-close-button {
+    position: absolute;
+    right: -52px;
+    top: -52px;
+  }
 }
 
 .modal-content {
