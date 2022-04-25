@@ -544,20 +544,17 @@ a.disabled {
   border-radius: 100px;
   padding: 0;
   border: none;
-  cursor: pointer;
 }
 
-.button-arow_active {
-  background-color: #fddcc4;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  cursor: pointer;
+.button_left {
+  cursor: default;
 }
 
 .button-arow_active:hover {
   background-color: #fddcc4;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
+  cursor: pointer;
 }
 
 .button-arow_disable {
@@ -1036,6 +1033,7 @@ a.disabled {
       -ms-flex-direction: row;
           flex-direction: row;
   border-radius: 19px;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 1279px) {
@@ -1048,6 +1046,38 @@ a.disabled {
   .modal-content {
     width: 240px;
     padding: 10px;
+  }
+}
+
+div.on_modal {
+  position: fixed;
+  content: '';
+  min-width: 952px;
+  min-height: 552px;
+  display: block;
+  background: none;
+  border: 2px red solid;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: none;
+  z-index: 1000;
+  border-radius: 9px;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1279px) {
+  div.on_modal {
+    width: 682px;
+    height: 402px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  div.on_modal {
+    width: 271px;
+    height: 392px;
   }
 }
 

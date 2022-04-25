@@ -602,3 +602,188 @@ shuffleCards6 = shuffleCards6.sort(() => Math.random() - 0.5)
 
 let petsAllCards = shuffleCards1.concat(shuffleCards2, shuffleCards3, shuffleCards4, shuffleCards5, shuffleCards6);
 console.log(petsAllCards);
+
+
+
+
+
+
+firstButton.onclick = () => {
+  firstPage()
+  pageNumberSpan.innerText = `1`;
+  button_left.classList.remove('button-arow_active');
+  button_left.disabled = true;
+  button_left.classList.remove('btn_prevPage');
+  prevButton.classList.remove('button-arow_active')
+  prevButton.disabled = true;
+  prevButton.style.cursor = "default";
+  button_right.classList.add('button-arow_active');
+  back.src = '../../assets/images/button_paginator_left1.png'
+  back.style.transform = 'rotate(-360deg)'
+  backBack.src = '../../assets/images/button_paginator_left2.png'
+  backBack.style.transform = 'rotate(-360deg)'      
+  button_right.classList.add('button-arow_active')
+  nextButton.disabled = false;
+  nextButton.style.cursor = "pointer";  
+  lastButton.disabled = false;
+  lastButton.style.cursor = "pointer";    
+  front.src = '../../assets/images/button_paginator_right1.png'
+  front.style.transform = 'rotate(-360deg)'
+  frontFront.src = '../../assets/images/button_paginator_right2.png'
+  frontFront.style.transform = 'rotate(-360deg)'
+  lastButton.classList.add('button-arow_active');
+
+}
+
+
+const firstPage = () => {   
+  sliderContainer.innerHTML = ""   
+  k = numberCardsonPage - 1;
+  for (let j = 0; j < numberCardsonPage; j++) {       
+    console.log('then3', k)         
+    card = createCardTemplate(k);
+    card.innerHTML = `
+    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
+    <span class="card-title">${petsAllCards[k].name}</span>
+    <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+    sliderContainer.appendChild(card);
+    card.addEventListener('click', function() {      
+      const idx = this.dataset.index;
+      document.body.style.overflow = "hidden";
+      createModalWindow(idx);
+    })  
+    if(k > 0) {
+      k--; 
+    }
+      
+  }  
+}
+
+
+
+prevButton.classList.add('button-arow_active')
+prevButton.disabled = false;
+prevButton.style.cursor = "pointer";
+
+
+
+
+button_left.disabled = false;
+button_left.classList.add('btn_prevPage');
+button_left.classList.add('button-arow_active');
+
+
+
+const firstPage = () => {   
+  sliderContainer.innerHTML = ""   
+  k = numberCardsonPage - 1;
+  for (let j = 0; j < numberCardsonPage; j++) {   
+      
+    console.log('then3', k)         
+    card = createCardTemplate(k);
+    card.innerHTML = `
+    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
+    <span class="card-title">${petsAllCards[k].name}</span>
+    <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+    sliderContainer.appendChild(card);
+
+    card.addEventListener('click', function() {      
+      const idx = this.dataset.index;
+      document.body.style.overflow = "hidden";
+      createModalWindow(idx);
+    })  
+    if(k > 0) {
+      k--; 
+    }
+      
+  }  
+}
+
+
+firstButton.onclick = () => {
+  lastPage()
+  pageNumberSpan.innerText = `1`;
+  button_left.classList.remove('button-arow_active');
+  button_left.disabled = true;
+  button_left.classList.remove('btn_prevPage');
+  prevButton.classList.remove('button-arow_active')
+  prevButton.disabled = true;
+  prevButton.style.cursor = "default";
+  button_right.classList.add('button-arow_active');
+  back.src = '../../assets/images/button_paginator_left1.png'
+  back.style.transform = 'rotate(-360deg)'
+  backBack.src = '../../assets/images/button_paginator_left2.png'
+  backBack.style.transform = 'rotate(-360deg)'
+  
+
+}
+
+
+
+
+
+lastButton.onclick = () => {
+  lastPage()
+  console.log('last page')  
+  numberPage = countPages     
+        pageNumberSpan.innerText = `${numberPage}`
+        button_right.classList.remove('button-arow_active');
+        lastButton.classList.remove('button-arow_active');
+        nextButton.disabled = true;
+        nextButton.style.cursor = "default";
+        lastButton.disabled = true;
+        lastButton.style.cursor = "default";
+        front.src = '../../assets/images/button_paginator_left2.png'
+        front.style.transform = 'rotate(-180deg)'
+        frontFront.src = '../../assets/images/button_paginator_left1.png'
+        frontFront.style.transform = 'rotate(-180deg)'
+        pageNumberSpan.innerText = `${numberPage}`
+        prevButton.classList.add('button-arow_active')
+        button_left.classList.add('button-arow_active')    
+        prevButton.disabled = false;
+        prevButton.style.cursor = "pointer"; 
+        back.src = '../../assets/images/button_paginator_right1.png'
+        back.style.transform = 'rotate(-180deg)'
+        backBack.src = '../../assets/images/button_paginator_right2.png'
+        backBack.style.transform = 'rotate(-180deg)'         
+        firstButton.style.cursor = "pointer"; 
+        firstButton.disabled = false;     
+        
+        
+      
+       
+}
+
+
+
+
+firstButton.onclick = () => {
+  lastPage()
+  pageNumberSpan.innerText = `1`;
+  button_left.classList.remove('button-arow_active');
+  button_left.disabled = true;
+  button_left.classList.remove('btn_prevPage');
+  prevButton.classList.remove('button-arow_active')
+  prevButton.disabled = true;
+  prevButton.style.cursor = "default";
+  button_right.classList.add('button-arow_active');
+  back.src = '../../assets/images/button_paginator_left1.png'
+  back.style.transform = 'rotate(-360deg)'
+  backBack.src = '../../assets/images/button_paginator_left2.png'
+  backBack.style.transform = 'rotate(-360deg)'
+  lastButton.disabled = faltse;
+  lastButton.style.cursor = "pointer";
+  
+  button_right.classList.add('button-arow_active')
+  nextButton.disabled = false;
+  nextButton.style.cursor = "pointer";   
+  front.src = '../../assets/images/button_paginator_right1.png'
+  front.style.transform = 'rotate(-360deg)'
+  frontFront.src = '../../assets/images/button_paginator_right2.png'
+  frontFront.style.transform = 'rotate(-360deg)'
+  lastButton.classList.add('button-arow_active');
+  lastButton.disabled = false;
+  lastButton.style.cursor = "pointer";
+  
+
+}

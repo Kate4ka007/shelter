@@ -2,7 +2,7 @@ const wrappermainpages = document.querySelector(".wrapper_mainpages");
 const owerlof = document.querySelector(".owerlof");
 const navMenu = document.querySelector(".nav_main-pages");
 const toggleButton = document.querySelector(".toggleButton");
-
+const list = document.querySelector('.list_main-pages')
 const logo_burger = document.querySelector(".logo_burger");
 
 function toggleMenu() {
@@ -33,7 +33,7 @@ owerlof.addEventListener("click", () => {
   closeMenu();
 });
 
-navMenu.addEventListener("click", () => {
+list.addEventListener("click", () => {
   closeMenu();
 });
 
@@ -58,17 +58,18 @@ const pets_cards = document.querySelectorAll(".pets_card");
 const btnR = document.querySelector(".btn-right");
 const btnL = document.querySelector(".btn-left");
 
-const pets = [{
-    name: "Katrine",
-    img: "../../assets/images/katrine.png",
-    type: "Cat",
-    breed: "British Shorthair",
-    description: "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
-    age: "6 months",
-    inoculations: ["panleukopenia"],
+const pets = [
+  {
+    name: "Scarlett",
+    img: "../../assets/images/scarlett.png",
+    type: "Dog",
+    breed: "Jack Russell Terrier",
+    description: "Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.",
+    age: "3 months",
+    inoculations: ["parainfluenza"],
     diseases: ["none"],
     parasites: ["none"],
-  },
+  },    
   {
     name: "Jennifer",
     img: "../../assets/images/jennifer.png",
@@ -102,16 +103,15 @@ const pets = [{
     diseases: ["none"],
     parasites: ["none"],
   },
-  {
-    name: "Scarlett",
-    img: "../../assets/images/scarlett.png",
-    type: "Dog",
-    breed: "Jack Russell Terrier",
-    description: "Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.",
-    age: "3 months",
-    inoculations: ["parainfluenza"],
-    diseases: ["none"],
-    parasites: ["none"],
+  {name: "Katrine",
+  img: "../../assets/images/katrine.png",
+  type: "Cat",
+  breed: "British Shorthair",
+  description: "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
+  age: "6 months",
+  inoculations: ["panleukopenia"],
+  diseases: ["none"],
+  parasites: ["none"],
   },
   {
     name: "Timmy",
@@ -347,12 +347,12 @@ slider.addEventListener("animationend", (animationEvent) => {
   let card;
 
   for (let j = 0; j < 3; j++) {
-    console.log(i);
+    console.log(i+1);
 
-    card = createCardTemplate(i);
+    card = createCardTemplate(i+1);
     card.innerHTML = `
-    <img class="card-image" src="${pets[i].img}" alt="${pets[i].name}" data-name="${pets[i].name}" data-description="${pets[i].description}">    
-    <span class="card-title">${pets[i].name}</span>
+    <img class="card-image" src="${pets[i+1].img}" alt="${pets[i+1].name}" data-name="${pets[i+1].name}" data-description="${pets[i+1].description}">    
+    <span class="card-title">${pets[i+1].name}</span>
     <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     chengepart.appendChild(card);
 
@@ -366,9 +366,10 @@ slider.addEventListener("animationend", (animationEvent) => {
     })
 
     i++;
-    if (i >= 8) {
-      i = 0;
+    if ((i + 1) > 7) {
+      i = -1;
     }
+
   }
 
   btnLeft.addEventListener("click", moveLeft);

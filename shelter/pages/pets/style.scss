@@ -392,19 +392,22 @@ a.disabled {
   border-radius: 100px;
   padding: 0;
   border: none;
-  cursor: pointer;
+  //cursor: pointer;
+}
+
+.button_left {
+  cursor: default
 }
 
 .button-arow_active {
-  background-color: $color-primary-light;
-  transition-duration: 0.2s;
-  cursor: pointer;
+  &:hover {
+    background-color: $color-primary-light;
+    transition-duration: 0.2s;
+    cursor: pointer;
+  }
+  
 }
 
-.button-arow_active:hover {
-  background-color: $color-primary-light;
-  transition-duration: 0.2s;
-}
 
 .button-arow_disable {
   cursor: default;
