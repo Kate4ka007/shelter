@@ -141,7 +141,8 @@ body {
     z-index: 7;
     align-items: flex-start;
     flex-direction: column;
-    transition: 0.5s;
+    transition: 1.5s;
+
   }
 }
 
@@ -301,10 +302,17 @@ body {
   }
   .pets-button & {
     width: 261px;
+    @media screen and (max-width: 767px) {
+      margin-top: -7px;
+      
+    }
   }
   @media screen and (max-width: 1279px) {
     padding: 14px 45px;
   }
+
+
+
 }
 .pets-button-link {
   text-decoration: none;
@@ -507,7 +515,7 @@ body {
     font-size: 25px;
     width: 286px;
     margin: 0 auto;
-    margin-bottom: 47px;
+    margin-bottom: 39px;
   }
 }
 
@@ -538,14 +546,20 @@ body {
     flex-shrink: 0;
     @media screen and (max-width: 1279px) {
       min-width: 270px;
-      margin: 0;
+      margin: 0 auto;
+
+      &:nth-child(1) {
+        //margin-right: 40px;
+        margin-top: 0px;
+        margin-left: 3px; 
+      }
 
       &:nth-child(2) {
-        margin-right: 40px;
+        //margin-right: 40px;
         margin-top: 0px;
-        margin-left: 3px;
+        margin-left: 3px; 
       }
-      &:nth-child(4) {
+      &:nth-child(3) {
         display: none;
 
         //margin-left: 1040px;
@@ -573,7 +587,7 @@ body {
     }
   }
   @media screen and (max-width: 767px) {
-    flex-wrap: wrap;
+    //flex-wrap: wrap;
     width: 270px;
     min-height: 507px; //!!!!!!!!!!!!!!!!!!!!!!!!!!!
     align-items: flex-start;
@@ -591,7 +605,10 @@ body {
 
   @media screen and (max-width: 767px) {
     order: 1;
-    margin-right: 68px;
+    margin-right: 130px;
+    margin-top: -55px;
+    position: relative;
+    z-index: 5;
   }
 }
 
@@ -603,6 +620,15 @@ body {
   }
   @media screen and (max-width: 767px) {
     order: 2;
+    position: relative;
+    top: -50px;
+    left: 60px;
+  }
+}
+
+div.pets_button {
+  @media screen and (mn-width:767px){
+    margin-top: -8px;
   }
 }
 
@@ -1269,7 +1295,7 @@ div.pets_card.pets_card2 {
   display: block;
   border-radius: 0px;
   margin: 7px 0;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .active_menu {
@@ -1297,4 +1323,345 @@ div.pets_card.pets_card2 {
 
 .logo_burger {
   display: none;
+}
+
+.carusel-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 1279px) {
+    padding: 0px 10px;
+    width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (max-width: 767px) {
+   flex-direction: column;
+   width: 290px;
+   //height: 548px;
+  }
+}
+
+.slider {
+  margin: 0 auto;
+  left: -1080px;
+  position: relative;
+  @media screen and (max-width: 1279px) {
+    left: -620px;
+  }
+  @media screen and (max-width: 767px) {
+    left: -20px;
+    height: 470px;
+  }
+  
+}
+
+.slider-wrapper {
+  //width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 550px;
+  width: 1080px;
+  @media screen and (max-width:1279px){
+   max-width: 620px;
+  }
+  @media screen and (max-width:767px){
+    max-width: 300px;
+    height: 510px;
+    width: 290px;
+    
+   }
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  @media screen and (max-width:1279px){
+    gap: 40px;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    .pets_card:nth-child(3) {
+      display: none;
+    }
+  }
+  @media screen and (max-width:767px){
+    gap: 40px;
+    margin-left: 5px;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    .pets_card:nth-child(2) {
+      display: none;
+    }
+  }
+}
+#item-right {
+  
+  @media screen and (max-width:1279px){
+    margin-left: 40px;
+    }
+  
+}
+
+#item-left {
+  
+  @media screen and (max-width:1279px){
+    //margin-right: -7px;
+    margin-right: 40px;
+    }
+  
+}
+
+@keyframes move-right {
+  from {left: -1080px}
+  to {left: -2160px}
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s;
+}
+
+
+@keyframes move-left {
+  from {left: -1080px}
+  to {left: 0px}
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s;
+}
+
+@media screen and (max-width: 1279px) {
+  @keyframes move-right {
+    from {left: -620x}
+    to {left: -1240px}
+  }
+  
+  .transition-right {
+    animation-name: move-right;
+    animation-duration: 2s;
+  }
+  
+  
+  @keyframes move-left {
+    from {left: -620px}
+    to {left: 0px}
+  }
+  
+  .transition-left {
+    animation-name: move-left;
+    animation-duration: 2s;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  @keyframes move-right {
+    from {left: -20px}
+    to {left: -310px}
+  }
+  
+  .transition-right {
+    animation-name: move-right;
+    animation-duration: 2s;
+  }
+  
+  
+  @keyframes move-left {
+    from {left: -20px}
+    to {left: 270px}
+  }
+  
+  .transition-left {
+    animation-name: move-left;
+    animation-duration: 2s;
+  }
+}
+
+
+.modal-window {
+  width: 900px;
+  height: 500px;
+  position: fixed;  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background:none;
+  z-index: 500;
+  border-radius: 9px;
+
+  @media screen and (max-width:1279px){
+    width: 682px;
+    height: 402px;
+  }
+  @media screen and (max-width:767px){
+    width: 271px;
+    height: 392px;
+  }
+}
+
+.modal-background {
+  //display: none;
+  position: fixed;  
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(41, 41, 41, 0.6);
+  z-index: 400;
+  
+}
+.modal-close-button {
+  width: 52px;
+  height: 52px;
+  background-image: url(../../assets/images/modal_close_button.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  margin-left: auto;
+  position: absolute;
+  right: -52px;
+  top: -52px;
+  &:hover {
+    background-color: $color-primary-light;
+    border-radius: 50px;
+    position: absolute;
+    right: -52px;
+    top: -52px;
+  }
+}
+
+.modal-content {
+  width: 900px;
+  //height: 500px;
+  background-color: $color-light-s;
+  display: flex;
+  flex-direction: row;
+  border-radius: 19px;
+  @media screen and (max-width:1279px){
+  width: 630px;    
+  }
+  @media screen and (max-width:767px){
+  width: 240px;
+  padding: 10px;
+  }
+}
+
+.modal-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  margin-top: 50px;
+  @media screen and (max-width:1279px){
+    margin-top: 10px;
+    margin-right: 9px;
+    }
+}
+.pets_card.activated {
+  background: #ccc;
+}
+
+.modal-image {
+  width: 500px;
+  height: 500px;
+  margin-right: 29px;
+  border-radius: 9px;
+  @media screen and (max-width:1279px){
+    width: 350px;
+    height: 350px;
+    margin-right: 11px;
+  }
+  @media screen and (max-width:767px){
+display: none;
+  }
+}
+
+.modal-title {
+font-family: $font_Headings;
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 130%;
+letter-spacing: 0.06em;
+color: #000000;
+margin-bottom: 10px;
+@media screen and (max-width:767px){
+  text-align: center;
+}
+}
+.modal-subtitle {
+font-family:  $font_Headings;
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 115%;
+letter-spacing: 0.06em;
+color: #000000;
+margin-bottom: 40px;
+@media screen and (max-width:1279px){
+  margin-bottom: 20px;
+  }
+  @media screen and (max-width:767px){
+    text-align: center;
+  }
+
+}
+
+.modal-description {
+font-family: $font_Headings;
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 110%;
+letter-spacing: 0.06em;
+color: #000000;
+margin-bottom: 40px;
+@media screen and (max-width:1279px){
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+  @media screen and (max-width:767px){
+   text-align: justify;
+  }
+}
+
+.modal-list{
+  list-style: $color-primary;
+  margin-left: 20px;
+}
+
+.modal-list-item {
+  color: $color-primary;
+  margin-bottom: 11px;
+  @media screen and (max-width:1279px){
+    margin-bottom: 6px;
+    }
+}
+
+.list-span-title {
+font-family: 'Georgia';
+font-style:normal;
+font-weight: 900;
+font-size: 15px;
+line-height: 110%;
+/* identical to box height, or 17px */
+letter-spacing: 0.06em;
+color: #000000;
+}
+
+.list-span-info {
+  font-family: 'Georgia';
+font-style:normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 110%;
+/* identical to box height, or 17px */
+letter-spacing: 0.06em;
+color: #000000;
+}
+
+.close-button-hover {  
+    background-color: $color-primary-light;
+    border-radius: 50px;
+  cursor: pointer;
 }
