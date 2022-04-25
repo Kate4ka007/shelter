@@ -240,17 +240,21 @@ window.addEventListener("resize", () => {
 });
 
 console.log("количесто на странице -", numberCardsonPage);
-
+let page = 0;
 const createAllCards = () => {
   sliderContainer.innerHTML = "";
 
-  for (let j = 0; j < numberCardsonPage; j++) {
-    console.log("then1", k);
-    card = createCardTemplate(k);
+  for (
+    let j = page * numberCardsonPage;
+    j < (page + 1) * numberCardsonPage;
+    j++
+  ) {
+    console.log("then3", j);
+    card = createCardTemplate(j);
     card.innerHTML = `
-    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
-    <span class="card-title">${petsAllCards[k].name}</span>
-    <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+      <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
+      <span class="card-title">${petsAllCards[j].name}</span>
+      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     sliderContainer.appendChild(card);
 
     card.addEventListener("click", function () {
@@ -258,10 +262,6 @@ const createAllCards = () => {
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
     });
-    k++;
-    /*     if (k >= 48) {
-      k = 0;
-    } */
   }
 };
 createAllCards();
@@ -330,7 +330,30 @@ const createModalWindow = (i) => {
 
 const nextPage = () => {
   sliderContainer.innerHTML = "";
-  if (k == 0) {
+  page += 1;
+  for (
+    let j = page * numberCardsonPage;
+    j < (page + 1) * numberCardsonPage;
+    j++
+  ) {
+    console.log("then3", j);
+    card = createCardTemplate(j);
+    card.innerHTML = `
+      <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
+      <span class="card-title">${petsAllCards[j].name}</span>
+      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+    sliderContainer.appendChild(card);
+
+    card.addEventListener("click", function () {
+      const idx = this.dataset.index;
+      document.body.style.overflow = "hidden";
+      createModalWindow(idx);
+    });
+  }
+
+  console.log("page =", page);
+  
+  /* if (k == 0) {
     k = k + numberCardsonPage;
   }
   for (let j = 0; j < numberCardsonPage; j++) {
@@ -353,10 +376,9 @@ const nextPage = () => {
       k++;
     }
 
-    /*       if (k >= 48) {
-        k = 0;
-      } */
+    
   }
+  console.log('k = ', k)  */
 };
 
 const btn_prevPage = document.querySelector(".btn_prevPage");
@@ -364,13 +386,18 @@ const btnLeft = document.querySelector(".btn-left");
 
 const prevPage = () => {
   sliderContainer.innerHTML = "";
-  for (let j = 0; j < numberCardsonPage; j++) {
-    console.log("then3", k);
-    card = createCardTemplate(k);
+  page -= 1;
+  for (
+    let j = page * numberCardsonPage;
+    j < (page + 1) * numberCardsonPage;
+    j++
+  ) {
+    console.log("then3", j);
+    card = createCardTemplate(j);
     card.innerHTML = `
-    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
-    <span class="card-title">${petsAllCards[k].name}</span>
-    <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+      <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
+      <span class="card-title">${petsAllCards[j].name}</span>
+      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     sliderContainer.appendChild(card);
 
     card.addEventListener("click", function () {
@@ -378,22 +405,23 @@ const prevPage = () => {
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
     });
-    if (k > 0) {
-      k--;
-    }
   }
 };
 
 const lastPage = () => {
   sliderContainer.innerHTML = "";
-  k = petsAllCards.length - numberCardsonPage;
-  for (let j = 0; j < numberCardsonPage; j++) {
-    console.log("then3", k);
-    card = createCardTemplate(k);
+  page = countPages - 1;
+  for (
+    let j = page * numberCardsonPage;
+    j < (page + 1) * numberCardsonPage;
+    j++
+  ) {
+    console.log("then3", j);
+    card = createCardTemplate(j);
     card.innerHTML = `
-    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
-    <span class="card-title">${petsAllCards[k].name}</span>
-    <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+      <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
+      <span class="card-title">${petsAllCards[j].name}</span>
+      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     sliderContainer.appendChild(card);
 
     card.addEventListener("click", function () {
@@ -401,11 +429,6 @@ const lastPage = () => {
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
     });
-    if (k == 47) {
-      k = k - numberCardsonPage;
-    } else {
-      k++;
-    }
   }
 };
 
@@ -438,14 +461,14 @@ lastButton.onclick = () => {
 };
 
 console.log("макс страниц - ", countPages);
-console.log("текущ страниц - ", numberPage);
+console.log("текущ страниц - ", page);
 
 buttonActive.addEventListener("click", function nex() {
   nextPage();
-  numberPage++;
-  if (numberPage == countPages) {
+  /* numberPage++; */
+  if (page + 1 == countPages) {
     console.log("last page");
-    pageNumberSpan.innerText = `${numberPage}`;
+    pageNumberSpan.innerText = `${page + 1}`;
     button_right.classList.remove("button-arow_active");
     lastButton.classList.remove("button-arow_active");
     nextButton.disabled = true;
@@ -457,11 +480,11 @@ buttonActive.addEventListener("click", function nex() {
     frontFront.src = "../../assets/images/button_paginator_left1.png";
     frontFront.style.transform = "rotate(-180deg)";
     firstButton.disabled = false;
-   // firstButton.style.cursor = "pointer";
+    // firstButton.style.cursor = "pointer";
   } else {
     console.log("макс страниц - ", countPages);
     console.log("текущ страниц - ", numberPage);
-    pageNumberSpan.innerText = `${numberPage}`;
+    pageNumberSpan.innerText = `${page + 1}`;
     prevButton.classList.add("button-arow_active");
     button_left.classList.add("button-arow_active");
     prevButton.disabled = false;
@@ -477,8 +500,8 @@ buttonActive.addEventListener("click", function nex() {
 
 prevButton.addEventListener("click", function prev() {
   prevPage();
-  numberPage--;
-  if (1 == numberPage) {
+  /* numberPage--; */
+  if (1 == page + 1) {
     console.log("start page");
     pageNumberSpan.innerText = `1`;
     button_left.classList.remove("button-arow_active");
@@ -497,7 +520,7 @@ prevButton.addEventListener("click", function prev() {
   } else {
     console.log("макс страниц - ", countPages);
     console.log("текущ страниц - ", numberPage);
-    pageNumberSpan.innerText = `${numberPage}`;
+    pageNumberSpan.innerText = `${page + 1}`;
     button_right.classList.add("button-arow_active");
     nextButton.disabled = false;
     nextButton.style.cursor = "pointer";
@@ -513,23 +536,25 @@ prevButton.addEventListener("click", function prev() {
 
 const firstPage = () => {
   sliderContainer.innerHTML = "";
-  k = numberCardsonPage - 1;
-  for (let j = 0; j < numberCardsonPage; j++) {
-    console.log("then3", k);
-    card = createCardTemplate(k);
+  page = 0;
+  for (
+    let j = page * numberCardsonPage;
+    j < (page + 1) * numberCardsonPage;
+    j++
+  ) {
+    console.log("then3", j);
+    card = createCardTemplate(j);
     card.innerHTML = `
-    <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
-    <span class="card-title">${petsAllCards[k].name}</span>
-    <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
+      <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
+      <span class="card-title">${petsAllCards[j].name}</span>
+      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     sliderContainer.appendChild(card);
+
     card.addEventListener("click", function () {
       const idx = this.dataset.index;
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
     });
-    if (k > 0) {
-      k--;
-    }
   }
 };
 
@@ -547,16 +572,15 @@ firstButton.onclick = () => {
   prevButton.disabled = true;
   prevButton.style.cursor = "default";
   button_right.classList.add("button-arow_active");
-  back.src = "../../assets/images/button_paginator_left1.png";
+  back.src = "../../assets/images/button_paginator_left2.png";
   back.style.transform = "rotate(-360deg)";
-  backBack.src = "../../assets/images/button_paginator_left2.png";
+  backBack.src = "../../assets/images/button_paginator_left1.png";
   backBack.style.transform = "rotate(-360deg)";
   backBack.style.cursor = "default";
   nextButton.disabled = false;
   nextButton.style.cursor = "pointer";
   lastButton.disabled = false;
   lastButton.style.cursor = "pointer";
-  
   front.src = "../../assets/images/button_paginator_right1.png";
   front.style.transform = "rotate(-360deg)";
   frontFront.src = "../../assets/images/button_paginator_right2.png";

@@ -1818,8 +1818,8 @@ body {
   display: block;
   border-radius: 0px;
   margin: 7px 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .active_menu {
@@ -2117,8 +2117,8 @@ body {
 }
 
 .modal-window {
-  width: 952px;
-  height: 552px;
+  width: 900px;
+  height: 500px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -2161,11 +2161,17 @@ body {
   background-position: center;
   cursor: pointer;
   margin-left: auto;
+  position: absolute;
+  right: -52px;
+  top: -52px;
 }
 
 .modal-close-button:hover {
   background-color: #fddcc4;
   border-radius: 50px;
+  position: absolute;
+  right: -52px;
+  top: -52px;
 }
 
 .modal-content {
