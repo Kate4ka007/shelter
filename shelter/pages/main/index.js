@@ -2,7 +2,7 @@ const wrappermainpages = document.querySelector(".wrapper_mainpages");
 const owerlof = document.querySelector(".owerlof");
 const navMenu = document.querySelector(".nav_main-pages");
 const toggleButton = document.querySelector(".toggleButton");
-const list = document.querySelector('.list_main-pages')
+const list = document.querySelector(".list_main-pages");
 const logo_burger = document.querySelector(".logo_burger");
 
 function toggleMenu() {
@@ -10,7 +10,11 @@ function toggleMenu() {
   if (windowWidth < 768) {
     navMenu.classList.toggle("burger-menu_active");
     toggleButton.classList.toggle("active_menu");
-    document.body.style.overflow = "hidden"
+    if (toggleButton.classList.contains("active_menu")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
 
     setTimeout(() => owerlof.classList.toggle("hide"), 200);
     // owerlof.classList.toggle('hide')
@@ -26,7 +30,7 @@ function closeMenu() {
   navMenu.classList.remove("burger-menu_active");
   toggleButton.classList.remove("active_menu");
   logo_burger.style.display = "none";
-  document.body.style.overflow = "visible"
+  document.body.style.overflow = "visible";
 }
 
 owerlof.addEventListener("click", () => {
@@ -64,18 +68,20 @@ const pets = [
     img: "../../assets/images/scarlett.png",
     type: "Dog",
     breed: "Jack Russell Terrier",
-    description: "Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.",
+    description:
+      "Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.",
     age: "3 months",
     inoculations: ["parainfluenza"],
     diseases: ["none"],
     parasites: ["none"],
-  },    
+  },
   {
     name: "Jennifer",
     img: "../../assets/images/jennifer.png",
     type: "Dog",
     breed: "Labrador",
-    description: "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
+    description:
+      "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
     age: "2 months",
     inoculations: ["none"],
     diseases: ["none"],
@@ -86,7 +92,8 @@ const pets = [
     img: "../../assets/images/woody.png",
     type: "Dog",
     breed: "Golden Retriever",
-    description: "Woody is a handsome 3 1/2 year old boy. Woody does know basic commands and is a smart pup. Since he is on the stronger side, he will learn a lot from your training. Woody will be happier when he finds a new family that can spend a lot of time with him.",
+    description:
+      "Woody is a handsome 3 1/2 year old boy. Woody does know basic commands and is a smart pup. Since he is on the stronger side, he will learn a lot from your training. Woody will be happier when he finds a new family that can spend a lot of time with him.",
     age: "3 years 6 months",
     inoculations: ["adenovirus", "distemper"],
     diseases: ["right back leg mobility reduced"],
@@ -97,28 +104,32 @@ const pets = [
     img: "../../assets/images/sophia.png",
     type: "Dog",
     breed: "Shih tzu",
-    description: "Sophia here and I'm looking for my forever home to live out the best years of my life. I am full of energy. Everyday I'm learning new things, like how to walk on a leash, go potty outside, bark and play with toys and I still need some practice.",
+    description:
+      "Sophia here and I'm looking for my forever home to live out the best years of my life. I am full of energy. Everyday I'm learning new things, like how to walk on a leash, go potty outside, bark and play with toys and I still need some practice.",
     age: "1 month",
     inoculations: ["parvovirus"],
     diseases: ["none"],
     parasites: ["none"],
   },
-  {name: "Katrine",
-  img: "../../assets/images/katrine.png",
-  type: "Cat",
-  breed: "British Shorthair",
-  description: "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
-  age: "6 months",
-  inoculations: ["panleukopenia"],
-  diseases: ["none"],
-  parasites: ["none"],
+  {
+    name: "Katrine",
+    img: "../../assets/images/katrine.png",
+    type: "Cat",
+    breed: "British Shorthair",
+    description:
+      "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
+    age: "6 months",
+    inoculations: ["panleukopenia"],
+    diseases: ["none"],
+    parasites: ["none"],
   },
   {
     name: "Timmy",
     img: "../../assets/images/timmy.png",
     type: "Cat",
     breed: "British Shorthair",
-    description: "Timmy is an adorable grey british shorthair male. He loves to play and snuggle. He is neutered and up to date on age appropriate vaccinations. He can be chatty and enjoys being held. Timmy has a lot to say and wants a person to share his thoughts with.",
+    description:
+      "Timmy is an adorable grey british shorthair male. He loves to play and snuggle. He is neutered and up to date on age appropriate vaccinations. He can be chatty and enjoys being held. Timmy has a lot to say and wants a person to share his thoughts with.",
     age: "2 years 3 months",
     inoculations: ["calicivirus", "viral rhinotracheitis"],
     diseases: ["kidney stones"],
@@ -129,7 +140,8 @@ const pets = [
     img: "../../assets/images/freddie.png",
     type: "Cat",
     breed: "British Shorthair",
-    description: "Freddie is a little shy at first, but very sweet when he warms up. He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms of his human’s daily life. Freddie has bounced around a lot in his life, and is looking to find his forever home.",
+    description:
+      "Freddie is a little shy at first, but very sweet when he warms up. He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms of his human’s daily life. Freddie has bounced around a lot in his life, and is looking to find his forever home.",
     age: "2 months",
     inoculations: ["rabies"],
     diseases: ["none"],
@@ -140,7 +152,8 @@ const pets = [
     img: "../../assets/images/charly.png",
     type: "Dog",
     breed: "Jack Russell Terrier",
-    description: "This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.",
+    description:
+      "This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.",
     age: "8 years",
     inoculations: ["bordetella bronchiseptica", "leptospirosis"],
     diseases: ["deafness", "blindness"],
@@ -149,7 +162,6 @@ const pets = [
 ];
 let count = 0;
 let n = 0;
-
 
 const btnLeft = document.querySelector(".btn-left");
 const btnRight = document.querySelector(".btn-right");
@@ -160,12 +172,12 @@ const cardsRight = document.querySelector("#item-right");
 const createCardTemplate = (i) => {
   const card = document.createElement("div");
   card.classList.add("pets_card");
-  card.dataset.index = i
+  card.dataset.index = i;
   return card;
 };
 
 const moveLeft = () => {
-  slider.classList.add("transition-left");  
+  slider.classList.add("transition-left");
   btnRight.removeEventListener("click", moveRight);
   btnLeft.removeEventListener("click", moveLeft);
 };
@@ -174,7 +186,6 @@ const moveRight = () => {
   slider.classList.add("transition-right");
   btnRight.removeEventListener("click", moveRight);
   btnLeft.removeEventListener("click", moveLeft);
-  
 };
 
 btnLeft.addEventListener("click", moveLeft);
@@ -182,9 +193,9 @@ btnRight.addEventListener("click", moveRight);
 let i = 0;
 console.log(i);
 let k = 0;
-slider.querySelectorAll('.item').forEach(item => {
-  item.innerHTML = ""
-  
+slider.querySelectorAll(".item").forEach((item) => {
+  item.innerHTML = "";
+
   for (let j = 0; j < 3; j++) {
     console.log(i);
 
@@ -195,25 +206,24 @@ slider.querySelectorAll('.item').forEach(item => {
     <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     item.appendChild(card);
 
-    console.log(card)
+    console.log(card);
 
-    card.addEventListener('click', function() {
-      console.log('this card - ', this)
+    card.addEventListener("click", function () {
+      console.log("this card - ", this);
       const idx = this.dataset.index;
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
-    })
+    });
 
     k++;
     if (k >= 8) {
       k = 0;
     }
   }
-})
-
+});
 
 const createModalWindow = (i) => {
-  console.log('index - ', i)
+  console.log("index - ", i);
   const modal = document.createElement("div");
   modal.classList.add("modal-background");
   modal.innerHTML = `
@@ -232,20 +242,20 @@ const createModalWindow = (i) => {
   </ul>
   </div>
   </div>
-  </div>`
+  </div>`;
 
   document.body.append(modal);
-  const modalCloseButton = document.querySelectorAll('.modal-close-button')
-  modalCloseButton.forEach(el => {
-  el.addEventListener('click', function () {
-    document.body.style.overflow = "visible"
-    document.body.removeChild(modal)
-  })
-})
+  const modalCloseButton = document.querySelectorAll(".modal-close-button");
+  modalCloseButton.forEach((el) => {
+    el.addEventListener("click", function () {
+      document.body.style.overflow = "visible";
+      document.body.removeChild(modal);
+    });
+  });
 
-const modalBackground = document.querySelectorAll('.modal-background');
+  const modalBackground = document.querySelectorAll(".modal-background");
 
-/* modalBackground.forEach(el => {
+  /* modalBackground.forEach(el => {
   el.addEventListener('click', function () {
     document.body.style.overflow = "visible"
     document.body.removeChild(modal)
@@ -253,40 +263,35 @@ const modalBackground = document.querySelectorAll('.modal-background');
 })
  */
 
+  modalBackground.forEach((el) => {
+    el.onclick = (e) => {
+      if (e.target == el) {
+        document.body.style.overflow = "visible";
+        document.body.removeChild(modal);
+      }
+    };
+  });
 
+  modalBackground.forEach((el) => {
+    el.onmouseover = (e) => {
+      if (e.target == el) {
+        modalCloseButton.forEach((item) => {
+          item.classList.add("close-button-hover");
+        });
+      }
+    };
 
-modalBackground.forEach(el => {
-  el.onclick = (e)=>{
-    if (e.target == el){
-      document.body.style.overflow = "visible"
-      document.body.removeChild(modal)
-    }  
-  }
-})
+    el.onmouseout = (e) => {
+      if (e.target == el) {
+        modalCloseButton.forEach((item) => {
+          item.classList.remove("close-button-hover");
+        });
+      }
+    };
+  });
+  const modalClose = document.querySelector(".modal-close-button");
 
-modalBackground.forEach(el => {
-  el.onmouseover = (e)=>{
-    if (e.target == el){
-      modalCloseButton.forEach(item => {
-        item.classList.add('close-button-hover')
-      })   
-    } 
-  }
-
-  el.onmouseout = (e)=>{
-    if (e.target == el){
-      modalCloseButton.forEach(item => {
-        item.classList.remove('close-button-hover')
-      })   
-    } 
-  }
-
-
-})
-const modalClose = document.querySelector('.modal-close-button')
-
-
-/* modalBackground.forEach(el => {
+  /* modalBackground.forEach(el => {
   el.onmouseover = function() {
     modalCloseButton.forEach(item => {
       item.classList.add('close-button-hover')
@@ -303,73 +308,70 @@ const modalClose = document.querySelector('.modal-close-button')
     })       
   }
 }) */
-
-}
-
+};
 
 let chengepart;
 slider.addEventListener("animationend", (animationEvent) => {
-
   if (animationEvent.animationName === "move-left") {
     slider.classList.remove("transition-left");
     chengepart = cardsLeft;
-    const itemActive =document.querySelector("#item-centr");  
+    const itemActive = document.querySelector("#item-centr");
 
     itemActive.innerHTML = cardsLeft.innerHTML;
-    itemActive.querySelectorAll('.pets_card').forEach(card => {
-      card.addEventListener('click', function() {
-        console.log('this card - ', this)
-      const idx = this.dataset.index;
-      document.body.style.overflow = "hidden";
-      createModalWindow(idx);
-      })
-    })
-
+    itemActive.querySelectorAll(".pets_card").forEach((card) => {
+      card.addEventListener("click", function () {
+        console.log("this card - ", this);
+        const idx = this.dataset.index;
+        document.body.style.overflow = "hidden";
+        createModalWindow(idx);
+      });
+    });
   } else {
     slider.classList.remove("transition-right");
     chengepart = cardsRight;
-    const itemActive =document.querySelector("#item-centr");  
-
+    const itemActive = document.querySelector("#item-centr");
 
     itemActive.innerHTML = cardsRight.innerHTML;
-    itemActive.querySelectorAll('.pets_card').forEach(card => {
-      card.addEventListener('click', function() {
-        console.log('this card - ', this)
-      const idx = this.dataset.index;
-      document.body.style.overflow = "hidden";
-      createModalWindow(idx);
-      })
-    })
-
+    itemActive.querySelectorAll(".pets_card").forEach((card) => {
+      card.addEventListener("click", function () {
+        console.log("this card - ", this);
+        const idx = this.dataset.index;
+        document.body.style.overflow = "hidden";
+        createModalWindow(idx);
+      });
+    });
   }
 
   chengepart.innerHTML = "";
   let card;
 
   for (let j = 0; j < 3; j++) {
-    console.log(i+1);
+    console.log(i + 1);
 
-    card = createCardTemplate(i+1);
+    card = createCardTemplate(i + 1);
     card.innerHTML = `
-    <img class="card-image" src="${pets[i+1].img}" alt="${pets[i+1].name}" data-name="${pets[i+1].name}" data-description="${pets[i+1].description}">    
-    <span class="card-title">${pets[i+1].name}</span>
+    <img class="card-image" src="${pets[i + 1].img}" alt="${
+      pets[i + 1].name
+    }" data-name="${pets[i + 1].name}" data-description="${
+      pets[i + 1].description
+    }">    
+    <span class="card-title">${pets[i + 1].name}</span>
     <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     chengepart.appendChild(card);
 
-    console.log(card)
+    console.log(card);
 
-    card.addEventListener('click', function() {
-      console.log('this card - ', this)
+    card.addEventListener("click", function () {
+      console.log("this card - ", this);
       const idx = this.dataset.index;
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
-    })
+    });
 
     i++;
-    if ((i + 1) > 7) {
+    if (i + 1 > 7) {
       i = -1;
     }
-
   }
 
   btnLeft.addEventListener("click", moveLeft);
@@ -378,24 +380,19 @@ slider.addEventListener("animationend", (animationEvent) => {
 
 const modalWindow = document.querySelectorAll(".pets_card");
 
-
-let cardButton
+let cardButton;
 //console.log(cardButton)
-
-
 
 slider.addEventListener("click", (event) => {
   if (event.target.classList.contains("activated")) {
     event.target.classList.remove("activated");
   } else if (event.target.classList.contains("card")) {
     event.target.classList.add("activated");
-
   }
 
   //document.body.style.overflow = "hidden"
 
-  
- /*  modalCloseButton.forEach(el => {
+  /*  modalCloseButton.forEach(el => {
     el.onclick = () => {
       document.body.style.overflow = "visible"
       modWin[0].style.display = "none";
@@ -406,11 +403,7 @@ slider.addEventListener("click", (event) => {
       })
     }
   }) */
-  
-
-})
-
-
+});
 
 /* const modalCloseButton = document.querySelectorAll('.modal-close-button')
 modalCloseButton.forEach(el => {
