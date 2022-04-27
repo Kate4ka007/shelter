@@ -15,10 +15,14 @@ function toggleMenu() {
   if (windowWidth < 768) {
     navMenu.classList.toggle("burger-menu_active");
     toggleButton.classList.toggle("active_menu");
-    document.body.style.overflow = "hidden";
+    if (toggleButton.classList.contains("active_menu")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
 
-    setTimeout(() => owerlof.classList.toggle("hide"), 300);
-    //owerlof.classList.toggle('hide')
+    setTimeout(() => owerlof.classList.toggle("hide"), 200);
+    // owerlof.classList.toggle('hide')
     logo_burger.style.display = "block";
   }
 }
