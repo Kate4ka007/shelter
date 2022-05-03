@@ -1,4 +1,3 @@
-import langIcon from '../assets/icons/langIcon';
 
 const buttons = [
   {

@@ -64,11 +64,14 @@ html {
 }
 
 .row_1 {
+    width: 100%;
     gap:10px;
     @extend %flex;
     flex-direction: row;
     margin: 5px auto;
+    justify-content: space-between;
       .button_first {
+        cursor: pointer;
         width: 53.5px;
         height: 35px;
         border-radius: 8px;
@@ -77,6 +80,9 @@ html {
         background: #222;
         color: #888;
         border-bottom: 4px solid black;
+        &:hover {
+            background: lighten($color: #222, $amount: 5);
+        }
         &:active {
             margin-bottom: -3px;
             height: 32px;
@@ -103,22 +109,27 @@ html {
         @extend %flex;
         border: 1px solid black;
     } */
-    .delete {
-        border-radius: 8px;     
-        @extend %flex;
-        border: 1px solid black;
-        border-bottom: 4px solid black;
-        background: #222;
-        color: #888;
-        text-align: center;
-        width: 100px;
-        height: 50px;
-        border-bottom: 4px solid black;
-        &:active {
-            margin-bottom: -3px;
-            height: 47px;
-            border-bottom: 1px solid black;
-        }
+    
+}
+.delete {
+    cursor: pointer;
+    border-radius: 8px;     
+    @extend %flex;
+    border: 1px solid black;
+    border-bottom: 4px solid black;
+    background: #222;
+    color: #888;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    border-bottom: 4px solid black;
+    &:hover {
+        background: lighten($color: #222, $amount: 5);
+    }
+    &:active {
+        margin-bottom: -3px;
+        height: 47px;
+        border-bottom: 1px solid black;
     }
 }
 
@@ -137,6 +148,9 @@ html {
         width: 100px;
         height: 50px;
         border-bottom: 4px solid black;
+        &:hover {
+            background: lighten($color: #222, $amount: 5);
+        }
         &:active {
             margin-bottom: -3px;
             height: 47px;
@@ -152,6 +166,7 @@ html {
     justify-content: space-between;
     width: 100%;
     .return {
+        cursor: pointer;
         width: 120px;
         height: 50px;
         border-radius: 8px;
@@ -160,6 +175,9 @@ html {
         background: #222;
         color: #888;
         border-bottom: 4px solid black;
+        &:hover {
+            background: lighten($color: #222, $amount: 5);
+        }
         &:active {
             margin-bottom: -3px;
             height: 47px;
@@ -168,6 +186,7 @@ html {
 
     }
     .caps_lock {
+        cursor: pointer;
         width: 120px;
         height: 50px;
         border-radius: 8px;
@@ -176,16 +195,27 @@ html {
         background: #222;
         color: #888;
         border-bottom: 4px solid black;
+        &:hover {
+            background: lighten($color: #222, $amount: 5);
+        }
         &:active {
             margin-bottom: -3px;
             height: 47px;
             border-bottom: 1px solid black;
             .lamp {            
-                background-color: green;
-                
+                background-color: green;                
             }
         }
         
+    }
+
+    .active {
+        margin-bottom: -3px;
+            height: 47px;
+            border-bottom: 1px solid black;
+            .lamp {            
+                background-color: green;                
+            }
     }
 /*     .bottom_first__button {
         width: 50px;
@@ -201,6 +231,7 @@ html {
     width: 100%;
     justify-content: space-between;
     .shift {
+        cursor: pointer;
         width: 130px;
         height: 50px;
         border-radius: 8px;
@@ -209,6 +240,9 @@ html {
         background: #222;
         color: #888;
         border-bottom: 4px solid black;
+        &:hover {
+            background: lighten($color: #222, $amount: 5);
+        }
         &:active {
             margin-bottom: -3px;
             height: 47px;
@@ -244,6 +278,7 @@ html {
 }
 
 .button {
+    cursor: pointer;
     border-radius: 8px;
     width: 50px;
     height: 50px;
@@ -253,6 +288,12 @@ html {
     background: #222;
     color: #888;
     text-align: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    flex-grow: 0;
+    &:hover {
+        background: lighten($color: #222, $amount: 5);
+    }
     &:active {
         margin-bottom: -3px;
         height: 47px;
@@ -271,8 +312,12 @@ html {
     background: #222;
     color: #888;
     justify-content: center;
+    cursor: pointer;
+    &:hover {
+        background: lighten($color: #222, $amount: 5);
+    }
     &:active {
-        margin-bottom: -2px;
+        margin-bottom: -3px;
         height: 57px;
         border-bottom: 1px solid black;
     }
@@ -280,6 +325,9 @@ html {
 .space {
     width: 300px;
     border-bottom: 4px solid black;
+    &:hover {
+        background: lighten($color: #222, $amount: 5);
+    }
     &:active {
         margin-bottom: -3px;
         height: 57px;
@@ -306,8 +354,12 @@ html {
     background: #222;
     color: #888;
     border-bottom: 4px solid black;
+    cursor: pointer;
+    &:hover {
+        background: lighten($color: #222, $amount: 5);
+    }
     &:active {
-        margin-bottom: 1px;
+        margin-bottom: 0px;
         height: 27px;
         border-bottom: 1px solid black;
     }
@@ -331,6 +383,10 @@ html {
     border: 1px solid black;
     background: #222;
     color: #888;
+    cursor: pointer;
+    &:hover {
+        background: lighten($color: #222, $amount: 5);
+    }
     &:active {
         margin-bottom: 0px;
         height: 27px;
@@ -352,7 +408,7 @@ html {
     border-radius: 50%;
     position: relative;
     top: -10px;
-    left: -10px;
+    left: -6px;
     background-color: #7c7e7e;    
 }
 
@@ -375,15 +431,18 @@ textarea {
     padding: 10px;
     background-color: #e7e7e7;
     border: none;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .cam {
-    background-image: url(./assets/image/pngwing.com.png);
+    background-image: url(../assets/image/pngwing.com.png);
+    background-repeat: no-repeat;
     position: relative;
     width: 30px;
-    height: 35px;
+    height: 30px;
     background-size: contain;
-    top: 40px;
+    top: 35px;
     left: -15px;
 }
 

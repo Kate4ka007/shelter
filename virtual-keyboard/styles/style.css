@@ -3,7 +3,7 @@
           box-sizing: border-box;
 }
 
-#root, .key_wrapper, .top_part, .bottom_part, .row_1, .row_1 .button_first, .row_2, .row_2 .delete, .row_3, .row_4, .row_4 .return, .row_4 .caps_lock, .row_5, .row_5 .shift, .row_6, .button, .button_buttom, .arrows, .arrow_left, .arrow_right, .arrows_top_bot, .arrow_top, .arrow_bottom {
+#root, .key_wrapper, .top_part, .bottom_part, .row_1, .row_1 .button_first, .row_2, .delete, .row_3, .row_4, .row_4 .return, .row_4 .caps_lock, .row_5, .row_5 .shift, .row_6, .button, .button_buttom, .arrows, .arrow_left, .arrow_right, .arrows_top_bot, .arrow_top, .arrow_bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,12 +86,16 @@ html {
 }
 
 .row_1 {
+  width: 100%;
   gap: 10px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   margin: 5px auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   /*     .top_first__button {
         width: 50px;
         height: 50px;
@@ -101,6 +105,7 @@ html {
 }
 
 .row_1 .button_first {
+  cursor: pointer;
   width: 53.5px;
   height: 35px;
   border-radius: 8px;
@@ -108,6 +113,10 @@ html {
   background: #222;
   color: #888;
   border-bottom: 4px solid black;
+}
+
+.row_1 .button_first:hover {
+  background: #2f2f2f;
 }
 
 .row_1 .button_first:active {
@@ -131,7 +140,8 @@ html {
     } */
 }
 
-.row_2 .delete {
+.delete {
+  cursor: pointer;
   border-radius: 8px;
   border: 1px solid black;
   border-bottom: 4px solid black;
@@ -143,7 +153,11 @@ html {
   border-bottom: 4px solid black;
 }
 
-.row_2 .delete:active {
+.delete:hover {
+  background: #2f2f2f;
+}
+
+.delete:active {
   margin-bottom: -3px;
   height: 47px;
   border-bottom: 1px solid black;
@@ -170,6 +184,10 @@ html {
   border-bottom: 4px solid black;
 }
 
+.row_3 .tab:hover {
+  background: #2f2f2f;
+}
+
 .row_3 .tab:active {
   margin-bottom: -3px;
   height: 47px;
@@ -192,6 +210,7 @@ html {
 }
 
 .row_4 .return {
+  cursor: pointer;
   width: 120px;
   height: 50px;
   border-radius: 8px;
@@ -199,6 +218,10 @@ html {
   background: #222;
   color: #888;
   border-bottom: 4px solid black;
+}
+
+.row_4 .return:hover {
+  background: #2f2f2f;
 }
 
 .row_4 .return:active {
@@ -208,6 +231,7 @@ html {
 }
 
 .row_4 .caps_lock {
+  cursor: pointer;
   width: 120px;
   height: 50px;
   border-radius: 8px;
@@ -217,6 +241,10 @@ html {
   border-bottom: 4px solid black;
 }
 
+.row_4 .caps_lock:hover {
+  background: #2f2f2f;
+}
+
 .row_4 .caps_lock:active {
   margin-bottom: -3px;
   height: 47px;
@@ -224,6 +252,16 @@ html {
 }
 
 .row_4 .caps_lock:active .lamp {
+  background-color: green;
+}
+
+.row_4 .active {
+  margin-bottom: -3px;
+  height: 47px;
+  border-bottom: 1px solid black;
+}
+
+.row_4 .active .lamp {
   background-color: green;
 }
 
@@ -243,6 +281,7 @@ html {
 }
 
 .row_5 .shift {
+  cursor: pointer;
   width: 130px;
   height: 50px;
   border-radius: 8px;
@@ -250,6 +289,10 @@ html {
   background: #222;
   color: #888;
   border-bottom: 4px solid black;
+}
+
+.row_5 .shift:hover {
+  background: #2f2f2f;
 }
 
 .row_5 .shift:active {
@@ -284,6 +327,7 @@ html {
 }
 
 .button {
+  cursor: pointer;
   border-radius: 8px;
   width: 50px;
   height: 50px;
@@ -292,6 +336,16 @@ html {
   background: #222;
   color: #888;
   text-align: center;
+  cursor: pointer;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+.button:hover {
+  background: #2f2f2f;
 }
 
 .button:active {
@@ -314,10 +368,15 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  cursor: pointer;
+}
+
+.button_buttom:hover {
+  background: #2f2f2f;
 }
 
 .button_buttom:active {
-  margin-bottom: -2px;
+  margin-bottom: -3px;
   height: 57px;
   border-bottom: 1px solid black;
 }
@@ -325,6 +384,10 @@ html {
 .space {
   width: 300px;
   border-bottom: 4px solid black;
+}
+
+.space:hover {
+  background: #2f2f2f;
 }
 
 .space:active {
@@ -354,10 +417,15 @@ html {
   background: #222;
   color: #888;
   border-bottom: 4px solid black;
+  cursor: pointer;
+}
+
+.arrow_left:hover, .arrow_right:hover {
+  background: #2f2f2f;
 }
 
 .arrow_left:active, .arrow_right:active {
-  margin-bottom: 1px;
+  margin-bottom: 0px;
   height: 27px;
   border-bottom: 1px solid black;
 }
@@ -386,6 +454,11 @@ html {
   border: 1px solid black;
   background: #222;
   color: #888;
+  cursor: pointer;
+}
+
+.arrow_top:hover, .arrow_bottom:hover {
+  background: #2f2f2f;
 }
 
 .arrow_top:active, .arrow_bottom:active {
@@ -409,7 +482,7 @@ html {
   border-radius: 50%;
   position: relative;
   top: -10px;
-  left: -10px;
+  left: -6px;
   background-color: #7c7e7e;
 }
 
@@ -431,15 +504,18 @@ textarea {
   padding: 10px;
   background-color: #e7e7e7;
   border: none;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .cam {
-  background-image: url(./assets/image/pngwing.com.png);
+  background-image: url(../assets/image/pngwing.com.png);
+  background-repeat: no-repeat;
   position: relative;
   width: 30px;
-  height: 35px;
+  height: 30px;
   background-size: contain;
-  top: 40px;
+  top: 35px;
   left: -15px;
 }
 
