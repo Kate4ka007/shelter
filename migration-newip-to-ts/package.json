@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
     "build": "webpack --config ./webpack.config.js --env mode=prod",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -200,6 +201,7 @@
     "get-stream": "^6.0.1",
     "get-symbol-description": "^1.0.0",
     "get-value": "^2.0.6",
+    "gh-pages": "^4.0.0",
     "glob": "^7.2.0",
     "glob-parent": "^5.1.2",
     "glob-to-regexp": "^0.4.1",
