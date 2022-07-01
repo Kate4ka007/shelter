@@ -32,4 +32,10 @@ interface SoursesDataInt {
   sources: SourcesItemInt[];
 }
 
-export {NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt};
+interface Options {
+  [key: string]: string;
+}
+
+type callbackData = (data?: SoursesDataInt) => void;
+
+export {NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt, Options, callbackData};
