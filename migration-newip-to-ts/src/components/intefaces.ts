@@ -1,4 +1,4 @@
-export default interface NewsItemInt {
+interface NewsItemInt {
   source: {
       id: string;
       name: string;
@@ -11,9 +11,7 @@ export default interface NewsItemInt {
   publishedAt: string;
   content: string;
 } 
-
-
-export default interface SourcesItemInt {
+interface SourcesItemInt {
   id: string;
   name: string;
   description: string;
@@ -23,4 +21,15 @@ export default interface SourcesItemInt {
   country: string;
 }
 
-//export default NewsItemInt;
+interface NewsDataInt {
+  status: string;
+  totalResults: number;
+  articles: NewsItemInt[];
+}
+
+interface SoursesDataInt {
+  status?: string;    
+  sources: SourcesItemInt[];
+}
+
+export {NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt};
