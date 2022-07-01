@@ -1,7 +1,7 @@
 interface NewsItemInt {
   source: {
-      id: string;
-      name: string;
+    id: string;
+    name: string;
   };
   author: string;
   title: string;
@@ -10,7 +10,7 @@ interface NewsItemInt {
   urlToImage: string;
   publishedAt: string;
   content: string;
-} 
+}
 interface SourcesItemInt {
   id: string;
   name: string;
@@ -28,7 +28,7 @@ interface NewsDataInt {
 }
 
 interface SoursesDataInt {
-  status?: string;    
+  status?: string;
   sources: SourcesItemInt[];
 }
 
@@ -39,4 +39,4 @@ interface Options {
 type callbackData = (data?: SoursesDataInt) => void;
 type CallbackType<T> = (data?: T) => void;
 
-export {NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt, Options, callbackData, CallbackType};
+export { NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt, Options, callbackData, CallbackType };

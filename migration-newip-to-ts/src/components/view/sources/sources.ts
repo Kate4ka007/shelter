@@ -1,22 +1,21 @@
 import './sources.css';
-import {SourcesItemInt} from '../../intefaces';
-
+import { SourcesItemInt } from '../../intefaces';
 class Sources {
-    draw(data: SourcesItemInt[]) {        
-        const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
+  draw(data: SourcesItemInt[]) {
+    const fragment = document.createDocumentFragment();
+    const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
-        data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true) as Element;
+    data.forEach((item) => {
+      const sourceClone = sourceItemTemp.content.cloneNode(true) as Element;
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+      sourceClone.querySelector('.source__item-name').textContent = item.name;
+      sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
 
-            fragment.append(sourceClone);
-        });
+      fragment.append(sourceClone);
+    });
 
-        document.querySelector('.sources').append(fragment);
-    }
+    document.querySelector('.sources').append(fragment);
+  }
 }
 
 export default Sources;
