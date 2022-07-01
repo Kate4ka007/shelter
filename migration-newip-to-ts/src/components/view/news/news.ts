@@ -6,9 +6,9 @@ class News implements INews {
     const news = data.length >= 10 ? data.filter((_item, idx: number) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();
-    const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
+    const newsItemTemp = <HTMLTemplateElement>document.querySelector('#newsItemTemp');
 
-    news.forEach((item, idx: number) => {
+    news.forEach((item: NewsItemInt, idx: number) => {
       const newsClone = newsItemTemp.content.cloneNode(true) as Element;
 
       if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');

@@ -1,5 +1,9 @@
 import { SoursesDataInt, Options, CallbackData, ILoader } from '../intefaces';
 
+enum Status {
+  'errFirst' = 401,
+  'errFour' = 404,
+}
 class Loader implements ILoader {
   baseLink: string;
   options: { apiKey: string };
@@ -19,7 +23,7 @@ class Loader implements ILoader {
 
   errorHandler(res: Response) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
+      if (res.status === Status.errFirst || res.status === Status.errFour)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
