@@ -1,20 +1,5 @@
-import NewsItemInt from '../../intefaces';
+import {NewsItemInt} from '../../intefaces';
 import './news.css';
-
-
-/* interface NewsItemInt {
-    source: {
-        id: string;
-        name: string;
-    };
-    author: string;
-    title: string;
-    description: string;
-    url: string;
-    urlToImage: string;
-    publishedAt: string;
-    content: string;
-} */
 
 class News {
     draw(data: NewsItemInt[]) {       

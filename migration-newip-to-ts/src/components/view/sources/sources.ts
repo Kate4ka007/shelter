@@ -1,15 +1,5 @@
 import './sources.css';
-import SourcesItemInt from '../../intefaces';
-
-/* interface SourcesItemInt {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
-} */
+import {SourcesItemInt} from '../../intefaces';
 
 class Sources {
     draw(data: SourcesItemInt[]) {        
