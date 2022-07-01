@@ -37,5 +37,6 @@ interface Options {
 }
 
 type callbackData = (data?: SoursesDataInt) => void;
+type CallbackType<T> = (data?: T) => void;
 
-export {NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt, Options, callbackData};
+export {NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt, Options, callbackData, CallbackType};
