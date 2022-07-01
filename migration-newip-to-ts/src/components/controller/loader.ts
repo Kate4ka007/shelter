@@ -1,6 +1,6 @@
-import { SoursesDataInt, Options, callbackData } from '../intefaces';
+import { SoursesDataInt, Options, CallbackData, ILoader } from '../intefaces';
 
-class Loader {
+class Loader implements ILoader {
   baseLink: string;
   options: { apiKey: string };
   constructor(baseLink: string, options: { apiKey: string }) {
@@ -38,7 +38,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: callbackData, options: Options = {}) {
+  load(method: string, endpoint: string, callback: CallbackData, options: Options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

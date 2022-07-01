@@ -36,7 +36,42 @@ interface Options {
   [key: string]: string;
 }
 
-type callbackData = (data?: SoursesDataInt) => void;
+type CallbackData = (data?: SoursesDataInt) => void;
+
 type CallbackType<T> = (data?: T) => void;
 
-export { NewsItemInt, SourcesItemInt, NewsDataInt, SoursesDataInt, Options, callbackData, CallbackType };
+type getRespArg = {
+  endpoint?: string;
+  options: Options;
+};
+interface ILoader {
+  baseLink: string;
+  options: { apiKey: string };
+  getResp(arg: getRespArg, callback: () => void): void;
+  errorHandler(arg: Response): Response;
+  makeUrl(options: Options, endpoint: string): string;
+  load(method: string, endpoint: string, callback: CallbackData, options: Options): void;
+}
+
+interface AppControllerInt {
+  getSources(callback: CallbackData): void;
+  getNews(e: Event, callback: CallbackType<NewsDataInt>): void;
+}
+
+interface INews {
+  draw(data: NewsItemInt[]): void;
+}
+
+export {
+  NewsItemInt,
+  SourcesItemInt,
+  NewsDataInt,
+  SoursesDataInt,
+  Options,
+  CallbackData,
+  CallbackType,
+  ILoader,
+  getRespArg,
+  AppControllerInt,
+  INews,
+};

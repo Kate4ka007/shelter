@@ -1,7 +1,7 @@
-import { NewsItemInt } from '../../intefaces';
+import { NewsItemInt, INews } from '../../intefaces';
 import './news.css';
 
-class News {
+class News implements INews {
   draw(data: NewsItemInt[]) {
     const news = data.length >= 10 ? data.filter((_item, idx: number) => idx < 10) : data;
 

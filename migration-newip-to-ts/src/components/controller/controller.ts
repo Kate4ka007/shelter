@@ -1,8 +1,8 @@
-import { callbackData, CallbackType, NewsDataInt } from '../intefaces';
+import { AppControllerInt, CallbackData, CallbackType, NewsDataInt } from '../intefaces';
 import AppLoader from './appLoader';
 
-class AppController extends AppLoader {
-  getSources(callback: callbackData) {
+class AppController extends AppLoader implements AppControllerInt {
+  getSources(callback: CallbackData) {
     super.getResp(
       {
         endpoint: 'sources',
