@@ -5,8 +5,8 @@ enum Status {
   'errFour' = 404,
 }
 class Loader implements ILoader {
-  baseLink: string;
-  options: { apiKey: string };
+  readonly baseLink: string;
+  readonly options: { apiKey: string };
   constructor(baseLink: string, options: { apiKey: string }) {
     this.baseLink = baseLink;
     this.options = options;
@@ -40,7 +40,7 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: CallbackData, options: Options = {}) {
+  load(method: string, endpoint: string, callback: CallbackData, options: Options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
