@@ -1,3 +1,6 @@
+import AppController from './controller/controller';
+import AppView from './view/appView';
+
 interface NewsItemInt {
   source: {
     id: string;
@@ -62,6 +65,16 @@ interface INews {
   draw(data: NewsItemInt[]): void;
 }
 
+interface IApp {
+  controller: AppController;
+  view: AppView;
+  start(): void;
+}
+
+interface ISources {
+  draw(data: SourcesItemInt[]): void;
+}
+
 export {
   NewsItemInt,
   SourcesItemInt,
@@ -74,4 +87,6 @@ export {
   getRespArg,
   AppControllerInt,
   INews,
+  IApp,
+  ISources,
 };

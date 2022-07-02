@@ -1,6 +1,7 @@
 import './sources.css';
-import { SourcesItemInt } from '../../intefaces';
-class Sources {
+import { ISources, SourcesItemInt } from '../../intefaces';
+
+class Sources implements ISources {
   draw(data: SourcesItemInt[]): void {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;

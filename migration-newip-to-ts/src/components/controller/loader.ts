@@ -27,7 +27,6 @@ class Loader implements ILoader {
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
-
     return res;
   }
 
@@ -38,7 +37,6 @@ class Loader implements ILoader {
     Object.keys(urlOptions).forEach((key) => {
       url += `${key}=${urlOptions[key as keyof typeof urlOptions]}&`;
     });
-
     return url.slice(0, -1);
   }
 
