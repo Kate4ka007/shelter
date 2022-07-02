@@ -44,7 +44,7 @@ class Loader implements ILoader {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
-      .then((data: SoursesDataInt) => callback(data))
+      .then((data: Pick<SoursesDataInt, 'sources' | 'status'>) => callback(data))
       .catch((err: string) => console.error(err));
   }
 }

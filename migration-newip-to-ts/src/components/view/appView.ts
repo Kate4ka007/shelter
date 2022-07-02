@@ -15,7 +15,7 @@ export class AppView {
     this.news.draw(values);
   }
 
-  drawSources(data: SoursesDataInt): void {
+  drawSources(data: Pick<SoursesDataInt, 'sources' | 'status'>): void {
     const values = data?.sources ? data?.sources : [];
     this.sources.draw(values);
   }
