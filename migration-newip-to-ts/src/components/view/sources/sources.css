@@ -34,3 +34,11 @@
     font-weight: 400;
     white-space: nowrap;
 }
+
+@media screen and (max-width: 767px) {
+    .source__item {
+        margin: 0.4em;
+        padding: 0.6em 0.6em;
+        font-size: 14px;
+    }
+}
