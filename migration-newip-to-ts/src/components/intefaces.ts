@@ -50,10 +50,10 @@ type getRespArg = {
 interface ILoader {
   baseLink: string;
   options: { apiKey: string };
-  getResp(arg: Required<getRespArg>, callback: () => void): void;
-  errorHandler(arg: Response): Response;
-  makeUrl(options: Options, endpoint: string): string;
-  load(method: string, endpoint: string, callback: CallbackData, options: Options): void;
+  // getResp(arg: Required<getRespArg>, callback: () => void): void;
+  // errorHandler(arg: Response): Response;
+  // makeUrl(options: Options, endpoint: string): string;
+  // load(method: string, endpoint: string, callback: CallbackData, options: Options): void;
 }
 
 interface AppControllerInt {

@@ -1,9 +1,14 @@
 import { SoursesDataInt, Options, CallbackData, ILoader } from '../intefaces';
 
-enum Status {
-  'errFirst' = 401,
-  'errFour' = 404,
+enum StatusCodes {
+  'Unauthorized' = 401,
+  'NotFound' = 404,
 }
+
+type Resp = {
+  endpoint?: string | undefined;
+  options: Options;
+};
 class Loader implements ILoader {
   readonly baseLink: string;
   readonly options: { apiKey: string };
@@ -12,25 +17,25 @@ class Loader implements ILoader {
     this.options = options;
   }
 
-  getResp(
-    { endpoint = '' as string, options = {} as Options },
+  protected getResp(
+    { endpoint, options }: Partial<Resp>,
     callback: () => void = () => {
       console.error('No callback for GET response');
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    this.load('GET', endpoint as string, callback, options);
   }
 
-  errorHandler(res: Response) {
+  private errorHandler(res: Response) {
     if (!res.ok) {
-      if (res.status === Status.errFirst || res.status === Status.errFour)
+      if (res.status === StatusCodes.Unauthorized || res.status === StatusCodes.NotFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
     return res;
   }
 
-  makeUrl(options: Options, endpoint: string) {
+  private makeUrl(options: Options, endpoint: string) {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -40,7 +45,7 @@ class Loader implements ILoader {
     return url.slice(0, -1);
   }
 
-  load(method: string, endpoint: string, callback: CallbackData, options: Options = {}): void {
+  private load(method: string, endpoint: string, callback: CallbackData, options: Options = {}): void {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
