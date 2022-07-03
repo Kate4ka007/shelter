@@ -77,12 +77,16 @@ footer .copyright:before {
 
 .github-png {
   width: 50px;
-  height: auto;
+  height: auto;  
 }
 
 .rss-png {
   width: 50px;
-  height: auto;
+  height: auto;  
+}
+
+.year {
+  color: #333;
 }
 
 @media screen and (max-width: 768px) {
