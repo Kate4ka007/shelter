@@ -19,11 +19,21 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+.footer-container {
+  height: 100px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 footer .copyright {
     font-size: 14px;
     color: #333;
-    text-align: center;
+    text-align: center;    
 }
+
 footer .copyright a {
     color: #444;
 }
@@ -65,4 +75,41 @@ footer .copyright:before {
   background-color: #30c5ff;
 }
 
+.github-png {
+  width: 50px;
+  height: auto;
+}
 
+.rss-png {
+  width: 50px;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 25px; 
+    margin: 5px 0;   
+  }
+
+  .github-png {
+    width: 30px;    
+  }
+  
+  .rss-png {
+    width: 30px;    
+  }
+
+  footer {
+    height: 50px;
+  }
+
+  .footer-container {
+    height: 50px;
+    width: 80%;   
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px; 
+    height: 5px;  
+  }
+}
