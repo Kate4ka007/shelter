@@ -28,7 +28,7 @@
     left: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.2s;
+    transition: transform 0.2s;     
 }
 
 .news__item .news__meta-details,
