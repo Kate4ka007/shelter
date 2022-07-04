@@ -1,23 +1,27 @@
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+  color: #fff;
+  background: #17181c;
+  font-family: sans-serif;
+}
+
+main {
+  display: flex;
 }
 
 header {
-    padding: 10px 30px;
+  padding: 10px 30px;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 800;
+  font-size: 40px;
+  font-weight: 800;
 }
 
 footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-container {
@@ -29,28 +33,26 @@ footer {
 }
 
 footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;    
+  font-size: 14px;
+  color: #333;
+  text-align: center;
 }
 
 footer .copyright a {
-    color: #444;
+  color: #444;
 }
 footer .copyright a:hover {
-    color: #555;
+  color: #555;
 }
 footer .copyright:before {
-    content: '©';
+  content: '©';
 }
-
 
 ::-webkit-scrollbar {
-  width: 15px; 
-  height: 8px; 
+  width: 15px;
+  height: 8px;
   background-color: #363739;
 }
-
 
 ::-webkit-scrollbar-thumb {
   background-color: #000000;
@@ -63,15 +65,14 @@ footer .copyright:before {
 
 ::-webkit-scrollbar-button:vertical:start:decrement {
   background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-      linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-      linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+    linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
   background-color: #30c5ff;
 }
 
 ::-webkit-scrollbar-button:vertical:end:increment {
   background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-      linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-      linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+    linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
   background-color: #30c5ff;
 }
 
@@ -85,18 +86,26 @@ footer .copyright:before {
   height: auto;
 }
 
-@media screen and (max-width: 768px) {
+.year {
+  color: #333;
+}
+
+@media screen and (max-width: 767px) {
   header h1 {
-    font-size: 25px; 
-    margin: 5px 0;   
+    font-size: 25px;
+    margin: 5px 0;
+  }
+
+  main {
+    display: block;
   }
 
   .github-png {
-    width: 30px;    
+    width: 30px;
   }
-  
+
   .rss-png {
-    width: 30px;    
+    width: 30px;
   }
 
   footer {
@@ -105,11 +114,11 @@ footer .copyright:before {
 
   .footer-container {
     height: 50px;
-    width: 80%;   
+    width: 80%;
   }
 
   ::-webkit-scrollbar {
-    width: 10px; 
-    height: 5px;  
+    width: 10px;
+    height: 5px;
   }
 }
