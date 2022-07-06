@@ -30,7 +30,7 @@ body {
 }
 
 .prod-item {
-  width: 350px;
+  width: 300px;
   height: 500px;
   border: 2px solid snow;
   display: flex;
@@ -39,8 +39,8 @@ body {
   flex-direction: column;
   text-align: center;
   background-color: rgb(243, 237, 237);
-  padding: 20px;
-  padding-bottom: 20px;
+  padding: 10px;
+  padding-bottom: 15px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -62,6 +62,8 @@ body {
 .item-title {
   font-weight: 900;
   font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .item-price {
@@ -99,6 +101,7 @@ body {
 .item-button:hover {
   background-color: rgb(249, 103, 103);
   transform: scale(1.05);
+  cursor: pointer;
 }
 
 .modal-window {
@@ -120,4 +123,12 @@ body {
   width: 150px;
   height: 70px;
   background-color: rgb(248, 108, 108);
+}
+
+.price-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
