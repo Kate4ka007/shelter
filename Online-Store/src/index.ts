@@ -1,31 +1,38 @@
 import { arrayBuffer } from 'stream/consumers'
+import IProduct from './components/intefaces/IProduct'
 import './styles.css'
+import ProductCard, {callback} from './components/productCard'
+import product from '../server/product'
 
 
+/* (async () => {
+  let dataProd: IProduct[] = await(await fetch('../server/product.json')).json();
 
-interface IProduct {
-  category: string,
-  description: string,
-  id: number,
-  image: string,
-  price: number,
-  rating: {
-    rate: number,
-    count: number
-  },
-  title: string
-}
-
-let dataProd: IProduct[] = []
+  console.log(dataProd);
+  prod.render(dataProd)
+})(); */
 
 
-fetch("https://fakestoreapi.com/products")
+let dataProd: IProduct[] = product
+
+/* fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((json: IProduct[]) => {
     dataProd = json
     prod.render(dataProd)
+
+/*     dataProd.forEach((data: IProduct) => {  
+      const card = new ProductCard(data, callback);
+      card.createCard()
+    }) */
+
+    /*
   })
-  .catch((error: Error) => console.log('Ooops!' + error))
+  .catch((error: Error) => console.log('Ooops!' + error)) */
+
+
+
+
 
 
 class Product {
@@ -36,21 +43,21 @@ class Product {
       prodItem.innerHTML = `<div class="prod-img-wrapper"><img class="prod-img" src=${image} alt=${category}></div>
         <p class="item-title">${title}</p>
         <div class="item-descb">${description.split('').splice(0, 80).join('') + '...'}</div>
-        <div class="item-rating-wrapper"><img class="star" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt=""><div class="item-rating">${rating.rate}</div></div>
-        <div class="item-price">$ ${price}</div>`
+        <div class="price-rating"><div class="item-rating-wrapper"><img class="star" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt=""><div class="item-rating">${rating.rate}</div></div>
+        <div class="item-price">$ ${price}</div></div>
+        `
       const butItem = document.createElement('button')
       butItem.classList.add('item-button')
       butItem.innerHTML = `<img class="item-cart" src="https://cdn-icons-png.flaticon.com/512/3523/3523885.png" alt="">ADD TO CART`
-/*     const img = document.createElement('img')
-      img.src = "./assets/images/photo.jpg"  */
+
       butItem.addEventListener('click', (e) => {
 
         /*const modalWindow = document.createElement('div')
           modalWindow.classList.add('modal-window')
           modalWindow.innerHTML = `${description}`
           document.body.appendChild(modalWindow) */
-        console.log('hi')
-        prod.sortPrice()
+/*         console.log('hi')
+        prod.sortPrice() */
 
       })
       prodItem.appendChild(butItem)
@@ -75,7 +82,7 @@ class Product {
       document.body.appendChild(reset)
       reset.addEventListener('click', () => {
         document.body.innerHTML = ''
-        prod.render(dataProd)
+        prod.render(dataProd)        
       })  
 
 
@@ -142,6 +149,8 @@ class Product {
 }
 
 const prod = new Product()
+prod.render(dataProd)
+console.log(dataProd)
 
 
 
@@ -153,3 +162,4 @@ const prod = new Product()
 
 
 
+export default dataProd;
