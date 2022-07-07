@@ -3,6 +3,8 @@ import IProduct from './components/intefaces/IProduct'
 import './styles.css'
 import ProductCard, {callback} from './components/productCard'
 import product from '../server/product'
+import './components/page/header'
+
 
 
 /* (async () => {
@@ -149,8 +151,8 @@ class Product {
 }
 
 const prod = new Product()
-prod.render(dataProd)
-console.log(dataProd)
+// prod.render(dataProd)
+console.log(dataProd) 
 
 
 
@@ -158,7 +160,6 @@ console.log(dataProd)
   dataProd.map(item => arr.push(item))
   console.log(arr)
 }, 1000); */
-
 
 
 
