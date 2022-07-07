@@ -1,3 +1,5 @@
+import ButtonMain from "../buttons/button-main";
+
 class Header {
   render() {
     const header = document.createElement('div');
@@ -74,6 +76,9 @@ class Header {
 
     const headerBottom = document.createElement('div');
     headerBottom.className = 'header-bottom';
+    const button = new ButtonMain('Bye now', 'button', headerBottom)
+    button.renderButton()
+    
 
     header.appendChild(headerTop);
     header.appendChild(headerNav);

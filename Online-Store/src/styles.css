@@ -119,8 +119,8 @@ body {
 }
 
 .login:hover {
-cursor: pointer;
-background: #3cd3a1;
+  cursor: pointer;
+  background: #3cd3a1;
 }
 .login-user {
   width: 24px;
@@ -165,8 +165,28 @@ background: #3cd3a1;
 .list-item:hover {
   cursor: pointer;
   text-decoration: underline;
-
 }
+
+.button {
+  background: #10b981;
+  box-shadow: 0px 25px 50px rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 26px;
+  color: #ffffff;
+  width: 260px;
+  height: 70px;
+  border: none;
+  outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: #3cd3a1;
+} 
 
 .prod-img {
   width: auto;
@@ -185,19 +205,29 @@ background: #3cd3a1;
 }
 
 .prod-item {
-  width: 300px;
-  height: 500px;
+  width: 360px;
+  height: 460px;
   border: 2px solid snow;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
   text-align: center;
-  background-color: rgb(243, 237, 237);
+  background: #E0EFFF;
   padding: 10px;
   padding-bottom: 15px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.prod-item:nth-child(4n + 4) {
+  background-color: rgb(203, 250, 238);
+}
+.prod-item:nth-child(3n + 2) {
+  background: #E5D5FF;
+}
+.prod-item:nth-child(3n + 3) {
+  background-color: rgb(200, 248, 255);
 }
 
 .prod-item:hover {

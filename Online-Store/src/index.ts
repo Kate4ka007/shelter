@@ -38,35 +38,10 @@ let dataProd: IProduct[] = product
 
 
 class Product {
-  render(data: Array<IProduct>) {
-    data.forEach(({ id, title, description, price, rating, image, category }) => {
-      const prodItem = document.createElement('div')
-      prodItem.classList.add('prod-item')
-      prodItem.innerHTML = `<div class="prod-img-wrapper"><img class="prod-img" src=${image} alt=${category}></div>
-        <p class="item-title">${title}</p>
-        <div class="item-descb">${description.split('').splice(0, 80).join('') + '...'}</div>
-        <div class="price-rating"><div class="item-rating-wrapper"><img class="star" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt=""><div class="item-rating">${rating.rate}</div></div>
-        <div class="item-price">$ ${price}</div></div>
-        `
-      const butItem = document.createElement('button')
-      butItem.classList.add('item-button')
-      butItem.innerHTML = `<img class="item-cart" src="https://cdn-icons-png.flaticon.com/512/3523/3523885.png" alt="">ADD TO CART`
-
-      butItem.addEventListener('click', (e) => {
-
-        /*const modalWindow = document.createElement('div')
-          modalWindow.classList.add('modal-window')
-          modalWindow.innerHTML = `${description}`
-          document.body.appendChild(modalWindow) */
-/*         console.log('hi')
-        prod.sortPrice() */
-
-      })
-      prodItem.appendChild(butItem)
-      document.body.appendChild(prodItem)
-    /*    document.body.appendChild(img) */
-
-      
+  render(dataProd: Array<IProduct>) {
+    dataProd.forEach(({ id, title, description, price, rating, image, category }) => {
+      const newCard = new ProductCard({ id, title, description, price, rating, image, category }, callback)
+      newCard.createCard()    
 
     })
 
@@ -151,7 +126,7 @@ class Product {
 }
 
 const prod = new Product()
-// prod.render(dataProd)
+prod.render(dataProd)
 console.log(dataProd) 
 
 
