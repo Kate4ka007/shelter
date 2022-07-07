@@ -1,3 +1,4 @@
+import dataProd from "../../index";
 import ButtonMain from "../buttons/button-main";
 
 class Header {
@@ -31,6 +32,7 @@ class Header {
     shopingBag.src = '../../assets/images/Shopping-bag.png';
     shopingBag.className = 'shoping-bag-img'
     cart.appendChild(shopingBag)
+    
     let count = 0;
 
     const cartSpan = document.createElement('span');
@@ -48,8 +50,8 @@ class Header {
     const loginUser = document.createElement('img');
     loginUser.src = '../../assets/images/Profile 1.png';
     loginUser.className = 'login-user'
-    login.appendChild(loginUser)
-    login.appendChild(loginSpan)
+    login.appendChild(loginUser);
+    login.appendChild(loginSpan);
 
 
 
@@ -76,9 +78,29 @@ class Header {
 
     const headerBottom = document.createElement('div');
     headerBottom.className = 'header-bottom';
-    const button = new ButtonMain('Bye now', 'button', headerBottom)
-    button.renderButton()
+
+
+    const headerBottomRight = document.createElement('div');
+    headerBottomRight.className = 'header-bottom-right'  
     
+    const headerBottomLeft = document.createElement('div');
+    headerBottomLeft.className = 'header-bottom-left'
+
+    const headerBottomLeftTitle = document.createElement('div');
+    headerBottomLeftTitle.className = 'header-bottom-left_title';
+    headerBottomLeftTitle.innerHTML = '<h1 class="title-main">Discover Our Latest  Products</h1><span class="subtitle">Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a product</span>'
+    const headerTitleButton = document.createElement('div');
+    headerTitleButton.className = 'header-title-button'
+
+    
+    headerBottomLeft.appendChild(headerBottomLeftTitle);
+    headerBottomLeft.appendChild(headerTitleButton);
+    
+    headerBottom.appendChild(headerBottomLeft);
+    headerBottom.appendChild(headerBottomRight);
+
+    const button = new ButtonMain('Bye now', 'button', headerTitleButton, count);
+    button.renderButton();    
 
     header.appendChild(headerTop);
     header.appendChild(headerNav);
