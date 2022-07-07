@@ -1,6 +1,6 @@
 import { arrayBuffer } from 'stream/consumers'
 import IProduct from './components/intefaces/IProduct'
-import './styles.css'
+import './styles.scss'
 import ProductCard, {callback} from './components/productCard'
 import product from '../server/product'
 import './components/page/header'

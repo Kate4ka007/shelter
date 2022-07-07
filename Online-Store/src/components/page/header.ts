@@ -1,6 +1,7 @@
 import dataProd from "../../index";
 import ButtonMain from "../buttons/button-main";
 
+
 class Header {
   render() {
     const header = document.createElement('div');
@@ -29,10 +30,10 @@ class Header {
     cart.className = 'cart';
 
     const shopingBag = document.createElement('img');
-    shopingBag.src = '../../assets/images/Shopping-bag.png';
+    shopingBag.src = 'assets/images/shopping-bag.png';
     shopingBag.className = 'shoping-bag-img'
     cart.appendChild(shopingBag)
-    
+
     let count = 0;
 
     const cartSpan = document.createElement('span');
@@ -48,7 +49,7 @@ class Header {
     loginSpan.className = 'login-span';
 
     const loginUser = document.createElement('img');
-    loginUser.src = '../../assets/images/Profile 1.png';
+    loginUser.src = 'assets/images/Profile 1.png';
     loginUser.className = 'login-user'
     login.appendChild(loginUser);
     login.appendChild(loginSpan);
@@ -73,7 +74,7 @@ class Header {
                       <li class="list-item">Blog</li>
                       <li class="list-item">About</li>
                      </ul>`
-    headerNav.appendChild(nav);                 
+    headerNav.appendChild(nav);
 
 
     const headerBottom = document.createElement('div');
@@ -81,8 +82,9 @@ class Header {
 
 
     const headerBottomRight = document.createElement('div');
-    headerBottomRight.className = 'header-bottom-right'  
+    headerBottomRight.className = 'header-bottom-right';
     
+
     const headerBottomLeft = document.createElement('div');
     headerBottomLeft.className = 'header-bottom-left'
 
@@ -90,17 +92,52 @@ class Header {
     headerBottomLeftTitle.className = 'header-bottom-left_title';
     headerBottomLeftTitle.innerHTML = '<h1 class="title-main">Discover Our Latest  Products</h1><span class="subtitle">Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a product</span>'
     const headerTitleButton = document.createElement('div');
-    headerTitleButton.className = 'header-title-button'
+    headerTitleButton.className = 'header-title-button';
 
-    
+    const reviews = document.createElement('div');
+    reviews.className = 'reviews-header';
+    const rev1 = document.createElement('img');
+    rev1.className = 'reviews-item1';
+    const rev2 = document.createElement('img');
+    rev2.className = 'reviews-item2';
+    const rev3 = document.createElement('img');
+    rev3.className = 'reviews-item3';
+    const rev4 = document.createElement('img');
+    rev4.className = 'reviews-item4';
+
+    rev1.src = 'assets/images/001.png';
+    rev2.src = 'assets/images/002.png';
+    rev3.src = 'assets/images/003.png';
+    rev4.src = 'assets/images/004.png';
+    reviews.appendChild(rev4);
+    reviews.appendChild(rev3);
+    reviews.appendChild(rev2);
+    reviews.appendChild(rev1);
+
+    const reviewsWrap = document.createElement('div');
+    reviewsWrap.className = 'reviews-wrap';
+    reviewsWrap.appendChild(reviews);
+
+    const reviewsWrapCount = document.createElement('div');
+    reviewsWrapCount.className = 'reviews-wrap-count';
+    reviewsWrapCount.textContent = '15k Well Reviews'
+
+
     headerBottomLeft.appendChild(headerBottomLeftTitle);
     headerBottomLeft.appendChild(headerTitleButton);
-    
+    headerBottomLeft.appendChild(reviewsWrap);
+    reviewsWrap.appendChild(reviewsWrapCount);
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
+    
+                              
+    
+
+
+
 
     const button = new ButtonMain('Bye now', 'button', headerTitleButton, count);
-    button.renderButton();    
+    button.renderButton();
 
     header.appendChild(headerTop);
     header.appendChild(headerNav);
@@ -113,7 +150,7 @@ class Header {
 
 
 
-const head = new Header();  
-head.render() 
+const head = new Header();
+head.render()
 
 // export default Header;
