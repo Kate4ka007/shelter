@@ -38,7 +38,7 @@ class ProductCard {
     
 
     /* <div class="item-descb">${this._data.description.split('').splice(0, 80).join('') + '...'}</div> */
-    document.querySelector('.root').appendChild(prodItem)
+    document.querySelector('.main').appendChild(prodItem)
   }
 }
 

@@ -53,16 +53,10 @@ class Header {
     loginUser.className = 'login-user'
     login.appendChild(loginUser);
     login.appendChild(loginSpan);
-
-
-
     headerTop.appendChild(logo);
     headerTop.appendChild(inputSearch);
     headerTop.appendChild(cart);
     headerTop.appendChild(login);
-
-
-
     const headerNav = document.createElement('div');
     headerNav.className = 'header-nav';
 
@@ -129,12 +123,6 @@ class Header {
     reviewsWrap.appendChild(reviewsWrapCount);
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
-    
-                              
-    
-
-
-
 
     const button = new ButtonMain('Bye now', 'button', headerTitleButton, count);
     button.renderButton();

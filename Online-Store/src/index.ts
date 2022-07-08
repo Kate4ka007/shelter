@@ -4,6 +4,8 @@ import './styles.scss'
 import ProductCard, {callback} from './components/productCard'
 import product from '../server/product'
 import './components/page/header'
+import Main from './components/page/main'
+import SortButton from './components/buttons/sortButton'
 
 
 
@@ -52,15 +54,18 @@ class Product {
       sortButton.addEventListener('click', () => {
         prod.sortPrice()
       })
-
+/* 
       const reset = document.createElement('button')
       reset.className = 'reset-button'
       reset.textContent = "reset"
       document.body.appendChild(reset)
       reset.addEventListener('click', () => {
-        document.body.innerHTML = ''
+        document.querySelector('.main').innerHTML = ''
         prod.render(dataProd)        
-      })  
+      })   */
+      
+
+      const reset = new SortButton('reset-button', 'sort by price', dataProd, document.querySelector('.main') )
 
 
       const sortRating = document.createElement('button')
@@ -68,7 +73,7 @@ class Product {
       sortRating.textContent = "sort by rating"
       document.body.appendChild(sortRating)
       sortRating.addEventListener('click', () => {
-        document.body.innerHTML = ''
+        document.querySelector('.main').innerHTML = ''
         prod.sortRating()
       }) 
 
@@ -77,7 +82,7 @@ class Product {
       sortCount.textContent = "sort by count"
       document.body.appendChild(sortCount)
       sortCount.addEventListener('click', () => {
-        document.body.innerHTML = ''
+        document.querySelector('.main').innerHTML = ''
         prod.sortCount()
       }) 
 
@@ -94,7 +99,7 @@ class Product {
     })    
     const sortArr = arr.sort((a, b) => a.price - b.price)    
     const sortProd = new Product()
-    document.body.innerHTML = ''
+    document.querySelector('.main').innerHTML = ''
     sortProd.render(sortArr)
 
   }
@@ -106,7 +111,7 @@ class Product {
     })    
     const sortArrR = arr.sort((a, b) => a.rating.rate - b.rating.rate)    
     const sortProd = new Product()
-    document.body.innerHTML = ''
+    document.querySelector('.main').innerHTML = ''
     sortProd.render(sortArrR)
   }
 
@@ -117,25 +122,16 @@ class Product {
     })    
     const sortArrCount = arr.sort((a, b) => a.rating.count - b.rating.count)    
     const sortProd = new Product()
-    document.body.innerHTML = ''
+    document.querySelector('.main').innerHTML = ''
     sortProd.render(sortArrCount)
   }
-
-
-
 }
+const main = new Main();
+main.render()
 
 const prod = new Product()
 prod.render(dataProd)
 console.log(dataProd) 
-
-
-
-/* setTimeout(() => {
-  dataProd.map(item => arr.push(item))
-  console.log(arr)
-}, 1000); */
-
 
 
 export default dataProd;
