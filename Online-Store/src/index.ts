@@ -1,11 +1,12 @@
-import { arrayBuffer } from 'stream/consumers'
+// import { arrayBuffer } from 'stream/consumers'
 import IProduct from './components/intefaces/IProduct'
 import './styles.scss'
 import ProductCard, {callback} from './components/productCard'
-import product from '../server/product'
+import PRODUCT from '../server/product'
 import './components/page/header'
 import Main from './components/page/main'
 import SortButton from './components/buttons/sortButton'
+import LocalStorageInfo from './components/cart/cartList'
 
 
 
@@ -17,7 +18,7 @@ import SortButton from './components/buttons/sortButton'
 })(); */
 
 
-let dataProd: IProduct[] = product
+let dataProd: IProduct[] = PRODUCT
 
 /* fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
@@ -36,13 +37,14 @@ let dataProd: IProduct[] = product
 
 
 
-
+export type stateType = {key: 'active'|'inactive'}
 
 
 class Product {
+  static state: stateType = {key: 'inactive'}
   render(dataProd: Array<IProduct>) {
-    dataProd.forEach(({ id, title, description, price, rating, image, category }) => {
-      const newCard = new ProductCard({ id, title, description, price, rating, image, category }, callback)
+    dataProd.forEach(({ id, title, description, price, rating, image, category, release, color, countInStock }) => {
+      const newCard = new ProductCard({ id, title, description, price, rating, image, category, release, color, countInStock }, callback)
       newCard.createCard()    
 
     })
@@ -133,5 +135,20 @@ const prod = new Product()
 prod.render(dataProd)
 console.log(dataProd) 
 
+Product.state.key = "active"
+Product.state.key = "inactive"
+console.log(Product.state)
 
-export default dataProd;
+
+const rr = PRODUCT.find(el => el.id == 24)
+console.log(rr)
+
+
+//cartProductList.setProductList(22)
+
+
+export default {dataProd, prod};
+
+
+
+

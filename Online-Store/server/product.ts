@@ -1,5 +1,5 @@
 import IProduct from '../src/components/intefaces/IProduct'
- const product: IProduct[] = [
+ const PRODUCT: IProduct[] = [
   {
     "id": 1,
     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -9,7 +9,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
     "rating": { "rate": 3.9, "count": 120 },
     "color": "blue",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 32
   },
   {
     "id": 2,
@@ -20,7 +21,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
     "rating": { "rate": 4.1, "count": 259 },
     "color": "white",
-    "release": 2022
+    "release": 2022,
+    "countInStock": 55
   },
   {
     "id": 3,
@@ -31,7 +33,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
     "rating": { "rate": 4.7, "count": 500 },
     "color": "brown",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 15
   },
   {
     "id": 4,
@@ -42,7 +45,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
     "rating": { "rate": 2.1, "count": 430 },
     "color": "blue",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 19
   },
   {
     "id": 5,
@@ -53,7 +57,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
     "rating": { "rate": 4.6, "count": 400 },
     "color": "selver",
-    "release": 2022
+    "release": 2022,
+    "countInStock": 7
   },
   {
     "id": 6,
@@ -64,7 +69,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
     "rating": { "rate": 3.9, "count": 70 },
     "color": "selver",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 12
   },
   {
     "id": 7,
@@ -75,7 +81,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
     "rating": { "rate": 3, "count": 400 },
     "color": "selver",
-    "release": 2019
+    "release": 2019,
+    "countInStock": 2
   },
   {
     "id": 8,
@@ -86,7 +93,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
     "rating": { "rate": 1.9, "count": 100 },
     "color": "gold",
-    "release": 2018
+    "release": 2018,
+    "countInStock": 5
   },
   {
     "id": 9,
@@ -97,7 +105,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
     "rating": { "rate": 3.3, "count": 203 },
     "color": "black",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 23
   },
   {
     "id": 10,
@@ -108,7 +117,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
     "rating": { "rate": 2.9, "count": 470 },
     "color": "black",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 7
   },
   {
     "id": 11,
@@ -119,7 +129,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
     "rating": { "rate": 4.8, "count": 319 },
     "color": "black",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 12
   },
   {
     "id": 12,
@@ -130,7 +141,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
     "rating": { "rate": 4.8, "count": 400 },
     "color": "black",
-    "release": 2022
+    "release": 2022,
+    "countInStock": 4
     
   },
   {
@@ -142,7 +154,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
     "rating": { "rate": 2.9, "count": 250 },
     "color": "black",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 5
   },
   {
     "id": 14,
@@ -153,7 +166,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
     "rating": { "rate": 2.2, "count": 140 },
     "color": "black",
-    "release": 2022
+    "release": 2022,
+    "countInStock": 9
   },
   {
     "id": 15,
@@ -164,7 +178,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
     "rating": { "rate": 2.6, "count": 235 },
     "color": "violet",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 22
   },
   {
     "id": 16,
@@ -175,7 +190,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
     "rating": { "rate": 2.9, "count": 340 },
     "color": "black",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 32
   },
   {
     "id": 17,
@@ -186,7 +202,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
     "rating": { "rate": 3.8, "count": 679 },
     "color": "blue",
-    "release": 2022
+    "release": 2022,
+    "countInStock": 16
   },
   {
     "id": 18,
@@ -197,7 +214,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
     "rating": { "rate": 4.7, "count": 130 },
     "color": "white",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 44
   },
   {
     "id": 19,
@@ -208,7 +226,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
     "rating": { "rate": 4.5, "count": 146 },
     "color": "red",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 31
   },
   {
     "id": 20,
@@ -219,7 +238,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
     "rating": { "rate": 3.6, "count": 145 },
     "color": "violet",
-    "release": 2022
+    "release": 2022,
+    "countInStock": 8
   },
   {
     "id": 21,
@@ -230,7 +250,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://m.media-amazon.com/images/I/61XsDvwmJpL._AC_SX522_.jpg",
     "rating": { "rate": 3.8, "count": 550 },
     "color": "selver",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 7
   },
   {
     "id": 22,
@@ -241,7 +262,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://m.media-amazon.com/images/I/91jDri1gRYL._AC_SX522_.jpg",
     "rating": { "rate": 4.6, "count": 115 },
     "color": "black",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 12
   },
   {
     "id": 23,
@@ -252,7 +274,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://m.media-amazon.com/images/I/614CaSPw+BS._AC_SX522_.jpg",
     "rating": { "rate": 4.6, "count": 223 },
     "color": "white",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 29
   },
   {
     "id": 24,
@@ -263,7 +286,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://m.media-amazon.com/images/I/71YNQl3sZRL._AC_SX522_.jpg",
     "rating": { "rate": 4.5, "count": 183 },
     "color": "red",
-    "release": 2020
+    "release": 2020,
+    "countInStock": 14
   },
   {
     "id": 25,
@@ -274,7 +298,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://m.media-amazon.com/images/I/61WBTA1P68S._AC_UX679_.jpg",
     "rating": { "rate": 2.5, "count": 120 },
     "color": "red",
-    "release": 2019
+    "release": 2019,
+    "countInStock": 11
   },
   {
     "id": 26,
@@ -285,7 +310,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://autoiwc.ru/images/ferrari/ferrari-portofino.webp",
     "rating": { "rate": 5, "count": 32 },
     "color": "red",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 2
   },
   {
     "id": 27,
@@ -296,7 +322,8 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://cdn-fsly.yottaa.net/5c17f01f2bb0ac532957f9ee/us.pandora.net/v~4b.1a/dw/image/v2/AAVX_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dw11055641/productimages/main/799501C01_RGB.jpg?sw=900&sh=900&sm=fit&sfrm=png&bgcolor=F5F5F5&yocs=A_F_",
     "rating": { "rate": 4.8, "count": 312 },
     "color": "selver",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 10
   },
   {
     "id": 28,
@@ -307,8 +334,9 @@ import IProduct from '../src/components/intefaces/IProduct'
     "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MME73_AV2?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1632861338000",
     "rating": { "rate": 4.8, "count": 150 },
     "color": "white",
-    "release": 2021
+    "release": 2021,
+    "countInStock": 27
   }
 ]
 
-export default product
+export default PRODUCT;

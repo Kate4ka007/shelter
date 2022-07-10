@@ -9,8 +9,9 @@ interface IProduct {
     count: number
   },
   title: string,
-  color?: string,
-  release?: number
+  color: string,
+  release: number,
+  countInStock: number
 }
 
 export default IProduct;

@@ -1,5 +1,7 @@
 import dataProd from "../../index";
 import ButtonMain from "../buttons/button-main";
+import LocalStorageInfo from '../cart/cartList'
+import cartProductList from '../../index'
 
 
 class Header {
@@ -35,6 +37,7 @@ class Header {
     cart.appendChild(shopingBag)
 
     let count = 0;
+    //const cartProductList = new LocalStorageInfo();
 
     const cartSpan = document.createElement('span');
     cartSpan.textContent = `${count} Items Added`;

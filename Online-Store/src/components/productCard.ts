@@ -1,6 +1,7 @@
 import IProduct from "./intefaces/IProduct";
 import dataProd from '../index';
 import ButtonMain from "./buttons/button-main";
+import cartProductList from './cart/cartList'
 
 class ProductCard {
   _data: IProduct;
@@ -10,6 +11,19 @@ class ProductCard {
   }
 
   createCard(): void {
+    const store = cartProductList.cartProductList.getProductList()
+    let classActive = ''
+    let textActive = ''
+
+    if (store.indexOf(this._data.id) === -1) {
+      textActive = 'Add to cart'
+      classActive = `button`
+      
+    } else {
+      textActive = 'Remove from cart'
+      classActive = 'button_active'
+    }
+
     const prodItem = <HTMLDivElement>document.createElement('div');
     prodItem.className = 'prod-item';
     const contentWrapper = <HTMLDivElement>document.createElement('div');
@@ -28,14 +42,14 @@ class ProductCard {
     const buttonWrapper = document.createElement('div')
     buttonWrapper.className = 'button-wrapper';
 
-    const button = new ButtonMain('Add to cart', 'button', buttonWrapper, this._data)
+    const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data)
     button.renderButton()
-    
+
 
     prodItem.appendChild(contentWrapper)
     prodItem.appendChild(buttonWrapper)
 
-    
+
 
     /* <div class="item-descb">${this._data.description.split('').splice(0, 80).join('') + '...'}</div> */
     document.querySelector('.main').appendChild(prodItem)
