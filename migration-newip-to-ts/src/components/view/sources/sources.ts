@@ -1,4 +1,4 @@
-import './sources.css';
+import './sources.scss';
 import { ISources, SourcesItemInt } from '../../intefaces';
 
 class Sources implements ISources {

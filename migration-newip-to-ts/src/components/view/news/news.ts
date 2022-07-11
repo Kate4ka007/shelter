@@ -1,5 +1,5 @@
 import { NewsItemInt, INews } from '../../intefaces';
-import './news.css';
+import './news.scss';
 
 class News implements INews {
   draw(data: NewsItemInt[]) {
