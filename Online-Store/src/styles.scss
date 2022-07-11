@@ -224,10 +224,6 @@ body {
   border-radius: 10px;
 }
 
-.prod-img:hover {
-  transform: scale(1.1);
-}
-
 .prod-img-wrapper {
   width: auto;
   max-width: 95%;
@@ -250,7 +246,33 @@ body {
   cursor: pointer;
   overflow: hidden;
   border-radius: 15px;
+
 }
+
+
+.card-heart {
+  position: relative;
+  left: 148px;
+  top: 6px;
+  width: 40px;
+  height: 55px;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/445/445140.png);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.card-heart_active {
+  position: relative;
+  left: 148px;
+  top: 6px;
+  width: 40px;
+  height: 55px;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/445/445058.png);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
 .content-wrapper {
   width: 360px;
@@ -266,6 +288,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   border-radius: 15px;
+  margin-top: -50px;
 }
 
 .title-wrapper {

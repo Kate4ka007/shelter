@@ -19,18 +19,21 @@ class LocalStorageInfo {
 
     if(ind === -1) {
       prdList.push((id))
+      console.log(prdList)
       addProduct = true
     } else {
-      prdList.slice(ind, 1)
-    }    
+      
+      prdList.splice(ind, 1)
+      console.log(prdList)
+    }     
+    console.log(JSON.stringify(prdList))
     localStorage.setItem(this.keyName, JSON.stringify(prdList) )
-
     return { addProduct, prdList}
     }
   }
   const cartProductList = new LocalStorageInfo();
 
-  export default {LocalStorageInfo, cartProductList}
+  export default  {cartProductList};
 
 
 

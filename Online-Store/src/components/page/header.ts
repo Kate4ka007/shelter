@@ -39,11 +39,13 @@ class Header {
     let count = 0;
     //const cartProductList = new LocalStorageInfo();
 
-    const cartSpan = document.createElement('span');
-    cartSpan.textContent = `${count} Items Added`;
+    this.renderCountInCart(cart)
+
+/*     const cartSpan = document.createElement('span');
+    cartSpan.textContent = `${localStorage.length} Items Added`;
     cartSpan.className = 'cart-span';
 
-    cart.appendChild(cartSpan)
+    cart.appendChild(cartSpan) */
 
     const login = document.createElement('div');
     login.className = 'login';
@@ -137,11 +139,26 @@ class Header {
     const root = document.querySelector('.root');
     root.appendChild(header);
   }
+
+
+  renderCountInCart(parent: HTMLElement) {
+    const cartSpan = document.createElement('span');
+    let len = localStorage.getItem('product')
+  
+    len = JSON.parse(len)
+    
+    console.log(len)
+    cartSpan.textContent = `${localStorage.getItem('product')? JSON.parse(localStorage.getItem('product')).length: 0} Items Added`;
+    cartSpan.className = 'cart-span';
+    parent.appendChild(cartSpan)
+  }
 }
 
 
 
-const head = new Header();
+export const head = new Header();
 head.render()
 
-// export default Header;
+export default {Header}
+
+
