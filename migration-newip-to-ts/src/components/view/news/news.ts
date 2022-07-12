@@ -1,5 +1,6 @@
-import { NewsItemInt, INews } from '../../intefaces';
 import './news.scss';
+import { INews, NewsItemInt } from './newsInt';
+
 
 class News implements INews {
   draw(data: NewsItemInt[]): void {
@@ -12,9 +13,8 @@ class News implements INews {
       const newsClone = newsItemTemp.content.cloneNode(true) as Element;
 
       if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
-      (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
-        item.urlToImage || 'images/news.jpg'
-      })`;
+      (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${item.urlToImage || 'images/news.jpg'
+        })`;
       (newsClone.querySelector('.news__meta-author') as HTMLElement).textContent = item.author || item.source.name;
       (newsClone.querySelector('.news__meta-date') as HTMLElement).textContent = item.publishedAt
         .slice(0, 10)

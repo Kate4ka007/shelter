@@ -1,5 +1,6 @@
 import './sources.scss';
-import { ISources, SourcesItemInt } from '../../intefaces';
+import { SourcesItemInt } from '../../intefaces';
+import ISources from './ISources';
 
 class Sources implements ISources {
   draw(data: SourcesItemInt[]): void {

@@ -1,14 +1,7 @@
-import { SoursesDataInt, Options, CallbackData, ILoader } from '../intefaces';
+import { SoursesDataInt, CallbackData } from '../intefaces';
+import { ILoader, Options } from './loaderFiles/loaderInt';
+import { Resp, StatusCodes } from './loaderFiles/loaderType';
 
-enum StatusCodes {
-  'Unauthorized' = 401,
-  'NotFound' = 404,
-}
-
-type Resp = {
-  endpoint?: string | undefined;
-  options: Options;
-};
 class Loader implements ILoader {
   readonly baseLink: string;
   readonly options: { apiKey: string };

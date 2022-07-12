@@ -1,5 +1,7 @@
-import { AppControllerInt, CallbackData, CallbackType, NewsDataInt } from '../intefaces';
+import { CallbackData, NewsDataInt } from '../intefaces';
 import AppLoader from './appLoader';
+import { AppControllerInt } from './controllerFiles/controllerInt';
+import { CallbackType } from './controllerFiles/controllerType';
 
 class AppController extends AppLoader implements AppControllerInt {
   getSources(callback: CallbackData): void {

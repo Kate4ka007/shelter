@@ -1,6 +1,7 @@
 import AppController from '../controller/controller';
-import { IApp, NewsDataInt, SoursesDataInt } from '../intefaces';
+import { NewsDataInt, SoursesDataInt } from '../intefaces';
 import { AppView } from '../view/appView';
+import IApp from './IApp/IApp';
 
 class App implements IApp {
   controller: AppController;
