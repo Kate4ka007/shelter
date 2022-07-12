@@ -8,6 +8,7 @@
   justify-content: center;
   font: 300 1em 'Fira Sans', sans-serif;
   margin-bottom: 30px;
+
   @media screen and (max-width: 767px) {
     height: 366px;
   }
@@ -24,8 +25,9 @@
   font: 300 1em 'Fira Sans', sans-serif;
   margin-bottom: 30px;
   margin-right: 20px;
-  @media screen and (min-width: 1280px) {    
-      margin-right: 120px;    
+
+  @media screen and (min-width: 1280px) {
+    margin-right: 120px;
   }
 
   @media screen and (max-width: 767px) {
@@ -51,6 +53,7 @@
   color: #70d6ff;
   transition: 0.25s;
   cursor: pointer;
+
   &:hover,
   &:focus {
     border-color: #3fcc59;
@@ -58,9 +61,11 @@
     box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
     transform: translateY(-0.25em);
   }
+
   .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+
     @media screen and (max-width: 1024px) and (min-width: 768px) {
       font-size: 0.9em;
     }
@@ -74,11 +79,10 @@
     transition: 0.25s;
     cursor: pointer;
   }
+
   @media screen and (max-width: 767px) {
     margin: 0.4em;
     padding: 0.6em 0.6em;
     font-size: 14px;
   }
 }
-
-

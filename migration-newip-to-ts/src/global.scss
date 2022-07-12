@@ -5,6 +5,7 @@
 
   .page__main {
     display: flex;
+
     @media screen and (max-width: 767px) {
       display: block;
     }
@@ -13,6 +14,7 @@
   .page__title {
     font-size: 40px;
     font-weight: 800;
+
     @media screen and (max-width: 767px) {
       font-size: 25px;
       margin: 5px 0;
@@ -42,6 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+
     @media screen and (max-width: 767px) {
       height: 50px;
       width: 80%;
@@ -51,6 +54,7 @@
   &__github-png {
     width: 50px;
     height: auto;
+
     @media screen and (max-width: 767px) {
       width: 30px;
     }
@@ -59,6 +63,7 @@
   &__rss-png {
     width: 50px;
     height: auto;
+
     @media screen and (max-width: 767px) {
       width: 30px;
     }
@@ -91,6 +96,7 @@
   width: 15px;
   height: 8px;
   background-color: #363739;
+
   @media screen and (max-width: 767px) {
     width: 10px;
     height: 5px;
@@ -117,39 +123,4 @@
     linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
     linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
   background-color: #30c5ff;
-}
-
-
-
-@media screen and (max-width: 767px) {
-  /*   .page__header h1 {
-    font-size: 25px;
-    margin: 5px 0;
-  } */
-
-  /*   .page__main {
-    display: block;
-  }
- */
-  /*   .footer__github-png {
-    width: 30px;
-  } */
-
-  /*   .footer__rss-png {
-    width: 30px;
-  } */
-
-  /*   .page__footer {
-    height: 50px;
-  } */
-  /* 
-  .footer__container {
-    height: 50px;
-    width: 80%;
-  } */
-  /* 
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 5px;
-  } */
 }
