@@ -22,11 +22,11 @@ class Loader implements ILoader {
     callback: () => void = () => {
       console.error('No callback for GET response');
     }
-  ) {
+  ): void {
     this.load('GET', endpoint as string, callback, options);
   }
 
-  private errorHandler(res: Response) {
+  private errorHandler(res: Response): Response {
     if (!res.ok) {
       if (res.status === StatusCodes.Unauthorized || res.status === StatusCodes.NotFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -35,7 +35,7 @@ class Loader implements ILoader {
     return res;
   }
 
-  private makeUrl(options: Options, endpoint: string) {
+  private makeUrl(options: Options, endpoint: string): string {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
