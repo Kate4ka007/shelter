@@ -1,17 +1,11 @@
-import dataProd from "../../index";
 import ButtonMain from "../buttons/button-main";
-import LocalStorageInfo from '../cart/cartList'
-import cartProductList from '../../index'
-
 
 class Header {
   render() {
     const header = document.createElement('div');
     header.className = 'header';
-
     const headerTop = document.createElement('div');
     headerTop.className = 'header-top';
-
     const logo = document.createElement('div');
     logo.className = 'logo';
     const logoSpanFirst = document.createElement('span')
@@ -37,15 +31,7 @@ class Header {
     cart.appendChild(shopingBag)
 
     let count = 0;
-    //const cartProductList = new LocalStorageInfo();
-
     this.renderCountInCart(cart)
-
-/*     const cartSpan = document.createElement('span');
-    cartSpan.textContent = `${localStorage.length} Items Added`;
-    cartSpan.className = 'cart-span';
-
-    cart.appendChild(cartSpan) */
 
     const login = document.createElement('div');
     login.className = 'login';
@@ -82,10 +68,10 @@ class Header {
 
     const headerBottomRight = document.createElement('div');
     headerBottomRight.className = 'header-bottom-right';
-    
+
 
     const headerBottomLeft = document.createElement('div');
-    headerBottomLeft.className = 'header-bottom-left'
+    headerBottomLeft.className = 'header-bottom-left';
 
     const headerBottomLeftTitle = document.createElement('div');
     headerBottomLeftTitle.className = 'header-bottom-left_title';
@@ -131,7 +117,6 @@ class Header {
 
     const button = new ButtonMain('Bye now', 'button', headerTitleButton, count);
     button.renderButton();
-
     header.appendChild(headerTop);
     header.appendChild(headerNav);
     header.appendChild(headerBottom);
@@ -143,22 +128,18 @@ class Header {
 
   renderCountInCart(parent: HTMLElement) {
     const cartSpan = document.createElement('span');
-    let len = localStorage.getItem('product')
-  
-    len = JSON.parse(len)
-    
-    console.log(len)
-    cartSpan.textContent = `${localStorage.getItem('product')? JSON.parse(localStorage.getItem('product')).length: 0} Items Added`;
+    let len = localStorage.getItem('product');
+    len = JSON.parse(len);
+    console.log(len);
+    cartSpan.textContent = `${localStorage.getItem('product') ? JSON.parse(localStorage.getItem('product')).length : 0} Items Added`;
     cartSpan.className = 'cart-span';
-    parent.appendChild(cartSpan)
+    parent.appendChild(cartSpan);
   }
 }
-
-
 
 export const head = new Header();
 head.render()
 
-export default {Header}
+export default { Header }
 
 

@@ -29,11 +29,3 @@ class SortButton {
 
 export default SortButton;
 
-/* const reset = document.createElement('button')
-reset.className = 'reset-button'
-reset.textContent = "reset"
-document.body.appendChild(reset)
-reset.addEventListener('click', () => {
-  document.querySelector('.main').innerHTML = ''
-  prod.render(dataProd)        
-})   */

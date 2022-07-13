@@ -1,5 +1,4 @@
 import IProduct from "./intefaces/IProduct";
-import dataProd from '../index';
 import ButtonMain from "./buttons/button-main";
 import cartProductList from './cart/cartList'
 
@@ -58,13 +57,6 @@ class ProductCard {
     } else {
       cartHeart.className = 'card-heart'
     }
-    
-
-    
-    /* const heart = document.createElement('img')
-    heart.src = 'https://cdn-icons-png.flaticon.com/512/445/445140.png'
-    heart.className = 'heart'
-    cartHeart.appendChild(heart) */
 
     const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data)
     button.renderButton()
@@ -86,33 +78,15 @@ class ProductCard {
       }
 
     })
-    
-    //contentWrapper.appendChild(cartHeart)
-    
-
-
-
     /* <div class="item-descb">${this._data.description.split('').splice(0, 80).join('') + '...'}</div> */
-    document.querySelector('.main').appendChild(prodItem)
-    
+    document.querySelector('.main').appendChild(prodItem);    
   }
-
-
 }
 
 
 export function callback(): (this: HTMLButtonElement, ev: MouseEvent) => any {
   throw new Error("Function not implemented.");
 }
-
-
-
-  
-
-
-
-
-
 
 export default ProductCard;
 

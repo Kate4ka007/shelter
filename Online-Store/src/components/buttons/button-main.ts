@@ -1,15 +1,5 @@
 import IProduct from "../intefaces/IProduct";
-import cartProductList from '../cart/cartList'
-import {head} from "../page/header";
-import prod from '../../index'
-import dataProd from '../../index'
-import Product from '../../index'
-import PRODUCT from "../../../server/product";
-import Header from "../page/header";
-
-
-
-
+import cartProductList from '../cart/cartList';
 
 class ButtonMain {
   _content: string;
@@ -30,34 +20,28 @@ class ButtonMain {
     mainBottom.textContent = `${this._content}`
     this._parent.appendChild(mainBottom)
 
-    mainBottom.addEventListener('click', () => {           
-      
-      //cartProductList.setProductList(this._data.id)
-       this.hangleSetStorage(this, this._data);    
+    mainBottom.addEventListener('click', () => {
 
-      
+      this.hangleSetStorage(this, this._data);
     })
   }
 
 
-
-
-
   hangleSetStorage(el: this, _data: IProduct) {
-    const { addProduct, prdList} = cartProductList.cartProductList.setProductList(_data.id);
-    if(addProduct) {
-     el._selector = 'button_active'
-     el._content = 'Remove from cart'
-     el._parent.innerHTML = ''
-     el.renderButton()     
-     
+    const { addProduct, prdList } = cartProductList.cartProductList.setProductList(_data.id);
+    if (addProduct) {
+      el._selector = 'button_active'
+      el._content = 'Remove from cart'
+      el._parent.innerHTML = ''
+      el.renderButton()
+
     } else {
-     el._selector = 'button'
-     el._content = 'Add to cart'
-     el._parent.innerHTML = ''
-     el.renderButton()   
-    
-    }    
+      el._selector = 'button'
+      el._content = 'Add to cart'
+      el._parent.innerHTML = ''
+      el.renderButton()
+
+    }
   }
 }
 
