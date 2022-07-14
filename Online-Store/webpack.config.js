@@ -57,7 +57,7 @@ const config = {
         }, 'resolve-url-loader', {
           loader: 'sass-loader',
           options: {
-            sourceMap: true, // <-- !!IMPORTANT!!
+            sourceMap: true,
           },
         }],
       },
@@ -67,8 +67,6 @@ const config = {
 
       },
 
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
   resolve: {

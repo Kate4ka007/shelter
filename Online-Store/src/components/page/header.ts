@@ -115,8 +115,8 @@ class Header {
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
 
-    const button = new ButtonMain('Bye now', 'button', headerTitleButton, count);
-    button.renderButton();
+    const button = new ButtonMain('Bye now', 'button-main', headerTitleButton, count);
+    button.renderButton();    
     header.appendChild(headerTop);
     header.appendChild(headerNav);
     header.appendChild(headerBottom);
@@ -127,6 +127,7 @@ class Header {
 
 
   renderCountInCart(parent: HTMLElement) {
+    console.log('cart')
     const cartSpan = document.createElement('span');
     let len = localStorage.getItem('product');
     len = JSON.parse(len);

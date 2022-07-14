@@ -1,5 +1,8 @@
 import IProduct from "../intefaces/IProduct";
 import cartProductList from '../cart/cartList';
+import ProductCard from "../productCard";
+import prod from '../../index'
+import { head } from "../page/header";
 
 class ButtonMain {
   _content: string;
@@ -7,7 +10,7 @@ class ButtonMain {
   _parent: HTMLDivElement;
   _data: IProduct;
 
-  constructor(content: string, selector: string, parent: HTMLDivElement, data: any) {
+  constructor(content: string, selector: string, parent: HTMLDivElement, data: any, callback?: () => void) {
     this._content = content
     this._selector = selector
     this._parent = parent
@@ -20,8 +23,7 @@ class ButtonMain {
     mainBottom.textContent = `${this._content}`
     this._parent.appendChild(mainBottom)
 
-    mainBottom.addEventListener('click', () => {
-
+    mainBottom.addEventListener('click', () => {      
       this.hangleSetStorage(this, this._data);
     })
   }

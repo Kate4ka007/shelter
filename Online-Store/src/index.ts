@@ -1,24 +1,27 @@
 import IProduct from './components/intefaces/IProduct';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index'
 import './styles.scss';
 import ProductCard, { callback } from './components/productCard';
 import PRODUCT from '../server/product';
 import './components/page/header';
 import Main from './components/page/main';
+import {MDCSlider, MDCSliderFoundation} from '@material/slider'; 
+
+import noUiSlider, { PipsMode } from 'nouislider';
+
+/* import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';  */
+
 import SortButton from './components/buttons/sortButton';
 
-/* (async () => {
-  let dataProd: IProduct[] = await(await fetch('../server/product.json')).json();
-
-  console.log(dataProd);
-  prod.render(dataProd)
-})(); */
 let dataProd: IProduct[] = PRODUCT;
-export type stateType = { key: 'active' | 'inactive' }
-
 
 class Product {
-  _dataProd: IProduct[] = dataProd
-  static state: stateType = { key: 'inactive' }
+  _dataProd: IProduct[] = dataProd;
+  _dataProdFiltr: IProduct[] = this._dataProd;
+
   render(dataProd: Array<IProduct>) {
     dataProd.forEach(({ id, title, description, price, rating, image, category, release, color, countInStock }) => {
       const newCard = new ProductCard({ id, title, description, price, rating, image, category, release, color, countInStock }, callback)
@@ -28,15 +31,41 @@ class Product {
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'button-container';
     (document.querySelector('.main') as HTMLDivElement).appendChild(buttonContainer)
-    const sortButton = document.createElement('button');
-    sortButton.className = 'sort-button';
-    sortButton.textContent = "sort by price";
-    buttonContainer.appendChild(sortButton);
-    sortButton.addEventListener('click', () => {
-      prod.sortProducts(SortType.Price)
-    })
 
-    const reset = new SortButton('reset-button', 'reset', this._dataProd, buttonContainer, () => {
+
+    const sortButton = new SortButton('btn btn-outline-success btn-sort-price', 'Sort by price MIN-MAX', this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.PriceMin)
+    });
+    sortButton.render();
+
+
+    const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', 'Sort by price MAX-MIN', this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.PriceMax)
+    });
+    sortButtonMax.render();
+
+
+    const sortRating = new SortButton('btn btn-outline-success btn-sort-rating', 'Sort by rating', this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.Rating)
+    });
+    sortRating.render();
+
+    const sortTitle = new SortButton('btn btn-outline-success btn-sort-title', 'Sort A-Z', this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.TitleUp)
+    });
+    sortTitle.render();
+
+    const sortTitleDown = new SortButton('btn btn-outline-success btn-sort-titleDown', 'Sort Z-A', this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.TitleDown)
+    });
+    sortTitleDown.render();
+
+    const reset = new SortButton('btn btn-outline-success btn-reset', 'RESET ALL', this._dataProd, buttonContainer, () => {
       document.querySelector('.main').innerHTML = '';
       buttonContainer.innerHTML = ''
       prod.render(PRODUCT);
@@ -45,18 +74,6 @@ class Product {
       inputColor.forEach(el => el.checked = false);
     });
     reset.render();
-
-    const sortRating = new SortButton('rating-button', 'sort by rating', this._dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
-      prod.sortProducts(SortType.Rating)
-    });
-    sortRating.render();
-
-    const sortCount = new SortButton('count-button', 'sort by count', this._dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
-      prod.sortProducts(SortType.Count)
-    });
-    sortCount.render();
 
   }
 
@@ -88,66 +105,110 @@ class Product {
     document.body.appendChild(checkContainer);
   }
 
-  modal() {
+
+  typeCheckRender() {
+    const checkContainerCategory = document.createElement('div');
+    const checkboxesCategory = document.createElement('div');
+    checkboxesCategory.className = 'checkboxes-category';
+    let arr: Array<string> = [];
+    this._dataProd.map(el => arr.push(el.category));
+    let categoryCheckItems = new Set(arr);
+
+    categoryCheckItems.forEach((data) => {
+      const inputCategory = document.createElement('input');
+      inputCategory.className = 'category-checkbox';
+      inputCategory.type = 'checkbox';
+      inputCategory.id = data;
+      inputCategory.name = data;
+      inputCategory.checked = true;
+      checkboxesCategory.appendChild(inputCategory);
+      const labeltCategory = document.createElement('label');
+      labeltCategory.className = 'check-category__label';
+      labeltCategory.htmlFor = data;
+      labeltCategory.textContent = data;
+      checkboxesCategory.appendChild(labeltCategory);
+    });
+
+    (checkContainerCategory as HTMLDivElement).appendChild(checkboxesCategory);
+    document.body.appendChild(checkContainerCategory);
+  }
+
+
+
+  notFound() {
+    const notFound = document.createElement('div');
+    notFound.className = 'alert-window';
+    notFound.innerHTML = `<div class="alert alert-danger" role="alert">
+    <strong>Oh snap!</strong> Change a few things up and try submitting again (no matches found).
+  </div>`
+    document.querySelector('.main').appendChild(notFound)
+  }
+
+  modal(data: IProduct) {
+
+    const modalWindowWrapper = document.createElement('div');
+    modalWindowWrapper.className = 'modal-wrapper';
+    const modalWindow = document.createElement('div');
+    modalWindow.className = 'modals';
+    modalWindow.innerHTML = `<div class="modals__img-wrapper">                                  
+    <img class="modals__img" src=${data.image} alt=${data.category}>
+    </div>
+    <div class="modals__title-wrapper">
+      <p class="modals__title">${data.title}</p>
+      <p class="modals__decribtion">${data.description}</p>          
+      <div class="modals__rating-wrapper">
+        <img class="modals__star" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+          <div class="modals__rating">${data.rating.rate}</div>
+          <div class="modals__reviews">${data.rating.count} Reviews</div>          
+          <div class="modals__price">$ ${data.price}</div>          
+      </div>
+      <div class="modals__countstorage">In stock ${data.countInStock} pieces</div>
+      <div class="modals__release">Released in ${data.release}</div>
+      <button type="button" class='btn btn-outline-success modals__close'>Close</button>     
+    </div>`;
+
+    modalWindowWrapper.appendChild(modalWindow)
+    document.body.appendChild(modalWindowWrapper)
+    const closeBtn = document.querySelector('.modals__close')! as HTMLDivElement;
+    closeBtn.addEventListener('click', () => {
+      modalWindowWrapper.remove();
+    })
+
 
   }
 
 
- 
   sortProducts(type: SortType) {
     let arr: Array<IProduct> = []
     this._dataProd.forEach(elememt => {
       arr.push(elememt)
     })
     let sortArr;
-      if(type === SortType.Price) {
-        sortArr = arr.sort((a, b) => a.price - b.price)
-      } else if(type === SortType.Rating) {
-        sortArr = arr.sort((a, b) => a.rating.rate - b.rating.rate)
-      } else if (type === SortType.Count) {
-        sortArr = arr.sort((a, b) => a.rating.count - b.rating.count)
-      }
-    
-    //const sortProd = new Product()
+    if (type === SortType.PriceMin) {
+      sortArr = arr.sort((a, b) => a.price - b.price)
+    } else if (type === SortType.PriceMax) {
+      sortArr = arr.sort((a, b) => b.price - a.price)
+    } else if (type === SortType.Rating) {
+      sortArr = arr.sort((a, b) => a.rating.rate - b.rating.rate)
+    } else if (type === SortType.Count) {
+      sortArr = arr.sort((a, b) => a.rating.count - b.rating.count)
+    } else if (type === SortType.Realise) {
+      sortArr = arr.sort((a, b) => a.release - b.release)
+    } else if (type === SortType.TitleUp) {
+      sortArr = arr.sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      })
+    } else if (type === SortType.TitleDown) {
+      sortArr = arr.sort((a, b) => {
+        return b.title.localeCompare(a.title);
+      })
+    }
+
+
     document.querySelector('.main').innerHTML = ''
     prod.render(sortArr)
 
   }
-
-  /* sortRating() {
-    let arr: Array<IProduct> = []
-    this._dataProd.forEach(elememt => {
-      arr.push(elememt)
-    })
-    const sortArrR = arr.sort((a, b) => a.rating.rate - b.rating.rate)
-    //const sortProd = new Product()
-    document.querySelector('.main').innerHTML = ''
-    prod.render(sortArrR)
-
-  } */
-
-  /* sortCount() {
-    let arr: Array<IProduct> = []
-    this._dataProd.forEach(elememt => {
-      arr.push(elememt)
-    })
-    const sortArrCount = arr.sort((a, b) => a.rating.count - b.rating.count)
-   // const sortProd = new Product()
-    document.querySelector('.main').innerHTML = ''
-    prod.render(sortArrCount)
-  } */
-/* 
-  filter() {
-    let arr: Array<IProduct> = []
-    this._dataProd.forEach(elememt => {
-      arr.push(elememt);
-    })
-    const filterArrCount = arr.filter((a) => a.color === 'red')
-    const sortProd = new Product();
-    document.querySelector('.main').innerHTML = '';
-    sortProd.render(filterArrCount);
-  } */
-
 }
 const main = new Main();
 main.render();
@@ -155,30 +216,44 @@ main.render();
 const prod = new Product();
 prod.render(prod._dataProd);
 prod.colorCheckRender();
+prod.typeCheckRender()
 
 const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeListOf<HTMLInputElement>;
 colorCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
     (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
-    const newData = filteres(dataProd)
+    const newData = filteres(dataProd, colorCheckboxes)
     prod.render(newData)
     prod._dataProd = newData;
   })
 });
 
-function check() {
+
+
+const categoryCheckboxes = document.querySelectorAll('.category-checkbox') as NodeListOf<HTMLInputElement>;
+console.log(categoryCheckboxes)
+categoryCheckboxes.forEach(el => {
+  el.addEventListener('change', () => {
+    console.log(el);
+    (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
+    const newData = filterCategory(dataProd, categoryCheckboxes)
+    prod.render(newData)
+    prod._dataProd = newData;
+  })
+});
+
+function check(type: NodeListOf<HTMLInputElement>) {
   let ideas: Array<string> = []
-  for (let i = 0; i < colorCheckboxes.length; i++) {
-    if (colorCheckboxes[i].checked === true) {
-      ideas.push(colorCheckboxes[i].id)
+  for (let i = 0; i < type.length; i++) {
+    if (type[i].checked === true) {
+      ideas.push(type[i].id)
     }
   } return ideas;
 }
 
 
-
-function filteres(data: IProduct[]) {
-  let dfg = check();
+function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
+  let dfg = check(type);
   let newData: IProduct[] = [];
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < dfg.length; j++) {
@@ -189,22 +264,69 @@ function filteres(data: IProduct[]) {
     }
   }
   if (newData.length === 0) {
-    newData = dataProd;
+    prod.notFound()
   }
   return newData
 }
 
-/* const rr = PRODUCT.find(el => el.id == 24)
-console.log(rr) */
+
+function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
+  let dfg = check(type);
+  let newData: IProduct[] = [];
+  for (let i = 0; i < data.length; i++) {
+    for (let j = 0; j < dfg.length; j++) {
+      if (dfg[j] === data[i].category) {
+        if (!newData.includes(data[i]))
+          newData.push(data[i])
+      }
+    }
+  }
+  if (newData.length === 0) {
+    prod.notFound()
+  }
+  return newData
+}
 
 
 enum SortType {
-  Price = 'price',
+  PriceMin = 'priceMin',
+  PriceMax = 'priceMax',
   Count = 'count',
-  Rating = 'rate'
+  Rating = 'rate',
+  TitleUp = 'titleUp',
+  TitleDown = 'titleDown',
+  Realise = 'release'
 }
 
-export default { dataProd, prod, Product };
+const sl = document.createElement('div');
+sl.className = "slider";
+sl.id = "slider"; 
 
+document.body.appendChild(sl);
+var slider = document.getElementById('slider');
+
+noUiSlider.create(slider, {
+    start: [20, 80],
+    connect: true,
+    range: {
+        'min': 0,
+        '10%': 50,
+        '20%': 100,
+        '30%': 150,
+        '40%': 500,
+        '50%': 800,
+        'max': 100
+    },
+});
+
+/* slider.noUiSlider.on('update', (values, handle) => {
+  quantityBegin.innerText = parseInt(values[0]);
+  quantityEnd.innerText = parseInt(values[1]);
+}); */
+
+
+
+
+export default { dataProd, prod, Product };
 
 

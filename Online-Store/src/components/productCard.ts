@@ -1,6 +1,8 @@
 import IProduct from "./intefaces/IProduct";
 import ButtonMain from "./buttons/button-main";
-import cartProductList from './cart/cartList'
+import cartProductList from './cart/cartList';
+import prod from '../index'
+import { head } from "./page/header";
 
 class ProductCard {
   _data: IProduct;
@@ -17,7 +19,7 @@ class ProductCard {
     if (store.indexOf(this._data.id) === -1) {
       textActive = 'Add to cart'
       classActive = `button`
-      
+
     } else {
       textActive = 'Remove from cart'
       classActive = 'button_active'
@@ -27,7 +29,7 @@ class ProductCard {
     prodItem.className = 'prod-item';
     const contentWrapper = <HTMLDivElement>document.createElement('div');
     contentWrapper.className = 'content-wrapper'
-    
+
 
 
     contentWrapper.innerHTML = `<div class="prod-img-wrapper">                                  
@@ -45,41 +47,53 @@ class ProductCard {
                                   </div>`
     const buttonWrapper = document.createElement('div')
     buttonWrapper.className = 'button-wrapper';
-  
-    
+
+
     const cartHeart = document.createElement('div')
     cartHeart.title = "Add to Favorite"
     let idd: number | string = this._data.id
     idd = 'favoriteProduct-' + idd.toString()
-    
-    if(localStorage.getItem(idd)) {
+
+    if (localStorage.getItem(idd)) {
       cartHeart.className = 'card-heart_active'
     } else {
       cartHeart.className = 'card-heart'
     }
 
-    const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data)
+    const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data, () => {
+      prod.prod.modal(this._data)
+      const cart = document.querySelector('.cart') as HTMLDivElement;
+    })
+
     button.renderButton()
+
 
     prodItem.appendChild(cartHeart)
     prodItem.appendChild(contentWrapper)
     prodItem.appendChild(buttonWrapper)
 
-    cartHeart.addEventListener('click', () => {          
+    cartHeart.addEventListener('click', () => {
       let idd: number | string = this._data.id
       idd = 'favoriteProduct-' + idd.toString()
-      if(localStorage.getItem(idd)) {
+      if (localStorage.getItem(idd)) {
         cartHeart.className = 'card-heart'
         localStorage.removeItem(idd)
-        
-      } else {      
+
+      } else {
         cartHeart.className = 'card-heart_active'
         localStorage.setItem(idd, 'card-heart_active')
       }
 
     })
-    /* <div class="item-descb">${this._data.description.split('').splice(0, 80).join('') + '...'}</div> */
-    document.querySelector('.main').appendChild(prodItem);    
+
+    contentWrapper.addEventListener('click', (e) => {
+      if (e.currentTarget === contentWrapper) {
+        prod.prod.modal(this._data)
+      }
+
+    })
+
+    document.querySelector('.main').appendChild(prodItem);
   }
 }
 
