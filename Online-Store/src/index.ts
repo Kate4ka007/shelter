@@ -7,13 +7,14 @@ import ProductCard, { callback } from './components/productCard';
 import PRODUCT from '../server/product';
 import './components/page/header';
 import Main from './components/page/main';
-import {MDCSlider, MDCSliderFoundation} from '@material/slider'; 
+//import {MDCSlider, MDCSliderFoundation} from '@material/slider'; 
 
 //import noUiSlider from 'nouislider';
 import * as noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';  
+import 'nouislider/dist/nouislider.css';
 
 import SortButton from './components/buttons/sortButton';
+import { head } from './components/page/header';
 
 let dataProd: IProduct[] = PRODUCT;
 
@@ -35,6 +36,8 @@ class Product {
     const sortButton = new SortButton('btn btn-outline-success btn-sort-price', 'Sort by price MIN-MAX', this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMin)
+      buttonContent()
+      
     });
     sortButton.render();
 
@@ -42,35 +45,41 @@ class Product {
     const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', 'Sort by price MAX-MIN', this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMax)
+      buttonContent()
     });
     sortButtonMax.render();
 
 
-    const sortRating = new SortButton('btn btn-outline-success btn-sort-rating', 'Sort by rating', this._dataProd, buttonContainer, () => {
+    const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', 'Sort by rating', this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.Rating)
+      buttonContent()
     });
     sortRating.render();
 
-    const sortTitle = new SortButton('btn btn-outline-success btn-sort-title', 'Sort A-Z', this._dataProd, buttonContainer, () => {
+    const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', 'Sort A-Z', this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.TitleUp)
+      buttonContent()
     });
+    
     sortTitle.render();
 
-    const sortTitleDown = new SortButton('btn btn-outline-success btn-sort-titleDown', 'Sort Z-A', this._dataProd, buttonContainer, () => {
+    const sortTitleDown = new SortButton('btn btn-outline-primary btn-sort-titleDown', 'Sort Z-A', this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.TitleDown)
+      buttonContent()
     });
     sortTitleDown.render();
 
-    const reset = new SortButton('btn btn-outline-success btn-reset', 'RESET ALL', this._dataProd, buttonContainer, () => {
+    const reset = new SortButton('btn btn-outline-danger btn-reset', 'RESET ALL', this._dataProd, buttonContainer, () => {
       document.querySelector('.main').innerHTML = '';
       buttonContainer.innerHTML = ''
       prod.render(PRODUCT);
       prod._dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
       inputColor.forEach(el => el.checked = true);
+      buttonContent()
     });
     reset.render();
 
@@ -160,10 +169,10 @@ class Product {
           <div class="modals__rating">${data.rating.rate}</div>
           <div class="modals__reviews">${data.rating.count} Reviews</div>          
           <div class="modals__price">$ ${data.price}</div>          
-      </div>
-      <div class="modals__countstorage">In stock ${data.countInStock} pieces</div>
+      </div>      
       <div class="modals__release">Released in ${data.release}</div>
-      <button type="button" class='btn btn-outline-success modals__close'>Close</button>     
+      <div class="modals__countstorage">In stock ${data.countInStock} pieces</div>
+      <button type="button" class='btn btn-success modals__close'>Close</button>     
     </div>`;
 
     modalWindowWrapper.appendChild(modalWindow)
@@ -171,9 +180,15 @@ class Product {
     const closeBtn = document.querySelector('.modals__close')! as HTMLDivElement;
     closeBtn.addEventListener('click', () => {
       modalWindowWrapper.remove();
+      document.body.style.overflow = 'visible';
     })
 
-
+    modalWindowWrapper.addEventListener('click', (e) => {
+      if (e.target === modalWindowWrapper) {
+        modalWindowWrapper.remove();
+        document.body.style.overflow = 'visible';
+      }
+    })
   }
 
 
@@ -270,9 +285,9 @@ function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       }
     }
   }
-/*   if (newData.length === 0) {
-    prod.notFound()
-  } */
+  /*   if (newData.length === 0) {
+      prod.notFound()
+    } */
   return newData
 }
 
@@ -288,9 +303,9 @@ function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       }
     }
   }
-/*   if (newData.length === 0) {
-    prod.notFound()
-  } */
+  /*   if (newData.length === 0) {
+      prod.notFound()
+    } */
   return newData
 }
 
@@ -305,46 +320,52 @@ enum SortType {
   Realise = 'release'
 }
 
+
+const rangeContainer = document.createElement('div');
+
+const rangeWrapper = document.createElement('div');
+rangeWrapper.className = "ranger-wrapper";
+rangeContainer.className = "range-container";
+
+
 const sl = document.createElement('div');
 sl.className = "slider";
-sl.id = "slider"; 
+sl.id = "slider";
 const spanSliderMin = document.createElement('div');
 spanSliderMin.className = 'span-slider-min';
 const spanSliderMax = document.createElement('div');
 spanSliderMax.className = 'span-slider-max';
 
 
-document.body.appendChild(sl);
-document.body.appendChild(spanSliderMin);
-document.body.appendChild(spanSliderMax);
+rangeContainer.appendChild(rangeWrapper);
+rangeWrapper.appendChild(spanSliderMin);
+rangeWrapper.appendChild(spanSliderMax);
+rangeContainer.appendChild(sl)
+document.body.appendChild(rangeContainer);
 var slider = document.getElementById('slider') as noUiSlider.target;
-const tumb = document.querySelector('.noUi-handle-lower')
-console.log(tumb)
-
-
 
 noUiSlider.create(slider, {
-    start: [0, 1000],
-    connect: true,
-    step: 1,
-    range: {
-        'min': 0,
-        'max': 1000
-    }   
-    
+  start: [0, 1000],
+  connect: true,
+  step: 1,
+  range: {
+    'min': 0,
+    'max': 1000
+  }
+
 });
 
 slider.noUiSlider.on('update', (values, handle) => {
-console.log(Math.round(Number(values[0])))
-console.log(Math.round(Number(values[1])))
+  console.log(Math.round(Number(values[0])))
+  console.log(Math.round(Number(values[1])))
 
-const data = prod._dataProd;
-const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) &&  el.price <= Math.round(Number(values[1])));
-(document.querySelector('.main') as HTMLDivElement).innerHTML = '';
-console.log(dataPrice)
-prod.render(dataPrice)
-  spanSliderMin.innerText =  '$ ' + parseInt((values[0]).toString()).toString();
-  spanSliderMax.innerText =  '$ ' + parseInt((values[1]).toString()).toString();
+  const data = prod._dataProd;
+  const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) && el.price <= Math.round(Number(values[1])));
+  (document.querySelector('.main') as HTMLDivElement).innerHTML = '';
+  console.log(dataPrice)
+  prod.render(dataPrice)
+  spanSliderMin.innerText = '$ ' + parseInt((values[0]).toString()).toString();
+  spanSliderMax.innerText = '$ ' + parseInt((values[1]).toString()).toString();
 });
 
 
@@ -352,13 +373,36 @@ const search = document.querySelector('.input-search') as HTMLInputElement;
 search.addEventListener('change', () => {
   console.log(search.value)
   const data = dataProd;
-  const searchData =  data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
+  const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
   console.log(searchData);
   (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
   prod.render(searchData)
 })
 
+const cart = document.querySelector('.cart-content') as HTMLDivElement
 
+
+const but = Array.from(document.querySelectorAll('.button'));
+const butAct = Array.from(document.querySelectorAll('.button_active'));
+
+but.forEach(el => {
+  el.addEventListener('click', () => {
+    head.renderCountInCart(cart)
+  }) 
+})
+
+butAct.forEach(el => {
+  el.addEventListener('click', () => {
+    head.renderCountInCart(cart)
+  }) 
+})
+
+const buttonContent = () => {
+  document.querySelector('.btn-sort-title').innerHTML = `Sort <img class='az' src="assets/images/az.png" alt=''>`
+  document.querySelector('.btn-sort-titleDown').innerHTML = `Sort <img class='za' src="assets/images/za.png" alt=''>`
+  
+}
+buttonContent()
 
 
 

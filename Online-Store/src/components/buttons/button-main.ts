@@ -1,9 +1,5 @@
 import IProduct from "../intefaces/IProduct";
 import cartProductList from '../cart/cartList';
-import ProductCard from "../productCard";
-import prod from '../../index'
-import { head } from "../page/header";
-import Header from '../page/header'
 
 class ButtonMain {
   _content: string;
@@ -25,7 +21,7 @@ class ButtonMain {
     this._parent.appendChild(mainBottom)
 
     mainBottom.addEventListener('click', () => {      
-      this.hangleSetStorage(this, this._data);   
+      this.hangleSetStorage(this, this._data);  
     })
   }
 

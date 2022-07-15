@@ -61,16 +61,15 @@ class ProductCard {
     }
 
     const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data, () => {
-      prod.prod.modal(this._data)
-      
+      prod.prod.modal(this._data)                
     })
 
-    button.renderButton()
+    button.renderButton();
 
 
-    prodItem.appendChild(cartHeart)
-    prodItem.appendChild(contentWrapper)
-    prodItem.appendChild(buttonWrapper)
+    prodItem.appendChild(cartHeart);
+    prodItem.appendChild(contentWrapper);
+    prodItem.appendChild(buttonWrapper);
 
     cartHeart.addEventListener('click', () => {
       let idd: number | string = this._data.id
@@ -89,8 +88,9 @@ class ProductCard {
     contentWrapper.addEventListener('click', (e) => {
       if (e.currentTarget === contentWrapper) {
         prod.prod.modal(this._data)
+        document.body.style.overflow = 'hidden'
+        document.body.style.height = '100vh';
       }
-
     })
 
     document.querySelector('.main').appendChild(prodItem);

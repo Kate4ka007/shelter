@@ -7,12 +7,13 @@ class Header {
     const headerTop = document.createElement('div');
     headerTop.className = 'header-top';
     const logo = document.createElement('div');
-    logo.className = 'logo';
+    logo.className = 'header__logo';
+    logo.classList.add('logo')
     const logoSpanFirst = document.createElement('span')
-    logoSpanFirst.className = 'logo-span-first';
+    logoSpanFirst.className = 'logo__span-first';
     logoSpanFirst.textContent = "Shop"
     const logoSpanSecond = document.createElement('span')
-    logoSpanSecond.className = 'logo-span-second';
+    logoSpanSecond.className = 'logo__span-second';
     logoSpanSecond.textContent = "per";
     logo.appendChild(logoSpanFirst)
     logo.appendChild(logoSpanSecond)
@@ -24,14 +25,18 @@ class Header {
 
     const cart = document.createElement('div');
     cart.className = 'cart';
+    const cartContent = document.createElement('div');
+    cartContent.className = 'cart-content'
 
     const shopingBag = document.createElement('img');
     shopingBag.src = 'assets/images/shopping-bag.png';
     shopingBag.className = 'shoping-bag-img'
+
     cart.appendChild(shopingBag)
+    cart.appendChild(cartContent)
 
     let count = 0;
-    this.renderCountInCart(cart)
+    this.renderCountInCart(cartContent)
 
     const login = document.createElement('div');
     login.className = 'login';
@@ -127,7 +132,7 @@ class Header {
 
 
   renderCountInCart(parent: HTMLElement) {
-    console.log('cart')
+    parent.innerHTML = ''
     const cartSpan = document.createElement('span');
     let len = localStorage.getItem('product');
     len = JSON.parse(len);
