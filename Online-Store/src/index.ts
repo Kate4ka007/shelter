@@ -9,10 +9,9 @@ import './components/page/header';
 import Main from './components/page/main';
 import {MDCSlider, MDCSliderFoundation} from '@material/slider'; 
 
-import noUiSlider, { PipsMode } from 'nouislider';
-
-/* import * as noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';  */
+//import noUiSlider from 'nouislider';
+import * as noUiSlider from 'nouislider';
+import 'nouislider/dist/nouislider.css';  
 
 import SortButton from './components/buttons/sortButton';
 
@@ -71,7 +70,7 @@ class Product {
       prod.render(PRODUCT);
       prod._dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
-      inputColor.forEach(el => el.checked = false);
+      inputColor.forEach(el => el.checked = true);
     });
     reset.render();
 
@@ -303,10 +302,10 @@ sl.className = "slider";
 sl.id = "slider"; 
 
 document.body.appendChild(sl);
-var slider = document.getElementById('slider');
+var slider = document.getElementById('slider') as noUiSlider.target;;
 
 noUiSlider.create(slider, {
-    start: [20, 80],
+    start: [0, 215000],
     connect: true,
     range: {
         'min': 0,
@@ -315,14 +314,22 @@ noUiSlider.create(slider, {
         '30%': 150,
         '40%': 500,
         '50%': 800,
-        'max': 100
+        'max': 215000
     },
 });
 
-/* slider.noUiSlider.on('update', (values, handle) => {
-  quantityBegin.innerText = parseInt(values[0]);
-  quantityEnd.innerText = parseInt(values[1]);
-}); */
+slider.noUiSlider.on('update', (values, handle) => {
+console.log(Math.round(Number(values[0])))
+console.log(Math.round(Number(values[1])))
+
+const data = prod._dataProd;
+const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) &&  el.price <= Math.round(Number(values[1])));
+(document.querySelector('.main') as HTMLDivElement).innerHTML = '';
+console.log(dataPrice)
+prod.render(dataPrice)
+/*   quantityBegin.innerText =  Math.round(Number(values[0]));
+  quantityEnd.innerText =  Math.round(Number(values[1])); */
+});
 
 
 
