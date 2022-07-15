@@ -221,8 +221,12 @@ const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeList
 colorCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
     (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
-    const newData = filteres(dataProd, colorCheckboxes)
+    let newData = filteres(dataProd, colorCheckboxes)
+    newData = filterCategory(newData, categoryCheckboxes)
     prod.render(newData)
+    if (newData.length === 0) {
+      prod.notFound()
+    }
     prod._dataProd = newData;
   })
 });
@@ -235,8 +239,12 @@ categoryCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
     console.log(el);
     (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
-    const newData = filterCategory(dataProd, categoryCheckboxes)
+    let newData = filterCategory(dataProd, categoryCheckboxes)
+    newData = filteres(newData, colorCheckboxes)
     prod.render(newData)
+    if (newData.length === 0) {
+      prod.notFound()
+    }
     prod._dataProd = newData;
   })
 });
@@ -262,9 +270,9 @@ function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       }
     }
   }
-  if (newData.length === 0) {
+/*   if (newData.length === 0) {
     prod.notFound()
-  }
+  } */
   return newData
 }
 
@@ -280,9 +288,9 @@ function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       }
     }
   }
-  if (newData.length === 0) {
+/*   if (newData.length === 0) {
     prod.notFound()
-  }
+  } */
   return newData
 }
 
@@ -300,22 +308,30 @@ enum SortType {
 const sl = document.createElement('div');
 sl.className = "slider";
 sl.id = "slider"; 
+const spanSliderMin = document.createElement('div');
+spanSliderMin.className = 'span-slider-min';
+const spanSliderMax = document.createElement('div');
+spanSliderMax.className = 'span-slider-max';
+
 
 document.body.appendChild(sl);
-var slider = document.getElementById('slider') as noUiSlider.target;;
+document.body.appendChild(spanSliderMin);
+document.body.appendChild(spanSliderMax);
+var slider = document.getElementById('slider') as noUiSlider.target;
+const tumb = document.querySelector('.noUi-handle-lower')
+console.log(tumb)
+
+
 
 noUiSlider.create(slider, {
-    start: [0, 215000],
+    start: [0, 1000],
     connect: true,
+    step: 1,
     range: {
         'min': 0,
-        '10%': 50,
-        '20%': 100,
-        '30%': 150,
-        '40%': 500,
-        '50%': 800,
-        'max': 215000
-    },
+        'max': 1000
+    }   
+    
 });
 
 slider.noUiSlider.on('update', (values, handle) => {
@@ -327,13 +343,28 @@ const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) 
 (document.querySelector('.main') as HTMLDivElement).innerHTML = '';
 console.log(dataPrice)
 prod.render(dataPrice)
-/*   quantityBegin.innerText =  Math.round(Number(values[0]));
-  quantityEnd.innerText =  Math.round(Number(values[1])); */
+  spanSliderMin.innerText =  '$ ' + parseInt((values[0]).toString()).toString();
+  spanSliderMax.innerText =  '$ ' + parseInt((values[1]).toString()).toString();
 });
+
+
+const search = document.querySelector('.input-search') as HTMLInputElement;
+search.addEventListener('change', () => {
+  console.log(search.value)
+  const data = dataProd;
+  const searchData =  data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
+  console.log(searchData);
+  (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
+  prod.render(searchData)
+})
+
+
 
 
 
 
 export default { dataProd, prod, Product };
+
+
 
 

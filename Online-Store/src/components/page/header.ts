@@ -141,6 +141,6 @@ class Header {
 export const head = new Header();
 head.render()
 
-export default { Header }
+export default Header;
 
 

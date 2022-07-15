@@ -62,7 +62,7 @@ class ProductCard {
 
     const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data, () => {
       prod.prod.modal(this._data)
-      const cart = document.querySelector('.cart') as HTMLDivElement;
+      
     })
 
     button.renderButton()

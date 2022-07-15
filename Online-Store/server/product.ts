@@ -303,15 +303,15 @@ import IProduct from '../src/components/intefaces/IProduct'
   },
   {
     "id": 26,
-    "title": "Ferrari Portofino 2021",
-    "price": 215000,
-    "description": "Ferrari has chosen a particularly evocative moniker for this exceptionally versatile drop-top car, referencing one of Italy’s most beautiful towns. Portofino is renowned for its charming tourist port and, over the years, has become internationally synonymous with elegance, sportiness and understated luxury. The launch colour of the new Ferrari has also been dedicated to this marvellous town: Rosso Portofino. A Ferrari designed to be driven every day that also effortlessly converts from an authentic ‘berlinetta’ coupé to a drop-top capable of delivering a unique Ferrari soundtrack and superb driving pleasure even in day-to-day situations.",
+    "title": "OLYMPUS Tough TG-6 Waterproof Camera, Red",
+    "price": 425,
+    "description": "Water proof (50 feet /15 meter), dust proof, shock proof (7 feet / 2.1 meter), crush proof (100 kgf), freeze proof (14 degree Fahrenheit / -10 degree Celsius), anti-fog. High resolution F2.0 lens, maximum 8x zoom, true pic VIII, back illuminated CMOS image sensor. Variable macro system comprised of 4 macro shooting modes, magnified shooting up to 1 centimeter from the end of the lens 5 underwater shooting modes including underwater microscope, 3 underwater white balance modes 4K movie and full HD 120 fps high speed movies can be recorded. Battery life - Approx. 340 Images (using Toshiba SDHC UHS-I Card Exceria with is on, based on CIPA testing standards). Approx. 50 minutes (under standard JEITA testing). Approx. 110 minutes (when zoom and other operational functions are not used). When repeatedly recording at the maximum time of 29 minutes",
     "category": "electronics",
-    "image": "https://autoiwc.ru/images/ferrari/ferrari-portofino.webp",
-    "rating": { "rate": 5, "count": 32 },
+    "image": "https://m.media-amazon.com/images/I/61J18Xn9bfS._AC_SX466_.jpg",
+    "rating": { "rate": 4.5, "count": 89 },
     "color": "red",
-    "release": 2021,
-    "countInStock": 2
+    "release": 2019,
+    "countInStock": 8
   },
   {
     "id": 27,
