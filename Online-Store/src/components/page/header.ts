@@ -2,7 +2,7 @@ import ButtonMain from "../buttons/button-main";
 
 class Header {
   render() {
-    const header = document.createElement('div');
+    const header = document.createElement('header');
     header.className = 'header';
     const headerTop = document.createElement('div');
     headerTop.className = 'header-top';

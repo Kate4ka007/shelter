@@ -1,8 +1,17 @@
 class Main {
   render() {
-    const mainRoot = document.createElement('div');
-    mainRoot.className = 'main';
-    document.querySelector('.root').appendChild(mainRoot);
+    const cards = document.createElement('div');
+    cards.className = 'cards';
+
+    const filters = document.createElement('div');
+    filters.className = 'root__filters';
+    const main = document.createElement('main')
+    main.className = 'main';
+    main.appendChild(cards);
+    main.appendChild(filters);
+
+    
+    document.querySelector('.root').appendChild(main);   
   }
 }
 

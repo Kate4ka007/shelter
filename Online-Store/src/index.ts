@@ -16,72 +16,118 @@ import 'nouislider/dist/nouislider.css';
 import SortButton from './components/buttons/sortButton';
 import { head } from './components/page/header';
 
-let dataProd: IProduct[] = PRODUCT;
+//let dataProd: IProduct[] = PRODUCT;
 
 class Product {
-  _dataProd: IProduct[] = dataProd;
-  _dataProdFiltr: IProduct[] = this._dataProd;
+  _dataProd: IProduct[] = PRODUCT;
 
-  render(dataProd: Array<IProduct>) {
-    dataProd.forEach(({ id, title, description, price, rating, image, category, release, color, countInStock }) => {
+
+  render(data: Array<IProduct>) {
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'button-container';
+    (document.querySelector('.cards') as HTMLDivElement).appendChild(buttonContainer)
+
+    data.forEach(({ id, title, description, price, rating, image, category, release, color, countInStock }) => {
       const newCard = new ProductCard({ id, title, description, price, rating, image, category, release, color, countInStock }, callback)
       newCard.createCard();
     })
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'button-container';
-    (document.querySelector('.main') as HTMLDivElement).appendChild(buttonContainer)
 
 
-    const sortButton = new SortButton('btn btn-outline-success btn-sort-price', 'Sort by price MIN-MAX', this._dataProd, buttonContainer, () => {
+    const titleDownContent = `Name <img class='za' src="assets/images/za.png" alt=''><img class='sort-down' src="assets/images/up.png" alt=''>`
+    const priceContent = `Price <img class='min' src="assets/images/123.png" alt=''>`
+    const priceMaxContent = `Price <img class='max' src="assets/images/321.png" alt=''>`
+    const ratingContent = `Rating <img class='max' src="assets/images/rating.png" alt=''><img class='sort-rating' src="assets/images/up.png" alt=''>`
+    const ratingDownContent = `Rating <img class='max' src="assets/images/rating.png" alt=''><img class='sort-rating-down' src="assets/images/up.png" alt=''>`
+    const releaseContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating' src="assets/images/up.png" alt=''>`
+    const releaseDownContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating-down' src="assets/images/up.png" alt=''>`
+
+
+
+    const sortButton = new SortButton('btn btn-outline-success btn-sort-price', priceContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMin)
-      buttonContent()
-      
+      localStorage.setItem('sorting', 'priceMin')
+
+
     });
     sortButton.render();
 
 
-    const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', 'Sort by price MAX-MIN', this._dataProd, buttonContainer, () => {
+    const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', priceMaxContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMax)
-      buttonContent()
+      localStorage.setItem('sorting', 'priceMax')
+
     });
     sortButtonMax.render();
 
 
-    const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', 'Sort by rating', this._dataProd, buttonContainer, () => {
+    const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', ratingContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.Rating)
-      buttonContent()
+      localStorage.setItem('sorting', 'rate')
+
     });
+
     sortRating.render();
 
-    const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', 'Sort A-Z', this._dataProd, buttonContainer, () => {
+    const sortRatingDown = new SortButton('btn btn-outline-warning btn-sort-ratingdown', ratingDownContent, this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.RatingDown)
+      localStorage.setItem('sorting', 'rateDown')
+
+    });
+
+    sortRatingDown.render();
+
+    const titleContent = `Name <img class='az' src="assets/images/az.png" alt=''><img class='sort-up' src="assets/images/up.png" alt=''>`
+    const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', titleContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.TitleUp)
-      buttonContent()
+      localStorage.setItem('sorting', 'titleUp')
+
     });
-    
+
     sortTitle.render();
 
-    const sortTitleDown = new SortButton('btn btn-outline-primary btn-sort-titleDown', 'Sort Z-A', this._dataProd, buttonContainer, () => {
+    const sortTitleDown = new SortButton('btn btn-outline-primary btn-sort-titleDown', titleDownContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.TitleDown)
-      buttonContent()
+      localStorage.setItem('sorting', 'titleDown')
+
     });
     sortTitleDown.render();
 
+    const sortRealise = new SortButton('btn btn-outline-primary btn-sort-realise', releaseContent, this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.Realise)
+      localStorage.setItem('sorting', 'release')
+
+    });
+    sortRealise.render();
+
+    const sortRealiseDown = new SortButton('btn btn-outline-primary btn-sort-realisedown', releaseDownContent, this._dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = ''
+      prod.sortProducts(SortType.RealiseDown)
+      localStorage.setItem('sorting', 'releaseDown')
+
+    });
+    sortRealiseDown.render();
+
+
     const reset = new SortButton('btn btn-outline-danger btn-reset', 'RESET ALL', this._dataProd, buttonContainer, () => {
-      document.querySelector('.main').innerHTML = '';
+      document.querySelector('.cards').innerHTML = '';
       buttonContainer.innerHTML = ''
       prod.render(PRODUCT);
       prod._dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
       inputColor.forEach(el => el.checked = true);
-      buttonContent()
+
     });
     reset.render();
+
 
   }
 
@@ -100,7 +146,13 @@ class Product {
       inputColor.type = 'checkbox';
       inputColor.id = data;
       inputColor.name = data;
-      inputColor.checked = true;
+      if (data === localStorage.getItem(data)) {
+        inputColor.checked = false;
+      } else {
+        inputColor.checked = true;
+
+      }
+
       checkboxes.appendChild(inputColor);
       const labeltColor = document.createElement('label');
       labeltColor.className = 'checkbox__label';
@@ -110,7 +162,8 @@ class Product {
     });
 
     (checkContainer as HTMLDivElement).appendChild(checkboxes);
-    document.body.appendChild(checkContainer);
+    document.querySelector('.root__filters').appendChild(checkContainer);
+
   }
 
 
@@ -128,7 +181,14 @@ class Product {
       inputCategory.type = 'checkbox';
       inputCategory.id = data;
       inputCategory.name = data;
-      inputCategory.checked = true;
+
+      if (data === localStorage.getItem(data)) {
+        inputCategory.checked = false;
+      } else {
+        inputCategory.checked = true;
+
+      }
+
       checkboxesCategory.appendChild(inputCategory);
       const labeltCategory = document.createElement('label');
       labeltCategory.className = 'check-category__label';
@@ -138,10 +198,8 @@ class Product {
     });
 
     (checkContainerCategory as HTMLDivElement).appendChild(checkboxesCategory);
-    document.body.appendChild(checkContainerCategory);
+    document.querySelector('.root__filters').appendChild(checkContainerCategory);
   }
-
-
 
   notFound() {
     const notFound = document.createElement('div');
@@ -149,7 +207,7 @@ class Product {
     notFound.innerHTML = `<div class="alert alert-danger" role="alert">
     <strong>Oh snap!</strong> Change a few things up and try submitting again (no matches found).
   </div>`
-    document.querySelector('.main').appendChild(notFound)
+    document.querySelector('.cards').appendChild(notFound)
   }
 
   modal(data: IProduct) {
@@ -202,8 +260,12 @@ class Product {
       sortArr = arr.sort((a, b) => a.price - b.price)
     } else if (type === SortType.PriceMax) {
       sortArr = arr.sort((a, b) => b.price - a.price)
+    } else if (type === SortType.RealiseDown) {
+      sortArr = arr.sort((a, b) => b.release - a.release)
     } else if (type === SortType.Rating) {
       sortArr = arr.sort((a, b) => a.rating.rate - b.rating.rate)
+    } else if (type === SortType.RatingDown) {
+      sortArr = arr.sort((a, b) => b.rating.rate - a.rating.rate)
     } else if (type === SortType.Count) {
       sortArr = arr.sort((a, b) => a.rating.count - b.rating.count)
     } else if (type === SortType.Realise) {
@@ -219,8 +281,9 @@ class Product {
     }
 
 
-    document.querySelector('.main').innerHTML = ''
+    document.querySelector('.cards').innerHTML = ''
     prod.render(sortArr)
+
 
   }
 }
@@ -228,23 +291,64 @@ const main = new Main();
 main.render();
 
 const prod = new Product();
-prod.render(prod._dataProd);
+let data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
+//prod.render(data)
+if (localStorage.getItem('newData')) {
+  let data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
+  prod.render(data)
+} else {
+  prod.render(prod._dataProd);
+}
+
 prod.colorCheckRender();
 prod.typeCheckRender()
+
+const checLastSort = () => {
+  if (localStorage.getItem('sorting')) {
+    let loc = localStorage.getItem('sorting')
+    if (loc === SortType.PriceMin) {
+      prod.sortProducts(SortType.PriceMin)
+    } else if (loc === SortType.PriceMax) {
+      prod.sortProducts(SortType.PriceMax)
+    } else if (loc === SortType.Rating) {
+      prod.sortProducts(SortType.Rating)
+    } else if (loc === SortType.RatingDown) {
+      prod.sortProducts(SortType.RatingDown)
+    } else if (loc === SortType.TitleUp) {
+      prod.sortProducts(SortType.TitleUp)
+    } else if (loc === SortType.TitleDown) {
+      prod.sortProducts(SortType.TitleDown)
+    }
+  }
+}
 
 const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeListOf<HTMLInputElement>;
 colorCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
-    (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
-    let newData = filteres(dataProd, colorCheckboxes)
-    newData = filterCategory(newData, categoryCheckboxes)
-    prod.render(newData)
-    if (newData.length === 0) {
-      prod.notFound()
+    if (!el.checked) {
+      localStorage.setItem(el.id, el.id)
+    } else {
+      localStorage.removeItem(el.id)
     }
-    prod._dataProd = newData;
+    onChangeColor()
+    checLastSort()
+    
+
   })
+
+
 });
+const onChangeColor = () => {
+  (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
+  let newData = filteres(PRODUCT, colorCheckboxes)
+  newData = filterCategory(newData, categoryCheckboxes)
+  prod.render(newData)
+  if (newData.length === 0) {
+    prod.notFound();
+  }
+  prod._dataProd = newData;
+  localStorage.setItem('newData', JSON.stringify(newData))
+}
 
 
 
@@ -252,15 +356,22 @@ const categoryCheckboxes = document.querySelectorAll('.category-checkbox') as No
 console.log(categoryCheckboxes)
 categoryCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
+    if (!el.checked) {
+      localStorage.setItem(el.id, el.id)
+    } else {
+      localStorage.removeItem(el.id)
+    }
     console.log(el);
-    (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
-    let newData = filterCategory(dataProd, categoryCheckboxes)
+    (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
+    let newData = filterCategory(PRODUCT, categoryCheckboxes)
     newData = filteres(newData, colorCheckboxes)
     prod.render(newData)
+
     if (newData.length === 0) {
       prod.notFound()
     }
     prod._dataProd = newData;
+    localStorage.setItem('newData', JSON.stringify(newData))
   })
 });
 
@@ -282,12 +393,10 @@ function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       if (dfg[j] === data[i].color) {
         if (!newData.includes(data[i]))
           newData.push(data[i])
+
       }
     }
   }
-  /*   if (newData.length === 0) {
-      prod.notFound()
-    } */
   return newData
 }
 
@@ -303,9 +412,6 @@ function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       }
     }
   }
-  /*   if (newData.length === 0) {
-      prod.notFound()
-    } */
   return newData
 }
 
@@ -315,9 +421,11 @@ enum SortType {
   PriceMax = 'priceMax',
   Count = 'count',
   Rating = 'rate',
+  RatingDown = 'rateDown',
   TitleUp = 'titleUp',
   TitleDown = 'titleDown',
-  Realise = 'release'
+  Realise = 'release',
+  RealiseDown = 'releaseDown'
 }
 
 
@@ -341,7 +449,7 @@ rangeContainer.appendChild(rangeWrapper);
 rangeWrapper.appendChild(spanSliderMin);
 rangeWrapper.appendChild(spanSliderMax);
 rangeContainer.appendChild(sl)
-document.body.appendChild(rangeContainer);
+document.querySelector('.root__filters').appendChild(rangeContainer);
 var slider = document.getElementById('slider') as noUiSlider.target;
 
 noUiSlider.create(slider, {
@@ -356,58 +464,52 @@ noUiSlider.create(slider, {
 });
 
 slider.noUiSlider.on('update', (values, handle) => {
-  console.log(Math.round(Number(values[0])))
-  console.log(Math.round(Number(values[1])))
+  let data = prod._dataProd;
 
-  const data = prod._dataProd;
+  if (localStorage.getItem('newData')) {
+    data = JSON.parse(localStorage.getItem('newData'))
+  }
+
+
   const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) && el.price <= Math.round(Number(values[1])));
-  (document.querySelector('.main') as HTMLDivElement).innerHTML = '';
-  console.log(dataPrice)
-  prod.render(dataPrice)
+  (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
+  prod.render(dataPrice);
   spanSliderMin.innerText = '$ ' + parseInt((values[0]).toString()).toString();
   spanSliderMax.innerText = '$ ' + parseInt((values[1]).toString()).toString();
+
 });
+
+
 
 
 const search = document.querySelector('.input-search') as HTMLInputElement;
 search.addEventListener('change', () => {
   console.log(search.value)
-  const data = dataProd;
+  const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
   console.log(searchData);
-  (document.querySelector('.main') as HTMLDivElement).innerHTML = ''
+  (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
   prod.render(searchData)
+
 })
 
-const cart = document.querySelector('.cart-content') as HTMLDivElement
-
-
+const cart = document.querySelector('.cart-content') as HTMLDivElement;
 const but = Array.from(document.querySelectorAll('.button'));
 const butAct = Array.from(document.querySelectorAll('.button_active'));
 
 but.forEach(el => {
   el.addEventListener('click', () => {
     head.renderCountInCart(cart)
-  }) 
+  })
 })
 
 butAct.forEach(el => {
   el.addEventListener('click', () => {
     head.renderCountInCart(cart)
-  }) 
+  })
 })
 
-const buttonContent = () => {
-  document.querySelector('.btn-sort-title').innerHTML = `Sort <img class='az' src="assets/images/az.png" alt=''>`
-  document.querySelector('.btn-sort-titleDown').innerHTML = `Sort <img class='za' src="assets/images/za.png" alt=''>`
-  
-}
-buttonContent()
-
-
-
-
-export default { dataProd, prod, Product };
+export default { prod, Product };
 
 
 

@@ -2,7 +2,7 @@ import IProduct from "../intefaces/IProduct"
 
 class SortButton {
   _selector: string
-  _content: string
+  _content: string;
   _data: IProduct[]
   _parent: HTMLDivElement
   _callback: Function
@@ -18,7 +18,7 @@ class SortButton {
   render() {
     const sortButton = document.createElement('button');
     sortButton.className = this._selector;
-    sortButton.textContent = this._content;
+    sortButton.innerHTML = this._content;
     this._parent.appendChild(sortButton);
 
     sortButton.addEventListener('click', () => {      

@@ -23,9 +23,16 @@ ul, li {
 .root {
   width: 1440px;
   background: #f5f5f5;
-  display: flex;
+  display: flex;  
   flex-wrap: wrap;
   gap: 40px;
+  margin: 0 auto;
+  border: gray solid 1px;
+}
+
+
+.main {
+  display: flex;
 }
 
 .header {
@@ -267,6 +274,18 @@ ul, li {
   border-radius: 10px;
   margin-bottom: 10px;
   overflow: hidden;
+}
+
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.root__filters {
+  width: 250px;
+  padding-top: 50px;
 }
 
 .prod-item {
@@ -656,12 +675,13 @@ ul, li {
   }
 }
 
-.main {
-  width: 100%;
+.cards {
+  width: 83%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
+  padding: 0 20px;
 }
 
 
@@ -1026,7 +1046,7 @@ ul, li {
 }
 
 .range-container {
-  width: 500px;
+  width: 98%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1071,13 +1091,13 @@ ul, li {
 
 
 .az {
-  width: 40px;
+  width: 20px;
   height: 25px;
 }
 .za {
-  width: 20px;
+  width: 15px;
   height: 25px;
-  margin: 0 10px;
+  margin: 0 0;
 }
 
 .btn {
@@ -1110,4 +1130,49 @@ ul, li {
   box-shadow: 0px 15px 20px rgba(146, 27, 11, 0.4);
   color: #fff;
   transform: translateY(-7px);
+}
+
+.min {
+  width: 30px;
+  height: 30px;
+  transform: scale(1, -1);
+}
+.max {
+  width: 30px;
+  height: 30px;
+}
+
+.calendar {
+  width: 25px;
+  height: 25px;
+  margin-right: 2px;
+  filter: brightness(0) saturate(100%) invert(41%) sepia(1%) saturate(1905%) hue-rotate(23deg) brightness(94%) contrast(76%);
+}
+
+.sort-rating {
+  width: 15px;
+  height: 20px;
+  margin-left: -3px;
+}
+
+.sort-rating-down{
+  width: 15px;
+  height: 20px;
+  margin-left: -3px;
+  transform: rotate(180deg);
+}
+
+.sort-up {
+  width: 18px;
+  height: 20px;
+  margin-left: -3px;
+  transform: rotate(180deg);
+}
+
+.sort-down {
+  width: 18px;
+  height: 20px;
+  margin-left: -2px;
+  transform: rotate(180deg);
+  
 }

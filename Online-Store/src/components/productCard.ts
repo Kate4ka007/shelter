@@ -93,7 +93,9 @@ class ProductCard {
       }
     })
 
-    document.querySelector('.main').appendChild(prodItem);
+
+
+    document.querySelector('.cards').appendChild(prodItem);
   }
 }
 
