@@ -15,6 +15,8 @@ import 'nouislider/dist/nouislider.css';
 
 import SortButton from './components/buttons/sortButton';
 import { head } from './components/page/header';
+import SortType from './components/intefaces/enum';
+import checkLastSort from "./components/functions/functions"
 
 //let dataProd: IProduct[] = PRODUCT;
 
@@ -128,7 +130,7 @@ class Product {
     });
     reset.render();
 
-
+    
   }
 
 
@@ -217,9 +219,9 @@ class Product {
     const modalWindow = document.createElement('div');
     modalWindow.className = 'modals';
     modalWindow.innerHTML = `<div class="modals__img-wrapper">                                  
-    <img class="modals__img" src=${data.image} alt=${data.category}>
-    </div>
-    <div class="modals__title-wrapper">
+                              <img class="modals__img" src=${data.image} alt=${data.category}>
+                             </div>
+                            <div class="modals__title-wrapper">
       <p class="modals__title">${data.title}</p>
       <p class="modals__decribtion">${data.description}</p>          
       <div class="modals__rating-wrapper">
@@ -278,12 +280,13 @@ class Product {
       sortArr = arr.sort((a, b) => {
         return b.title.localeCompare(a.title);
       })
+      
     }
 
 
     document.querySelector('.cards').innerHTML = ''
     prod.render(sortArr)
-
+    this._dataProd = sortArr;
 
   }
 }
@@ -296,31 +299,17 @@ let data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
 if (localStorage.getItem('newData')) {
   let data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
   prod.render(data)
+  checkLastSort()
+  
 } else {
   prod.render(prod._dataProd);
 }
 
 prod.colorCheckRender();
-prod.typeCheckRender()
+prod.typeCheckRender();
 
-const checLastSort = () => {
-  if (localStorage.getItem('sorting')) {
-    let loc = localStorage.getItem('sorting')
-    if (loc === SortType.PriceMin) {
-      prod.sortProducts(SortType.PriceMin)
-    } else if (loc === SortType.PriceMax) {
-      prod.sortProducts(SortType.PriceMax)
-    } else if (loc === SortType.Rating) {
-      prod.sortProducts(SortType.Rating)
-    } else if (loc === SortType.RatingDown) {
-      prod.sortProducts(SortType.RatingDown)
-    } else if (loc === SortType.TitleUp) {
-      prod.sortProducts(SortType.TitleUp)
-    } else if (loc === SortType.TitleDown) {
-      prod.sortProducts(SortType.TitleDown)
-    }
-  }
-}
+
+
 
 const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeListOf<HTMLInputElement>;
 colorCheckboxes.forEach(el => {
@@ -331,8 +320,7 @@ colorCheckboxes.forEach(el => {
       localStorage.removeItem(el.id)
     }
     onChangeColor()
-    checLastSort()
-    
+    checkLastSort()   
 
   })
 
@@ -372,6 +360,7 @@ categoryCheckboxes.forEach(el => {
     }
     prod._dataProd = newData;
     localStorage.setItem('newData', JSON.stringify(newData))
+    checkLastSort()
   })
 });
 
@@ -416,17 +405,7 @@ function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
 }
 
 
-enum SortType {
-  PriceMin = 'priceMin',
-  PriceMax = 'priceMax',
-  Count = 'count',
-  Rating = 'rate',
-  RatingDown = 'rateDown',
-  TitleUp = 'titleUp',
-  TitleDown = 'titleDown',
-  Realise = 'release',
-  RealiseDown = 'releaseDown'
-}
+
 
 
 const rangeContainer = document.createElement('div');
@@ -474,6 +453,8 @@ slider.noUiSlider.on('update', (values, handle) => {
   const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) && el.price <= Math.round(Number(values[1])));
   (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
   prod.render(dataPrice);
+  prod._dataProd = dataPrice
+  checkLastSort()
   spanSliderMin.innerText = '$ ' + parseInt((values[0]).toString()).toString();
   spanSliderMax.innerText = '$ ' + parseInt((values[1]).toString()).toString();
 
@@ -509,7 +490,8 @@ butAct.forEach(el => {
   })
 })
 
-export default { prod, Product };
+export  { prod, Product };
+
 
 
 

@@ -1,7 +1,7 @@
 import IProduct from "./intefaces/IProduct";
 import ButtonMain from "./buttons/button-main";
 import cartProductList from './cart/cartList';
-import prod from '../index'
+import {prod} from '../index'
 import { head } from "./page/header";
 
 class ProductCard {
@@ -61,7 +61,7 @@ class ProductCard {
     }
 
     const button = new ButtonMain(textActive, classActive, buttonWrapper, this._data, () => {
-      prod.prod.modal(this._data)                
+      //prod.modal(this._data)                
     })
 
     button.renderButton();
@@ -87,7 +87,7 @@ class ProductCard {
 
     contentWrapper.addEventListener('click', (e) => {
       if (e.currentTarget === contentWrapper) {
-        prod.prod.modal(this._data)
+        prod.modal(this._data)
         document.body.style.overflow = 'hidden'
         document.body.style.height = '100vh';
       }

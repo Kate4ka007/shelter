@@ -13,11 +13,16 @@ class LocalStorageInfo {
   }
 
   setProductList(id: number) {
-    let prdList = this.getProductList();   
+    let prdList = this.getProductList();  
+ 
     const ind = prdList.indexOf(id);
     let addProduct = false;
 
     if(ind === -1) {
+      if(prdList.length>19) {
+        alert('Sorry, there are too many items in your cart!!!')
+        return
+      } 
       prdList.push((id))
       console.log(prdList)
       addProduct = true
@@ -26,7 +31,7 @@ class LocalStorageInfo {
       prdList.splice(ind, 1)
       console.log(prdList)
     }     
-    console.log(JSON.stringify(prdList))
+
     localStorage.setItem(this.keyName, JSON.stringify(prdList) )
     return { addProduct, prdList}
     }
