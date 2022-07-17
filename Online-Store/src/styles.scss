@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
-
+@import './components/page/footer.scss';
 
 
 $font-main: 'Montserrat';
@@ -719,8 +719,8 @@ ul, li {
 .check-category__label {
   width: 150px;
   position: relative;
-  left: 20px;
-  top: -15px;
+  left: 30px;
+  top: -20px;
   font-family: $font-main;
   color: rgb(4, 112, 76);
   font-weight: 700;
@@ -729,12 +729,12 @@ ul, li {
 .checkboxes-category {
   display: flex;
   flex-direction: column;
-  width: 60px;
+  width: 20px;
 }
 .checkboxes {
   display: flex;
   flex-direction: column;
- 
+  width: 20px;
 }
 
 

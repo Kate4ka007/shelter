@@ -1,6 +1,6 @@
 import IProduct from './components/intefaces/IProduct';
 import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './index'
 import './styles.scss';
 import ProductCard, { callback } from './components/productCard';
@@ -17,6 +17,7 @@ import SortButton from './components/buttons/sortButton';
 import { head } from './components/page/header';
 import SortType from './components/intefaces/enum';
 import checkLastSort from "./components/functions/functions"
+import Footer from './components/page/footer';
 
 //let dataProd: IProduct[] = PRODUCT;
 
@@ -308,6 +309,13 @@ if (localStorage.getItem('newData')) {
 prod.colorCheckRender();
 prod.typeCheckRender();
 
+const footer = new Footer();
+footer.render();
+window.onload = () => {
+  (document.querySelector('.input-search') as HTMLInputElement).focus()
+}
+
+
 
 
 
@@ -465,12 +473,17 @@ slider.noUiSlider.on('update', (values, handle) => {
 
 const search = document.querySelector('.input-search') as HTMLInputElement;
 search.addEventListener('change', () => {
-  console.log(search.value)
   const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
-  console.log(searchData);
-  (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
+ (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
+
   prod.render(searchData)
+
+  
+     
+      prod._dataProd = PRODUCT;
+      const inputColor = document.querySelectorAll('input');
+      inputColor.forEach(el => el.checked = true);
 
 })
 

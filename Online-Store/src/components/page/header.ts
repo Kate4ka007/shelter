@@ -1,3 +1,4 @@
+import ButtonFirst from "../buttons/button-first";
 import ButtonMain from "../buttons/button-main";
 
 class Header {
@@ -120,12 +121,13 @@ class Header {
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
 
-    const button = new ButtonMain('Bye now', 'button-main', headerTitleButton, count);
+    const button = new ButtonFirst('Bye now', 'button-main', headerTitleButton, count);
+   
     button.renderButton();    
     header.appendChild(headerTop);
     header.appendChild(headerNav);
     header.appendChild(headerBottom);
-
+  
     const root = document.querySelector('.root');
     root.appendChild(header);
   }
