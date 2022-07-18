@@ -369,7 +369,7 @@ const search = document.querySelector('.input-search') as HTMLInputElement;
 search.addEventListener('change', () => {
   const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
-  (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
+  (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
 
   if (search.value.length === 0) {
     prod.render(prod.dataProd);
@@ -381,7 +381,6 @@ search.addEventListener('change', () => {
     return;
   }
   prod.render(searchData)
-  checkLastSort();
   prod.dataProd = PRODUCT;
 });
 
