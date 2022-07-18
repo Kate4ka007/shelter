@@ -1,10 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-use-before-define */
-import * as noUiSlider from 'nouislider';
 import SortType from "../intefaces/enum";
 import { prod } from "../../index";
-import PRODUCT from "../../../server/product";
-import IProduct from "../intefaces/IProduct";
 
 const checkLastSort = (): void => {
   if (localStorage.getItem('sorting')) {
@@ -24,7 +19,5 @@ const checkLastSort = (): void => {
     }
   }
 }
-
-
 
 export default checkLastSort;
