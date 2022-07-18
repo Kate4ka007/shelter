@@ -30,7 +30,7 @@ class Header {
 
     const shopingBag = document.createElement('img');
     shopingBag.src = 'assets/images/shopping-bag.png';
-    shopingBag.className = 'shoping-bag-img';
+    shopingBag.className = 'header__shoping-bag';
 
     cart.appendChild(shopingBag);
     cart.appendChild(cartContent);
@@ -38,14 +38,14 @@ class Header {
     this.renderCountInCart(cartContent);
 
     const login = document.createElement('div');
-    login.className = 'login';
+    login.className = 'login header__login';
     const loginSpan = document.createElement('span');
     loginSpan.textContent = `Login or Sign Up`;
-    loginSpan.className = 'login-span';
+    loginSpan.className = 'login__text';
 
     const loginUser = document.createElement('img');
     loginUser.src = 'assets/images/Profile 1.png';
-    loginUser.className = 'login-user'
+    loginUser.className = 'login__user'
     login.appendChild(loginUser);
     login.appendChild(loginSpan);
     headerTop.appendChild(logo);
