@@ -362,10 +362,10 @@ prod.yearCheckRender();
 const footer = new Footer();
 footer.render();
 window.onload = () => {
-  (document.querySelector('.input-search') as HTMLInputElement).focus()
+  (document.querySelector('.header__input-search') as HTMLInputElement).focus()
 }
 
-const search = document.querySelector('.input-search') as HTMLInputElement;
+const search = document.querySelector('.header__input-search') as HTMLInputElement;
 search.addEventListener('change', () => {
   const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));

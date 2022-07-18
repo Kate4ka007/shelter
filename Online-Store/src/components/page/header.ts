@@ -5,7 +5,7 @@ class Header {
     const header = document.createElement('header');
     header.className = 'header';
     const headerTop = document.createElement('div');
-    headerTop.className = 'header-top';
+    headerTop.className = 'header__top';
     const logo = document.createElement('div');
     logo.className = 'header__logo';
     logo.classList.add('logo')
@@ -19,12 +19,12 @@ class Header {
     logo.appendChild(logoSpanSecond)
 
     const inputSearch = document.createElement('input');
-    inputSearch.className = 'input-search';
+    inputSearch.className = 'header__input-search';
     inputSearch.type = 'search';
     inputSearch.placeholder = 'Search Items'
 
     const cart = document.createElement('div');
-    cart.className = 'cart';
+    cart.className = 'header__cart';
     const cartContent = document.createElement('div');
     cartContent.className = 'cart-content'
 
@@ -53,7 +53,7 @@ class Header {
     headerTop.appendChild(cart);
     headerTop.appendChild(login);
     const headerNav = document.createElement('div');
-    headerNav.className = 'header-nav';
+    headerNav.className = 'header__nav';
 
     const nav = document.createElement('nav');
     nav.classList.add('nav');
@@ -66,16 +66,16 @@ class Header {
     headerNav.appendChild(nav);
 
     const headerBottom = document.createElement('div');
-    headerBottom.className = 'header-bottom';
+    headerBottom.className = 'header__bottom';
 
     const headerBottomRight = document.createElement('div');
-    headerBottomRight.className = 'header-bottom-right';
+    headerBottomRight.className = 'header__bottom-right';
 
     const headerBottomLeft = document.createElement('div');
-    headerBottomLeft.className = 'header-bottom-left';
+    headerBottomLeft.className = 'header__bottom-left';
 
     const headerBottomLeftTitle = document.createElement('div');
-    headerBottomLeftTitle.className = 'header-bottom-left_title';
+    headerBottomLeftTitle.className = 'header__bottom-left_title';
     headerBottomLeftTitle.innerHTML = '<h1 class="title-main">Discover Our Latest  Products</h1><span class="subtitle">Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a product</span>'
     const headerTitleButton = document.createElement('div');
     headerTitleButton.className = 'header-title-button';
