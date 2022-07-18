@@ -1,32 +1,32 @@
 import IProduct from "../intefaces/IProduct"
 
 class SortButton {
-  _selector: string
+  selector: string
 
-  _content: string;
+  content: string;
 
-  _data: IProduct[]
+  data: IProduct[]
 
-  _parent: HTMLDivElement
+  parent: HTMLDivElement
 
-  _callback: Function
+  callback: Function
 
   constructor(selector: string, content: string, data: IProduct[], parent: HTMLDivElement, callback?: Function) {
-    this._selector = selector
-    this._content = content
-    this._data = data
-    this._parent = parent 
-    this._callback = callback   
+    this.selector = selector
+    this.content = content
+    this.data = data
+    this.parent = parent 
+    this.callback = callback   
   }
 
   render() {
     const sortButton = document.createElement('button');
-    sortButton.className = this._selector;
-    sortButton.innerHTML = this._content;
-    this._parent.appendChild(sortButton);
+    sortButton.className = this.selector;
+    sortButton.innerHTML = this.content;
+    this.parent.appendChild(sortButton);
 
     sortButton.addEventListener('click', () => {      
-      this._callback()
+      this.callback()
     })
   }
 }

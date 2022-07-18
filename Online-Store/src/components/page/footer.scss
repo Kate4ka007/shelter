@@ -175,6 +175,11 @@
       text-decoration: underline;
     }
   }
-
+  @media screen and (max-width: 1439px) and (min-width: 1024px) {
+    padding: 70px 180px;
+  }
+  @media screen and (max-width: 1023.98px) and (min-width: 768px) {
+    padding: 40px 60px;
+  }
 
 }

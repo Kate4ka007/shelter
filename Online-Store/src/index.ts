@@ -1,28 +1,24 @@
-/* eslint-disable import/extensions */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-undef */
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-use-before-define */
-/* eslint-disable no-underscore-dangle */
+
 import * as noUiSlider from 'nouislider';
 import IProduct from './components/intefaces/IProduct';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './index'
 import './styles.scss';
-import ProductCard, { callback } from './components/productCard';
+import ProductCard from './components/productCard';
 import PRODUCT from '../server/product';
 import { head } from './components/page/header';
 import Main from './components/page/main';
 import 'nouislider/dist/nouislider.css';
 import SortButton from './components/buttons/sortButton';
-
+import checkLastSort from './components/functions/functions'
 import SortType from './components/intefaces/enum';
-import checkLastSort from "./components/functions/functions"
 import Footer from './components/page/footer';
 
 class Product {
-  _dataProd: IProduct[] = PRODUCT;
+  dataProd: IProduct[] = PRODUCT;
 
   render(data: Array<IProduct>) {
 
@@ -31,7 +27,7 @@ class Product {
     (document.querySelector('.cards') as HTMLDivElement).appendChild(buttonContainer)
 
     data.forEach(({ id, title, description, price, rating, image, category, release, color, countInStock }) => {
-      const newCard = new ProductCard({ id, title, description, price, rating, image, category, release, color, countInStock }, callback)
+      const newCard = new ProductCard({ id, title, description, price, rating, image, category, release, color, countInStock })
       newCard.createCard();
     })
 
@@ -43,7 +39,7 @@ class Product {
     const releaseContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating' src="assets/images/up.png" alt=''>`
     const releaseDownContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating-down' src="assets/images/up.png" alt=''>`
 
-    const sortButton = new SortButton('btn btn-outline-success btn-sort-price', priceContent, this._dataProd, buttonContainer, () => {
+    const sortButton = new SortButton('btn btn-outline-success btn-sort-price', priceContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMin)
       localStorage.setItem('sorting', 'priceMin')
@@ -51,7 +47,7 @@ class Product {
     });
     sortButton.render();
 
-    const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', priceMaxContent, this._dataProd, buttonContainer, () => {
+    const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', priceMaxContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMax)
       localStorage.setItem('sorting', 'priceMax')
@@ -59,7 +55,7 @@ class Product {
     });
     sortButtonMax.render();
 
-    const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', ratingContent, this._dataProd, buttonContainer, () => {
+    const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', ratingContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.Rating)
       localStorage.setItem('sorting', 'rate')
@@ -68,7 +64,7 @@ class Product {
 
     sortRating.render();
 
-    const sortRatingDown = new SortButton('btn btn-outline-warning btn-sort-ratingdown', ratingDownContent, this._dataProd, buttonContainer, () => {
+    const sortRatingDown = new SortButton('btn btn-outline-warning btn-sort-ratingdown', ratingDownContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.RatingDown)
       localStorage.setItem('sorting', 'rateDown')
@@ -78,7 +74,7 @@ class Product {
     sortRatingDown.render();
 
     const titleContent = `Name <img class='az' src="assets/images/az.png" alt=''><img class='sort-up' src="assets/images/up.png" alt=''>`
-    const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', titleContent, this._dataProd, buttonContainer, () => {
+    const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', titleContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.TitleUp)
       localStorage.setItem('sorting', 'titleUp')
@@ -87,7 +83,7 @@ class Product {
 
     sortTitle.render();
 
-    const sortTitleDown = new SortButton('btn btn-outline-primary btn-sort-titleDown', titleDownContent, this._dataProd, buttonContainer, () => {
+    const sortTitleDown = new SortButton('btn btn-outline-primary btn-sort-titleDown', titleDownContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.TitleDown)
       localStorage.setItem('sorting', 'titleDown')
@@ -95,7 +91,7 @@ class Product {
     });
     sortTitleDown.render();
 
-    const sortRealise = new SortButton('btn btn-outline-primary btn-sort-realise', releaseContent, this._dataProd, buttonContainer, () => {
+    const sortRealise = new SortButton('btn btn-outline-primary btn-sort-realise', releaseContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.Realise)
       localStorage.setItem('sorting', 'release')
@@ -103,7 +99,7 @@ class Product {
     });
     sortRealise.render();
 
-    const sortRealiseDown = new SortButton('btn btn-outline-primary btn-sort-realisedown', releaseDownContent, this._dataProd, buttonContainer, () => {
+    const sortRealiseDown = new SortButton('btn btn-outline-primary btn-sort-realisedown', releaseDownContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.RealiseDown)
       localStorage.setItem('sorting', 'releaseDown')
@@ -111,13 +107,13 @@ class Product {
     });
     sortRealiseDown.render();
 
-    const reset = new SortButton('btn btn-outline-danger btn-reset', 'RESET ALL', this._dataProd, buttonContainer, () => {
+    const reset = new SortButton('btn btn-outline-danger btn-reset', 'RESET ALL', this.dataProd, buttonContainer, () => {
       document.querySelector('.cards').innerHTML = '';
       buttonContainer.innerHTML = ''
       prod.render(PRODUCT);
-      prod._dataProd = PRODUCT;
+      prod.dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
-      inputColor.forEach(el => {el.checked = true});
+      inputColor.forEach(el => { el.checked = true });
 
     });
     reset.render();
@@ -126,10 +122,14 @@ class Product {
 
   colorCheckRender() {
     const checkContainer = document.createElement('div');
+    const colorTitle = document.createElement('div');
+    colorTitle.className = 'color-title check-title';
+    colorTitle.textContent = 'Colors:';
+    checkContainer.appendChild(colorTitle);
     const checkboxes = document.createElement('div');
     checkboxes.className = 'checkboxes';
     const arr: Array<string> = [];
-    this._dataProd.map(el => arr.push(el.color));
+    this.dataProd.map(el => arr.push(el.color));
     const colorCheckItems = new Set(arr);
 
     colorCheckItems.forEach((data) => {
@@ -160,10 +160,14 @@ class Product {
 
   typeCheckRender() {
     const checkContainerCategory = document.createElement('div');
+    const typeTitle = document.createElement('div');
+    typeTitle.className = 'category-title check-title';
+    typeTitle.textContent = 'Product categories:';
+    checkContainerCategory.appendChild(typeTitle);
     const checkboxesCategory = document.createElement('div');
     checkboxesCategory.className = 'checkboxes-category';
     const arr: Array<string> = [];
-    this._dataProd.map(el => arr.push(el.category));
+    this.dataProd.map(el => arr.push(el.category));
     const categoryCheckItems = new Set(arr);
 
     categoryCheckItems.forEach((data) => {
@@ -177,7 +181,6 @@ class Product {
         inputCategory.checked = false;
       } else {
         inputCategory.checked = true;
-
       }
 
       checkboxesCategory.appendChild(inputCategory);
@@ -192,13 +195,59 @@ class Product {
     document.querySelector('.root__filters').appendChild(checkContainerCategory);
   }
 
+  yearCheckRender() {
+    const checkContainerYear = document.createElement('div');
+    const yearTitle = document.createElement('div');
+    yearTitle.className = 'year-title check-title';
+    yearTitle.textContent = 'Release year:';
+    checkContainerYear.appendChild(yearTitle);
+    const checkboxesYear = document.createElement('div');
+    checkboxesYear.className = 'checkboxes-year';
+    const arr: Array<string> = [];
+    this.dataProd.map(el => arr.push(el.release.toString()));
+    const yearCheckItems = new Set(arr);
+
+    yearCheckItems.forEach((data) => {
+      const inputYear = document.createElement('input');
+      inputYear.className = 'year-checkbox';
+      inputYear.type = 'checkbox';
+      inputYear.id = data;
+      inputYear.name = data;
+
+      if (data === localStorage.getItem(data)) {
+        inputYear.checked = false;
+      } else {
+        inputYear.checked = true;
+
+      }
+
+      checkboxesYear.appendChild(inputYear);
+      const labeltYear = document.createElement('label');
+      labeltYear.className = 'check-year__label';
+      labeltYear.htmlFor = data;
+      labeltYear.textContent = data;
+      checkboxesYear.appendChild(labeltYear);
+    });
+
+    (checkContainerYear as HTMLDivElement).appendChild(checkboxesYear);
+    document.querySelector('.root__filters').appendChild(checkContainerYear);
+  }
+
   notFound(): void {
+
     const notFound = document.createElement('div');
     notFound.className = 'alert-window';
     notFound.innerHTML = `<div class="alert alert-danger" role="alert">
     <strong>Oh snap!</strong> Change a few things up and try submitting again (no matches found).
   </div>`
-    document.querySelector('.cards').appendChild(notFound)
+    document.querySelector('.header').appendChild(notFound);
+    document.body.style.overflow = 'hidden';
+    notFound.addEventListener('click', () => {
+      notFound.remove();
+      document.body.style.overflow = 'visible';
+
+    })
+
   }
 
   modal(data: IProduct) {
@@ -242,7 +291,7 @@ class Product {
 
   sortProducts(type: SortType) {
     const arr: Array<IProduct> = []
-    this._dataProd.forEach(elememt => {
+    this.dataProd.forEach(elememt => {
       arr.push(elememt)
     })
     let sortArr;
@@ -269,27 +318,27 @@ class Product {
 
     document.querySelector('.cards').innerHTML = ''
     prod.render(sortArr)
-    this._dataProd = sortArr;
+    this.dataProd = sortArr;
 
   }
 }
+
 const main = new Main();
 main.render();
 
 const prod = new Product();
-// const data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
-// prod.render(data)
 if (localStorage.getItem('newData')) {
   const dataStorage: IProduct[] = JSON.parse(localStorage.getItem('newData'))
   prod.render(dataStorage)
   checkLastSort()
 
 } else {
-  prod.render(prod._dataProd);
+  prod.render(prod.dataProd);
 }
 
 prod.colorCheckRender();
 prod.typeCheckRender();
+prod.yearCheckRender();
 
 const footer = new Footer();
 footer.render();
@@ -297,169 +346,126 @@ window.onload = () => {
   (document.querySelector('.input-search') as HTMLInputElement).focus()
 }
 
-const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeListOf<HTMLInputElement>;
-colorCheckboxes.forEach(el => {
-  el.addEventListener('change', () => {
-    if (!el.checked) {
-      localStorage.setItem(el.id, el.id)
-    } else {
-      localStorage.removeItem(el.id)
+const createPriseSlider = () => {
+  const rangeContainer = document.createElement('div');
+  const rangeWrapper = document.createElement('div');
+  rangeWrapper.className = "ranger-wrapper";
+  rangeContainer.className = "range-container";
+  const sl = document.createElement('div');
+  sl.className = "slider";
+  sl.id = "slider";
+  const spanSliderMin = document.createElement('div');
+  spanSliderMin.className = 'span-slider-min';
+  const spanSliderMax = document.createElement('div');
+  spanSliderMax.className = 'span-slider-max';
+
+  rangeContainer.appendChild(rangeWrapper);
+  rangeWrapper.appendChild(spanSliderMin);
+  rangeWrapper.appendChild(spanSliderMax);
+  rangeContainer.appendChild(sl)
+  document.querySelector('.root__filters').appendChild(rangeContainer);
+  const slider = document.getElementById('slider') as noUiSlider.target;
+
+  noUiSlider.create(slider, {
+    start: [0, 1000],
+    connect: true,
+    step: 1,
+    range: {
+      'min': 0,
+      'max': 1000
     }
-    onChangeColor()
+  });
+
+  slider.noUiSlider.on('update', (values) => {
+    let data = prod.dataProd;
+
+    if (localStorage.getItem('newData')) {
+      data = JSON.parse(localStorage.getItem('newData'))
+    }
+
+    const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) && el.price <= Math.round(Number(values[1])));
+    (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
+    prod.render(dataPrice);
+    prod.dataProd = dataPrice
+    checkLastSort()
+    spanSliderMin.innerText = `$ ${parseInt((values[0]).toString(), 10).toString()}`;
+    spanSliderMax.innerText = `$ ${parseInt((values[1]).toString(), 10).toString()}`;
+
+  });
+}
+
+createPriseSlider();
+
+const createRateSlider = () => {
+  const rangeRateContainer = document.createElement('div');
+  const rateWrapper = document.createElement('div');
+  rateWrapper.className = "rate-wrapper";
+  rangeRateContainer.className = "rate-container";
+
+  const rateSl = document.createElement('div');
+  rateSl.className = "slider-rate";
+  rateSl.id = "slider-rate";
+  const rateSliderMin = document.createElement('div');
+  rateSliderMin.className = 'rate-slider-min';
+  const rateSliderMax = document.createElement('div');
+  rateSliderMax.className = 'rate-slider-max';
+
+  rangeRateContainer.appendChild(rateWrapper);
+  rateWrapper.appendChild(rateSliderMin);
+  rateWrapper.appendChild(rateSliderMax);
+  rangeRateContainer.appendChild(rateSl)
+  document.querySelector('.root__filters').appendChild(rangeRateContainer);
+  const sliderRate = document.getElementById('slider-rate') as noUiSlider.target;
+
+  noUiSlider.create(sliderRate, {
+    start: [0, 5],
+    connect: true,
+    step: 0.1,
+    range: {
+      'min': 0,
+      'max': 5
+    }
+
+  });
+
+  sliderRate.noUiSlider.on('update', (values) => {
+    let data: IProduct[] = prod.dataProd;
+
+    if (localStorage.getItem('newData')) {
+      data = JSON.parse(localStorage.getItem('newData'))
+    }
+
+    const dataRate = data.filter((el) => el.rating.rate >= +values[0] && el.rating.rate <= +values[1]);
+    (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
+    prod.render(dataRate);
+    prod.dataProd = dataRate
     checkLastSort()
 
-  })
-});
-const onChangeColor = () => {
-  (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
-  let newData = filteres(PRODUCT, colorCheckboxes)
-  newData = filterCategory(newData, categoryCheckboxes)
-  prod.render(newData)
-  if (newData.length === 0) {
-    prod.notFound();
-  }
-  prod._dataProd = newData;
-  localStorage.setItem('newData', JSON.stringify(newData))
+    rateSliderMin.innerHTML = `${(values[0]).toString()} <img class="range-star" src= "assets/images/icon-star.png" alt=""> `;
+    rateSliderMax.innerHTML = `${(values[1]).toString()} <img class="range-star" src= "assets/images/icon-star.png" alt="">`;
+
+  });
 }
 
-const categoryCheckboxes = document.querySelectorAll('.category-checkbox') as NodeListOf<HTMLInputElement>;
-categoryCheckboxes.forEach(el => {
-  el.addEventListener('change', () => {
-    if (!el.checked) {
-      localStorage.setItem(el.id, el.id)
-    } else {
-      localStorage.removeItem(el.id)
-    }
-    
-    (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
-    let newData = filterCategory(PRODUCT, categoryCheckboxes)
-    newData = filteres(newData, colorCheckboxes)
-    prod.render(newData)
+createRateSlider();
 
-    if (newData.length === 0) {
-      prod.notFound()
-    }
-    prod._dataProd = newData;
-    localStorage.setItem('newData', JSON.stringify(newData))
-    checkLastSort()
+const listner = () => {
+  const cart = document.querySelector('.cart-content') as HTMLDivElement;
+  const but = Array.from(document.querySelectorAll('.button'));
+  const butAct = Array.from(document.querySelectorAll('.button_active'));
+
+  but.forEach(el => {
+    el.addEventListener('click', () => {
+      head.renderCountInCart(cart)
+    })
   })
-});
 
-function check(type: NodeListOf<HTMLInputElement>) {
-  const ideas: Array<string> = []
-  for (let i = 0; i < type.length; i++) {
-    if (type[i].checked === true) {
-      ideas.push(type[i].id)
-    }
-  } return ideas;
-}
-
-function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
-  const dfg = check(type);
-  const newData: IProduct[] = [];
-  for (let i = 0; i < data.length; i++) {
-    for (let j = 0; j < dfg.length; j++) {
-      if (dfg[j] === data[i].color) {
-        if (!newData.includes(data[i]))
-          newData.push(data[i])
-
-      }
-    }
-  }
-  return newData
-}
-
-function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
-  const dfg = check(type);
-  const newData: IProduct[] = [];
-  for (let i = 0; i < data.length; i++) {
-    for (let j = 0; j < dfg.length; j++) {
-      if (dfg[j] === data[i].category) {
-        if (!newData.includes(data[i]))
-          newData.push(data[i])
-      }
-    }
-  }
-  return newData
-}
-
-const rangeContainer = document.createElement('div');
-
-const rangeWrapper = document.createElement('div');
-rangeWrapper.className = "ranger-wrapper";
-rangeContainer.className = "range-container";
-
-const sl = document.createElement('div');
-sl.className = "slider";
-sl.id = "slider";
-const spanSliderMin = document.createElement('div');
-spanSliderMin.className = 'span-slider-min';
-const spanSliderMax = document.createElement('div');
-spanSliderMax.className = 'span-slider-max';
-
-rangeContainer.appendChild(rangeWrapper);
-rangeWrapper.appendChild(spanSliderMin);
-rangeWrapper.appendChild(spanSliderMax);
-rangeContainer.appendChild(sl)
-document.querySelector('.root__filters').appendChild(rangeContainer);
-const slider = document.getElementById('slider') as noUiSlider.target;
-
-noUiSlider.create(slider, {
-  start: [0, 1000],
-  connect: true,
-  step: 1,
-  range: {
-    'min': 0,
-    'max': 1000
-  }
-
-});
-
-slider.noUiSlider.on('update', (values) => {
-  let data = prod._dataProd;
-
-  if (localStorage.getItem('newData')) {
-    data = JSON.parse(localStorage.getItem('newData'))
-  }
-
-  const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) && el.price <= Math.round(Number(values[1])));
-  (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
-  prod.render(dataPrice);
-  prod._dataProd = dataPrice
-  checkLastSort()
-  spanSliderMin.innerText = `$ ${parseInt((values[0]).toString(), 10).toString()}`;
-  spanSliderMax.innerText = `$ ${parseInt((values[1]).toString(), 10).toString()}`;
-
-});
-
-const search = document.querySelector('.input-search') as HTMLInputElement;
-search.addEventListener('change', () => {
-  const data = PRODUCT;
-  const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
-  (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
-
-  prod.render(searchData)
-
-  prod._dataProd = PRODUCT;
-  const inputColor = document.querySelectorAll('input');
-  inputColor.forEach(el => el.checked = true);
-
-})
-
-const cart = document.querySelector('.cart-content') as HTMLDivElement;
-const but = Array.from(document.querySelectorAll('.button'));
-const butAct = Array.from(document.querySelectorAll('.button_active'));
-
-but.forEach(el => {
-  el.addEventListener('click', () => {
-    head.renderCountInCart(cart)
+  butAct.forEach(el => {
+    el.addEventListener('click', () => {
+      head.renderCountInCart(cart);
+    })
   })
-})
+}
+listner()
 
-butAct.forEach(el => {
-  el.addEventListener('click', () => {
-    head.renderCountInCart(cart)
-  })
-})
-
-export { prod, Product };
+export { Product, prod, listner };

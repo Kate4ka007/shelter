@@ -1,48 +1,49 @@
 import IProduct from "../intefaces/IProduct";
 import cartProductList from '../cart/cartList';
+import { listner } from "../../index";
 
 class ButtonMain {
-  _content: string;
+  content: string;
 
-  _selector: string;
+  selector: string;
 
-  _parent: HTMLDivElement;
+  parent: HTMLDivElement;
 
-  _data: IProduct;
+  data: IProduct;
 
-  constructor(content: string, selector: string, parent: HTMLDivElement, data: any, callback?: () => void) {
-    this._content = content
-    this._selector = selector
-    this._parent = parent
-    this._data = data
+  constructor(content: string, selector: string, parent: HTMLDivElement, data?: IProduct, callback?: () => void) {
+    this.content = content
+    this.selector = selector
+    this.parent = parent
+    this.data = data
   }
 
   renderButton() {
     const mainBottom = document.createElement('button')
-    mainBottom.classList.add(`${this._selector}`)
-    mainBottom.textContent = `${this._content}`
-    this._parent.appendChild(mainBottom)
+    mainBottom.classList.add(`${this.selector}`)
+    mainBottom.textContent = `${this.content}`
+    this.parent.appendChild(mainBottom)
 
     mainBottom.addEventListener('click', () => {      
-      this.hangleSetStorage(this, this._data);  
+      this.hangleSetStorage(this, this.data); 
+      listner() 
     })
   }
 
-  hangleSetStorage(el: this, _data: IProduct) {
-    const { addProduct, prdList } = cartProductList.cartProductList.setProductList(_data.id);
+  hangleSetStorage(el: this, data: IProduct) {
+    const { addProduct, prdList } = cartProductList.cartProductList.setProductList(data.id);   
     if (addProduct) {
-      el._selector = 'button_active'
-      el._content = 'Remove from cart'
-      el._parent.innerHTML = ''
+      el.selector = 'button_active'
+      el.content = 'Remove from cart'
+      el.parent.innerHTML = ''
       el.renderButton()
 
     } else {
-      el._selector = 'button'
-      el._content = 'Add to cart'
-      el._parent.innerHTML = ''
+      el.selector = 'button'
+      el.content = 'Add to cart'
+      el.parent.innerHTML = ''
       el.renderButton()
-
-    }
+    }    
   }
 }
 

@@ -21,7 +21,19 @@
         "@typescript-eslint/no-explicit-any": "error",
         "no-unused-vars": "off",
         "no-param-reassign": 0,
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "consistent-return": "off",
+        "no-shadow": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+         ]
     },
     "settings": {
         "import/resolver": {

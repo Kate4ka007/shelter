@@ -1,5 +1,4 @@
 import ButtonFirst from "../buttons/button-first";
-import ButtonMain from "../buttons/button-main";
 
 class Header {
   render() {
@@ -31,13 +30,12 @@ class Header {
 
     const shopingBag = document.createElement('img');
     shopingBag.src = 'assets/images/shopping-bag.png';
-    shopingBag.className = 'shoping-bag-img'
+    shopingBag.className = 'shoping-bag-img';
 
-    cart.appendChild(shopingBag)
-    cart.appendChild(cartContent)
-
-    const count = 0;
-    this.renderCountInCart(cartContent)
+    cart.appendChild(shopingBag);
+    cart.appendChild(cartContent);
+    
+    this.renderCountInCart(cartContent);
 
     const login = document.createElement('div');
     login.className = 'login';
@@ -117,7 +115,7 @@ class Header {
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
 
-    const button = new ButtonFirst('Bye now', 'button-main', headerTitleButton, count);
+    const button = new ButtonFirst('Bye now', 'button-main', headerTitleButton);
    
     button.renderButton();    
     header.appendChild(headerTop);
@@ -129,14 +127,13 @@ class Header {
   }
 
   renderCountInCart(parent: HTMLElement) {
-    parent.innerHTML = ''
+    parent.innerHTML = '';
     const cartSpan = document.createElement('span');
     let len = localStorage.getItem('product');
-    len = JSON.parse(len);
-    console.log(len);
+    len = JSON.parse(len);    
     cartSpan.textContent = `${localStorage.getItem('product') ? JSON.parse(localStorage.getItem('product')).length : 0} Items Added`;
     cartSpan.className = 'cart-span';
-    parent.appendChild(cartSpan);
+    parent.appendChild(cartSpan);    
   }
 }
 
