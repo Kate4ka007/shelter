@@ -2,7 +2,6 @@ import IProduct from "./intefaces/IProduct";
 import ButtonMain from "./buttons/button-main";
 import cartProductList from './cart/cartList';
 import {prod} from '../index'
-import { head } from "./page/header";
 
 class ProductCard {
   dataCard: IProduct;

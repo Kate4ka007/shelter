@@ -107,18 +107,20 @@ class Product {
     });
     sortRealiseDown.render();
 
-    const reset = new SortButton('btn btn-outline-danger btn-reset', 'RESET ALL', this.dataProd, buttonContainer, () => {
+    const resetAll = new SortButton('btn btn-outline-danger btn-reset', 'reset all', this.dataProd, buttonContainer, () => {
       document.querySelector('.cards').innerHTML = '';
       buttonContainer.innerHTML = ''
       prod.render(PRODUCT);
       prod.dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
       inputColor.forEach(el => { el.checked = true });
-
+      localStorage.clear()
     });
-    reset.render();
-
+    resetAll.render()
+    const cart = document.querySelector('.cart-content') as HTMLDivElement;
+    head.renderCountInCart(cart)
   }
+
 
   colorCheckRender() {
     const checkContainer = document.createElement('div');
@@ -231,6 +233,23 @@ class Product {
 
     (checkContainerYear as HTMLDivElement).appendChild(checkboxesYear);
     document.querySelector('.root__filters').appendChild(checkContainerYear);
+    const resetContainer = document.createElement('div');
+    resetContainer.className = 'reset-container';
+    document.querySelector('.root__filters').appendChild(resetContainer);
+
+    const resetFilters = document.querySelector('.reset-container') as HTMLDivElement;
+    const reset = new SortButton('btn btn-outline-danger btn-reset', 'reset filters', this.dataProd, resetFilters, () => {
+      document.querySelector('.cards').innerHTML = '';
+      resetFilters.innerHTML = ''
+      prod.render(PRODUCT);
+      prod.dataProd = PRODUCT;
+      const inputColor = document.querySelectorAll('input');
+      inputColor.forEach(el => { el.checked = true });
+      checkLastSort();
+      reset.render();
+    });
+    reset.render();
+    
   }
 
   notFound(): void {
@@ -352,12 +371,18 @@ search.addEventListener('change', () => {
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
   (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
 
+  if (search.value.length === 0) {
+    prod.render(prod.dataProd);
+    checkLastSort();
+  }
+
+  if (searchData.length === 0) {
+    prod.notFound();
+    return;
+  }
   prod.render(searchData)
-
+  checkLastSort();
   prod.dataProd = PRODUCT;
-  const inputColor = document.querySelectorAll('input');
-  inputColor.forEach(el => { el.checked = true });
-
 });
 
 const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeListOf<HTMLInputElement>;
@@ -435,7 +460,7 @@ yearCheckboxes.forEach(el => {
 
 function check(type: NodeListOf<HTMLInputElement>) {
   const ideas: Array<string> = []
-  for (let i = 0; i < type.length; i+=1) {
+  for (let i = 0; i < type.length; i += 1) {
     if (type[i].checked === true) {
       ideas.push(type[i].id)
     }
@@ -445,8 +470,8 @@ function check(type: NodeListOf<HTMLInputElement>) {
 function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
   const dfg = check(type);
   const newData: IProduct[] = [];
-  for (let i = 0; i < data.length; i+=1) {
-    for (let j = 0; j < dfg.length; j+=1) {
+  for (let i = 0; i < data.length; i += 1) {
+    for (let j = 0; j < dfg.length; j += 1) {
       if (dfg[j] === data[i].color) {
         if (!newData.includes(data[i]))
           newData.push(data[i])
@@ -460,8 +485,8 @@ function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
 function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
   const dfg = check(type);
   const newData: IProduct[] = [];
-  for (let i = 0; i < data.length; i+=1) {
-    for (let j = 0; j < dfg.length; j+=1) {
+  for (let i = 0; i < data.length; i += 1) {
+    for (let j = 0; j < dfg.length; j += 1) {
       if (dfg[j] === data[i].category) {
         if (!newData.includes(data[i]))
           newData.push(data[i])
@@ -474,8 +499,8 @@ function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
 function filterYear(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
   const dfg = check(type);
   const newData: IProduct[] = [];
-  for (let i = 0; i < data.length; i+=1) {
-    for (let j = 0; j < dfg.length; j+=1) {
+  for (let i = 0; i < data.length; i += 1) {
+    for (let j = 0; j < dfg.length; j += 1) {
       if (dfg[j] === data[i].release.toString()) {
         if (!newData.includes(data[i]))
           newData.push(data[i])
