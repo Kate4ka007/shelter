@@ -9,7 +9,6 @@ class Main {
     main.className = 'main';
     main.appendChild(cards);
     main.appendChild(filters);
-
     
     document.querySelector('.root').appendChild(main);   
   }

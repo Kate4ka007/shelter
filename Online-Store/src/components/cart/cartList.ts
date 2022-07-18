@@ -1,5 +1,6 @@
 class LocalStorageInfo {
   keyName: string;
+
   constructor() {
     this.keyName = 'product'
   }
@@ -13,7 +14,7 @@ class LocalStorageInfo {
   }
 
   setProductList(id: number) {
-    let prdList = this.getProductList();  
+    const prdList = this.getProductList();  
  
     const ind = prdList.indexOf(id);
     let addProduct = false;
@@ -39,7 +40,3 @@ class LocalStorageInfo {
   const cartProductList = new LocalStorageInfo();
 
   export default  {cartProductList};
-
-
-
-

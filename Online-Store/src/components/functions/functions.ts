@@ -3,7 +3,7 @@ import { prod } from "../../index"
 
 const checkLastSort = () => {
   if (localStorage.getItem('sorting')) {
-    let loc = localStorage.getItem('sorting')
+    const loc = localStorage.getItem('sorting')
     if (loc === SortType.PriceMin) {
       prod.sortProducts(SortType.PriceMin)
     } else if (loc === SortType.PriceMax) {

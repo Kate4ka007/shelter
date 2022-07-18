@@ -6,7 +6,8 @@
     "target": "es5",
     "allowJs": true,
     "sourceMap": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "baseUrl": "src"
   },
   "files": ["src/index.ts"],
   "include": ["src/**/*"],

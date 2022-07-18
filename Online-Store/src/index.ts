@@ -1,29 +1,28 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-underscore-dangle */
+import * as noUiSlider from 'nouislider';
 import IProduct from './components/intefaces/IProduct';
 import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import './index'
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import './index'
 import './styles.scss';
 import ProductCard, { callback } from './components/productCard';
 import PRODUCT from '../server/product';
-import './components/page/header';
-import Main from './components/page/main';
-//import {MDCSlider, MDCSliderFoundation} from '@material/slider'; 
-
-//import noUiSlider from 'nouislider';
-import * as noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';
-
-import SortButton from './components/buttons/sortButton';
 import { head } from './components/page/header';
+import Main from './components/page/main';
+import 'nouislider/dist/nouislider.css';
+import SortButton from './components/buttons/sortButton';
+
 import SortType from './components/intefaces/enum';
 import checkLastSort from "./components/functions/functions"
 import Footer from './components/page/footer';
 
-//let dataProd: IProduct[] = PRODUCT;
-
 class Product {
   _dataProd: IProduct[] = PRODUCT;
-
 
   render(data: Array<IProduct>) {
 
@@ -36,8 +35,6 @@ class Product {
       newCard.createCard();
     })
 
-
-
     const titleDownContent = `Name <img class='za' src="assets/images/za.png" alt=''><img class='sort-down' src="assets/images/up.png" alt=''>`
     const priceContent = `Price <img class='min' src="assets/images/123.png" alt=''>`
     const priceMaxContent = `Price <img class='max' src="assets/images/321.png" alt=''>`
@@ -46,17 +43,13 @@ class Product {
     const releaseContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating' src="assets/images/up.png" alt=''>`
     const releaseDownContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating-down' src="assets/images/up.png" alt=''>`
 
-
-
     const sortButton = new SortButton('btn btn-outline-success btn-sort-price', priceContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
       prod.sortProducts(SortType.PriceMin)
       localStorage.setItem('sorting', 'priceMin')
 
-
     });
     sortButton.render();
-
 
     const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', priceMaxContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
@@ -65,7 +58,6 @@ class Product {
 
     });
     sortButtonMax.render();
-
 
     const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', ratingContent, this._dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = ''
@@ -77,7 +69,7 @@ class Product {
     sortRating.render();
 
     const sortRatingDown = new SortButton('btn btn-outline-warning btn-sort-ratingdown', ratingDownContent, this._dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.RatingDown)
       localStorage.setItem('sorting', 'rateDown')
 
@@ -87,7 +79,7 @@ class Product {
 
     const titleContent = `Name <img class='az' src="assets/images/az.png" alt=''><img class='sort-up' src="assets/images/up.png" alt=''>`
     const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', titleContent, this._dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.TitleUp)
       localStorage.setItem('sorting', 'titleUp')
 
@@ -119,29 +111,26 @@ class Product {
     });
     sortRealiseDown.render();
 
-
     const reset = new SortButton('btn btn-outline-danger btn-reset', 'RESET ALL', this._dataProd, buttonContainer, () => {
       document.querySelector('.cards').innerHTML = '';
       buttonContainer.innerHTML = ''
       prod.render(PRODUCT);
       prod._dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
-      inputColor.forEach(el => el.checked = true);
+      inputColor.forEach(el => {el.checked = true});
 
     });
     reset.render();
 
-    
   }
-
 
   colorCheckRender() {
     const checkContainer = document.createElement('div');
     const checkboxes = document.createElement('div');
     checkboxes.className = 'checkboxes';
-    let arr: Array<string> = [];
+    const arr: Array<string> = [];
     this._dataProd.map(el => arr.push(el.color));
-    let colorCheckItems = new Set(arr);
+    const colorCheckItems = new Set(arr);
 
     colorCheckItems.forEach((data) => {
       const inputColor = document.createElement('input');
@@ -169,14 +158,13 @@ class Product {
 
   }
 
-
   typeCheckRender() {
     const checkContainerCategory = document.createElement('div');
     const checkboxesCategory = document.createElement('div');
     checkboxesCategory.className = 'checkboxes-category';
-    let arr: Array<string> = [];
+    const arr: Array<string> = [];
     this._dataProd.map(el => arr.push(el.category));
-    let categoryCheckItems = new Set(arr);
+    const categoryCheckItems = new Set(arr);
 
     categoryCheckItems.forEach((data) => {
       const inputCategory = document.createElement('input');
@@ -204,7 +192,7 @@ class Product {
     document.querySelector('.root__filters').appendChild(checkContainerCategory);
   }
 
-  notFound() {
+  notFound(): void {
     const notFound = document.createElement('div');
     notFound.className = 'alert-window';
     notFound.innerHTML = `<div class="alert alert-danger" role="alert">
@@ -252,9 +240,8 @@ class Product {
     })
   }
 
-
   sortProducts(type: SortType) {
-    let arr: Array<IProduct> = []
+    const arr: Array<IProduct> = []
     this._dataProd.forEach(elememt => {
       arr.push(elememt)
     })
@@ -274,16 +261,11 @@ class Product {
     } else if (type === SortType.Realise) {
       sortArr = arr.sort((a, b) => a.release - b.release)
     } else if (type === SortType.TitleUp) {
-      sortArr = arr.sort((a, b) => {
-        return a.title.localeCompare(b.title);
-      })
+      sortArr = arr.sort((a, b) => a.title.localeCompare(b.title))
     } else if (type === SortType.TitleDown) {
-      sortArr = arr.sort((a, b) => {
-        return b.title.localeCompare(a.title);
-      })
-      
-    }
+      sortArr = arr.sort((a, b) => b.title.localeCompare(a.title))
 
+    }
 
     document.querySelector('.cards').innerHTML = ''
     prod.render(sortArr)
@@ -295,13 +277,13 @@ const main = new Main();
 main.render();
 
 const prod = new Product();
-let data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
-//prod.render(data)
+// const data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
+// prod.render(data)
 if (localStorage.getItem('newData')) {
-  let data: IProduct[] = JSON.parse(localStorage.getItem('newData'))
-  prod.render(data)
+  const dataStorage: IProduct[] = JSON.parse(localStorage.getItem('newData'))
+  prod.render(dataStorage)
   checkLastSort()
-  
+
 } else {
   prod.render(prod._dataProd);
 }
@@ -315,10 +297,6 @@ window.onload = () => {
   (document.querySelector('.input-search') as HTMLInputElement).focus()
 }
 
-
-
-
-
 const colorCheckboxes = document.querySelectorAll('.color-checkbox') as NodeListOf<HTMLInputElement>;
 colorCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
@@ -328,11 +306,9 @@ colorCheckboxes.forEach(el => {
       localStorage.removeItem(el.id)
     }
     onChangeColor()
-    checkLastSort()   
+    checkLastSort()
 
   })
-
-
 });
 const onChangeColor = () => {
   (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
@@ -346,10 +322,7 @@ const onChangeColor = () => {
   localStorage.setItem('newData', JSON.stringify(newData))
 }
 
-
-
 const categoryCheckboxes = document.querySelectorAll('.category-checkbox') as NodeListOf<HTMLInputElement>;
-console.log(categoryCheckboxes)
 categoryCheckboxes.forEach(el => {
   el.addEventListener('change', () => {
     if (!el.checked) {
@@ -357,7 +330,7 @@ categoryCheckboxes.forEach(el => {
     } else {
       localStorage.removeItem(el.id)
     }
-    console.log(el);
+    
     (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
     let newData = filterCategory(PRODUCT, categoryCheckboxes)
     newData = filteres(newData, colorCheckboxes)
@@ -373,7 +346,7 @@ categoryCheckboxes.forEach(el => {
 });
 
 function check(type: NodeListOf<HTMLInputElement>) {
-  let ideas: Array<string> = []
+  const ideas: Array<string> = []
   for (let i = 0; i < type.length; i++) {
     if (type[i].checked === true) {
       ideas.push(type[i].id)
@@ -381,10 +354,9 @@ function check(type: NodeListOf<HTMLInputElement>) {
   } return ideas;
 }
 
-
 function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
-  let dfg = check(type);
-  let newData: IProduct[] = [];
+  const dfg = check(type);
+  const newData: IProduct[] = [];
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < dfg.length; j++) {
       if (dfg[j] === data[i].color) {
@@ -397,10 +369,9 @@ function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
   return newData
 }
 
-
 function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
-  let dfg = check(type);
-  let newData: IProduct[] = [];
+  const dfg = check(type);
+  const newData: IProduct[] = [];
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < dfg.length; j++) {
       if (dfg[j] === data[i].category) {
@@ -412,16 +383,11 @@ function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
   return newData
 }
 
-
-
-
-
 const rangeContainer = document.createElement('div');
 
 const rangeWrapper = document.createElement('div');
 rangeWrapper.className = "ranger-wrapper";
 rangeContainer.className = "range-container";
-
 
 const sl = document.createElement('div');
 sl.className = "slider";
@@ -431,13 +397,12 @@ spanSliderMin.className = 'span-slider-min';
 const spanSliderMax = document.createElement('div');
 spanSliderMax.className = 'span-slider-max';
 
-
 rangeContainer.appendChild(rangeWrapper);
 rangeWrapper.appendChild(spanSliderMin);
 rangeWrapper.appendChild(spanSliderMax);
 rangeContainer.appendChild(sl)
 document.querySelector('.root__filters').appendChild(rangeContainer);
-var slider = document.getElementById('slider') as noUiSlider.target;
+const slider = document.getElementById('slider') as noUiSlider.target;
 
 noUiSlider.create(slider, {
   start: [0, 1000],
@@ -450,40 +415,34 @@ noUiSlider.create(slider, {
 
 });
 
-slider.noUiSlider.on('update', (values, handle) => {
+slider.noUiSlider.on('update', (values) => {
   let data = prod._dataProd;
 
   if (localStorage.getItem('newData')) {
     data = JSON.parse(localStorage.getItem('newData'))
   }
 
-
   const dataPrice = data.filter((el) => el.price >= Math.round(Number(values[0])) && el.price <= Math.round(Number(values[1])));
   (document.querySelector('.cards') as HTMLDivElement).innerHTML = '';
   prod.render(dataPrice);
   prod._dataProd = dataPrice
   checkLastSort()
-  spanSliderMin.innerText = '$ ' + parseInt((values[0]).toString()).toString();
-  spanSliderMax.innerText = '$ ' + parseInt((values[1]).toString()).toString();
+  spanSliderMin.innerText = `$ ${parseInt((values[0]).toString(), 10).toString()}`;
+  spanSliderMax.innerText = `$ ${parseInt((values[1]).toString(), 10).toString()}`;
 
 });
-
-
-
 
 const search = document.querySelector('.input-search') as HTMLInputElement;
 search.addEventListener('change', () => {
   const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
- (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
+  (document.querySelector('.cards') as HTMLDivElement).innerHTML = ''
 
   prod.render(searchData)
 
-  
-     
-      prod._dataProd = PRODUCT;
-      const inputColor = document.querySelectorAll('input');
-      inputColor.forEach(el => el.checked = true);
+  prod._dataProd = PRODUCT;
+  const inputColor = document.querySelectorAll('input');
+  inputColor.forEach(el => el.checked = true);
 
 })
 
@@ -503,9 +462,4 @@ butAct.forEach(el => {
   })
 })
 
-export  { prod, Product };
-
-
-
-
-
+export { prod, Product };

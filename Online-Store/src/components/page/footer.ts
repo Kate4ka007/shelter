@@ -30,7 +30,6 @@ class Footer {
     rowtop.appendChild(span);
     rowtop.appendChild(footerButton);
 
-
     const description = document.createElement('div');
     description.className = 'footer__description';
     description.textContent = `Subscribe to our
@@ -52,7 +51,6 @@ class Footer {
 
     news.appendChild(description);
     news.appendChild(form);
-
 
     service.innerHTML = `<ul class="footer__items">
                           <li class="footer__item">Services</li>
@@ -76,7 +74,6 @@ class Footer {
                         <li class="footer__item">Contact Us</li>                     
                       </ul>`
                       
-                      
     const terms = document.createElement('div');
     terms.className = 'footer__terms';
     terms.textContent = 'Terms & Conditions';
@@ -94,7 +91,6 @@ class Footer {
                         <a href="https://github.com/Kate4ka007" target="_blank"><img class="instagram" src="assets/images/instagram.png" alt=''></a>`;
     rowbottom.appendChild(social); 
 
-
     footer.appendChild(content);
     content.appendChild(rowtop);
     content.appendChild(rowmiddle);
@@ -103,7 +99,6 @@ class Footer {
     rowmiddle.appendChild(service);
     rowmiddle.appendChild(about);
     rowmiddle.appendChild(helps);
-
 
     document.querySelector('.root').appendChild(footer)
   }

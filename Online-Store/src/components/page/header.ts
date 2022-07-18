@@ -36,7 +36,7 @@ class Header {
     cart.appendChild(shopingBag)
     cart.appendChild(cartContent)
 
-    let count = 0;
+    const count = 0;
     this.renderCountInCart(cartContent)
 
     const login = document.createElement('div');
@@ -67,14 +67,11 @@ class Header {
                      </ul>`
     headerNav.appendChild(nav);
 
-
     const headerBottom = document.createElement('div');
     headerBottom.className = 'header-bottom';
 
-
     const headerBottomRight = document.createElement('div');
     headerBottomRight.className = 'header-bottom-right';
-
 
     const headerBottomLeft = document.createElement('div');
     headerBottomLeft.className = 'header-bottom-left';
@@ -113,7 +110,6 @@ class Header {
     reviewsWrapCount.className = 'reviews-wrap-count';
     reviewsWrapCount.textContent = '15k Well Reviews'
 
-
     headerBottomLeft.appendChild(headerBottomLeftTitle);
     headerBottomLeft.appendChild(headerTitleButton);
     headerBottomLeft.appendChild(reviewsWrap);
@@ -132,7 +128,6 @@ class Header {
     root.appendChild(header);
   }
 
-
   renderCountInCart(parent: HTMLElement) {
     parent.innerHTML = ''
     const cartSpan = document.createElement('span');
@@ -149,5 +144,3 @@ export const head = new Header();
 head.render()
 
 export default Header;
-
-

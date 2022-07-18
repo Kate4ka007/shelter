@@ -4,6 +4,7 @@ class ButtonFirst extends ButtonMain {
   constructor(content: string, selector: string, parent: HTMLDivElement, data: any) {
     super('Bye now', 'button-main', parent, '' )
   }
+
   renderButton() {
     const mainBottom = document.createElement('button')
     mainBottom.classList.add(`${this._selector}`)
@@ -13,5 +14,3 @@ class ButtonFirst extends ButtonMain {
 }
 
 export default ButtonFirst;
-
-

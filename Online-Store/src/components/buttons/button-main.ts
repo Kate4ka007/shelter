@@ -3,8 +3,11 @@ import cartProductList from '../cart/cartList';
 
 class ButtonMain {
   _content: string;
+
   _selector: string;
+
   _parent: HTMLDivElement;
+
   _data: IProduct;
 
   constructor(content: string, selector: string, parent: HTMLDivElement, data: any, callback?: () => void) {
@@ -25,7 +28,6 @@ class ButtonMain {
     })
   }
 
-
   hangleSetStorage(el: this, _data: IProduct) {
     const { addProduct, prdList } = cartProductList.cartProductList.setProductList(_data.id);
     if (addProduct) {
@@ -45,4 +47,3 @@ class ButtonMain {
 }
 
 export default ButtonMain;
-

@@ -2,9 +2,13 @@ import IProduct from "../intefaces/IProduct"
 
 class SortButton {
   _selector: string
+
   _content: string;
+
   _data: IProduct[]
+
   _parent: HTMLDivElement
+
   _callback: Function
 
   constructor(selector: string, content: string, data: IProduct[], parent: HTMLDivElement, callback?: Function) {
@@ -28,4 +32,3 @@ class SortButton {
 }
 
 export default SortButton;
-
