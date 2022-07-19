@@ -156,13 +156,14 @@
 
   &__social {
     margin-left: auto;
-    width: 135px;
+    width: 200px;
     display: flex;
     justify-content: space-between;
   }
 
   &__terms,
-  &__policy {
+  &__policy, 
+  &__year {
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
@@ -182,4 +183,9 @@
     padding: 40px 60px;
   }
 
+}
+
+.github {
+  width: 22px;
+  height: 22px;
 }

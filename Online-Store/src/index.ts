@@ -376,7 +376,7 @@ window.onload = () => {
 }
 
 const search = document.querySelector('.header__input-search') as HTMLInputElement;
-search.addEventListener('keyup', () => {
+search.addEventListener('input', () => {
   const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
   (document.querySelector('.main__cards') as HTMLDivElement).innerHTML = '';

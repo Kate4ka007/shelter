@@ -689,13 +689,16 @@ li {
 .checkbox__label,
 .check-category__label,
 .check-year__label {
-  width: 150px;
+  width: 100px;
   position: relative;
   left: 30px;
   top: -20px;
   font-family: $font-main;
   color: rgb(4, 112, 76);
   font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
 
   @media screen and (max-width: 1439px) and (min-width: 1024px) {
     font-size: 12px;
@@ -1192,13 +1195,13 @@ li {
     height: 30px;
     letter-spacing: 1.0px;
   }
-}
 
-.btn:hover {
-  background-color: #2EE59D;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
+  &:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
 }
 
 .btn-reset:hover {

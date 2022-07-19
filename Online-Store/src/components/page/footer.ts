@@ -84,11 +84,18 @@ class Footer {
     policy.textContent = 'Privacy Policy';
     rowbottom.appendChild(policy); 
 
+    const year = document.createElement('div');
+    year.className = 'footer__year';
+    year.textContent = '2022';
+    rowbottom.appendChild(year);
+
     const social = document.createElement('div');
     social.className = 'footer__social';
     social.innerHTML = `<a href="https://github.com/Kate4ka007" target="_blank"><img class="facebook" src="assets/images/facebook.png" alt=''></a>
                         <a href="https://github.com/Kate4ka007" target="_blank"><img class="twitter" src="assets/images/twitter.png" alt=''></a>
-                        <a href="https://github.com/Kate4ka007" target="_blank"><img class="instagram" src="assets/images/instagram.png" alt=''></a>`;
+                        <a href="https://github.com/Kate4ka007" target="_blank"><img class="instagram" src="assets/images/instagram.png" alt=''></a>
+                        <a href="https://github.com/Kate4ka007" target="_blank"><img class="github" src="assets/images/gitHub.png" alt=''></a>
+                        <a href="https://rs.school/" target="_blank"><img class="rsshool" src="assets/images/logo-rs.svg" alt='' width="28px"></a>`;
     rowbottom.appendChild(social); 
 
     footer.appendChild(content);

@@ -115,13 +115,12 @@ class Header {
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
 
-    const button = new ButtonFirst('Bye now', 'header__button-main', headerTitleButton);
+    const button = new ButtonFirst('Buy now', 'header__button-main', headerTitleButton);
    
     button.renderButton();    
     header.appendChild(headerTop);
     header.appendChild(headerNav);
-    header.appendChild(headerBottom);
-  
+    header.appendChild(headerBottom);  
     const root = document.querySelector('.root');
     root.appendChild(header);
   }
