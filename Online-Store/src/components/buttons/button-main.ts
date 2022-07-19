@@ -39,7 +39,7 @@ class ButtonMain {
       el.renderButton()
 
     } else {
-      el.selector = 'button'
+      el.selector = 'card-product__button'
       el.content = 'Add to cart'
       el.parent.innerHTML = ''
       el.renderButton()

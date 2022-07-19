@@ -17,7 +17,7 @@ class ProductCard {
 
     if (store.indexOf(this.dataCard.id) === -1) {
       textActive = 'Add to cart'
-      classActive = `button`
+      classActive = `card-product__button`
 
     } else {
       textActive = 'Remove from cart'
@@ -25,25 +25,25 @@ class ProductCard {
     }
 
     const prodItem = <HTMLDivElement>document.createElement('div');
-    prodItem.className = 'prod-item';
+    prodItem.className = 'main__card card-product';
     const contentWrapper = <HTMLDivElement>document.createElement('div');
-    contentWrapper.className = 'content-wrapper'
+    contentWrapper.className = 'card-product__content'
 
-    contentWrapper.innerHTML = `<div class="prod-img-wrapper">                                  
-                                  <img class="prod-img" src=${this.dataCard.image} alt=${this.dataCard.category}>
+    contentWrapper.innerHTML = `<div class="card-product__image-wrapper">                                  
+                                  <img class="card-product__image" src=${this.dataCard.image} alt=${this.dataCard.category}>
                                   </div>
-                                  <div class="title-wrapper">
-                                    <p class="item-title">${this.dataCard.title.length > 50 ? `${this.dataCard.title.split('').splice(0, 50).join('')  }...` : this.dataCard.title}</p>          
-                                    <div class="item-rating-wrapper">
-                                      <img class="star" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
-                                        <div class="item-rating">${this.dataCard.rating.rate}</div>
-                                        <div class="reviews">${this.dataCard.rating.count} Reviews</div>
+                                  <div class="card-product__title-wrapper">
+                                    <p class="card-product__title">${this.dataCard.title.length > 50 ? `${this.dataCard.title.split('').splice(0, 50).join('')  }...` : this.dataCard.title}</p>          
+                                    <div class="card-product__rating-wrapper">
+                                      <img class="card-product__star" src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="">
+                                        <div class="card-product__rating">${this.dataCard.rating.rate}</div>
+                                        <div class="card-product__reviews">${this.dataCard.rating.count} Reviews</div>
                                         
-                                        <div class="item-price">$ ${this.dataCard.price}</div>
+                                        <div class="card-product__price">$ ${this.dataCard.price}</div>
                                     </div>
                                   </div>`
     const buttonWrapper = document.createElement('div')
-    buttonWrapper.className = 'button-wrapper';
+    buttonWrapper.className = 'card-product__button-wrapper';
 
     const cartHeart = document.createElement('div')
     cartHeart.title = "Add to Favorite"
@@ -53,7 +53,7 @@ class ProductCard {
     if (localStorage.getItem(idd)) {
       cartHeart.className = 'card-heart_active'
     } else {
-      cartHeart.className = 'card-heart'
+      cartHeart.className = 'card-product__heart'
     }
 
     const button = new ButtonMain(textActive, classActive, buttonWrapper, this.dataCard)
@@ -68,7 +68,7 @@ class ProductCard {
       let idd: number | string = this.dataCard.id
       idd = `favoriteProduct-${  idd.toString()}`
       if (localStorage.getItem(idd)) {
-        cartHeart.className = 'card-heart'
+        cartHeart.className = 'card-product__heart'
         localStorage.removeItem(idd)
 
       } else {
@@ -86,7 +86,7 @@ class ProductCard {
       }
     })
 
-    document.querySelector('.cards').appendChild(prodItem);
+    document.querySelector('.main__cards').appendChild(prodItem);
   }
 }
 

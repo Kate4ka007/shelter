@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
 @import './components/page/footer.scss';
 @import './components/page/header.scss';
+@import './components/page/main.scss';
 
 $font-main: 'Montserrat';
 
@@ -43,7 +44,7 @@ li {
 }
 
 
-.button,
+.card-product__button,
 .header__button-main {
   background: #10b981;
   box-shadow: 0px 25px 50px rgba(255, 255, 255, 0.1);
@@ -98,18 +99,18 @@ li {
   }
 }
 
-.button:hover {
+.card-product__button:hover {
   cursor: pointer;
   background: #2EE59D;
 }
 
-.prod-img {
+.card-product__image {
   width: auto;
   height: 100%;
   border-radius: 10px;
 }
 
-.prod-img-wrapper {
+.card-product__image-wrapper {
   width: auto;
   max-width: 95%;
   height: 200px;
@@ -119,10 +120,11 @@ li {
 }
 
 
-.button-container {
+.main__buttons {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  order: -1;
 
   @media screen and (max-width: 1439px) and (min-width: 1024px) {
     flex-wrap: wrap;
@@ -144,33 +146,10 @@ li {
   padding-right: 5px;
 }
 
-.prod-item {
-  width: 360px;
-  height: 460px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  text-align: center;
-  background: #e0efff;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 15px;
-
-  @media screen and (max-width: 1439px) and (min-width: 1024px) {
-    width: 250px;
-    height: 350px;
-  }
-
-  @media screen and (max-width: 1023.98px) and (min-width: 768px) {
-    width: 250px;
-    height: 350px;
-  }
-}
 
 
-.card-heart {
+
+.card-product__heart {
   position: relative;
   left: 148px;
   top: 6px;
@@ -213,7 +192,7 @@ li {
 }
 
 
-.content-wrapper {
+.card-product__content {
   width: 360px;
   height: 440px;
   display: flex;
@@ -241,7 +220,7 @@ li {
 
 }
 
-.title-wrapper {
+.card-product__title-wrapper {
   width: 320px;
   height: 165px;
   background: #ffffff;
@@ -269,7 +248,7 @@ li {
   }
 }
 
-.button-wrapper {
+.card-product__button-wrapper {
   height: 100px;
   width: 100%;
   background-color: #f5f5f5;
@@ -288,19 +267,19 @@ li {
 
 
 
-.prod-item:nth-child(4n + 4) {
+.card-product:nth-child(4n + 4) {
   background-color: rgb(203, 250, 238);
 }
 
-.prod-item:nth-child(3n + 2) {
+.card-product:nth-child(3n + 2) {
   background: #e5d5ff;
 }
 
-.prod-item:nth-child(3n + 3) {
+.card-product:nth-child(3n + 3) {
   background-color: rgb(200, 248, 255);
 }
 
-.prod-item:hover {
+.card-product:hover {
   transition: 0.5s;
   background-color: white;
   box-shadow: 0px 15px 50px rgba(46, 131, 158, 0.07);
@@ -314,7 +293,7 @@ li {
   font-size: small;
 }
 
-.item-title {
+.card-product__title {
   font-family: $font-main;
   font-style: normal;
   font-weight: 500;
@@ -340,7 +319,7 @@ li {
 
 }
 
-.item-price {
+.card-product__price {
   font-family: $font-main;
   font-style: normal;
   font-weight: 600;
@@ -359,13 +338,13 @@ li {
 
 }
 
-.star {
+.card-product__star {
   width: 15px;
   height: 15px;
   margin-right: 5px;
 }
 
-.item-rating-wrapper {
+.card-product__rating-wrapper {
   display: flex;
   align-items: center;
   width: 100%;
@@ -381,7 +360,7 @@ li {
 
 }
 
-.reviews {
+.card-product__reviews {
   font-family: $font-main;
   font-style: normal;
   font-weight: 500;
@@ -642,7 +621,7 @@ li {
 
 
 
-.cards {
+.main__cards {
   width: 83%;
   display: flex;
   flex-direction: row;

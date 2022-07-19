@@ -1,7 +1,7 @@
 class Main {
   render() {
     const cards = document.createElement('div');
-    cards.className = 'cards';
+    cards.className = 'main__cards';
 
     const filters = document.createElement('div');
     filters.className = 'root__filters';
