@@ -56,12 +56,12 @@ class Header {
     headerNav.className = 'header__nav';
 
     const nav = document.createElement('nav');
-    nav.classList.add('nav');
-    nav.innerHTML = `<ul class="list">
-                      <li class="list-item">Features</li>
-                      <li class="list-item">Products</li>
-                      <li class="list-item">Blog</li>
-                      <li class="list-item">About</li>
+    nav.classList.add('header__navigation');
+    nav.innerHTML = `<ul class="header__list">
+                      <li class="header__list-item">Features</li>
+                      <li class="header__list-item">Products</li>
+                      <li class="header__list-item">Blog</li>
+                      <li class="header__list-item">About</li>
                      </ul>`
     headerNav.appendChild(nav);
 
@@ -76,20 +76,20 @@ class Header {
 
     const headerBottomLeftTitle = document.createElement('div');
     headerBottomLeftTitle.className = 'header__bottom-left_title';
-    headerBottomLeftTitle.innerHTML = '<h1 class="title-main">Discover Our Latest  Products</h1><span class="subtitle">Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a product</span>'
+    headerBottomLeftTitle.innerHTML = '<h1 class="header__title-main">Discover Our Latest  Products</h1><span class="header__subtitle">Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a product</span>'
     const headerTitleButton = document.createElement('div');
     headerTitleButton.className = 'header-title-button';
 
     const reviews = document.createElement('div');
-    reviews.className = 'reviews-header';
+    reviews.className = 'header__review-icons';
     const rev1 = document.createElement('img');
-    rev1.className = 'reviews-item1';
+    rev1.className = 'header__review-item1';
     const rev2 = document.createElement('img');
-    rev2.className = 'reviews-item2';
+    rev2.className = 'header__review-item2';
     const rev3 = document.createElement('img');
-    rev3.className = 'reviews-item3';
+    rev3.className = 'header__review-item3';
     const rev4 = document.createElement('img');
-    rev4.className = 'reviews-item4';
+    rev4.className = 'header__review-item4';
 
     rev1.src = 'assets/images/001.png';
     rev2.src = 'assets/images/002.png';
@@ -101,11 +101,11 @@ class Header {
     reviews.appendChild(rev1);
 
     const reviewsWrap = document.createElement('div');
-    reviewsWrap.className = 'reviews-wrap';
+    reviewsWrap.className = 'header__reviews';
     reviewsWrap.appendChild(reviews);
 
     const reviewsWrapCount = document.createElement('div');
-    reviewsWrapCount.className = 'reviews-wrap-count';
+    reviewsWrapCount.className = 'header__review-count';
     reviewsWrapCount.textContent = '15k Well Reviews'
 
     headerBottomLeft.appendChild(headerBottomLeftTitle);
@@ -115,7 +115,7 @@ class Header {
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
 
-    const button = new ButtonFirst('Bye now', 'button-main', headerTitleButton);
+    const button = new ButtonFirst('Bye now', 'header__button-main', headerTitleButton);
    
     button.renderButton();    
     header.appendChild(headerTop);
