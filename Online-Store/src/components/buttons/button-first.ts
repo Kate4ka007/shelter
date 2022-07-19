@@ -2,7 +2,7 @@ import ButtonMain from "./button-main";
 
 class ButtonFirst extends ButtonMain {
   constructor(content: string, selector: string, parent: HTMLDivElement) {
-    super('Bye now', 'header__button-main', parent)
+    super('Buy now', 'header__button-main', parent)
   }
 
   renderButton() {

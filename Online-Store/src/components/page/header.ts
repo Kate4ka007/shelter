@@ -115,7 +115,7 @@ class Header {
     headerBottom.appendChild(headerBottomLeft);
     headerBottom.appendChild(headerBottomRight);
 
-    const button = new ButtonFirst('Buy now', 'header__button-main', headerTitleButton);
+    const button = new ButtonFirst('Hello', 'header__button-main', headerTitleButton);
    
     button.renderButton();    
     header.appendChild(headerTop);
