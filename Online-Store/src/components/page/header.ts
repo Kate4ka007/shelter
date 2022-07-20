@@ -1,7 +1,9 @@
 import ButtonFirst from "../buttons/button-first";
+import IHeader from "./interfaces/IHeader";
 
-class Header {
-  render() {
+class Header implements IHeader {
+
+  public render(): void {
     const header = document.createElement('header');
     header.className = 'header';
     const headerTop = document.createElement('div');
@@ -26,7 +28,7 @@ class Header {
     const cart = document.createElement('div');
     cart.className = 'header__cart';
     const cartContent = document.createElement('div');
-    cartContent.className = 'cart-content'
+    cartContent.className = 'header__cart-content'
 
     const shopingBag = document.createElement('img');
     shopingBag.src = 'assets/images/shopping-bag.png';
@@ -34,7 +36,7 @@ class Header {
 
     cart.appendChild(shopingBag);
     cart.appendChild(cartContent);
-    
+
     this.renderCountInCart(cartContent);
 
     const login = document.createElement('div');
@@ -78,7 +80,7 @@ class Header {
     headerBottomLeftTitle.className = 'header__bottom-left_title';
     headerBottomLeftTitle.innerHTML = '<h1 class="header__title-main">Discover Our Latest  Products</h1><span class="header__subtitle">Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a product</span>'
     const headerTitleButton = document.createElement('div');
-    headerTitleButton.className = 'header-title-button';
+    headerTitleButton.className = 'header__title-button';
 
     const reviews = document.createElement('div');
     reviews.className = 'header__review-icons';
@@ -116,23 +118,23 @@ class Header {
     headerBottom.appendChild(headerBottomRight);
 
     const button = new ButtonFirst('Buy now', 'header__button-main', headerTitleButton);
-   
-    button.renderButton();    
+
+    button.renderButton();
     header.appendChild(headerTop);
     header.appendChild(headerNav);
-    header.appendChild(headerBottom);  
+    header.appendChild(headerBottom);
     const root = document.querySelector('.root');
     root.appendChild(header);
   }
 
-  renderCountInCart(parent: HTMLElement) {
+  public renderCountInCart(parent: HTMLElement): void {
     parent.innerHTML = '';
     const cartSpan = document.createElement('span');
     let len = localStorage.getItem('product');
-    len = JSON.parse(len);    
+    len = JSON.parse(len);
     cartSpan.textContent = `${localStorage.getItem('product') ? JSON.parse(localStorage.getItem('product')).length : 0} Items Added`;
     cartSpan.className = 'cart-span';
-    parent.appendChild(cartSpan);    
+    parent.appendChild(cartSpan);
   }
 }
 

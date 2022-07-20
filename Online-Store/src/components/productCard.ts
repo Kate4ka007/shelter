@@ -1,4 +1,4 @@
-import IProduct from "./intefaces/IProduct";
+import IProduct from "./interfaces/IProduct";
 import ButtonMain from "./buttons/button-main";
 import cartProductList from './cart/cartList';
 import {prod} from '../index'

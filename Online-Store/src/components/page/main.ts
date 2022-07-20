@@ -1,5 +1,7 @@
-class Main {
-  render() {
+import IMain from "./interfaces/IMain";
+
+class Main implements IMain {
+  public render(): void {
     const cards = document.createElement('div');
     cards.className = 'main__cards';
 
@@ -8,8 +10,7 @@ class Main {
     const main = document.createElement('main')
     main.className = 'main';
     main.appendChild(cards);
-    main.appendChild(filters);
-    
+    main.appendChild(filters);    
     document.querySelector('.root').appendChild(main);   
   }
 }

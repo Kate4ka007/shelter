@@ -1,5 +1,8 @@
-class Footer {
-  render() {
+import IFooter from "./interfaces/IFooter";
+
+class Footer implements IFooter {
+
+  public render(): void {
     const footer = document.createElement('footer');
     footer.className = 'footer';
     const content = document.createElement('div');

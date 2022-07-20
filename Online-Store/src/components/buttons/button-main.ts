@@ -1,8 +1,9 @@
-import IProduct from "../intefaces/IProduct";
+import IProduct from "../interfaces/IProduct";
 import cartProductList from '../cart/cartList';
 import { listner } from "../../index";
+import IButtonMain from "./interfaces/IButtonMain";
 
-class ButtonMain {
+class ButtonMain implements IButtonMain {
   content: string;
 
   selector: string;
@@ -18,7 +19,7 @@ class ButtonMain {
     this.data = data
   }
 
-  renderButton() {
+  renderButton(): void {
     const mainBottom = document.createElement('button')
     mainBottom.classList.add(`${this.selector}`)
     mainBottom.textContent = `${this.content}`
@@ -30,7 +31,7 @@ class ButtonMain {
     })
   }
 
-  hangleSetStorage(el: this, data: IProduct) {
+  hangleSetStorage(el: this, data: IProduct): void {
     const { addProduct, prdList } = cartProductList.cartProductList.setProductList(data.id);   
     if (addProduct) {
       el.selector = 'button_active'

@@ -3,7 +3,7 @@
 /* eslint-disable no-use-before-define */
 
 import * as noUiSlider from 'nouislider';
-import IProduct from './components/intefaces/IProduct';
+import IProduct from './components/interfaces/IProduct';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.scss';
@@ -14,13 +14,14 @@ import Main from './components/page/main';
 import 'nouislider/dist/nouislider.css';
 import SortButton from './components/buttons/sortButton';
 import checkLastSort from './components/functions/functions'
-import SortType from './components/intefaces/enum';
+import SortType from './components/interfaces/enum';
 import Footer from './components/page/footer';
+import IProductInt from './components/page/interfaces/IProductInt';
 
-class Product {
+class Product implements IProductInt {
   dataProd: IProduct[] = PRODUCT;
 
-  render(data: Array<IProduct>) {
+  render(data: Array<IProduct>): void {
 
     const buttonContainer = document.createElement('div');
     buttonContainer.className = 'main__buttons';
@@ -39,57 +40,49 @@ class Product {
     const releaseContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating' src="assets/images/up.png" alt=''>`
     const releaseDownContent = `Release <img class='calendar' src="assets/images/calendar.png" alt=''><img class='sort-rating-down' src="assets/images/up.png" alt=''>`
 
-    const sortButton = new SortButton('btn btn-outline-success btn-sort-price', priceContent, this.dataProd, buttonContainer, () => {
+    const sortButton = new SortButton('main__btn btn-sort-price', priceContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = '';      
       prod.sortProducts(SortType.PriceMin);
       listner();
-      localStorage.setItem('sorting', 'priceMin');
-      
+      localStorage.setItem('sorting', 'priceMin');      
     });
     sortButton.render();
 
-    const sortButtonMax = new SortButton('btn btn-outline-success btn-sort-pricemax', priceMaxContent, this.dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+    const sortButtonMax = new SortButton('main__btn btn-sort-pricemax', priceMaxContent, this.dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.PriceMax)
       listner();
-      localStorage.setItem('sorting', 'priceMax')
-
+      localStorage.setItem('sorting', 'priceMax');      
     });
     sortButtonMax.render();
 
-    const sortRating = new SortButton('btn btn-outline-warning btn-sort-rating', ratingContent, this.dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+    const sortRating = new SortButton('main__btn btn-sort-rating', ratingContent, this.dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.Rating)
       listner();
-      localStorage.setItem('sorting', 'rate')
-
+      localStorage.setItem('sorting', 'rate');      
     });
-
     sortRating.render();
 
-    const sortRatingDown = new SortButton('btn btn-outline-warning btn-sort-ratingdown', ratingDownContent, this.dataProd, buttonContainer, () => {
+    const sortRatingDown = new SortButton('main__btn btn-sort-ratingdown', ratingDownContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.RatingDown);
       listner();
-      localStorage.setItem('sorting', 'rateDown')
-
+      localStorage.setItem('sorting', 'rateDown');
     });
-
     sortRatingDown.render();
 
     const titleContent = `Name <img class='az' src="assets/images/az.png" alt=''><img class='sort-up' src="assets/images/up.png" alt=''>`
-    const sortTitle = new SortButton('btn btn-outline-primary btn-sort-title', titleContent, this.dataProd, buttonContainer, () => {
+    const sortTitle = new SortButton('main__btn btn-sort-title', titleContent, this.dataProd, buttonContainer, () => {
       buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.TitleUp);
       listner();
-      localStorage.setItem('sorting', 'titleUp')
-
+      localStorage.setItem('sorting', 'titleUp');
     });
-
     sortTitle.render();
 
-    const sortTitleDown = new SortButton('btn btn-outline-primary btn-sort-titleDown', titleDownContent, this.dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+    const sortTitleDown = new SortButton('main__btn btn-sort-titleDown', titleDownContent, this.dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.TitleDown);
       listner();
       localStorage.setItem('sorting', 'titleDown')
@@ -97,8 +90,8 @@ class Product {
     });
     sortTitleDown.render();
 
-    const sortRealise = new SortButton('btn btn-outline-primary btn-sort-realise', releaseContent, this.dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+    const sortRealise = new SortButton('main__btn btn-sort-realise', releaseContent, this.dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.Realise);
       listner();
       localStorage.setItem('sorting', 'release')
@@ -106,8 +99,8 @@ class Product {
     });
     sortRealise.render();
 
-    const sortRealiseDown = new SortButton('btn btn-outline-primary btn-sort-realisedown', releaseDownContent, this.dataProd, buttonContainer, () => {
-      buttonContainer.innerHTML = ''
+    const sortRealiseDown = new SortButton('main__btn btn-sort-realisedown', releaseDownContent, this.dataProd, buttonContainer, () => {
+      buttonContainer.innerHTML = '';
       prod.sortProducts(SortType.RealiseDown);
       listner();
       localStorage.setItem('sorting', 'releaseDown')
@@ -115,21 +108,37 @@ class Product {
     });
     sortRealiseDown.render();
 
-    const resetAll = new SortButton('btn btn-outline-danger btn-reset', 'reset all', this.dataProd, buttonContainer, () => {
+    const resetAll = new SortButton('main__btn btn-reset', 'reset all', this.dataProd, buttonContainer, () => {
       document.querySelector('.main__cards').innerHTML = '';
-      buttonContainer.innerHTML = ''
+      buttonContainer.innerHTML = '';
       prod.render(PRODUCT);
       prod.dataProd = PRODUCT;
       const inputColor = document.querySelectorAll('input');
       inputColor.forEach(el => { el.checked = true });
-      localStorage.clear()
+      localStorage.clear();
+      listner();
     });
-    resetAll.render()
-    const cart = document.querySelector('.cart-content') as HTMLDivElement;
-    head.renderCountInCart(cart)
+    resetAll.render();
+
+    const cart = document.querySelector('.header__cart-content') as HTMLDivElement;
+    head.renderCountInCart(cart);
+
+    const cartCont = document.querySelector('.header__cart-content') as HTMLDivElement;
+    const but = Array.from(document.querySelectorAll('.card-product__button'));
+    const butAct = Array.from(document.querySelectorAll('.button_active'));  
+    but.forEach(el => {
+      el.addEventListener('click', () => {
+        head.renderCountInCart(cartCont);
+      })
+    });  
+    butAct.forEach(el => {
+      el.addEventListener('click', () => {
+        head.renderCountInCart(cartCont);
+      })
+    })
   }
 
-  colorCheckRender() {
+  colorCheckRender(): void {
     const checkContainer = document.createElement('div');
     const colorTitle = document.createElement('div');
     colorTitle.className = 'color-title check-title';
@@ -167,7 +176,7 @@ class Product {
 
   }
 
-  typeCheckRender() {
+  typeCheckRender(): void {
     const checkContainerCategory = document.createElement('div');
     const typeTitle = document.createElement('div');
     typeTitle.className = 'category-title check-title';
@@ -204,7 +213,7 @@ class Product {
     document.querySelector('.root__filters').appendChild(checkContainerCategory);
   }
 
-  yearCheckRender() {
+  yearCheckRender(): void {
     const checkContainerYear = document.createElement('div');
     const yearTitle = document.createElement('div');
     yearTitle.className = 'year-title check-title';
@@ -245,7 +254,7 @@ class Product {
     document.querySelector('.root__filters').appendChild(resetContainer);
 
     const resetFilters = document.querySelector('.reset-container') as HTMLDivElement;
-    const reset = new SortButton('btn btn-outline-danger btn-reset', 'reset filters', this.dataProd, resetFilters, () => {
+    const reset = new SortButton('main__btn btn-outline-danger btn-reset', 'reset filters', this.dataProd, resetFilters, () => {
       document.querySelector('.main__cards').innerHTML = '';
       resetFilters.innerHTML = ''
       prod.render(PRODUCT);
@@ -260,26 +269,24 @@ class Product {
   }
 
   notFound(): void {
-
     const notFound = document.createElement('div');
     notFound.className = 'alert-window';
     notFound.innerHTML = `<div class="alert alert-danger" role="alert">
     <strong>Oh snap!</strong> Change a few things up and try submitting again (no matches found).
   </div>`
     document.querySelector('.header').appendChild(notFound);
-    document.body.style.overflow = 'hidden';
+    
     setTimeout(() => {
       notFound.remove()
     }, 2000);
     notFound.addEventListener('click', () => {
       notFound.remove();
       document.body.style.overflow = 'visible';
-
     })
 
   }
 
-  modal(data: IProduct) {
+  modal(data: IProduct): void {
 
     const modalWindowWrapper = document.createElement('div');
     modalWindowWrapper.className = 'modal-wrapper';
@@ -299,7 +306,7 @@ class Product {
       </div>      
       <div class="modals__release">Released in ${data.release}</div>
       <div class="modals__countstorage">In stock ${data.countInStock} pieces</div>
-      <button type="button" class='btn btn-success modals__close'>Close</button>     
+      <button type="button" class='main__btn btn-success modals__close'>Close</button>     
     </div>`;
 
     modalWindowWrapper.appendChild(modalWindow)
@@ -318,7 +325,7 @@ class Product {
     })
   }
 
-  sortProducts(type: SortType) {
+  sortProducts(type: SortType): void {
     const arr: Array<IProduct> = []
     this.dataProd.forEach(elememt => {
       arr.push(elememt)
@@ -345,7 +352,7 @@ class Product {
 
     }
 
-    document.querySelector('.main__cards').innerHTML = ''
+    document.querySelector('.main__cards').innerHTML = '';
     prod.render(sortArr)
     this.dataProd = sortArr;   
 
@@ -357,9 +364,9 @@ main.render();
 
 const prod = new Product();
 if (localStorage.getItem('newData')) {
-  const dataStorage: IProduct[] = JSON.parse(localStorage.getItem('newData'))
+  const dataStorage: IProduct[] = JSON.parse(localStorage.getItem('newData'));
   prod.render(dataStorage)
-  checkLastSort()
+  checkLastSort();
 
 } else {
   prod.render(prod.dataProd);
@@ -371,12 +378,12 @@ prod.yearCheckRender();
 
 const footer = new Footer();
 footer.render();
-window.onload = () => {
-  (document.querySelector('.header__input-search') as HTMLInputElement).focus()
+window.onload = (): void => {
+  (document.querySelector('.header__input-search') as HTMLInputElement).focus();
 }
 
 const search = document.querySelector('.header__input-search') as HTMLInputElement;
-search.addEventListener('input', () => {
+search.addEventListener('input', (): void => {
   const data = PRODUCT;
   const searchData = data.filter(el => el.title.toLowerCase().includes(search.value.toLowerCase()));
   (document.querySelector('.main__cards') as HTMLDivElement).innerHTML = '';
@@ -394,7 +401,7 @@ search.addEventListener('input', () => {
     return;
   }
   
-  prod.render(searchData)
+  prod.render(searchData);   
   prod.dataProd = PRODUCT;
 });
 
@@ -406,12 +413,12 @@ colorCheckboxes.forEach(el => {
     } else {
       localStorage.removeItem(el.id)
     }
-    onChangeColor()
-    checkLastSort()
-
+    onChangeColor();
+    checkLastSort();
   })
 });
-const onChangeColor = () => {
+
+const onChangeColor = (): void => {
   (document.querySelector('.main__cards') as HTMLDivElement).innerHTML = '';
   let newData = filteres(PRODUCT, colorCheckboxes)
   newData = filterCategory(newData, categoryCheckboxes)
@@ -455,7 +462,6 @@ yearCheckboxes.forEach(el => {
     } else {
       localStorage.removeItem(el.id)
     }
-
     (document.querySelector('.main__cards') as HTMLDivElement).innerHTML = '';
     let newData = filterYear(PRODUCT, yearCheckboxes)
     newData = filterCategory(newData, categoryCheckboxes)
@@ -471,7 +477,7 @@ yearCheckboxes.forEach(el => {
   })
 });
 
-function check(type: NodeListOf<HTMLInputElement>) {
+function check(type: NodeListOf<HTMLInputElement>): string[] {
   const ideas: Array<string> = []
   for (let i = 0; i < type.length; i += 1) {
     if (type[i].checked === true) {
@@ -480,7 +486,7 @@ function check(type: NodeListOf<HTMLInputElement>) {
   } return ideas;
 }
 
-function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
+function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>): IProduct[] {
   const dfg = check(type);
   const newData: IProduct[] = [];
   for (let i = 0; i < data.length; i += 1) {
@@ -488,28 +494,27 @@ function filteres(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
       if (dfg[j] === data[i].color) {
         if (!newData.includes(data[i]))
           newData.push(data[i])
-
       }
     }
   }
   return newData
 }
 
-function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
+function filterCategory(data: IProduct[], type: NodeListOf<HTMLInputElement>): IProduct[] {
   const dfg = check(type);
   const newData: IProduct[] = [];
   for (let i = 0; i < data.length; i += 1) {
     for (let j = 0; j < dfg.length; j += 1) {
       if (dfg[j] === data[i].category) {
         if (!newData.includes(data[i]))
-          newData.push(data[i])
+          newData.push(data[i]);
       }
     }
   }
-  return newData
+  return newData;
 }
 
-function filterYear(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
+function filterYear(data: IProduct[], type: NodeListOf<HTMLInputElement>): IProduct[] {
   const dfg = check(type);
   const newData: IProduct[] = [];
   for (let i = 0; i < data.length; i += 1) {
@@ -523,7 +528,7 @@ function filterYear(data: IProduct[], type: NodeListOf<HTMLInputElement>) {
   return newData
 }
 
-const createPriseSlider = () => {
+const createPriseSlider = (): void => {
   const rangeContainer = document.createElement('div');
   const rangeWrapper = document.createElement('div');
   rangeWrapper.className = "ranger-wrapper";
@@ -539,7 +544,7 @@ const createPriseSlider = () => {
   rangeContainer.appendChild(rangeWrapper);
   rangeWrapper.appendChild(spanSliderMin);
   rangeWrapper.appendChild(spanSliderMax);
-  rangeContainer.appendChild(sl)
+  rangeContainer.appendChild(sl);
   document.querySelector('.root__filters').appendChild(rangeContainer);
   const slider = document.getElementById('slider') as noUiSlider.target;
 
@@ -567,13 +572,12 @@ const createPriseSlider = () => {
     checkLastSort()
     spanSliderMin.innerText = `$ ${parseInt((values[0]).toString(), 10).toString()}`;
     spanSliderMax.innerText = `$ ${parseInt((values[1]).toString(), 10).toString()}`;
-
   });
 }
 
 createPriseSlider();
 
-const createRateSlider = () => {
+const createRateSlider = (): void => {
   const rangeRateContainer = document.createElement('div');
   const rateWrapper = document.createElement('div');
   rateWrapper.className = "rate-wrapper";
@@ -590,7 +594,7 @@ const createRateSlider = () => {
   rangeRateContainer.appendChild(rateWrapper);
   rateWrapper.appendChild(rateSliderMin);
   rateWrapper.appendChild(rateSliderMax);
-  rangeRateContainer.appendChild(rateSl)
+  rangeRateContainer.appendChild(rateSl);
   document.querySelector('.root__filters').appendChild(rangeRateContainer);
   const sliderRate = document.getElementById('slider-rate') as noUiSlider.target;
 
@@ -602,21 +606,20 @@ const createRateSlider = () => {
       'min': 0,
       'max': 5
     }
-
   });
 
-  sliderRate.noUiSlider.on('update', (values) => {
+  sliderRate.noUiSlider.on('update', (values): void => {
     let data: IProduct[] = prod.dataProd;
 
     if (localStorage.getItem('newData')) {
       data = JSON.parse(localStorage.getItem('newData'))
     }
 
-    const dataRate = data.filter((el) => el.rating.rate >= +values[0] && el.rating.rate <= +values[1]);
+    const dataRate = data.filter((el: IProduct) => el.rating.rate >= +values[0] && el.rating.rate <= +values[1]);
     (document.querySelector('.main__cards') as HTMLDivElement).innerHTML = '';
     prod.render(dataRate);
-    prod.dataProd = dataRate
-    checkLastSort()
+    prod.dataProd = dataRate;
+    checkLastSort();
 
     rateSliderMin.innerHTML = `${(values[0]).toString()} <img class="range-star" src= "assets/images/icon-star.png" alt=""> `;
     rateSliderMax.innerHTML = `${(values[1]).toString()} <img class="range-star" src= "assets/images/icon-star.png" alt="">`;
@@ -626,8 +629,8 @@ const createRateSlider = () => {
 
 createRateSlider();
 
-const listner = () => {
-  const cart = document.querySelector('.cart-content') as HTMLDivElement;
+const listner = (): void => {
+  const cart = document.querySelector('.header__cart-content') as HTMLDivElement;
   const but = Array.from(document.querySelectorAll('.card-product__button'));
   const butAct = Array.from(document.querySelectorAll('.button_active'));
 
@@ -643,6 +646,6 @@ const listner = () => {
     })
   })
 }
-listner()
+listner();
 
 export { Product, prod, listner };

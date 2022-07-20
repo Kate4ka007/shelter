@@ -1,4 +1,4 @@
-import SortType from "../intefaces/enum";
+import SortType from "../interfaces/enum";
 import { prod } from "../../index";
 
 const checkLastSort = (): void => {

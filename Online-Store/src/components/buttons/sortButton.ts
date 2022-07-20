@@ -1,6 +1,7 @@
-import IProduct from "../intefaces/IProduct"
+import IProduct from "../interfaces/IProduct"
+import ISortButton from "./interfaces/ISortButton";
 
-class SortButton {
+class SortButton implements ISortButton {
   selector: string
 
   content: string;
@@ -19,7 +20,7 @@ class SortButton {
     this.callback = callback   
   }
 
-  render() {
+  render(): void {
     const sortButton = document.createElement('button');
     sortButton.className = this.selector;
     sortButton.innerHTML = this.content;

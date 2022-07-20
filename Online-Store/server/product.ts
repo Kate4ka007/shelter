@@ -1,4 +1,4 @@
-import IProduct from '../src/components/intefaces/IProduct'
+import IProduct from '../src/components/interfaces/IProduct'
 
  const PRODUCT: IProduct[] = [
   {
