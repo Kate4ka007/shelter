@@ -1,0 +1,154 @@
+body {
+  background: #272525;
+}
+
+.root {
+  padding: 10px;
+}
+
+.car-container {
+  border-bottom: 2px white dotted;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.car {
+  width: 120px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.flag {
+  width: 40px;
+  height: auto;
+  margin-right: 120px;
+}
+
+.car-model {
+  color: aliceblue;
+}
+
+.car-row1 {
+  // width: 200px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.car-flag {
+  display: flex;
+  justify-content: space-between;
+}
+
+.start-stop {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.btn-select {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 4px 15px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 14px;
+  font-weight: bold;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  &:hover {
+    box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+}
+
+.btn-start {
+  background: #e62143;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab", "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33.4929px;
+  // padding: .8em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+  text-underline-offset: 1px;
+  transition: all .2s ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+  word-break: break-word;
+  border: 0;
+
+  &:active,
+  &:focus {
+    border-bottom-style: none;
+    border-color: #dadada;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+    outline: 0;
+  }
+
+  &:hover {
+    border-bottom-style: none;
+    border-color: #dadada;
+    background-color: lighten($color: #e62143, $amount: 10);
+  }
+}
+
+.btn-stop {
+  background: #2155e6;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab", "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 33.4929px;
+  // padding: .8em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+  text-underline-offset: 1px;
+  transition: all .2s ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+  word-break: break-word;
+  border: 0;
+
+  &:active,
+  &:focus {
+    border-bottom-style: none;
+    border-color: #dadada;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+    outline: 0;
+  }
+
+  &:hover {
+    border-bottom-style: none;
+    border-color: #dadada;
+    background-color: lighten($color: #2155e6, $amount: 10);
+  }
+}
+
+.car-headlight {
+  width: 44px;
+  opacity: 0.8;
+  margin-left: -6px;
+  transform: scale(-0.9, 0.45);
+  margin-bottom: -21px;
+}

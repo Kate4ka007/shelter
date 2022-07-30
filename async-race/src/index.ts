@@ -1,58 +1,54 @@
 /* eslint-disable no-unused-vars */
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+/* import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; */
 import './styles.scss';
+import Controller from './components/controller/controller';
+import Model from './components/model/model';
+import View from './components/view/view';
 
-interface ICar {
-  id: number;
-  name: string;
-  color: string;
-}
+const app = new Controller(new Model(), new View());
 
-let garage: Array<ICar>;
+const startCar = (car: HTMLElement, id: number) => {
+  let animationStart: number;
+  let requestId: number = id;
+  console.log(id);
 
-fetch('http://localhost:3000/garage')
-  .then((response) => response.json())
-  .then((data: ICar[]) => {
-    garage = data;
-  });
-
-class Car {
-  id: number;
-
-  name: string;
-
-  color: string;
-
-  constructor(id: number, name: string, color: string) {
-    this.id = id;
-    this.name = name;
-    this.color = color;
-
-    const car = document.createElement('div');
-    car.className = 'car';
-    car.id = id.toString();
-    car.textContent = name;
-    car.style.background = color;
-    document.body.appendChild(car);
-
-    car.addEventListener('click', () => {
-      fetch(`http://localhost:3000/garage/${this.id}`, { method: 'DELETE' })
-        .then((response) => response.json())
-        .then((data: ICar[]) => {
-          console.log(data);
-        });
-      car.remove();
-    });
+  function animate(timestamp: number) {
+    if (!animationStart) {
+      animationStart = timestamp;
+    }
+    const progress = timestamp - animationStart;
+    // eslint-disable-next-line no-param-reassign
+    car.style.transform = `translateX(${progress * 0.3}px)`;
+    const x = car.getBoundingClientRect().x + 100;
+    if (x <= window.innerWidth - 25) {
+      window.requestAnimationFrame(animate);
+    } else {
+      window.cancelAnimationFrame(requestId);
+    }
   }
-}
+  function startAnimation() {
+    requestId = window.requestAnimationFrame(animate);
+  }
+  startAnimation();
 
-const dat = async () => {
-  garage.forEach((element: ICar) => {
-    const car = new Car(element.id, element.name, element.color);
+  const stop = document.querySelectorAll('.btn-stop');
+  stop.forEach((el) => {
+    el.addEventListener('click', () => {
+      console.log('ttt');
+
+      requestId = window.requestAnimationFrame(animate);
+      window.cancelAnimationFrame(requestId);
+    });
   });
 };
 
-setTimeout(() => {
-  dat();
-}, 1000);
+/* fetch('http://localhost:3000/garage?_page=1&_limit=7')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  }); */
+
+export const getRandome = () => Math.floor(Math.random() * (9 - 0 + 1) + 0);
+
+export default startCar;
