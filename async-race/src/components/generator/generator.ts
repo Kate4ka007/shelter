@@ -7,15 +7,15 @@ class Generator {
     panel.innerHTML = `<div class='row1'>
                           <input type='text' class='car-name-create'>
                           <input type='color' class='car-color-create'>
-                          <button class='btn-car-create'>CREATE</button></div>
+                          <button class='btn-car-create btn-select'>CREATE</button></div>
                        <div class='row2'>
                           <input type='text' class='car-name-update'>
                           <input type='color' class='car-color-update'>
-                          <button class='btn-car-update'>UPDATE</button></div>
+                          <button class='btn-car-update btn-select'>UPDATE</button></div>
                        <div class='row3'>
-                          <button class='btn-car-race'>RACE</button>
-                          <button class='btn-car-reset'>RESET</button>
-                          <button class='btn-car-ceneratecars'>GENERATE CARS</button></div>`;
+                          <button class='btn-car-race btn-select'>RACE</button>
+                          <button class='btn-car-reset btn-select'>RESET</button>
+                          <button class='btn-car-ceneratecars btn-select'>GENERATE CARS</button></div>`;
 
     document.body.appendChild(root);
     root.appendChild(panel);

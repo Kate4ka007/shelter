@@ -15,7 +15,7 @@ class View {
 
   generaGarage(): void {
     let garage: Array<ICar>;
-    fetch('http://localhost:3000/garage')
+    fetch('http://localhost:3000/garage?_page=1&_limit=7')
       .then((response) => response.json())
       .then((data: ICar[]) => {
         garage = data;
@@ -29,7 +29,7 @@ class View {
 
     setTimeout(() => {
       dat();
-    }, 1500);
+    }, 1000);
 
     const input = document.createElement('input');
     input.type = 'color';
@@ -41,7 +41,7 @@ class View {
     const btnGenerate = document.querySelector('.btn-car-ceneratecars');
     btnGenerate.addEventListener('click', () => {
       let colors: string;
-      for (let i = 0; i < 20; i += 1) {
+      for (let i = 0; i < 100; i += 1) {
         const nameCar = `${brand[getRandome()]} ${models[getRandome()]}`;
         if (input.value === '#000000') {
           colors = Math.floor(Math.random() * 16777215).toString(16);
@@ -61,7 +61,7 @@ class View {
       }
 
       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-      fetch('http://localhost:3000/garage')
+      fetch('http://localhost:3000/garage?_page=1&_limit=7')
         .then((response) => response.json())
         .then((data: ICar[]) => {
           garage = data;
