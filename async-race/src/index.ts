@@ -5,6 +5,8 @@ import './styles.scss';
 import Controller from './components/controller/controller';
 import Model from './components/model/model';
 import View from './components/view/view';
+import ICar from './components/cars/ICar';
+import Car from './components/cars/car';
 
 const app = new Controller(new Model(), new View());
 
@@ -43,11 +45,39 @@ const startCar = (car: HTMLElement, id: number) => {
   });
 };
 
-/* fetch('http://localhost:3000/garage?_page=1&_limit=7')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  }); */
+export const getCountCars = async (): Promise<number> => {
+  const response = await fetch('http://localhost:3000/garage');
+  const data = await response.json();
+  console.log(data.length);
+  return data.length;
+};
+
+export const countCars = async (): Promise<number> => {
+  console.log(await getCountCars());
+  const dat = await getCountCars();
+  return dat;
+};
+
+const getPage = async (pageNumber: number = 1): Promise<ICar[]> => {
+  const response = await fetch(`http://localhost:3000/garage?_page=${pageNumber}&_limit=7`);
+  const data = await response.json();
+  return data;
+};
+
+export const createPage = async (num:number = 1): Promise<ICar[]> => {
+  const page = await getPage(num);
+  console.log(page);
+  return page;
+};
+
+export const newPage = (num: number = 1): void => {
+  const data = createPage(num);
+  data.then((page) => {
+    page.forEach((element) => {
+      const car = new Car(element.id, element.name, element.color);
+    });
+  });
+};
 
 export const getRandome = () => Math.floor(Math.random() * (9 - 0 + 1) + 0);
 

@@ -6,10 +6,15 @@ class Controller {
 
   view: View;
 
+  pageCount: number;
+
   constructor(model: Model, view: View) {
     this.model = model;
     this.view = view;
-    this.view.generaGarage();
+    const page = this.model.getDataonPage();
+    page.then((data) => this.view.generaGarage(data));
+
+    this.pageCount = this.model.pageNumber;
   }
 }
 

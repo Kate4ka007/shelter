@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
 import { brand, models } from '../cars/models';
-import { getRandome } from '../../index';
+import {
+  countCars,
+  createPage, getRandome, newPage,
+} from '../../index';
 import Car from '../cars/car';
 import ICar from '../cars/ICar';
 import Generator from '../generator/generator';
@@ -9,27 +12,19 @@ import Generator from '../generator/generator';
 class View {
   panel: Generator;
 
+  count: number;
+
   constructor() {
-    this.panel = new Generator();
+    this.count = 1;
+    this.panel = new Generator(this.count);
   }
 
-  generaGarage(): void {
-    let garage: Array<ICar>;
-    fetch('http://localhost:3000/garage?_page=1&_limit=7')
-      .then((response) => response.json())
-      .then((data: ICar[]) => {
-        garage = data;
-      });
-
-    const dat = async () => {
-      garage.forEach((element: ICar) => {
-        const car = new Car(element.id, element.name, element.color);
-      });
-    };
-
-    setTimeout(() => {
-      dat();
-    }, 1000);
+  generaGarage(dataCar: ICar[]): void {
+    const garage: Array<ICar> = dataCar;
+    garage.forEach((element) => {
+      const car = new Car(element.id, element.name, element.color);
+    });
+    createPage(1);
 
     const input = document.createElement('input');
     input.type = 'color';
@@ -61,14 +56,17 @@ class View {
       }
 
       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-      fetch('http://localhost:3000/garage?_page=1&_limit=7')
+      /* fetch('http://localhost:3000/garage?_page=1&_limit=7')
         .then((response) => response.json())
         .then((data: ICar[]) => {
           garage = data;
           garage.forEach((element: ICar) => {
             const car = new Car(element.id, element.name, element.color);
           });
-        });
+        }); */
+      newPage();
+      const len = countCars();
+      len.then((data) => { document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`; });
     });
   }
 }

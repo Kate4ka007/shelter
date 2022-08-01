@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
-import startCar from '../../index';
+import View from '../view/view';
+import startCar, {
+  countCars, createPage, getCountCars, newPage,
+} from '../../index';
 import Buttons from '../buttons/botton';
 import ICar from './ICar';
 
@@ -31,6 +34,15 @@ class Car {
           console.log(data);
         });
       carContainer.remove();
+
+      document.querySelector('.page-garage').innerHTML = '';
+
+      newPage();
+      fetch('http://localhost:3000/garage')
+        .then((response) => response.json())
+        .then((data: ICar[]) => {
+          document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length} )`;
+        });
     });
 
     const carModel = document.createElement('div');
