@@ -70,6 +70,12 @@ body {
     box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
   }
+  &:disabled {
+    background-color: lighten($color: #c2fbd7, $amount: 10);
+    cursor: default;
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 .btn-start {
@@ -196,4 +202,19 @@ input[type=text] {
   width: 150px;
   display: flex;
   justify-content: space-between;
+}
+
+
+.winner {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e62143;
+  font-size: 2rem;
 }

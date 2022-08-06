@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-import View from '../view/view';
 import startCar, {
-  countCars, createPage, getCountCars, newPage,
+  newPage, startEngine,
 } from '../../index';
 import Buttons from '../buttons/botton';
 import ICar from './ICar';
@@ -28,21 +27,43 @@ class Car {
     carContainer.appendChild(row1);
     const select = new Buttons('btn-select', row1, 'SELECT');
     const remove = new Buttons('btn-select', row1, 'REMOVE', () => {
-      fetch(`http://localhost:3000/garage/${this.id}`, { method: 'DELETE' })
+      fetch('http://localhost:3000/garage')
         .then((response) => response.json())
         .then((data: ICar[]) => {
-          console.log(data);
+          document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length - 1} )`;
+
+          let nn = 0;
+          console.log(`my id = ${this.id}`);
+          data.forEach((el, ind) => {
+            console.log(`el id = ${el.id}`);
+            if (el.id === this.id) {
+              nn = ind;
+            }
+          });
+          const count = Math.ceil((nn + 1) / 7);
+          document.querySelector('.page-count').innerHTML = `Page #${count}`;
+
+          if (count === Math.ceil(data.length / 7)) {
+            (document.getElementById('next') as HTMLButtonElement).disabled = true;
+          } else {
+            (document.getElementById('next') as HTMLButtonElement).disabled = false;
+          }
+
+          fetch(`http://localhost:3000/garage/${this.id}`, { method: 'DELETE' })
+            .then((response) => response.json())
+            .then((datas: ICar[]) => {
+              console.log(datas);
+            });
+
+          newPage(count);
         });
+
       carContainer.remove();
 
       document.querySelector('.page-garage').innerHTML = '';
 
-      newPage();
-      fetch('http://localhost:3000/garage')
-        .then((response) => response.json())
-        .then((data: ICar[]) => {
-          document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length} )`;
-        });
+      /*       const count = Math.ceil(this.id / 7);
+      document.querySelector('.page-count').innerHTML = `Page #${count}`; */
     });
 
     const carModel = document.createElement('div');
@@ -54,12 +75,19 @@ class Car {
     row2.className = 'start-stop';
 
     const start = new Buttons('btn-start', row2, 'A', () => {
-      // eslint-disable-next-line no-use-before-define
-      startCar(car, this.id);
+      const vel = startEngine(id);
+      vel.then((data) => {
+        // eslint-disable-next-line no-use-before-define
+        startCar(car, this.id, data.velocity, this.name);
+        console.log(data.distance);
+        console.log(data.velocity);
+      }).catch((err: string) => console.log(err));
     });
     const stop = new Buttons('btn-stop', row2, 'B', () => {
-
-    });
+      window.cancelAnimationFrame(/* requestId */this.id);
+      // eslint-disable-next-line no-use-before-define
+      car.style.transform = 'translateX(0px)';
+    }, `stop${this.id}`);
     carContainer.appendChild(row2);
 
     const race = document.createElement('div');

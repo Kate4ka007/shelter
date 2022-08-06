@@ -39,10 +39,10 @@ class Generator {
         page.innerHTML = `GARAGE ( ${data.length} )`;
       });
 
-    // page.innerHTML = `GARAGE ( ${4} )`;
     title.appendChild(page);
 
     const pageCount = document.createElement('div');
+    pageCount.className = 'page-count';
     pageCount.innerHTML = `Page #${this.count}`;
     title.appendChild(pageCount);
 
@@ -59,21 +59,35 @@ class Generator {
     const prev = new Buttons('btn-select', paginator, 'prev', () => {
       garage.innerHTML = '';
       this.count -= 1;
-      if (this.count < 1) {
+      if (this.count < 2) {
         this.count = 1;
+        (document.getElementById('prev') as HTMLButtonElement).disabled = true;
+      } else {
+        (document.getElementById('prev') as HTMLButtonElement).disabled = false;
       }
       newPage(this.count);
       pageCount.innerHTML = `Page #${this.count}`;
-    });
+      localStorage.setItem('page', this.count.toString());
+      (document.getElementById('next') as HTMLButtonElement).disabled = false;
+    }, 'prev', true);
     const next = new Buttons('btn-select', paginator, 'next', () => {
       garage.innerHTML = '';
       this.count += 1;
-      if (this.count > len / 7 + 1) {
+      if (this.count > Math.ceil(len / 7)) {
         this.count -= 1;
+        (document.getElementById('next') as HTMLButtonElement).disabled = true;
+      }
+      if (this.count > len / 7) {
+        (document.getElementById('next') as HTMLButtonElement).disabled = true;
+      } else {
+        (document.getElementById('next') as HTMLButtonElement).disabled = false;
       }
       newPage(this.count);
       pageCount.innerHTML = `Page #${this.count}`;
-    });
+      localStorage.setItem('page', this.count.toString());
+      (document.getElementById('prev') as HTMLButtonElement).disabled = false;
+      // prev.disabled = false;
+    }, 'next');
 
     root.appendChild(paginator);
   }

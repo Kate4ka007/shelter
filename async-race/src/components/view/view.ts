@@ -56,14 +56,6 @@ class View {
       }
 
       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-      /* fetch('http://localhost:3000/garage?_page=1&_limit=7')
-        .then((response) => response.json())
-        .then((data: ICar[]) => {
-          garage = data;
-          garage.forEach((element: ICar) => {
-            const car = new Car(element.id, element.name, element.color);
-          });
-        }); */
       newPage();
       const len = countCars();
       len.then((data) => { document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`; });

@@ -1,8 +1,9 @@
 import { getCountCars } from '../../index';
 import ICar from '../cars/ICar';
+import IModel from './IModel';
 
 /* eslint-disable class-methods-use-this */
-class Model {
+class Model implements IModel {
   pageNumber = 1;
   // constructor() { }
 
