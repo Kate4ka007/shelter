@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import startCar, {
-  newPage, startEngine,
+  newPage, startEngine, app,
 } from '../../index';
 import Buttons from '../buttons/botton';
 import ICar from './ICar';
@@ -25,7 +25,20 @@ class Car {
     const row1 = document.createElement('div');
     row1.className = 'car-row1';
     carContainer.appendChild(row1);
-    const select = new Buttons('btn-select', row1, 'SELECT');
+    const select = new Buttons('btn-select', row1, 'SELECT', () => {
+      carContainer.classList.add('car-selected');
+      (<HTMLButtonElement>document.querySelector('.btn-car-update')).addEventListener('click', () => {
+        // const name = (<HTMLInputElement>document.querySelector('.car-name-update')).value;
+        // const color = (<HTMLInputElement>document.querySelector('.car-color-update')).value;
+        app.model.onUpdateCar(this.id, this.name, this.color);
+        carContainer.classList.remove('car-selected');
+        window.location.reload();
+        (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+        const pageNumber = +(localStorage.getItem('page'));
+        newPage(pageNumber);
+      });
+    });
+
     const remove = new Buttons('btn-select', row1, 'REMOVE', () => {
       fetch('http://localhost:3000/garage')
         .then((response) => response.json())
@@ -75,6 +88,7 @@ class Car {
     row2.className = 'start-stop';
 
     const start = new Buttons('btn-start', row2, 'A', () => {
+      localStorage.setItem('winnerCar', 'fff');
       const vel = startEngine(id);
       vel.then((data) => {
         // eslint-disable-next-line no-use-before-define

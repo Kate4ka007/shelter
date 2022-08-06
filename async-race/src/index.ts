@@ -30,7 +30,7 @@ export const drive = async (id: number): Promise<{ success: boolean }> => {
   return response.status !== 200 ? { success: false } : { ...(await response.json()) };
 };
 
-const app = new Controller(new Model(), new View());
+export const app = new Controller(new Model(), new View());
 
 const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
   let animationStart: number;
@@ -112,6 +112,7 @@ document.body.addEventListener('click', async (el) => {
 });
 
 (document.querySelector('.btn-car-race') as HTMLButtonElement).addEventListener('click', () => {
+  (document.querySelector('.btn-car-race') as HTMLButtonElement).disabled = true;
   document.querySelectorAll('.car').forEach((el: HTMLElement) => {
     localStorage.removeItem('winnerCar');
     const id = +el.id;
@@ -126,8 +127,10 @@ document.body.addEventListener('click', async (el) => {
 });
 
 (document.querySelector('.btn-car-reset') as HTMLButtonElement).addEventListener('click', () => {
+  (document.querySelector('.btn-car-race') as HTMLButtonElement).disabled = false;
   document.querySelectorAll('.car').forEach((el: HTMLElement) => {
     localStorage.removeItem('winnerCar');
+    // eslint-disable-next-line no-param-reassign
     el.style.transform = 'translateX(0px)';
   });
 });

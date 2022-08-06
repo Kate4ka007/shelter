@@ -26,23 +26,12 @@ class View {
     });
     createPage(1);
 
-    const input = document.createElement('input');
-    input.type = 'color';
-    input.addEventListener('change', () => {
-      console.log(input.value);
-    });
-    (document.querySelector('.page-garage') as HTMLDivElement).appendChild(input);
-
     const btnGenerate = document.querySelector('.btn-car-ceneratecars');
     btnGenerate.addEventListener('click', () => {
-      let colors: string;
+      let colors = Math.floor(Math.random() * 16777215).toString(16);
       for (let i = 0; i < 100; i += 1) {
         const nameCar = `${brand[getRandome()]} ${models[getRandome()]}`;
-        if (input.value === '#000000') {
-          colors = Math.floor(Math.random() * 16777215).toString(16);
-        } else {
-          colors = input.value.slice(1);
-        }
+
         if (colors === '272525') {
           colors = '8b8080';
         }

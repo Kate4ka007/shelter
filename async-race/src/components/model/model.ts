@@ -23,6 +23,33 @@ class Model implements IModel {
     const cars = createPage();
     return cars;
   }
+
+  createOneCar(carName: string, carColor: string) {
+    fetch('http://localhost:3000/garage', {
+      method: 'POST',
+      body: JSON.stringify({ name: carName, color: carColor }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+
+  onUpdateCar(id: number, oldName: string, oldColor: string) {
+    const nameCar = (<HTMLInputElement>document.querySelector('.car-name-update')).value
+      ? (<HTMLInputElement>document.querySelector('.car-name-update')).value
+      : oldName;
+    const colorCar = (<HTMLInputElement>document.querySelector('.car-color-update')).value !== '#000000'
+      ? (<HTMLInputElement>document.querySelector('.car-color-update')).value
+      : oldColor;
+
+    fetch(`http://localhost:3000/garage/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ name: nameCar, color: colorCar }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
 }
 
 export default Model;

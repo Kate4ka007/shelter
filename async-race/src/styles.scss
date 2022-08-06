@@ -218,3 +218,8 @@ input[type=text] {
   color: #e62143;
   font-size: 2rem;
 }
+
+.car-selected {
+  background-color: lighten($color: #272525, $amount: 5);
+
+}

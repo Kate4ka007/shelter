@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import ICar from '../cars/ICar';
-import { newPage } from '../../index';
+import { app, newPage } from '../../index';
 import Buttons from '../buttons/botton';
 
 class Generator {
@@ -14,11 +14,11 @@ class Generator {
     panel.className = 'panel';
     panel.innerHTML = `<div class='row1'>
                           <input type='text' class='car-name-create'>
-                          <input type='color' class='car-color-create'>
+                          <input type='color' class='car-color-create' value='#00ff91'>
                           <button class='btn-car-create btn-select'>CREATE</button></div>
                        <div class='row2'>
                           <input type='text' class='car-name-update'>
-                          <input type='color' class='car-color-update'>
+                          <input type='color' class='car-color-update' value='#00ff91'>
                           <button class='btn-car-update btn-select'>UPDATE</button></div>
                        <div class='row3'>
                           <button class='btn-car-race btn-select'>RACE</button>
