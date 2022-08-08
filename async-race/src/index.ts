@@ -31,6 +31,7 @@ export const drive = async (id: number): Promise<{ success: boolean }> => {
 };
 
 export const app = new Controller(new Model(), new View());
+// localStorage.setItem('page', '1');
 
 const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
   let animationStart: number;
@@ -50,6 +51,14 @@ const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
       window.requestAnimationFrame(animate);
     } else {
       window.cancelAnimationFrame(requestId);
+
+      localStorage.setItem('finishTime', JSON.stringify(new Date()));
+
+      const start = new Date(JSON.parse(localStorage.getItem('startTime'))).getTime();
+      const end = new Date(JSON.parse(localStorage.getItem('finishTime'))).getTime();
+      const timeWin = (end - start) / 1000;
+      localStorage.setItem('winnerTime', timeWin.toString());
+
       if (!localStorage.getItem('winnerCar')) {
         localStorage.setItem('winnerCar', id.toString());
         console.log(`${id} is winner`);
@@ -58,6 +67,30 @@ const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
           .then((response) => response.json())
           .then((data: ICar) => {
             const win = new Winner(id.toString(), 'winner', data.name);
+            if (localStorage.getItem(data.name)) {
+              const num = +(localStorage.getItem(data.name));
+              localStorage.setItem(data.name, (num + 1).toString());
+            } else {
+              localStorage.setItem(data.name, '1');
+            }
+
+            if (!localStorage.getItem(`${data.name}-best`)) {
+              const arr = [];
+              arr.push(timeWin);
+              localStorage.setItem(`${data.name}-best`, JSON.stringify(arr));
+            } else {
+              const arr = JSON.parse(localStorage.getItem(`${data.name}-best`));
+              arr.push(timeWin);
+              localStorage.setItem(`${data.name}-best`, JSON.stringify(arr));
+            }
+
+            fetch('http://localhost:3000/winners', {
+              method: 'POST',
+              body: JSON.stringify({ id: data.id, name: data.name, time: +(localStorage.getItem('winnerTime')) }),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
           })
           .catch((err) => console.error(err));
       }
@@ -95,6 +128,7 @@ export const createPage = async (num:number = 1): Promise<ICar[]> => {
 };
 
 export const newPage = (num: number = 1): void => {
+  (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
   const data = createPage(num);
   data.then((page) => {
     page.forEach((element) => {
@@ -103,15 +137,9 @@ export const newPage = (num: number = 1): void => {
   });
 };
 
-document.body.addEventListener('click', async (el) => {
-  if ((el.target as HTMLElement).classList.contains('btn-stop')) {
-    // window.cancelAnimationFrame(1);
-
-    console.log('hi');
-  }
-});
-
 (document.querySelector('.btn-car-race') as HTMLButtonElement).addEventListener('click', () => {
+  const startTime = new Date();
+  localStorage.setItem('startTime', JSON.stringify(startTime));
   (document.querySelector('.btn-car-race') as HTMLButtonElement).disabled = true;
   document.querySelectorAll('.car').forEach((el: HTMLElement) => {
     localStorage.removeItem('winnerCar');

@@ -1,4 +1,4 @@
-import { getCountCars } from '../../index';
+import { getCountCars, newPage } from '../../index';
 import ICar from '../cars/ICar';
 import IModel from './IModel';
 
@@ -34,7 +34,7 @@ class Model implements IModel {
     });
   }
 
-  onUpdateCar(id: number, oldName: string, oldColor: string) {
+  onUpdateCar(id: number, oldName: string, oldColor: string): void {
     const nameCar = (<HTMLInputElement>document.querySelector('.car-name-update')).value
       ? (<HTMLInputElement>document.querySelector('.car-name-update')).value
       : oldName;
@@ -45,6 +45,21 @@ class Model implements IModel {
     fetch(`http://localhost:3000/garage/${id}`, {
       method: 'PUT',
       body: JSON.stringify({ name: nameCar, color: colorCar }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // window.location.reload();
+    (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+    const pageNumber = +(localStorage.getItem('page'));
+    newPage(pageNumber);
+  }
+
+  createWinner(carId: number, carName: string, carColor: string) {
+    fetch('http://localhost:3000/winners', {
+      method: 'POST',
+      body: JSON.stringify({ id: carId, name: carName, color: carColor }),
       headers: {
         'Content-Type': 'application/json',
       },

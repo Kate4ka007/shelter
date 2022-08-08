@@ -223,3 +223,54 @@ input[type=text] {
   background-color: lighten($color: #272525, $amount: 5);
 
 }
+
+.pages {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+th, td {
+  color: #dadada;
+}
+.table-colomn {
+  text-align: center;
+  width: 170px;
+  height: 50px;
+}
+
+.table-number {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.car-column {
+  display: flex;
+  justify-content: center;
+}
+
+.table-headers {
+  margin-bottom: 20px;
+}
+
+.page-winner {
+
+    font-size: 30px;
+    color: #dadada;
+    margin: 20px 0 0 0;
+}
+.page-count-winner {
+  font-size: 30px;
+  color: #dadada;
+  margin-bottom: 30px;
+}
+
+.winners-pagination {
+  width: 150px;
+  display: flex;
+  gap: 1rem;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+

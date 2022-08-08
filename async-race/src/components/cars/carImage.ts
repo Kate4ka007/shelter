@@ -1,126 +1,18 @@
-/* eslint-disable no-unused-vars */
-import startCar, {
-  newPage, startEngine, app,
-} from '../../index';
-import Buttons from '../buttons/botton';
-import ICar from './ICar';
+class CarImage {
+  parent: HTMLElement;
 
-class Car {
   id: number;
-
-  name: string;
 
   color: string;
 
-  callback: () => void;
-
-  constructor(id: number, name: string, color: string, callback?: () => void) {
+  constructor(id: number, color: string, parent: HTMLElement) {
     this.id = id;
-    this.name = name;
     this.color = color;
-    this.callback = callback;
-
-    const carContainer = document.createElement('div');
-    carContainer.className = 'car-container';
-    const row1 = document.createElement('div');
-    row1.className = 'car-row1';
-    carContainer.appendChild(row1);
-    const select = new Buttons('btn-select', row1, 'SELECT', () => {
-      carContainer.classList.add('car-selected');
-      (document.querySelectorAll('.btn-btn')).forEach((el: HTMLButtonElement) => {
-        el.disabled = true;
-      });
-      (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = false;
-
-      (<HTMLInputElement>document.querySelector('.car-name-update')).focus();
-      (<HTMLInputElement>document.querySelector('.car-name-update')).value = this.name;
-      (<HTMLInputElement>document.querySelector('.car-color-update')).value = this.color;
-      (<HTMLButtonElement>document.querySelector('.btn-car-update')).addEventListener('click', () => {
-        // const color = (<HTMLInputElement>document.querySelector('.car-color-update')).value;
-        app.model.onUpdateCar(this.id, this.name, this.color);
-        // carContainer.classList.remove('car-selected');
-        //window.location.reload();
-        /* ;
-        (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = true; */
-/*         const pageNumber = +(localStorage.getItem('page'));
-        console.log(pageNumber);
-
-        (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-        newPage(pageNumber); */
-      });
-    }, '', false, 'btn-btn');
-
-    const remove = new Buttons('btn-select', row1, 'REMOVE', () => {
-      fetch('http://localhost:3000/garage')
-        .then((response) => response.json())
-        .then((data: ICar[]) => {
-          document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length - 1} )`;
-
-          let nn = 0;
-          console.log(`my id = ${this.id}`);
-          data.forEach((el, ind) => {
-            console.log(`el id = ${el.id}`);
-            if (el.id === this.id) {
-              nn = ind;
-            }
-          });
-          const count = Math.ceil((nn + 1) / 7);
-          document.querySelector('.page-count').innerHTML = `Page #${count}`;
-
-          if (count === Math.ceil(data.length / 7)) {
-            (document.getElementById('next') as HTMLButtonElement).disabled = true;
-          } else {
-            (document.getElementById('next') as HTMLButtonElement).disabled = false;
-          }
-
-          fetch(`http://localhost:3000/garage/${this.id}`, { method: 'DELETE' })
-            .then((response) => response.json())
-            .then((datas: ICar[]) => {
-              console.log(datas);
-            });
-
-          newPage(count);
-        });
-
-      carContainer.remove();
-
-      document.querySelector('.page-garage').innerHTML = '';
-
-      /*       const count = Math.ceil(this.id / 7);
-      document.querySelector('.page-count').innerHTML = `Page #${count}`; */
-    });
-
-    const carModel = document.createElement('div');
-    carModel.className = 'car-model';
-    carModel.textContent = this.name;
-    row1.appendChild(carModel);
-
-    const row2 = document.createElement('div');
-    row2.className = 'start-stop';
-
-    const start = new Buttons('btn-start', row2, 'A', () => {
-      localStorage.setItem('winnerCar', 'fff');
-      const vel = startEngine(id);
-      vel.then((data) => {
-        // eslint-disable-next-line no-use-before-define
-        startCar(car, this.id, data.velocity, this.name);
-        console.log(data.distance);
-        console.log(data.velocity);
-      }).catch((err: string) => console.log(err));
-    });
-    const stop = new Buttons('btn-stop', row2, 'B', () => {
-      window.cancelAnimationFrame(/* requestId */this.id);
-      // eslint-disable-next-line no-use-before-define
-      car.style.transform = 'translateX(0px)';
-    }, `stop${this.id}`);
-    carContainer.appendChild(row2);
-
-    const race = document.createElement('div');
-    race.className = 'car-flag';
+    this.parent = parent;
 
     const car = document.createElement('div');
     car.className = 'car';
-    car.id = id.toString();
+    car.id = this.id.toString();
     car.innerHTML = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
     width="64.000000pt" height="32.000000pt" viewBox="0 0 1280.000000 640.000000"
     preserveAspectRatio="xMidYMid meet">
@@ -128,7 +20,7 @@ class Car {
    Created by potrace 1.16, written by Peter Selinger 2001-2019
    </metadata>
    <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
-   fill=${color} stroke="none">
+   fill=${this.color} stroke="none">
    <path d="M3535 5334 c-67 -21 -73 -28 -80 -82 -15 -118 -7 -107 -100 -146 -46
    -19 -245 -96 -442 -171 -636 -243 -1049 -413 -1260 -518 -150 -75 -216 -94
    -383 -112 -80 -9 -194 -24 -255 -35 -149 -26 -274 -38 -505 -50 -107 -5 -205
@@ -210,20 +102,8 @@ class Car {
    82 227 106 0 16 -212 234 -228 234 -5 0 -12 -3 -15 -7z"/>
    </g>
    </svg><img src='assets/images/head.png' alt='' class="car-headlight">`;
-
-    const flag = document.createElement('img');
-    flag.src = 'assets/images/flag.png';
-    flag.className = 'flag';
-    race.appendChild(car);
-
-    (document.querySelector('.page-garage') as HTMLDivElement).appendChild(carContainer);
-    race.appendChild(flag);
-    carContainer.appendChild(race);
-  }
-
-  onCallback(): void {
-    this.onCallback();
+    this.parent.appendChild(car);
   }
 }
 
-export default Car;
+export default CarImage;

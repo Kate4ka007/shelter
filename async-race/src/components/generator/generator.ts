@@ -2,6 +2,7 @@
 import ICar from '../cars/ICar';
 import { app, newPage } from '../../index';
 import Buttons from '../buttons/botton';
+import WinnerPage from '../winner/winnerPage';
 
 class Generator {
   count: number;
@@ -10,6 +11,21 @@ class Generator {
     this.count = count;
     const root = document.createElement('div');
     root.className = 'root';
+
+    const pages = document.createElement('div');
+    pages.className = 'pages';
+    const gar = new Buttons('btn-select', pages, 'Garage', () => {
+      window.location.reload();
+      const num = +(localStorage.getItem('page'));
+      console.log(num);
+
+      newPage(num);
+    }, 'page-garage');
+    const win = new Buttons('btn-select', pages, 'Winners', () => {
+      root.innerHTML = '';
+      const winners = new WinnerPage();
+    }, 'page-winners');
+    document.body.appendChild(pages);
     const panel = document.createElement('div');
     panel.className = 'panel';
     panel.innerHTML = `<div class='row1'>
