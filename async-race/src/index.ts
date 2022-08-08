@@ -31,13 +31,22 @@ export const drive = async (id: number): Promise<{ success: boolean }> => {
 };
 
 export const app = new Controller(new Model(), new View());
-// localStorage.setItem('page', '1');
+if (!localStorage.getItem('page')) {
+  localStorage.setItem('page', '1');
+}
+
+if (!localStorage.getItem('once')) {
+  fetch('http://localhost:3000/winners/1', { method: 'DELETE' })
+    .then((response) => response.json())
+    .then((datas: ICar[]) => {
+      console.log(datas);
+    });
+  localStorage.setItem('once', 'false');
+}
 
 const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
   let animationStart: number;
   let requestId: number = id;
-  console.log(id);
-
   function animate(timestamp: number) {
     if (!animationStart) {
       animationStart = timestamp;
@@ -47,7 +56,11 @@ const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
     // eslint-disable-next-line no-param-reassign
     car.style.transform = `translateX(${progress * (time / 400)}px)`;
     const x = car.getBoundingClientRect().x + 100;
-    if (x <= window.innerWidth - 40) {
+    let marg = 45;
+    if (window.innerWidth <= 600) {
+      marg = 10;
+    }
+    if (x <= window.innerWidth - marg) {
       window.requestAnimationFrame(animate);
     } else {
       window.cancelAnimationFrame(requestId);
@@ -83,10 +96,10 @@ const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
               arr.push(timeWin);
               localStorage.setItem(`${data.name}-best`, JSON.stringify(arr));
             }
-
+            const arr = JSON.parse(localStorage.getItem(`${data.name}-best`)).length;
             fetch('http://localhost:3000/winners', {
               method: 'POST',
-              body: JSON.stringify({ id: data.id, name: data.name, time: +(localStorage.getItem('winnerTime')) }),
+              body: JSON.stringify({ id: data.id, wins: arr, time: +(localStorage.getItem('winnerTime')) }),
               headers: {
                 'Content-Type': 'application/json',
               },
@@ -105,23 +118,21 @@ const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
 export const getCountCars = async (): Promise<number> => {
   const response = await fetch('http://localhost:3000/garage');
   const data = await response.json();
-  console.log(data.length);
   return data.length;
 };
 
 export const countCars = async (): Promise<number> => {
-  console.log(await getCountCars());
   const dat = await getCountCars();
   return dat;
 };
 
-const getPage = async (pageNumber: number = 1): Promise<ICar[]> => {
+const getPage = async (pageNumber: number): Promise<ICar[]> => {
   const response = await fetch(`http://localhost:3000/garage?_page=${pageNumber}&_limit=7`);
   const data = await response.json();
   return data;
 };
 
-export const createPage = async (num:number = 1): Promise<ICar[]> => {
+export const createPage = async (num:number): Promise<ICar[]> => {
   const page = await getPage(num);
   console.log(page);
   return page;
@@ -148,8 +159,6 @@ export const newPage = (num: number = 1): void => {
     vel.then((data) => {
       // eslint-disable-next-line no-use-before-define
       startCar(el, id, data.velocity, 'car');
-      console.log(data.distance);
-      console.log(data.velocity);
     }).catch((err: string) => console.log(err));
   });
 });

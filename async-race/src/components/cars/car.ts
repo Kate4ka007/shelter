@@ -28,6 +28,7 @@ class Car {
     const select = new Buttons('btn-select', row1, 'SELECT', () => {
       carContainer.classList.add('car-selected');
       (document.querySelectorAll('.btn-btn')).forEach((el: HTMLButtonElement) => {
+        // eslint-disable-next-line no-param-reassign
         el.disabled = true;
       });
       (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = false;
@@ -39,10 +40,10 @@ class Car {
         // const color = (<HTMLInputElement>document.querySelector('.car-color-update')).value;
         app.model.onUpdateCar(this.id, this.name, this.color);
         // carContainer.classList.remove('car-selected');
-        //window.location.reload();
+        // window.location.reload();
         /* ;
         (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = true; */
-/*         const pageNumber = +(localStorage.getItem('page'));
+        /*         const pageNumber = +(localStorage.getItem('page'));
         console.log(pageNumber);
 
         (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';

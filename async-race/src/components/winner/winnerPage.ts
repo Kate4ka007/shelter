@@ -39,9 +39,9 @@ class WinnerPage {
                               <tr class='table-row'>
                                 <th class='table-number'>№</th>
                                 <th class='table-colomn'>Image of the car</th>
-                                <th class='table-colomn'>Name of the car</th>
-                                <th class='table-colomn'>Wins number</th>
-                                <th class='table-colomn'>Best time in seconds</th>
+                                <th class='table-colomn' id='sort-id'>Name of the car</th>
+                                <th class='table-colomn' id='sort-number'>Wins number</th>
+                                <th class='table-colomn' id='sort-time'>Best time in seconds</th>
                               </tr>
                             </thead>
                             <tbody class='table-body'>
@@ -49,7 +49,10 @@ class WinnerPage {
                           </table>
                          </div>`;
     winners.appendChild(table);
-    document.querySelector('.root').appendChild(winners);
+    const root2 = document.createElement('div');
+    root2.className = 'root2';
+    root2.appendChild(winners);
+    document.body.appendChild(root2);
 
     if (!localStorage.getItem('pageWinners')) {
       localStorage.setItem('pageWinners', '1');
@@ -95,6 +98,66 @@ class WinnerPage {
         .catch((err) => console.error(err));
     }, 'win-next', false);
     winners.appendChild(pagination);
+
+    document.getElementById('sort-id').addEventListener('click', () => {
+      this.count = 1;
+      pageCount.innerHTML = `Page #${this.count}`;
+      document.querySelector('.table-body').innerHTML = '';
+      fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&sort=id`)
+        .then((response) => response.json())
+        .then((data: IWinnerItem[]) => {
+          data.forEach((el, ind: number) => {
+            fetch(`http://localhost:3000/garage/${el.id}`)
+              .then((response) => response.json())
+              .then((datacar: ICar) => {
+                const { color } = datacar;
+                // eslint-disable-next-line no-unused-vars, max-len
+                const winItem = new WinnerItem(el.id, datacar.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
+              });
+          });
+        })
+        .catch((err) => console.error(err));
+    });
+
+    document.getElementById('sort-time').addEventListener('click', () => {
+      this.count = 1;
+      pageCount.innerHTML = `Page #${this.count}`;
+      document.querySelector('.table-body').innerHTML = '';
+      fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&_sort=time`)
+        .then((response) => response.json())
+        .then((data: IWinnerItem[]) => {
+          data.forEach((el, ind: number) => {
+            fetch(`http://localhost:3000/garage/${el.id}`)
+              .then((response) => response.json())
+              .then((datacar: ICar) => {
+                const { color } = datacar;
+                // eslint-disable-next-line no-unused-vars, max-len
+                const winItem = new WinnerItem(el.id, datacar.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
+              });
+          });
+        })
+        .catch((err) => console.error(err));
+    });
+
+    document.getElementById('sort-number').addEventListener('click', () => {
+      this.count = 1;
+      pageCount.innerHTML = `Page #${this.count}`;
+      document.querySelector('.table-body').innerHTML = '';
+      fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&_sort=wins`)
+        .then((response) => response.json())
+        .then((data: IWinnerItem[]) => {
+          data.forEach((el, ind: number) => {
+            fetch(`http://localhost:3000/garage/${el.id}`)
+              .then((response) => response.json())
+              .then((datacar: ICar) => {
+                const { color } = datacar;
+                // eslint-disable-next-line no-unused-vars, max-len
+                const winItem = new WinnerItem(el.id, datacar.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
+              });
+          });
+        })
+        .catch((err) => console.error(err));
+    });
   }
 
   getPageWinners() {
@@ -105,9 +168,8 @@ class WinnerPage {
           fetch(`http://localhost:3000/garage/${el.id}`)
             .then((response) => response.json())
             .then((datacar: ICar) => {
-              const { color } = datacar;
               // eslint-disable-next-line no-unused-vars, max-len
-              const winItem = new WinnerItem(el.id, el.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
+              const winItem = new WinnerItem(el.id, datacar.name, +el.time, datacar.color, ((this.count - 1) * 10 + ind + 1));
             });
         });
       })

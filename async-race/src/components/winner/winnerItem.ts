@@ -127,7 +127,7 @@ class WinnerItem {
                            82 227 106 0 16 -212 234 -228 234 -5 0 -12 -3 -15 -7z"/>
                            </g>
                            </svg></div></td>
-                            <td class='table-colomn'>${this.name}</td>
+                            <td class='table-colomn' title='id= ${this.id}'>${this.name}</td>
                             <td class='table-colomn'>${this.count}</td>
                             <td class='table-colomn'>${this.theBest}</td>`;
     document.querySelector('.table-body').appendChild(winnersRow);

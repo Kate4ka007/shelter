@@ -15,14 +15,11 @@ class Generator {
     const pages = document.createElement('div');
     pages.className = 'pages';
     const gar = new Buttons('btn-select', pages, 'Garage', () => {
-      window.location.reload();
-      const num = +(localStorage.getItem('page'));
-      console.log(num);
-
-      newPage(num);
+      root.style.display = 'block';
+      document.querySelector('.root2').remove();
     }, 'page-garage');
     const win = new Buttons('btn-select', pages, 'Winners', () => {
-      root.innerHTML = '';
+      root.style.display = 'none';
       const winners = new WinnerPage();
     }, 'page-winners');
     document.body.appendChild(pages);

@@ -12,7 +12,7 @@ class Winner {
 
     const modal = document.createElement('div');
     modal.className = tag;
-    modal.innerHTML = `<div class='modal-alert'><span class='alert'>${this.car} is winner!!!</span></div>`;
+    modal.innerHTML = `<div class='modal-alert'><span class='alert'>${this.car} is winner!!! (${localStorage.getItem('winnerTime')} sec)</span></div>`;
     document.body.appendChild(modal);
 
     setTimeout(() => {
