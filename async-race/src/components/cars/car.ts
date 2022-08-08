@@ -27,17 +27,25 @@ class Car {
     carContainer.appendChild(row1);
     const select = new Buttons('btn-select', row1, 'SELECT', () => {
       carContainer.classList.add('car-selected');
+      (document.querySelectorAll('.btn-btn')).forEach((el: HTMLButtonElement) => {
+        el.disabled = true;
+      });
+      (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = false;
+
+      (<HTMLInputElement>document.querySelector('.car-name-update')).focus();
+      (<HTMLInputElement>document.querySelector('.car-name-update')).value = this.name;
+      (<HTMLInputElement>document.querySelector('.car-color-update')).value = this.color;
       (<HTMLButtonElement>document.querySelector('.btn-car-update')).addEventListener('click', () => {
-        // const name = (<HTMLInputElement>document.querySelector('.car-name-update')).value;
         // const color = (<HTMLInputElement>document.querySelector('.car-color-update')).value;
         app.model.onUpdateCar(this.id, this.name, this.color);
-        carContainer.classList.remove('car-selected');
+        // carContainer.classList.remove('car-selected');
         window.location.reload();
-        (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+/*         (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+        (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = true;
         const pageNumber = +(localStorage.getItem('page'));
-        newPage(pageNumber);
+        newPage(pageNumber); */
       });
-    });
+    }, '', false, 'btn-btn');
 
     const remove = new Buttons('btn-select', row1, 'REMOVE', () => {
       fetch('http://localhost:3000/garage')

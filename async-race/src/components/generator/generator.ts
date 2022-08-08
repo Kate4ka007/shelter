@@ -19,7 +19,7 @@ class Generator {
                        <div class='row2'>
                           <input type='text' class='car-name-update'>
                           <input type='color' class='car-color-update' value='#00ff91'>
-                          <button class='btn-car-update btn-select'>UPDATE</button></div>
+                          <button class='btn-car-update btn-select' disabled=false>UPDATE</button></div>
                        <div class='row3'>
                           <button class='btn-car-race btn-select'>RACE</button>
                           <button class='btn-car-reset btn-select'>RESET</button>
@@ -70,6 +70,7 @@ class Generator {
       localStorage.setItem('page', this.count.toString());
       (document.getElementById('next') as HTMLButtonElement).disabled = false;
     }, 'prev', true);
+
     const next = new Buttons('btn-select', paginator, 'next', () => {
       garage.innerHTML = '';
       this.count += 1;

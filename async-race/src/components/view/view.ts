@@ -28,8 +28,8 @@ class View {
 
     const btnGenerate = document.querySelector('.btn-car-ceneratecars');
     btnGenerate.addEventListener('click', () => {
-      let colors = Math.floor(Math.random() * 16777215).toString(16);
       for (let i = 0; i < 100; i += 1) {
+        let colors = Math.floor(Math.random() * 16777215).toString(16);
         const nameCar = `${brand[getRandome()]} ${models[getRandome()]}`;
 
         if (colors === '272525') {
@@ -45,6 +45,7 @@ class View {
       }
 
       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+      /*  newPage(+(localStorage.getItem('page'))); */
       newPage();
       const len = countCars();
       len.then((data) => { document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`; });
