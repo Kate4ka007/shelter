@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
 import { brand, models } from '../cars/models';
 import {
@@ -8,8 +7,9 @@ import {
 import Car from '../cars/car';
 import ICar from '../cars/ICar';
 import Generator from '../generator/generator';
+import IView from './IView';
 
-class View {
+class View implements IView {
   panel: Generator;
 
   count: number;
@@ -45,7 +45,6 @@ class View {
       }
 
       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-      /*  newPage(+(localStorage.getItem('page'))); */
       newPage();
       const len = countCars();
       len.then((data) => { document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`; });

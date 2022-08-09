@@ -5,7 +5,7 @@ import startCar, {
 import Buttons from '../buttons/botton';
 import ICar from './ICar';
 
-class Car {
+class Car implements ICar {
   id: number;
 
   name: string;
@@ -37,17 +37,7 @@ class Car {
       (<HTMLInputElement>document.querySelector('.car-name-update')).value = this.name;
       (<HTMLInputElement>document.querySelector('.car-color-update')).value = this.color;
       (<HTMLButtonElement>document.querySelector('.btn-car-update')).addEventListener('click', () => {
-        // const color = (<HTMLInputElement>document.querySelector('.car-color-update')).value;
         app.model.onUpdateCar(this.id, this.name, this.color);
-        // carContainer.classList.remove('car-selected');
-        // window.location.reload();
-        /* ;
-        (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = true; */
-        /*         const pageNumber = +(localStorage.getItem('page'));
-        console.log(pageNumber);
-
-        (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-        newPage(pageNumber); */
       });
     }, '', false, 'btn-btn');
 
@@ -58,9 +48,7 @@ class Car {
           document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length - 1} )`;
 
           let nn = 0;
-          console.log(`my id = ${this.id}`);
           data.forEach((el, ind) => {
-            console.log(`el id = ${el.id}`);
             if (el.id === this.id) {
               nn = ind;
             }
@@ -86,9 +74,6 @@ class Car {
       carContainer.remove();
 
       document.querySelector('.page-garage').innerHTML = '';
-
-      /*       const count = Math.ceil(this.id / 7);
-      document.querySelector('.page-count').innerHTML = `Page #${count}`; */
     });
 
     const carModel = document.createElement('div');
@@ -105,12 +90,10 @@ class Car {
       vel.then((data) => {
         // eslint-disable-next-line no-use-before-define
         startCar(car, this.id, data.velocity, this.name);
-        console.log(data.distance);
-        console.log(data.velocity);
       }).catch((err: string) => console.log(err));
     });
     const stop = new Buttons('btn-stop', row2, 'B', () => {
-      window.cancelAnimationFrame(/* requestId */this.id);
+      window.cancelAnimationFrame(this.id);
       // eslint-disable-next-line no-use-before-define
       car.style.transform = 'translateX(0px)';
     }, `stop${this.id}`);

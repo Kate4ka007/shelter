@@ -2,9 +2,9 @@ import ICar from '../cars/ICar';
 import Car from '../cars/car';
 import View from '../view/view';
 import Model from '../model/model';
-import { newPage } from '../../index';
+import IController from './IController';
 
-class Controller {
+class Controller implements IController {
   model: Model;
 
   view: View;
@@ -28,20 +28,17 @@ class Controller {
         .then((response) => response.json())
         .then((data: ICar[]) => {
           data.forEach((element) => {
+            // eslint-disable-next-line no-unused-vars
             const car = new Car(element.id, element.name, element.color);
           });
         })
-        .catch((err) => console.error(err));
+        .catch((err: string) => console.error(err));
 
       fetch('http://localhost:3000/garage')
         .then((response) => response.json())
         .then((data: ICar[]) => {
           document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length} )`;
-        })
-        .catch((err) => console.error(err));
-
-      /*       window.location.reload();
-      newPage(pageNumber); */
+        });
     });
   }
 }

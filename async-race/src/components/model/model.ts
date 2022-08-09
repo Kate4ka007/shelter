@@ -1,30 +1,27 @@
-import { getCountCars, newPage } from '../../index';
+import { newPage } from '../../index';
 import ICar from '../cars/ICar';
 import IModel from './IModel';
 
 /* eslint-disable class-methods-use-this */
 class Model implements IModel {
   pageNumber = 1;
-  // constructor() { }
 
-  getDataonPage(): Promise <ICar[]> {
+  getDataonPage(): Promise<ICar[]> {
     const getPage = async (pageNumber: number = 1): Promise<ICar[]> => {
       const response = await fetch(`http://localhost:3000/garage?_page=${pageNumber}&_limit=7`);
       const data = await response.json();
       return data;
     };
 
-    const createPage = async (num:number = 1) => {
+    const createPage = async (num: number = 1): Promise<ICar[]> => {
       const page = await getPage(num);
-      console.log(page);
-      console.log(await getCountCars());
       return page;
     };
     const cars = createPage();
     return cars;
   }
 
-  createOneCar(carName: string, carColor: string) {
+  createOneCar(carName: string, carColor: string): void {
     fetch('http://localhost:3000/garage', {
       method: 'POST',
       body: JSON.stringify({ name: carName, color: carColor }),
@@ -49,14 +46,12 @@ class Model implements IModel {
         'Content-Type': 'application/json',
       },
     });
-
-    // window.location.reload();
     (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
     const pageNumber = +(localStorage.getItem('page'));
     newPage(pageNumber);
   }
 
-  createWinner(carId: number, carName: string, carColor: string) {
+  createWinner(carId: number, carName: string, carColor: string): void {
     fetch('http://localhost:3000/winners', {
       method: 'POST',
       body: JSON.stringify({ id: carId, name: carName, color: carColor }),

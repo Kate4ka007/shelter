@@ -2,9 +2,10 @@
 import Buttons from '../buttons/botton';
 import ICar from '../cars/ICar';
 import IWinnerItem from './IWinnerItem';
+import IWinnerPage from './IWinnerPage';
 import WinnerItem from './winnerItem';
 
-class WinnerPage {
+class WinnerPage implements IWinnerPage {
   count: number;
 
   constructor() {
@@ -98,69 +99,38 @@ class WinnerPage {
         .catch((err) => console.error(err));
     }, 'win-next', false);
     winners.appendChild(pagination);
-
-    document.getElementById('sort-id').addEventListener('click', () => {
-      this.count = 1;
-      pageCount.innerHTML = `Page #${this.count}`;
-      document.querySelector('.table-body').innerHTML = '';
-      fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&sort=id`)
-        .then((response) => response.json())
-        .then((data: IWinnerItem[]) => {
-          data.forEach((el, ind: number) => {
-            fetch(`http://localhost:3000/garage/${el.id}`)
-              .then((response) => response.json())
-              .then((datacar: ICar) => {
-                const { color } = datacar;
-                // eslint-disable-next-line no-unused-vars, max-len
-                const winItem = new WinnerItem(el.id, datacar.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
-              });
-          });
-        })
-        .catch((err) => console.error(err));
+    const sortId = document.getElementById('sort-id');
+    sortId.addEventListener('click', () => {
+      sortId.classList.toggle('down');
+      if (sortId.classList.contains('down')) {
+        this.sortWinners(pageCount, 'id', 'ASC');
+      } else {
+        this.sortWinners(pageCount, 'id', 'DESC');
+      }
     });
 
-    document.getElementById('sort-time').addEventListener('click', () => {
-      this.count = 1;
-      pageCount.innerHTML = `Page #${this.count}`;
-      document.querySelector('.table-body').innerHTML = '';
-      fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&_sort=time`)
-        .then((response) => response.json())
-        .then((data: IWinnerItem[]) => {
-          data.forEach((el, ind: number) => {
-            fetch(`http://localhost:3000/garage/${el.id}`)
-              .then((response) => response.json())
-              .then((datacar: ICar) => {
-                const { color } = datacar;
-                // eslint-disable-next-line no-unused-vars, max-len
-                const winItem = new WinnerItem(el.id, datacar.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
-              });
-          });
-        })
-        .catch((err) => console.error(err));
+    const sortTime = document.getElementById('sort-time');
+    sortTime.addEventListener('click', () => {
+      sortTime.classList.toggle('down');
+      if (sortTime.classList.contains('down')) {
+        this.sortWinners(pageCount, 'time', 'ASC');
+      } else {
+        this.sortWinners(pageCount, 'time', 'DESC');
+      }
     });
 
-    document.getElementById('sort-number').addEventListener('click', () => {
-      this.count = 1;
-      pageCount.innerHTML = `Page #${this.count}`;
-      document.querySelector('.table-body').innerHTML = '';
-      fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&_sort=wins`)
-        .then((response) => response.json())
-        .then((data: IWinnerItem[]) => {
-          data.forEach((el, ind: number) => {
-            fetch(`http://localhost:3000/garage/${el.id}`)
-              .then((response) => response.json())
-              .then((datacar: ICar) => {
-                const { color } = datacar;
-                // eslint-disable-next-line no-unused-vars, max-len
-                const winItem = new WinnerItem(el.id, datacar.name, +el.time, color, ((this.count - 1) * 10 + ind + 1));
-              });
-          });
-        })
-        .catch((err) => console.error(err));
+    const sortWins = document.getElementById('sort-number');
+    sortWins.addEventListener('click', () => {
+      sortWins.classList.toggle('down');
+      if (sortWins.classList.contains('down')) {
+        this.sortWinners(pageCount, 'wins', 'ASC');
+      } else {
+        this.sortWinners(pageCount, 'wins', 'DESC');
+      }
     });
   }
 
-  getPageWinners() {
+  getPageWinners(): void {
     fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10`)
       .then((response) => response.json())
       .then((data: IWinnerItem[]) => {
@@ -168,8 +138,39 @@ class WinnerPage {
           fetch(`http://localhost:3000/garage/${el.id}`)
             .then((response) => response.json())
             .then((datacar: ICar) => {
-              // eslint-disable-next-line no-unused-vars, max-len
-              const winItem = new WinnerItem(el.id, datacar.name, +el.time, datacar.color, ((this.count - 1) * 10 + ind + 1));
+              const winItem = new WinnerItem(
+                el.id,
+                datacar.name,
+                +el.time,
+                datacar.color,
+                ((this.count - 1) * 10 + ind + 1),
+              );
+            });
+        });
+      })
+      .catch((err) => console.error(err));
+  }
+
+  sortWinners(tag: HTMLDivElement, sortType: 'id'| 'wins'| 'time', order: 'ASC'| 'DESC') {
+    this.count = 1;
+    // eslint-disable-next-line no-param-reassign
+    tag.innerHTML = `Page #${this.count}`;
+    document.querySelector('.table-body').innerHTML = '';
+    fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&_sort=${sortType}&_order=${order}`)
+      .then((response) => response.json())
+      .then((data: IWinnerItem[]) => {
+        data.forEach((el, ind: number) => {
+          fetch(`http://localhost:3000/garage/${el.id}`)
+            .then((response) => response.json())
+            .then((datacar: ICar) => {
+              const { color } = datacar;
+              const winItem = new WinnerItem(
+                el.id,
+                datacar.name,
+                +el.time,
+                color,
+                ((this.count - 1) * 10 + ind + 1),
+              );
             });
         });
       })

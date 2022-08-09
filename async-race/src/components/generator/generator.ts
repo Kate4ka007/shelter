@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import ICar from '../cars/ICar';
-import { app, newPage } from '../../index';
+import { newPage } from '../../index';
 import Buttons from '../buttons/botton';
 import WinnerPage from '../winner/winnerPage';
+import IGenerator from './IGenerator';
 
-class Generator {
+class Generator implements IGenerator {
   count: number;
 
   constructor(count: number) {
@@ -100,7 +101,6 @@ class Generator {
       pageCount.innerHTML = `Page #${this.count}`;
       localStorage.setItem('page', this.count.toString());
       (document.getElementById('prev') as HTMLButtonElement).disabled = false;
-      // prev.disabled = false;
     }, 'next');
 
     root.appendChild(paginator);

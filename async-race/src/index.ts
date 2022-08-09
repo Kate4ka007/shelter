@@ -44,7 +44,7 @@ if (!localStorage.getItem('once')) {
   localStorage.setItem('once', 'false');
 }
 
-const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
+const startCar = (car: HTMLElement, id: number, time: number, name: string): void => {
   let animationStart: number;
   let requestId: number = id;
   function animate(timestamp: number) {
@@ -91,19 +91,28 @@ const startCar = (car: HTMLElement, id: number, time: number, name: string) => {
               const arr = [];
               arr.push(timeWin);
               localStorage.setItem(`${data.name}-best`, JSON.stringify(arr));
+              const arrr = JSON.parse(localStorage.getItem(`${data.name}-best`)).length;
+              fetch('http://localhost:3000/winners', {
+                method: 'POST',
+                body: JSON.stringify({ id: data.id, wins: arrr, time: +(localStorage.getItem('winnerTime')) }),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
             } else {
-              const arr = JSON.parse(localStorage.getItem(`${data.name}-best`));
+              const arr: number[] = JSON.parse(localStorage.getItem(`${data.name}-best`));
               arr.push(timeWin);
               localStorage.setItem(`${data.name}-best`, JSON.stringify(arr));
+              const bb = JSON.parse(localStorage.getItem(`${data.name}-best`));
+              const max = Math.max(...bb);
+              fetch(`http://localhost:3000/winners/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({ wins: arr.length, time: max }),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
             }
-            const arr = JSON.parse(localStorage.getItem(`${data.name}-best`)).length;
-            fetch('http://localhost:3000/winners', {
-              method: 'POST',
-              body: JSON.stringify({ id: data.id, wins: arr, time: +(localStorage.getItem('winnerTime')) }),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
           })
           .catch((err) => console.error(err));
       }

@@ -1,4 +1,6 @@
-class Buttons {
+import IButtons from './IBottons';
+
+class Buttons implements IButtons {
   selector: string;
 
   parent: HTMLElement;
