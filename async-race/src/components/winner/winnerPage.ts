@@ -40,9 +40,9 @@ class WinnerPage implements IWinnerPage {
                               <tr class='table-row'>
                                 <th class='table-number'>№</th>
                                 <th class='table-colomn'>Image of the car</th>
-                                <th class='table-colomn' id='sort-id'>Name of the car</th>
-                                <th class='table-colomn' id='sort-number'>Wins number</th>
-                                <th class='table-colomn' id='sort-time'>Best time in seconds</th>
+                                <th class='table-colomn' id='sort-id'>Name of the car &#8679;</th>
+                                <th class='table-colomn' id='sort-number'>Wins number &#8679;</th>
+                                <th class='table-colomn' id='sort-time'>Best time in seconds &#8679;</th>
                               </tr>
                             </thead>
                             <tbody class='table-body'>
@@ -151,7 +151,7 @@ class WinnerPage implements IWinnerPage {
       .catch((err) => console.error(err));
   }
 
-  sortWinners(tag: HTMLDivElement, sortType: 'id'| 'wins'| 'time', order: 'ASC'| 'DESC') {
+  sortWinners(tag: HTMLDivElement, sortType: 'id' | 'wins' | 'time', order: 'ASC' | 'DESC'): void {
     this.count = 1;
     // eslint-disable-next-line no-param-reassign
     tag.innerHTML = `Page #${this.count}`;

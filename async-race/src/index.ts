@@ -24,7 +24,7 @@ export const startEngine = async (id: number): Promise<Engine> => (await fetch(`
 
 export const stopEngine = async (id: number): Promise<Engine> => (await fetch(`${engine}?id=${id}&status=stopped`)).json();
 
-export const drive = async (id: number): Promise<{ success: boolean }> => {
+export const drive = async (id: number): Promise<{ success: boolean; }> => {
   const response = await fetch(`${engine}?id=${id}&status=drive`).catch();
 
   return response.status !== 200 ? { success: false } : { ...(await response.json()) };
@@ -141,9 +141,8 @@ const getPage = async (pageNumber: number): Promise<ICar[]> => {
   return data;
 };
 
-export const createPage = async (num:number): Promise<ICar[]> => {
+export const createPage = async (num: number): Promise<ICar[]> => {
   const page = await getPage(num);
-  console.log(page);
   return page;
 };
 

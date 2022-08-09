@@ -24,7 +24,7 @@ class View implements IView {
     garage.forEach((element) => {
       const car = new Car(element.id, element.name, element.color);
     });
-    createPage(1);
+    /* createPage(1); */
 
     const btnGenerate = document.querySelector('.btn-car-ceneratecars');
     btnGenerate.addEventListener('click', () => {
@@ -44,10 +44,14 @@ class View implements IView {
         });
       }
 
-      (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-      newPage();
+      /*       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+      newPage(); */
       const len = countCars();
-      len.then((data) => { document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`; });
+      len.then((data) => {
+        document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`;
+        window.location.reload();
+      });
+      /* window.location.reload(); */
     });
   }
 }

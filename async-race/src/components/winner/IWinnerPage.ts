@@ -1,7 +1,7 @@
 interface IWinnerPage {
   count: number;
 
-  getPageWinners(): void
+  getPageWinners(): void;
 }
 
 export default IWinnerPage;

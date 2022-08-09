@@ -67,8 +67,12 @@ class Car implements ICar {
             .then((datas: ICar[]) => {
               console.log(datas);
             });
-
           newPage(count);
+          fetch(`http://localhost:3000/winners/${this.id}`, { method: 'DELETE' })
+            .then((response) => response.json())
+            .then((datas: ICar[]) => {
+              console.log(datas);
+            });
         });
 
       carContainer.remove();

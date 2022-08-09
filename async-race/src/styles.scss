@@ -43,7 +43,6 @@ body {
 }
 
 .car-row1 {
-  // width: 200px;
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
@@ -147,7 +146,6 @@ body {
   font-size: 1rem;
   font-weight: 700;
   line-height: 33.4929px;
-  // padding: .8em 1em;
   text-align: center;
   text-decoration: none;
   text-decoration-skip-ink: auto;
@@ -274,7 +272,7 @@ td {
 
 .table-colomn {
   text-align: center;
-  width: 170px;
+  width: 180px;
   height: 50px;
   @media screen and (max-width){
     width: 140px;
