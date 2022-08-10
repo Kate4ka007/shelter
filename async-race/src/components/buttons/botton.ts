@@ -15,8 +15,15 @@ class Buttons implements IButtons {
 
   addTag: string;
 
-  // eslint-disable-next-line max-len
-  constructor(selector: string, parent: HTMLElement, content: string, callback?: ()=> void, id?: string, disabled?: boolean, addTag?: string) {
+  constructor(
+    selector: string,
+    parent: HTMLElement,
+    content: string,
+    callback?: () => void,
+    id?: string,
+    disabled?: boolean,
+    addTag?: string,
+  ) {
     this.selector = selector;
     this.parent = parent;
     this.content = content;

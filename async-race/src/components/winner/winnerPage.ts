@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Buttons from '../buttons/botton';
 import ICar from '../cars/ICar';
 import IWinnerItem from './IWinnerItem';

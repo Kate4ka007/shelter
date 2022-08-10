@@ -24,8 +24,6 @@ class View implements IView {
     garage.forEach((element) => {
       const car = new Car(element.id, element.name, element.color);
     });
-    /* createPage(1); */
-
     const btnGenerate = document.querySelector('.garage__btn-generate');
     btnGenerate.addEventListener('click', () => {
       for (let i = 0; i < 100; i += 1) {
@@ -44,14 +42,11 @@ class View implements IView {
         });
       }
 
-      /*       (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
-      newPage(); */
       const len = countCars();
       len.then((data) => {
         document.querySelector('.garage__count-cars').innerHTML = `GARAGE ( ${data} )`;
         window.location.reload();
       });
-      /* window.location.reload(); */
     });
   }
 }

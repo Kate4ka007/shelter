@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import ICar from '../cars/ICar';
 import { newPage } from '../../index';
 import Buttons from '../buttons/botton';

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.scss';
@@ -16,9 +15,7 @@ interface Engine {
 
 const base = 'http://localhost:3000';
 
-const garage = `${base}/garage`;
 const engine = `${base}/engine`;
-const winners = `${base}/winners`;
 
 export const startEngine = async (id: number): Promise<Engine> => (await fetch(`${engine}?id=${id}&status=started`, { method: 'PATCH' })).json();
 

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import startCar, {
   newPage, startEngine, app,
 } from '../../index';

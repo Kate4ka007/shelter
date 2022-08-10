@@ -28,7 +28,6 @@ class Controller implements IController {
         .then((response) => response.json())
         .then((data: ICar[]) => {
           data.forEach((element) => {
-            // eslint-disable-next-line no-unused-vars
             const car = new Car(element.id, element.name, element.color);
           });
         })
