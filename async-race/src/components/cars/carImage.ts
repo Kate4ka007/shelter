@@ -11,7 +11,7 @@ class CarImage {
     this.parent = parent;
 
     const car = document.createElement('div');
-    car.className = 'car';
+    car.className = 'car-item__car';
     car.id = this.id.toString();
     car.innerHTML = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
     width="64.000000pt" height="32.000000pt" viewBox="0 0 1280.000000 640.000000"

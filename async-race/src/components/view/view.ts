@@ -26,7 +26,7 @@ class View implements IView {
     });
     /* createPage(1); */
 
-    const btnGenerate = document.querySelector('.btn-car-ceneratecars');
+    const btnGenerate = document.querySelector('.garage__btn-generate');
     btnGenerate.addEventListener('click', () => {
       for (let i = 0; i < 100; i += 1) {
         let colors = Math.floor(Math.random() * 16777215).toString(16);
@@ -48,7 +48,7 @@ class View implements IView {
       newPage(); */
       const len = countCars();
       len.then((data) => {
-        document.querySelector('.page-type').innerHTML = `GARAGE ( ${data} )`;
+        document.querySelector('.garage__count-cars').innerHTML = `GARAGE ( ${data} )`;
         window.location.reload();
       });
       /* window.location.reload(); */

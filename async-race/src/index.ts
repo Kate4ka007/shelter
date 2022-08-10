@@ -147,7 +147,7 @@ export const createPage = async (num: number): Promise<ICar[]> => {
 };
 
 export const newPage = (num: number = 1): void => {
-  (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+  (document.querySelector('.garage__cars') as HTMLDivElement).innerHTML = '';
   const data = createPage(num);
   data.then((page) => {
     page.forEach((element) => {
@@ -156,11 +156,11 @@ export const newPage = (num: number = 1): void => {
   });
 };
 
-(document.querySelector('.btn-car-race') as HTMLButtonElement).addEventListener('click', () => {
+(document.querySelector('.garage__btn-race') as HTMLButtonElement).addEventListener('click', () => {
   const startTime = new Date();
   localStorage.setItem('startTime', JSON.stringify(startTime));
-  (document.querySelector('.btn-car-race') as HTMLButtonElement).disabled = true;
-  document.querySelectorAll('.car').forEach((el: HTMLElement) => {
+  (document.querySelector('.garage__btn-race') as HTMLButtonElement).disabled = true;
+  document.querySelectorAll('.car-item__car').forEach((el: HTMLElement) => {
     localStorage.removeItem('winnerCar');
     const id = +el.id;
     const vel = startEngine(id);
@@ -171,9 +171,9 @@ export const newPage = (num: number = 1): void => {
   });
 });
 
-(document.querySelector('.btn-car-reset') as HTMLButtonElement).addEventListener('click', () => {
-  (document.querySelector('.btn-car-race') as HTMLButtonElement).disabled = false;
-  document.querySelectorAll('.car').forEach((el: HTMLElement) => {
+(document.querySelector('.garage__btn-reset') as HTMLButtonElement).addEventListener('click', () => {
+  (document.querySelector('.garage__btn-race') as HTMLButtonElement).disabled = false;
+  document.querySelectorAll('.car-item__car').forEach((el: HTMLElement) => {
     localStorage.removeItem('winnerCar');
     // eslint-disable-next-line no-param-reassign
     el.style.transform = 'translateX(0px)';

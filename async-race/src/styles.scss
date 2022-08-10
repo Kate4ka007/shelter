@@ -1,63 +1,26 @@
-body {
+@import './components/cars/cars.scss';
+@import './components/winner/winner.scss';
+@import './components/generator/generator.scss';
+
+.app {
   background: #272525;
-}
 
-.root {
-  padding: 10px;
-}
-
-.car-container {
-  border-bottom: 2px white dotted;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.car {
-  width: 120px;
-  display: flex;
-  align-items: flex-end;
-
-  @media screen and (max-width: 600px) {
-    width: 100px;
-    margin-bottom: -5px;
+  &__switch {
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
   }
-}
 
-.flag {
-  width: 40px;
-  height: auto;
-  margin-right: 120px;
+  &__garage {
+    padding: 10px;
+  }
 
-  @media screen and (max-width: 600px) {
-    width: 25px;
-    height: 30px;
-    margin-right: 100px;
-    margin-top: 8px;
+  &__winners {
+    padding-left: 5px;
   }
 
 }
 
-.car-model {
-  color: aliceblue;
-}
-
-.car-row1 {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.car-flag {
-  display: flex;
-  justify-content: space-between;
-}
-
-.start-stop {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
 
 .btn-select {
   background-color: #c2fbd7;
@@ -96,236 +59,16 @@ body {
   }
 }
 
-.btn-start {
-  background: #e62143;
-  border-radius: 11px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab", "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 33.4929px;
-  text-align: center;
-  text-decoration: none;
-  text-decoration-skip-ink: auto;
-  text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
-  text-underline-offset: 1px;
-  transition: all .2s ease-in-out;
-  user-select: none;
-  touch-action: manipulation;
-  word-break: break-word;
-  border: 0;
-
-  &:active,
-  &:focus {
-    border-bottom-style: none;
-    border-color: #dadada;
-    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
-    outline: 0;
-  }
-
-  &:hover {
-    border-bottom-style: none;
-    border-color: #dadada;
-    background-color: lighten($color: #e62143, $amount: 10);
-  }
-
-  @media screen and (max-width: 600px) {
-    font-size: 0.8rem;
-  }
-}
-
-.btn-stop {
-  background: #2155e6;
-  border-radius: 11px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab", "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 33.4929px;
-  text-align: center;
-  text-decoration: none;
-  text-decoration-skip-ink: auto;
-  text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
-  text-underline-offset: 1px;
-  transition: all .2s ease-in-out;
-  user-select: none;
-  touch-action: manipulation;
-  word-break: break-word;
-  border: 0;
-
-  &:active,
-  &:focus {
-    border-bottom-style: none;
-    border-color: #dadada;
-    box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
-    outline: 0;
-  }
-
-  &:hover {
-    border-bottom-style: none;
-    border-color: #dadada;
-    background-color: lighten($color: #2155e6, $amount: 10);
-  }
-}
-
-.car-headlight {
-  width: 44px;
-  opacity: 0.8;
-  margin-left: -6px;
-  transform: scale(-0.9, 0.45);
-  margin-bottom: -21px;
-
-  @media screen and (max-width: 600px) {
-    width: 35px;
-    opacity: 0.8;
-    margin-left: -6px;
-    transform: scale(-0.9, 0.3);
-    margin-bottom: -10px;
-  }
-}
-
-input[type=color] {
-  width: 40px;
-  height: 20px;
-  border: none;
-  padding: 0 0 0 0;
-  border-radius: 5px;
-  margin: 0;
-  border-width: 1px;
-  background-color: #c2fbd7;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
 
 
-input[type=text] {
-  border: none;
-  padding: 5px;
-  outline: none;
-  border-radius: 5px;
-
-}
-
-.row1,
-.row2,
-.row3 {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.title {
-  font-size: 30px;
-  color: #dadada;
-  margin: 60px 0;
-
-  @media screen and (max-width: 600px) {
-    margin: 30px 0;
-    font-size: 25px;
-  }
-}
-
-.paginator {
-  margin: 0 auto;
-  width: 150px;
-  display: flex;
-  justify-content: space-between;
-}
 
 
-.winner {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #e62143;
-  font-size: 2rem;
-}
 
-.car-selected {
-  background-color: lighten($color: #272525, $amount: 5);
 
-}
 
-.pages {
-  margin: 1rem;
-  display: flex;
-  gap: 1rem;
-}
 
-th,
-td {
-  color: #dadada;
-}
 
-.table-colomn {
-  text-align: center;
-  width: 180px;
-  height: 50px;
-  @media screen and (max-width){
-    width: 140px;
-  }
-}
 
-.table-number {
-  text-align: center;
-  width: 50px;
-  height: 50px;
-}
 
-.car-column {
-  display: flex;
-  justify-content: center;
-}
 
-.table-headers {
-  margin-bottom: 20px;
-}
 
-.page-winner {
-  font-size: 30px;
-  color: #dadada;
-  margin: 20px 0 0 0;
-  @media screen and (max-width: 600px){
-    font-size: 25px;
-  }
-}
-
-.page-count-winner {
-  font-size: 30px;
-  color: #dadada;
-  margin-bottom: 30px;
-}
-
-.winners-pagination {
-  width: 150px;
-  display: flex;
-  gap: 1rem;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-
-.root2 {
-  padding-left: 5px;
-}
-
-#sort-id, #sort-time, #sort-number {
-  cursor: pointer;
-
-}
-
-.down {
- border-bottom: green;
-}

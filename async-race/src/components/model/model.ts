@@ -32,11 +32,11 @@ class Model implements IModel {
   }
 
   onUpdateCar(id: number, oldName: string, oldColor: string): void {
-    const nameCar = (<HTMLInputElement>document.querySelector('.car-name-update')).value
-      ? (<HTMLInputElement>document.querySelector('.car-name-update')).value
+    const nameCar = (<HTMLInputElement>document.querySelector('.garage__update-name')).value
+      ? (<HTMLInputElement>document.querySelector('.garage__update-name')).value
       : oldName;
-    const colorCar = (<HTMLInputElement>document.querySelector('.car-color-update')).value !== '#000000'
-      ? (<HTMLInputElement>document.querySelector('.car-color-update')).value
+    const colorCar = (<HTMLInputElement>document.querySelector('.garage__update-color')).value !== '#000000'
+      ? (<HTMLInputElement>document.querySelector('.garage__update-color')).value
       : oldColor;
 
     fetch(`http://localhost:3000/garage/${id}`, {
@@ -46,7 +46,7 @@ class Model implements IModel {
         'Content-Type': 'application/json',
       },
     });
-    (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+    (document.querySelector('.garage__cars') as HTMLDivElement).innerHTML = '';
     const pageNumber = +(localStorage.getItem('page'));
     newPage(pageNumber);
   }

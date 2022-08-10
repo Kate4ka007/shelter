@@ -18,12 +18,12 @@ class Controller implements IController {
     page.then((data) => this.view.generaGarage(data));
 
     this.pageCount = this.model.pageNumber;
-    (<HTMLButtonElement>document.querySelector('.btn-car-create')).addEventListener('click', () => {
-      const name = (<HTMLInputElement>document.querySelector('.car-name-create')).value;
-      const color = (<HTMLInputElement>document.querySelector('.car-color-create')).value;
+    (<HTMLButtonElement>document.querySelector('.garage__btn-create')).addEventListener('click', () => {
+      const name = (<HTMLInputElement>document.querySelector('.garage__create-name')).value;
+      const color = (<HTMLInputElement>document.querySelector('.garage__create-color')).value;
       this.model.createOneCar(name, color);
       const pageNumber = +(localStorage.getItem('page'));
-      (document.querySelector('.page-garage') as HTMLDivElement).innerHTML = '';
+      (document.querySelector('.garage__cars') as HTMLDivElement).innerHTML = '';
       fetch(`http://localhost:3000/garage?_page=${pageNumber}&_limit=7`)
         .then((response) => response.json())
         .then((data: ICar[]) => {
@@ -37,7 +37,7 @@ class Controller implements IController {
       fetch('http://localhost:3000/garage')
         .then((response) => response.json())
         .then((data: ICar[]) => {
-          document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length} )`;
+          document.querySelector('.garage__count-cars').innerHTML = `GARAGE ( ${data.length} )`;
         });
     });
   }

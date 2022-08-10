@@ -36,9 +36,9 @@ class WinnerItem {
     }
 
     const winnersRow = document.createElement('tr');
-    winnersRow.className = 'table-row';
-    winnersRow.innerHTML = `<td class='table-number'>${this.number}</td>
-                            <td class='table-colomn car-column'><div class = 'car'><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+    winnersRow.className = 'winners__table-row';
+    winnersRow.innerHTML = `<td class='winners__table-number td'>${this.number}</td>
+                            <td class='winners__table-column car-column td'><div class = 'car-item__car'><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                             width="64.000000pt" height="32.000000pt" viewBox="0 0 1280.000000 640.000000"
                             preserveAspectRatio="xMidYMid meet">
                            <metadata>
@@ -127,10 +127,10 @@ class WinnerItem {
                            82 227 106 0 16 -212 234 -228 234 -5 0 -12 -3 -15 -7z"/>
                            </g>
                            </svg></div></td>
-                            <td class='table-colomn' title='id= ${this.id}'>${this.name}</td>
-                            <td class='table-colomn'>${this.count}</td>
-                            <td class='table-colomn'>${this.theBest}</td>`;
-    document.querySelector('.table-body').appendChild(winnersRow);
+                            <td class='winners__table-column td' title='id= ${this.id}'>${this.name}</td>
+                            <td class='winners__table-column td'>${this.count}</td>
+                            <td class='winners__table-column td'>${this.theBest}</td>`;
+    document.querySelector('.winners__table-body').appendChild(winnersRow);
   }
 }
 

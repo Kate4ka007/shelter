@@ -11,13 +11,13 @@ class WinnerPage implements IWinnerPage {
   constructor() {
     this.count = 1;
     const winners = document.createElement('div');
-    winners.className = 'page-winners';
+    winners.className = 'winners__items';
 
     const title = document.createElement('div');
-    title.className = 'title-winners';
+    title.className = 'winners__title';
 
     const page = document.createElement('div');
-    page.className = 'page-winner';
+    page.className = 'winners__count-winners';
 
     fetch('http://localhost:3000/winners')
       .then((response) => response.json())
@@ -28,30 +28,33 @@ class WinnerPage implements IWinnerPage {
     title.appendChild(page);
 
     const pageCount = document.createElement('div');
-    pageCount.className = 'page-count-winner';
+    pageCount.className = 'winners__count-pages';
     pageCount.innerHTML = `Page #${this.count}`;
     title.appendChild(pageCount);
     winners.appendChild(title);
 
     const table = document.createElement('div');
-    table.innerHTML = `<div class='winner-table'>
+    table.className = 'winners__table-container';
+    table.innerHTML = `<div class='winners__table'>
                             <table>
-                            <thead class='table-headers'>
-                              <tr class='table-row'>
-                                <th class='table-number'>№</th>
-                                <th class='table-colomn'>Image of the car</th>
-                                <th class='table-colomn' id='sort-id'>Name of the car &#8679;</th>
-                                <th class='table-colomn' id='sort-number'>Wins number &#8679;</th>
-                                <th class='table-colomn' id='sort-time'>Best time in seconds &#8679;</th>
+                            <thead class='winners__table-headers'>
+                              <tr class='winners__table-row'>
+                                <th class='winners__table-number th'>№</th>
+                                <th class='winners__table-column th'>Image of the car</th>
+                                <th class='winners__table-column th' id='sort-id'>Name of the car &#8679;</th>
+                                <th class='winners__table-column th' id='sort-number'>Wins number &#8679;</th>
+                                <th class='winners__table-column th' id='sort-time'>Best time in seconds &#8679;</th>
                               </tr>
                             </thead>
-                            <tbody class='table-body'>
+                            <tbody class='winners__table-body'>
                             </tbody>
                           </table>
                          </div>`;
     winners.appendChild(table);
     const root2 = document.createElement('div');
-    root2.className = 'root2';
+    root2.className = 'app__winners';
+    root2.classList.add('winners');
+
     root2.appendChild(winners);
     document.body.appendChild(root2);
 
@@ -63,7 +66,7 @@ class WinnerPage implements IWinnerPage {
     this.getPageWinners();
 
     const pagination = document.createElement('div');
-    pagination.className = 'winners-pagination';
+    pagination.className = 'winners__pagination';
     const prev = new Buttons('btn-select', pagination, 'prev', () => {
       let count = +localStorage.getItem('pageWinners');
       count -= 1;
@@ -72,7 +75,7 @@ class WinnerPage implements IWinnerPage {
       }
       this.count = count;
       pageCount.innerHTML = `Page #${this.count}`;
-      document.querySelector('.table-body').innerHTML = '';
+      document.querySelector('.winners__table-body').innerHTML = '';
       this.getPageWinners();
       (<HTMLButtonElement>document.getElementById('win-next')).disabled = false;
 
@@ -84,7 +87,7 @@ class WinnerPage implements IWinnerPage {
       count += 1;
       this.count = count;
       pageCount.innerHTML = `Page #${this.count}`;
-      document.querySelector('.table-body').innerHTML = '';
+      document.querySelector('.winners__table-body').innerHTML = '';
       this.getPageWinners();
 
       localStorage.setItem('pageWinners', this.count.toString());
@@ -155,7 +158,7 @@ class WinnerPage implements IWinnerPage {
     this.count = 1;
     // eslint-disable-next-line no-param-reassign
     tag.innerHTML = `Page #${this.count}`;
-    document.querySelector('.table-body').innerHTML = '';
+    document.querySelector('.winners__table-body').innerHTML = '';
     fetch(`http://localhost:3000/winners?_page=${this.count}&_limit=10&_sort=${sortType}&_order=${order}`)
       .then((response) => response.json())
       .then((data: IWinnerItem[]) => {

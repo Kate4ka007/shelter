@@ -11,39 +11,40 @@ class Generator implements IGenerator {
   constructor(count: number) {
     this.count = count;
     const root = document.createElement('div');
-    root.className = 'root';
+    root.className = 'app__garage';
+    root.classList.add('garage');
 
     const pages = document.createElement('div');
-    pages.className = 'pages';
+    pages.className = 'app__switch';
     const gar = new Buttons('btn-select', pages, 'Garage', () => {
       root.style.display = 'block';
-      document.querySelector('.root2').remove();
-    }, 'page-garage');
+      document.querySelector('.app__winners').remove();
+    }, 'garage__cars');
     const win = new Buttons('btn-select', pages, 'Winners', () => {
       root.style.display = 'none';
       const winners = new WinnerPage();
-    }, 'page-winners');
+    }, 'winners__items');
     document.body.appendChild(pages);
     const panel = document.createElement('div');
-    panel.className = 'panel';
-    panel.innerHTML = `<div class='row1'>
-                          <input type='text' class='car-name-create'>
-                          <input type='color' class='car-color-create' value='#00ff91'>
-                          <button class='btn-car-create btn-select'>CREATE</button></div>
-                       <div class='row2'>
-                          <input type='text' class='car-name-update'>
-                          <input type='color' class='car-color-update' value='#00ff91'>
-                          <button class='btn-car-update btn-select' disabled=false>UPDATE</button></div>
-                       <div class='row3'>
-                          <button class='btn-car-race btn-select'>RACE</button>
-                          <button class='btn-car-reset btn-select'>RESET</button>
-                          <button class='btn-car-ceneratecars btn-select'>GENERATE CARS</button></div>`;
+    panel.className = 'garage__controls';
+    panel.innerHTML = `<div class='garage__create-car'>
+                          <input type='text' class='garage__create-name input-text'>
+                          <input type='color' class='garage__create-color input-color' value='#00ff91'>
+                          <button class='garage__btn-create btn-select'>CREATE</button></div>
+                       <div class='garage__update-car'>
+                          <input type='text' class='garage__update-name input-text'>
+                          <input type='color' class='garage__update-color input-color' value='#00ff91'>
+                          <button class='garage__btn-update btn-select' disabled=false>UPDATE</button></div>
+                       <div class='garage__race'>
+                          <button class='garage__btn-race btn-select'>RACE</button>
+                          <button class='garage__btn-reset btn-select'>RESET</button>
+                          <button class='garage__btn-generate btn-select'>GENERATE CARS</button></div>`;
 
     const title = document.createElement('div');
-    title.className = 'title';
+    title.className = 'garage__title';
 
     const page = document.createElement('div');
-    page.className = 'page-type';
+    page.className = 'garage__count-cars';
 
     let len: number;
     fetch('http://localhost:3000/garage')
@@ -56,7 +57,7 @@ class Generator implements IGenerator {
     title.appendChild(page);
 
     const pageCount = document.createElement('div');
-    pageCount.className = 'page-count';
+    pageCount.className = 'garage__count-pages';
     pageCount.innerHTML = `Page #${this.count}`;
     title.appendChild(pageCount);
 
@@ -64,11 +65,11 @@ class Generator implements IGenerator {
     root.appendChild(panel);
     root.appendChild(title);
     const garage = document.createElement('div');
-    garage.className = 'page-garage';
+    garage.className = 'garage__cars';
     root.appendChild(garage);
 
     const paginator = document.createElement('div');
-    paginator.className = 'paginator';
+    paginator.className = 'garage__paginator';
 
     const prev = new Buttons('btn-select', paginator, 'prev', () => {
       garage.innerHTML = '';

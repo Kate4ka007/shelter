@@ -21,31 +21,32 @@ class Car implements ICar {
     this.callback = callback;
 
     const carContainer = document.createElement('div');
-    carContainer.className = 'car-container';
+    carContainer.className = 'garage__car-item';
+    carContainer.classList.add('car-item');
     const row1 = document.createElement('div');
-    row1.className = 'car-row1';
+    row1.className = 'car-item__controls';
     carContainer.appendChild(row1);
     const select = new Buttons('btn-select', row1, 'SELECT', () => {
       carContainer.classList.add('car-selected');
-      (document.querySelectorAll('.btn-btn')).forEach((el: HTMLButtonElement) => {
+      (document.querySelectorAll('.car-item__btn-select')).forEach((el: HTMLButtonElement) => {
         // eslint-disable-next-line no-param-reassign
         el.disabled = true;
       });
-      (document.querySelector('.btn-car-update') as HTMLButtonElement).disabled = false;
+      (document.querySelector('.garage__btn-update') as HTMLButtonElement).disabled = false;
 
-      (<HTMLInputElement>document.querySelector('.car-name-update')).focus();
-      (<HTMLInputElement>document.querySelector('.car-name-update')).value = this.name;
-      (<HTMLInputElement>document.querySelector('.car-color-update')).value = this.color;
-      (<HTMLButtonElement>document.querySelector('.btn-car-update')).addEventListener('click', () => {
+      (<HTMLInputElement>document.querySelector('.garage__update-name')).focus();
+      (<HTMLInputElement>document.querySelector('.garage__update-name')).value = this.name;
+      (<HTMLInputElement>document.querySelector('.garage__update-color')).value = this.color;
+      (<HTMLButtonElement>document.querySelector('.garage__btn-update')).addEventListener('click', () => {
         app.model.onUpdateCar(this.id, this.name, this.color);
       });
-    }, '', false, 'btn-btn');
+    }, '', false, 'car-item__btn-select');
 
     const remove = new Buttons('btn-select', row1, 'REMOVE', () => {
       fetch('http://localhost:3000/garage')
         .then((response) => response.json())
         .then((data: ICar[]) => {
-          document.querySelector('.page-type').innerHTML = `GARAGE ( ${data.length - 1} )`;
+          document.querySelector('.garage__count-cars').innerHTML = `GARAGE ( ${data.length - 1} )`;
 
           let nn = 0;
           data.forEach((el, ind) => {
@@ -54,41 +55,42 @@ class Car implements ICar {
             }
           });
           const count = Math.ceil((nn + 1) / 7);
-          document.querySelector('.page-count').innerHTML = `Page #${count}`;
+          document.querySelector('.garage__count-pages').innerHTML = `Page #${count}`;
 
           if (count === Math.ceil(data.length / 7)) {
             (document.getElementById('next') as HTMLButtonElement).disabled = true;
           } else {
             (document.getElementById('next') as HTMLButtonElement).disabled = false;
           }
-
-          fetch(`http://localhost:3000/garage/${this.id}`, { method: 'DELETE' })
-            .then((response) => response.json())
-            .then((datas: ICar[]) => {
-              console.log(datas);
-            });
-          newPage(count);
           fetch(`http://localhost:3000/winners/${this.id}`, { method: 'DELETE' })
             .then((response) => response.json())
             .then((datas: ICar[]) => {
               console.log(datas);
             });
+
+          fetch(`http://localhost:3000/garage/${this.id}`, { method: 'DELETE' })
+            .then((response) => response.json())
+            .then((datas: ICar[]) => {
+              console.log(datas);
+              carContainer.remove();
+            });
+
+          newPage(count);
         });
 
       carContainer.remove();
-
-      document.querySelector('.page-garage').innerHTML = '';
+      document.querySelector('.garage__cars').innerHTML = '';
     });
 
     const carModel = document.createElement('div');
-    carModel.className = 'car-model';
+    carModel.className = 'car-item__model';
     carModel.textContent = this.name;
     row1.appendChild(carModel);
 
     const row2 = document.createElement('div');
-    row2.className = 'start-stop';
+    row2.className = 'car-item__start-stop';
 
-    const start = new Buttons('btn-start', row2, 'A', () => {
+    const start = new Buttons('car-item__btn-start', row2, 'A', () => {
       localStorage.setItem('winnerCar', 'fff');
       const vel = startEngine(id);
       vel.then((data) => {
@@ -96,7 +98,7 @@ class Car implements ICar {
         startCar(car, this.id, data.velocity, this.name);
       }).catch((err: string) => console.log(err));
     });
-    const stop = new Buttons('btn-stop', row2, 'B', () => {
+    const stop = new Buttons('car-item__btn-stop', row2, 'B', () => {
       window.cancelAnimationFrame(this.id);
       // eslint-disable-next-line no-use-before-define
       car.style.transform = 'translateX(0px)';
@@ -104,10 +106,10 @@ class Car implements ICar {
     carContainer.appendChild(row2);
 
     const race = document.createElement('div');
-    race.className = 'car-flag';
+    race.className = 'car-item__road';
 
     const car = document.createElement('div');
-    car.className = 'car';
+    car.className = 'car-item__car';
     car.id = id.toString();
     car.innerHTML = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
     width="64.000000pt" height="32.000000pt" viewBox="0 0 1280.000000 640.000000"
@@ -201,10 +203,10 @@ class Car implements ICar {
 
     const flag = document.createElement('img');
     flag.src = 'assets/images/flag.png';
-    flag.className = 'flag';
+    flag.className = 'car-item__flag';
     race.appendChild(car);
 
-    (document.querySelector('.page-garage') as HTMLDivElement).appendChild(carContainer);
+    (document.querySelector('.garage__cars') as HTMLDivElement).appendChild(carContainer);
     race.appendChild(flag);
     carContainer.appendChild(race);
   }
