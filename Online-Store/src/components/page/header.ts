@@ -73,6 +73,11 @@ class Header implements IHeader {
     const headerBottomRight = document.createElement('div');
     headerBottomRight.className = 'header__bottom-right';
 
+    const hh =document.createElement('img')
+    hh.src = 'assets/images/header.png'
+    hh.className = 'header__bottom-right-img'
+    headerBottomRight.appendChild(hh)
+
     const headerBottomLeft = document.createElement('div');
     headerBottomLeft.className = 'header__bottom-left';
 
