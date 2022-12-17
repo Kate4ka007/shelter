@@ -17,7 +17,6 @@ function toggleMenu() {
     }
 
     setTimeout(() => owerlof.classList.toggle("hide"), 200);
-    // owerlof.classList.toggle('hide')
     logo_burger.style.display = "block";
   }
 }
@@ -191,13 +190,11 @@ const moveRight = () => {
 btnLeft.addEventListener("click", moveLeft);
 btnRight.addEventListener("click", moveRight);
 let i = 0;
-console.log(i);
 let k = 0;
 slider.querySelectorAll(".item").forEach((item) => {
   item.innerHTML = "";
 
   for (let j = 0; j < 3; j++) {
-    console.log(i);
 
     card = createCardTemplate(k);
     card.innerHTML = `
@@ -206,10 +203,7 @@ slider.querySelectorAll(".item").forEach((item) => {
     <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     item.appendChild(card);
 
-    console.log(card);
-
     card.addEventListener("click", function () {
-      console.log("this card - ", this);
       const idx = this.dataset.index;
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
@@ -223,7 +217,6 @@ slider.querySelectorAll(".item").forEach((item) => {
 });
 
 const createModalWindow = (i) => {
-  console.log("index - ", i);
   const modal = document.createElement("div");
   modal.classList.add("modal-background");
   modal.innerHTML = `
@@ -252,17 +245,7 @@ const createModalWindow = (i) => {
       document.body.removeChild(modal);
     });
   });
-
   const modalBackground = document.querySelectorAll(".modal-background");
-
-  /* modalBackground.forEach(el => {
-  el.addEventListener('click', function () {
-    document.body.style.overflow = "visible"
-    document.body.removeChild(modal)
-  })
-})
- */
-
   modalBackground.forEach((el) => {
     el.onclick = (e) => {
       if (e.target == el) {
@@ -291,23 +274,6 @@ const createModalWindow = (i) => {
   });
   const modalClose = document.querySelector(".modal-close-button");
 
-  /* modalBackground.forEach(el => {
-  el.onmouseover = function() {
-    modalCloseButton.forEach(item => {
-      item.classList.add('close-button-hover')
-    })   
-      console.log('hover')      
-  }
-
-  el.onmouseout = function() {
-    modalCloseButton.forEach(item => {
-        
-        item.classList.remove('close-button-hover')
-        console.log('nothover') 
-      
-    })       
-  }
-}) */
 };
 
 let chengepart;
@@ -320,7 +286,6 @@ slider.addEventListener("animationend", (animationEvent) => {
     itemActive.innerHTML = cardsLeft.innerHTML;
     itemActive.querySelectorAll(".pets_card").forEach((card) => {
       card.addEventListener("click", function () {
-        console.log("this card - ", this);
         const idx = this.dataset.index;
         document.body.style.overflow = "hidden";
         createModalWindow(idx);
@@ -334,7 +299,6 @@ slider.addEventListener("animationend", (animationEvent) => {
     itemActive.innerHTML = cardsRight.innerHTML;
     itemActive.querySelectorAll(".pets_card").forEach((card) => {
       card.addEventListener("click", function () {
-        console.log("this card - ", this);
         const idx = this.dataset.index;
         document.body.style.overflow = "hidden";
         createModalWindow(idx);
@@ -346,23 +310,15 @@ slider.addEventListener("animationend", (animationEvent) => {
   let card;
 
   for (let j = 0; j < 3; j++) {
-    console.log(i + 1);
-
     card = createCardTemplate(i + 1);
     card.innerHTML = `
-    <img class="card-image" src="${pets[i + 1].img}" alt="${
-      pets[i + 1].name
-    }" data-name="${pets[i + 1].name}" data-description="${
-      pets[i + 1].description
-    }">    
+    <img class="card-image" src="${pets[i + 1].img}" alt="${pets[i + 1].name
+      }" data-name="${pets[i + 1].name}" data-description="${pets[i + 1].description
+      }">    
     <span class="card-title">${pets[i + 1].name}</span>
     <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
     chengepart.appendChild(card);
-
-    console.log(card);
-
     card.addEventListener("click", function () {
-      console.log("this card - ", this);
       const idx = this.dataset.index;
       document.body.style.overflow = "hidden";
       createModalWindow(idx);
@@ -379,9 +335,7 @@ slider.addEventListener("animationend", (animationEvent) => {
 });
 
 const modalWindow = document.querySelectorAll(".pets_card");
-
 let cardButton;
-//console.log(cardButton)
 
 slider.addEventListener("click", (event) => {
   if (event.target.classList.contains("activated")) {
@@ -389,27 +343,6 @@ slider.addEventListener("click", (event) => {
   } else if (event.target.classList.contains("card")) {
     event.target.classList.add("activated");
   }
-
-  //document.body.style.overflow = "hidden"
-
-  /*  modalCloseButton.forEach(el => {
-    el.onclick = () => {
-      document.body.style.overflow = "visible"
-      modWin[0].style.display = "none";
-      modWin[1].style.display = "none";
-      modWin[2].style.display = "none";
-      modWin.forEach(it => {
-        document.body.removeChild(modal)
-      })
-    }
-  }) */
 });
 
-/* const modalCloseButton = document.querySelectorAll('.modal-close-button')
-modalCloseButton.forEach(el => {
-  el.addEventListener('click', function () {
-    document.body.style.overflow = "visible"
-    document.body.remove(modal)
-  })
-})
- */
+

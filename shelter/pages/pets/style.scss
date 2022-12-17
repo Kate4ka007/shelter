@@ -8,11 +8,12 @@ ul,
 ol {
   margin: 0;
   padding: 0;
-  /*box-sizing: border-box;*/
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -33,6 +34,7 @@ body {
   cursor: pointer;
 
   flex-direction: column;
+
   .logo_title {
     font-family: $font_Headings;
     font-weight: 400;
@@ -45,6 +47,7 @@ body {
     padding-bottom: 9px;
     padding-top: 1px;
   }
+
   .logo_subtitle {
     font-family: $font_text;
     font-weight: 400;
@@ -75,6 +78,7 @@ body {
   @media screen and (max-width: 1279px) {
     padding: 30px 29px;
   }
+
   @media screen and (max-width: 767px) {
     padding: 30px 10px;
   }
@@ -85,12 +89,14 @@ body {
   display: flex;
   align-items: center;
   width: 442px;
+
   .logo_burger {
     display: none;
     position: relative;
     top: 33px;
     left: 11px;
   }
+
   .list_main-pages {
     display: flex;
     list-style: none;
@@ -99,13 +105,14 @@ body {
     margin-top: 29px;
     margin-right: 3px;
     text-indent: -2px;
+
     @media screen and (max-width: 767px) {
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       margin-top: 192px;
-      //margin-left: -39px;
     }
+
     .nav_link {
       font-family: $font_text;
       color: $color-dark-l;
@@ -113,10 +120,12 @@ body {
       font-size: 15px;
       text-decoration: none;
       cursor: pointer;
+
       &:hover {
         color: $color-dark-3xl;
         transition-duration: 0.2s;
       }
+
       @media screen and (max-width: 767px) {
         font-style: normal;
         font-weight: 400;
@@ -126,6 +135,7 @@ body {
       }
     }
   }
+
   @media screen and (max-width: 767px) {
     display: none;
     display: flex;
@@ -183,10 +193,12 @@ a.disabled {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;
   }
+
   .pets-button & {
     width: 261px;
   }
@@ -196,6 +208,7 @@ a.disabled {
   width: 100%;
   height: 1342px;
   background-color: $color-light-l;
+
   //padding: 80px 40px 100px 40px;
   @media screen and (max-width: 1279px) {
     height: auto;
@@ -214,12 +227,14 @@ a.disabled {
   padding-top: 13px;
   padding-left: 10px; //!!!
   padding-right: 10px; //!!!!!!!!!
+
   @media screen and (max-width: 1279px) {
     grid-template: 435px 435px 435px /270px 270px;
     overflow: hidden;
     height: 1400px;
     margin: 0 auto;
   }
+
   @media screen and (max-width: 767px) {
     grid-template: 435px 435px 435px /270px;
     overflow: hidden;
@@ -237,6 +252,7 @@ a.disabled {
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
+
   @media screen and (max-width: 1279px) {
     width: 100%;
     height: auto;
@@ -261,6 +277,7 @@ a.disabled {
   @media screen and (max-width: 1279px) {
     margin-bottom: 16px;
   }
+
   @media screen and (max-width: 767px) {
     font-size: 25px;
     margin-left: auto;
@@ -278,10 +295,12 @@ a.disabled {
   width: 100%;
   height: 930px;
   align-items: center;
+
   @media screen and (max-width: 1279px) {
     padding-bottom: 77px;
     height: auto;
   }
+
   @media screen and (max-width: 767px) {
     padding-bottom: 44px;
   }
@@ -309,6 +328,7 @@ a.disabled {
     box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
     background-color: $color-light-xl;
     transform: scale(1.03);
+
     .button_secondary {
       background-color: $color-primary-light;
       transition-duration: 0.2s;
@@ -325,12 +345,14 @@ a.disabled {
   @media screen and (max-width: 1279px) {
     margin-top: 18px;
   }
+
   @media screen and (max-width: 767px) {
     margin-top: 18px;
     width: 300px;
     gap: 10px;
   }
 }
+
 /*
 .slider_page:hover {
   border-radius: 50%;
@@ -364,6 +386,7 @@ a.disabled {
   color: $color-dark-3xl;
   background: none;
   cursor: pointer;
+
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;
@@ -405,7 +428,7 @@ a.disabled {
     transition-duration: 0.2s;
     cursor: pointer;
   }
-  
+
 }
 
 
@@ -418,6 +441,7 @@ a.disabled {
   height: 350px;
   background-image: url(../../assets/images/Footer.png);
   padding: 40px 40px 0 40px;
+
   @media screen and (max-width: 1279px) {
     padding: 13px 64px 0 64px;
     height: 638px;
@@ -425,6 +449,7 @@ a.disabled {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   @media screen and (max-width: 767px) {
     padding: 12px 10px 0 10px;
     background-image: url(../../assets/images/footer_320.jpg);
@@ -437,11 +462,13 @@ a.disabled {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
     @media screen and (max-width: 1279px) {
       width: 640px;
       flex-wrap: wrap;
       margin: 0 auto;
     }
+
     @media screen and (max-width: 767px) {
       width: 300px;
     }
@@ -451,10 +478,12 @@ a.disabled {
       height: 234px;
       display: flex;
       flex-direction: column;
+
       @media screen and (max-width: 767px) {
         width: 300px;
       }
     }
+
     .location {
       width: 302px;
       height: 234px;
@@ -472,6 +501,7 @@ a.disabled {
   color: #ffffff;
   margin-bottom: 36px;
   margin-top: 17px;
+
   @media screen and (max-width: 767px) {
     font-size: 25px;
     text-align: center;
@@ -489,6 +519,7 @@ a.disabled {
   color: #ffffff;
   margin-bottom: 32px;
   margin-top: 16px;
+
   @media screen and (max-width: 767px) {
     font-size: 25px;
     text-align: center;
@@ -504,6 +535,7 @@ a.disabled {
   display: flex;
   align-items: center;
   margin-bottom: 36px;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -515,19 +547,23 @@ a.disabled {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
     }
   }
+
   @media screen and (max-width: 767px) {
     margin: 0 auto 36px auto;
     width: 253px;
   }
 }
+
 .phone {
   display: flex;
   align-items: center;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -541,12 +577,14 @@ a.disabled {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
       transition-duration: 0.2s;
     }
   }
+
   @media screen and (max-width: 767px) {
     margin: 0 auto 36px auto;
   }
@@ -556,6 +594,7 @@ a.disabled {
   display: flex;
   align-items: center;
   margin-bottom: 31px;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -569,12 +608,14 @@ a.disabled {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
       transition-duration: 0.2s;
     }
   }
+
   @media screen and (max-width: 767px) {
     margin-bottom: 37px;
   }
@@ -583,9 +624,11 @@ a.disabled {
 .boston-adr {
   margin-right: 0;
 }
+
 .loc-london {
   display: flex;
   align-items: center;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -598,6 +641,7 @@ a.disabled {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
@@ -616,6 +660,7 @@ a.disabled {
     margin: 0 auto;
     margin-top: 81px;
   }
+
   @media screen and (max-width: 767px) {
     width: 260px;
     margin-top: 59px;
@@ -630,6 +675,7 @@ a.disabled {
 
 .toggleButton {
   display: none;
+
   @media screen and (max-width: 767px) {
     display: block;
     position: absolute;
@@ -638,6 +684,7 @@ a.disabled {
     z-index: 10;
   }
 }
+
 .owerlof {
   display: none;
 }
@@ -686,6 +733,7 @@ a.disabled {
     top: 33px;
     left: 11px;
   }
+
   /*
   @media screen and (max-width: 374px) {
     width: 100%;
@@ -716,12 +764,14 @@ a.disabled {
   margin-top: 20px;
   margin-left: 15px;
 }
+
 .active_menu:after {
   transform: translateY(-50%) rotateZ(-90deg);
 
   margin-top: -10px;
   margin-left: 35px;
 }
+
 .active_menu div {
   transform: translateY(-50%) rotateZ(-90deg);
   margin-top: -10px;
@@ -736,19 +786,20 @@ a.disabled {
 .modal-window {
   width: 900px;
   //height: 500px;
-  position: fixed;  
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background:none;
+  background: none;
   z-index: 500;
   border-radius: 9px;
 
-  @media screen and (max-width:1279px){
+  @media screen and (max-width:1279px) {
     width: 630px;
     //height: 402px;
   }
-  @media screen and (max-width:767px){
+
+  @media screen and (max-width:767px) {
     width: 250px;
     height: 392px;
   }
@@ -756,15 +807,16 @@ a.disabled {
 
 .modal-background {
   //display: none;
-  position: fixed;  
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(41, 41, 41, 0.6);
   z-index: 400;
-  
+
 }
+
 .modal-close-button {
   width: 52px;
   height: 52px;
@@ -776,6 +828,7 @@ a.disabled {
   right: -52px;
   top: -52px;
   margin-left: auto;
+
   &:hover {
     background-color: $color-primary-light;
     border-radius: 50px;
@@ -793,12 +846,14 @@ a.disabled {
   flex-direction: row;
   border-radius: 19px;
   pointer-events: none;
-  @media screen and (max-width:1279px){
-  width: 630px;    
+
+  @media screen and (max-width:1279px) {
+    width: 630px;
   }
-  @media screen and (max-width:767px){
-  width: 240px;
-  padding: 10px;
+
+  @media screen and (max-width:767px) {
+    width: 240px;
+    padding: 10px;
   }
 }
 
@@ -807,22 +862,23 @@ div.on_modal {
   content: '';
   min-width: 952px;
   min-height: 552px;
-   display: block;
+  display: block;
   background: none;
   border: 2px red solid;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background:none;
+  background: none;
   z-index: 1000;
   border-radius: 9px;
   pointer-events: none;
 
-  @media screen and (max-width:1279px){
+  @media screen and (max-width:1279px) {
     width: 682px;
     height: 402px;
   }
-  @media screen and (max-width:767px){
+
+  @media screen and (max-width:767px) {
     width: 271px;
     height: 392px;
   }
@@ -833,11 +889,13 @@ div.on_modal {
   flex-direction: column;
   margin-right: 20px;
   margin-top: 50px;
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     margin-top: 10px;
     margin-right: 9px;
-    }
+  }
 }
+
 .pets_card.activated {
   background: #ccc;
 }
@@ -847,66 +905,74 @@ div.on_modal {
   height: 500px;
   margin-right: 29px;
   border-radius: 9px;
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     width: 350px;
     height: 350px;
     margin-right: 11px;
   }
-  @media screen and (max-width:767px){
-display: none;
+
+  @media screen and (max-width:767px) {
+    display: none;
   }
 }
 
 .modal-title {
-font-family: $font_Headings;
-font-style: normal;
-font-weight: 400;
-font-size: 35px;
-line-height: 130%;
-letter-spacing: 0.06em;
-color: #000000;
-margin-bottom: 10px;
-@media screen and (max-width:767px){
-  text-align: center;
-}
-}
-.modal-subtitle {
-font-family:  $font_Headings;
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 115%;
-letter-spacing: 0.06em;
-color: #000000;
-margin-bottom: 40px;
-@media screen and (max-width:1279px){
-  margin-bottom: 20px;
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 10px;
+
+  @media screen and (max-width:767px) {
+    text-align: center;
   }
-  @media screen and (max-width:767px){
+}
+
+.modal-subtitle {
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 40px;
+
+  @media screen and (max-width:1279px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width:767px) {
     text-align: center;
   }
 
 }
 
 .modal-description {
-font-family: $font_Headings;
-font-style: normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 110%;
-letter-spacing: 0.06em;
-color: #000000;
-margin-bottom: 40px;
-@media screen and (max-width:1279px){
-  margin-bottom: 20px;
-  font-size: 13px;
-}
-  @media screen and (max-width:767px){
-   text-align: justify;
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 40px;
+
+  @media screen and (max-width:1279px) {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  @media screen and (max-width:767px) {
+    text-align: justify;
   }
 }
 
-.modal-list{
+.modal-list {
   list-style: $color-primary;
   margin-left: 20px;
 }
@@ -914,36 +980,37 @@ margin-bottom: 40px;
 .modal-list-item {
   color: $color-primary;
   margin-bottom: 11px;
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     margin-bottom: 6px;
-    }
+  }
 }
 
 .list-span-title {
-font-family: 'Georgia';
-font-style:normal;
-font-weight: 900;
-font-size: 15px;
-line-height: 110%;
-/* identical to box height, or 17px */
-letter-spacing: 0.06em;
-color: #000000;
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
 }
 
 .list-span-info {
   font-family: 'Georgia';
-font-style:normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 110%;
-/* identical to box height, or 17px */
-letter-spacing: 0.06em;
-color: #000000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
 }
 
-.close-button-hover {  
-    background-color: $color-primary-light;
-    border-radius: 50px;
+.close-button-hover {
+  background-color: $color-primary-light;
+  border-radius: 50px;
   cursor: pointer;
   position: absolute;
   right: -52px;
@@ -955,10 +1022,11 @@ color: #000000;
   width: 52px;
   height: 52px;
   border-radius: 100px;
-  background-color: $color-primary;  
+  background-color: $color-primary;
   display: flex;
   align-items: center;
   justify-content: center;
+
   span {
     font-family: $font_Headings;
     font-style: normal;

@@ -22,7 +22,6 @@ function toggleMenu() {
     }
 
     setTimeout(() => owerlof.classList.toggle("hide"), 200);
-    // owerlof.classList.toggle('hide')
     logo_burger.style.display = "block";
   }
 }
@@ -205,7 +204,6 @@ let petsAllCards = shuffleCards1.concat(
   shuffleCards5,
   shuffleCards6
 );
-console.log(petsAllCards);
 
 let i = 0;
 let k = 0;
@@ -224,26 +222,18 @@ if (winWid > 767 && winWid < 1280) {
   numberCardsonPage = 3;
 }
 countPages = Math.ceil(count / numberCardsonPage);
-console.log("количесто на странице -", numberCardsonPage);
-console.log("количесто cтраниц -", countPages);
-
 window.addEventListener("resize", () => {
   if (window.innerWidth > 1279) {
     numberCardsonPage = 8;
-    //console.log(numberCardsonPage)
   } else if (window.innerWidth > 767 && window.innerWidth < 1280) {
     numberCardsonPage = 6;
-    // console.log(numberCardsonPage)
   } else {
     numberCardsonPage = 3;
-    // console.log(numberCardsonPage)
   }
   countPages = Math.ceil(count / numberCardsonPage);
-  console.log(countPages);
   return numberCardsonPage;
 });
 
-console.log("количесто на странице -", numberCardsonPage);
 let page = 0;
 const createAllCards = () => {
   sliderContainer.innerHTML = "";
@@ -253,7 +243,6 @@ const createAllCards = () => {
     j < (page + 1) * numberCardsonPage;
     j++
   ) {
-    console.log("then3", j);
     card = createCardTemplate(j);
     card.innerHTML = `
       <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
@@ -271,7 +260,6 @@ const createAllCards = () => {
 createAllCards();
 
 const createModalWindow = (i) => {
-  console.log("index - ", i);
   const modal = document.createElement("div");
   modal.classList.add("modal-background");
   modal.innerHTML = `
@@ -340,7 +328,6 @@ const nextPage = () => {
     j < (page + 1) * numberCardsonPage;
     j++
   ) {
-    console.log("then3", j);
     card = createCardTemplate(j);
     card.innerHTML = `
       <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
@@ -354,35 +341,6 @@ const nextPage = () => {
       createModalWindow(idx);
     });
   }
-
-  console.log("page =", page);
-  
-  /* if (k == 0) {
-    k = k + numberCardsonPage;
-  }
-  for (let j = 0; j < numberCardsonPage; j++) {
-    console.log("then3", k);
-    card = createCardTemplate(k);
-    card.innerHTML = `
-      <img class="card-image" src="${petsAllCards[k].img}" alt="${petsAllCards[k].name}">    
-      <span class="card-title">${petsAllCards[k].name}</span>
-      <div class="card-button"><button class="button_secondary">Learn more</button></div>`;
-    sliderContainer.appendChild(card);
-
-    card.addEventListener("click", function () {
-      const idx = this.dataset.index;
-      document.body.style.overflow = "hidden";
-      createModalWindow(idx);
-    });
-    if (k == 47) {
-      k = k - numberCardsonPage;
-    } else {
-      k++;
-    }
-
-    
-  }
-  console.log('k = ', k)  */
 };
 
 const btn_prevPage = document.querySelector(".btn_prevPage");
@@ -396,7 +354,6 @@ const prevPage = () => {
     j < (page + 1) * numberCardsonPage;
     j++
   ) {
-    console.log("then3", j);
     card = createCardTemplate(j);
     card.innerHTML = `
       <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
@@ -420,7 +377,6 @@ const lastPage = () => {
     j < (page + 1) * numberCardsonPage;
     j++
   ) {
-    console.log("then3", j);
     card = createCardTemplate(j);
     card.innerHTML = `
       <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    
@@ -438,8 +394,6 @@ const lastPage = () => {
 
 lastButton.onclick = () => {
   lastPage();
-  console.log("last page");
-
   pageNumberSpan.innerText = `${countPages}`;
   button_right.classList.remove("button-arow_active");
   lastButton.classList.remove("button-arow_active");
@@ -451,7 +405,6 @@ lastButton.onclick = () => {
   front.style.transform = "rotate(-180deg)";
   frontFront.src = "../../assets/images/button_paginator_left1.png";
   frontFront.style.transform = "rotate(-180deg)";
-  // pageNumberSpan.innerText = `${numberPage}`
   prevButton.classList.add("button-arow_active");
   button_left.classList.add("button-arow_active");
   prevButton.disabled = false;
@@ -464,14 +417,9 @@ lastButton.onclick = () => {
   firstButton.style.cursor = "pointer";
 };
 
-console.log("макс страниц - ", countPages);
-console.log("текущ страниц - ", page);
-
 buttonActive.addEventListener("click", function nex() {
   nextPage();
-  /* numberPage++; */
   if (page + 1 == countPages) {
-    console.log("last page");
     pageNumberSpan.innerText = `${page + 1}`;
     button_right.classList.remove("button-arow_active");
     lastButton.classList.remove("button-arow_active");
@@ -484,10 +432,7 @@ buttonActive.addEventListener("click", function nex() {
     frontFront.src = "../../assets/images/button_paginator_left1.png";
     frontFront.style.transform = "rotate(-180deg)";
     firstButton.disabled = false;
-    // firstButton.style.cursor = "pointer";
   } else {
-    console.log("макс страниц - ", countPages);
-    console.log("текущ страниц - ", numberPage);
     pageNumberSpan.innerText = `${page + 1}`;
     prevButton.classList.add("button-arow_active");
     button_left.classList.add("button-arow_active");
@@ -498,15 +443,12 @@ buttonActive.addEventListener("click", function nex() {
     backBack.src = "../../assets/images/button_paginator_right2.png";
     backBack.style.transform = "rotate(-180deg)";
     firstButton.disabled = false;
-    //firstButton.style.cursor = "pointer";
   }
 });
 
 prevButton.addEventListener("click", function prev() {
   prevPage();
-  /* numberPage--; */
   if (1 == page + 1) {
-    console.log("start page");
     pageNumberSpan.innerText = `1`;
     button_left.classList.remove("button-arow_active");
     button_left.disabled = true;
@@ -522,8 +464,6 @@ prevButton.addEventListener("click", function prev() {
     lastButton.disabled = true;
     lastButton.style.cursor = "pointer";
   } else {
-    console.log("макс страниц - ", countPages);
-    console.log("текущ страниц - ", numberPage);
     pageNumberSpan.innerText = `${page + 1}`;
     button_right.classList.add("button-arow_active");
     nextButton.disabled = false;
@@ -546,7 +486,6 @@ const firstPage = () => {
     j < (page + 1) * numberCardsonPage;
     j++
   ) {
-    console.log("then3", j);
     card = createCardTemplate(j);
     card.innerHTML = `
       <img class="card-image" src="${petsAllCards[j].img}" alt="${petsAllCards[j].name}">    

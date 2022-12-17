@@ -8,15 +8,17 @@ ul,
 ol {
   margin: 0;
   padding: 0;
-  /*box-sizing: border-box;*/
 }
+
 * {
   box-sizing: border-box;
   outline: none;
 }
+
 a {
   outline: none;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -35,6 +37,7 @@ body {
   height: 60px;
   display: flex;
   flex-direction: column;
+
   .logo_title {
     font-family: $font_Headings;
     font-weight: 400;
@@ -46,6 +49,7 @@ body {
     line-height: 110%;
     padding-bottom: 10px;
   }
+
   .logo_subtitle {
     font-family: $font_text;
     font-weight: 400;
@@ -70,11 +74,13 @@ body {
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
+
   @media screen and (max-width: 1279px) {
     padding: 30px 30px 30px 30px;
     height: 120px;
     background-image: url(../../assets/images/start_screen_768.png);
   }
+
   @media screen and (max-width: 767px) {
     padding: 31px 30px 30px 10px;
     background-image: url(../../assets/images/start_screen_320.png);
@@ -86,17 +92,20 @@ body {
   display: flex;
   align-items: center;
   width: 443px;
+
   .logo_burger {
     display: none;
     position: relative;
     top: 33px;
     left: 11px;
   }
+
   .list_main-pages {
     display: flex;
     list-style: none;
     width: 100%;
     justify-content: space-between;
+
     @media screen and (max-width: 767px) {
       flex-direction: column;
       align-items: center;
@@ -104,6 +113,7 @@ body {
       margin-top: 192px;
       //margin-left: -39px;
     }
+
     .nav_link {
       font-family: $font_text;
       color: $color-dark-s;
@@ -111,13 +121,16 @@ body {
       font-size: 15px;
       text-decoration: none;
       cursor: pointer;
+
       &:hover {
         color: $color-light-s;
         transition-duration: 0.2s;
       }
+
       &:active {
         color: $color-light-s;
       }
+
       @media screen and (max-width: 767px) {
         font-style: normal;
         font-weight: 400;
@@ -127,9 +140,11 @@ body {
       }
     }
   }
+
   @media screen and (max-width: 1279px) {
     margin-top: -1px;
   }
+
   @media screen and (max-width: 767px) {
     display: flex;
     position: fixed;
@@ -174,6 +189,7 @@ body {
   padding-right: 40px;
   display: flex;
   justify-content: space-between;
+
   @media screen and (max-width: 1279px) {
     flex-direction: column;
     background-image: url(../../assets/images/start_screen_768.png);
@@ -190,6 +206,7 @@ body {
     padding-right: 10px;
     background-image: url(../../assets/images/start_screen_320.png);
   }
+
   @media (max-width: 767px) and (min-width: 460px) {
     background-position: 0px 0px;
   }
@@ -203,6 +220,7 @@ body {
 .start_screen_content {
   width: 460px;
   margin-top: 163px;
+
   @media screen and (max-width: 1279px) {
     margin-top: 30px;
     margin-bottom: 100px;
@@ -219,9 +237,11 @@ body {
     margin-top: 2px;
     line-height: 127%;
     margin-bottom: 42px;
+
     @media screen and (max-width: 1279px) {
       margin-top: 4px;
     }
+
     @media screen and (max-width: 767px) {
       font-size: 25px;
       width: 230px;
@@ -242,9 +262,11 @@ body {
     line-height: 160%;
     display: flex;
     align-items: center;
+
     @media screen and (max-width: 1279px) {
       margin-top: 4px;
     }
+
     @media screen and (max-width: 767px) {
       width: 300px;
       text-align: center;
@@ -254,6 +276,7 @@ body {
 
   .start_screen_button {
     margin-top: 42px;
+
     @media screen and (max-width: 1279px) {
       padding: 0 126px;
     }
@@ -267,6 +290,7 @@ body {
       padding: 0;
     }
   }
+
   @media screen and (max-width: 767px) {
     width: 300px;
     margin-left: auto;
@@ -296,17 +320,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;
   }
+
   .pets-button & {
     width: 261px;
+
     @media screen and (max-width: 767px) {
       margin-top: -7px;
-      
+
     }
   }
+
   @media screen and (max-width: 1279px) {
     padding: 14px 45px;
   }
@@ -314,10 +342,12 @@ body {
 
 
 }
+
 .pets-button-link {
   text-decoration: none;
   color: #000;
 }
+
 .start_screen_puppy {
   content: "";
   width: 698px;
@@ -326,6 +356,7 @@ body {
   //background-position: 0px 20px;
   background-size: 100% auto;
   background-repeat: no-repeat;
+
   @media screen and (max-width: 1279px) {
     // width: 569px;
     // height: 728px;
@@ -334,6 +365,7 @@ body {
     align-self: flex-end;
     margin-left: 139px;
   }
+
   @media screen and (max-width: 899px) {
     //width: 569px;
     width: 80.4%;
@@ -361,9 +393,11 @@ body {
   height: 588px;
   background-color: $color-light-xl;
   padding: 80px 40px 100px 40px;
+
   @media screen and (max-width: 1279px) {
     height: auto;
   }
+
   @media screen and (max-width: 767px) {
     padding: 42px 10px 42px 10px;
   }
@@ -373,6 +407,7 @@ body {
     display: flex;
     flex-direction: row;
     padding-left: 175px;
+
     @media screen and (max-width: 1279px) {
       flex-direction: column-reverse;
       padding-left: 0;
@@ -387,10 +422,12 @@ body {
       background-size: 300px auto;
       background-repeat: no-repeat;
       margin-right: 120px;
+
       @media screen and (max-width: 1279px) {
         margin: 0 auto;
         margin-top: 80px;
       }
+
       @media screen and (max-width: 767px) {
         width: 260px;
         height: 353px;
@@ -399,13 +436,16 @@ body {
         margin-top: 45px;
       }
     }
+
     .about-text {
       display: flex;
       flex-direction: column;
       width: 430px;
+
       @media screen and (max-width: 1279px) {
         margin: 0 auto;
       }
+
       @media screen and (max-width: 767px) {
         width: 300px;
         margin: auto;
@@ -424,6 +464,7 @@ body {
         color: $color-dark-l;
         margin-top: 14px;
         margin-bottom: 24px;
+
         @media screen and (max-width: 1279px) {
           margin-top: 0;
         }
@@ -436,6 +477,7 @@ body {
           margin: 1px auto 0px auto;
         }
       }
+
       .about-span1 {
         font-family: "Arial";
         font-style: normal;
@@ -446,12 +488,14 @@ body {
         align-items: center;
         color: $color-dark-xl;
         margin-bottom: 25px;
+
         @media screen and (max-width: 767px) {
           width: 270px;
           margin: 25px auto;
           text-align: justify;
         }
       }
+
       .about-span2 {
         font-family: "Arial";
         font-style: normal;
@@ -461,6 +505,7 @@ body {
         display: flex;
         align-items: center;
         color: $color-dark-xl;
+
         @media screen and (max-width: 767px) {
           width: 270px;
           margin: 25px auto;
@@ -477,10 +522,12 @@ body {
   height: 877px;
   background-color: $color-light-l;
   padding: 80px 40px 100px 40px;
+
   @media screen and (max-width: 1279px) {
     padding: 81px 20px 100px 20px;
     overflow: hidden;
   }
+
   @media screen and (max-width: 767px) {
     padding: 43px 10px 52px 10px;
     overflow: hidden;
@@ -511,6 +558,7 @@ body {
   color: $color-dark-l;
   margin-top: 0;
   margin-bottom: 0;
+
   @media screen and (max-width: 767px) {
     font-size: 25px;
     width: 286px;
@@ -525,6 +573,7 @@ body {
   width: 100%;
   height: 435px;
   align-items: center;
+
   //overflow: hidden;
   @media screen and (max-width: 1279px) {
     justify-content: space-between;
@@ -544,6 +593,7 @@ body {
     border-radius: 9px;
     flex-grow: 0;
     flex-shrink: 0;
+
     @media screen and (max-width: 1279px) {
       min-width: 270px;
       margin: 0 auto;
@@ -551,22 +601,25 @@ body {
       &:nth-child(1) {
         //margin-right: 40px;
         margin-top: 0px;
-        margin-left: 3px; 
+        margin-left: 3px;
       }
 
       &:nth-child(2) {
         //margin-right: 40px;
         margin-top: 0px;
-        margin-left: 3px; 
+        margin-left: 3px;
       }
+
       &:nth-child(3) {
         display: none;
 
         //margin-left: 1040px;
       }
     }
+
     @media screen and (max-width: 767px) {
       margin-bottom: 20px;
+
       &:nth-child(2) {
         margin-right: 0;
         margin: 0 auto;
@@ -581,11 +634,13 @@ body {
       box-shadow: 0px 0px 8px 5px rgba(34, 60, 80, 0.2);
       background-color: $color-light-xl;
       transform: scale(1.05);
+
       .button_secondary {
         background-color: #fddcc4;
       }
     }
   }
+
   @media screen and (max-width: 767px) {
     //flex-wrap: wrap;
     width: 270px;
@@ -599,6 +654,7 @@ body {
 
 .btn-left {
   margin-right: 8px;
+
   @media screen and (max-width: 1279px) {
     margin-left: 0px;
   }
@@ -614,10 +670,12 @@ body {
 
 .btn-right {
   margin-left: 8px;
+
   @media screen and (max-width: 1279px) {
     order: 1;
     margin-left: 12px;
   }
+
   @media screen and (max-width: 767px) {
     order: 2;
     position: relative;
@@ -627,7 +685,7 @@ body {
 }
 
 div.pets_button {
-  @media screen and (mn-width:767px){
+  @media screen and (mn-width:767px) {
     margin-top: -8px;
   }
 }
@@ -643,11 +701,13 @@ div.pets_card.pets_card2 {
   @media screen and (max-width: 1279px) {
     order: 2;
   }
+
   @media screen and (max-width: 767px) {
     order: 4;
     display: none;
   }
 }
+
 /*
 .pets_card2 {
   
@@ -714,6 +774,7 @@ div.pets_card.pets_card2 {
   border-radius: 100px;
   cursor: pointer;
   background: none;
+
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;
@@ -725,6 +786,7 @@ div.pets_card.pets_card2 {
   height: 611px;
   background-color: $color-light-xl;
   padding: 80px 40px 100px 40px;
+
   @media screen and (max-width: 1279px) {
     height: 780px;
     padding: 80px 66px 100px 67px;
@@ -734,11 +796,13 @@ div.pets_card.pets_card2 {
     padding: 42px 15px 40px 15px;
     height: 745px;
   }
+
   .help-content {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .help-list {
       height: 331px;
       display: flex;
@@ -752,8 +816,10 @@ div.pets_card.pets_card2 {
         flex-direction: column;
         align-items: center;
         margin-right: 120px;
+
         img {
           margin-bottom: 29px;
+
           @media screen and (max-width: 767px) {
             margin-bottom: 19px;
           }
@@ -762,9 +828,11 @@ div.pets_card.pets_card2 {
         &:nth-child(5) {
           margin-right: 0;
         }
+
         &:nth-child(9) {
           margin-right: 0;
         }
+
         .help-list-text {
           font-family: $font_Headings;
           font-style: normal;
@@ -776,6 +844,7 @@ div.pets_card.pets_card2 {
           text-align: center;
           letter-spacing: 0.055em;
           color: $color-dark-l;
+
           @media screen and (max-width: 767px) {
             font-size: 15px;
           }
@@ -789,10 +858,12 @@ div.pets_card.pets_card2 {
         width: 100%;
         height: 449px;
         gap: 55px;
+
         .help-icons {
           margin: 0;
         }
       }
+
       @media screen and (max-width: 767px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -800,11 +871,13 @@ div.pets_card.pets_card2 {
         width: 100%;
         height: 555px;
         gap: 30px;
+
         .help-icons {
           display: flex;
           margin: 0;
 
           align-items: center;
+
           img {
             width: 50px;
             height: 50px;
@@ -846,10 +919,12 @@ div.pets_card.pets_card2 {
   height: 462px;
   background-color: $color-light-l;
   padding: 80px 182px 100px 183px;
+
   @media screen and (max-width: 1279px) {
     height: auto;
     padding: 79px 60px 100px 60px;
   }
+
   @media screen and (max-width: 767px) {
     padding: 42px 10px 42px 10px;
   }
@@ -870,13 +945,16 @@ div.pets_card.pets_card2 {
       align-items: flex-start;
       width: 380px;
       height: 282px;
+
       @media screen and (max-width: 1279px) {
         margin-bottom: 60px;
       }
+
       @media screen and (max-width: 767px) {
         width: 300px;
         margin-bottom: 41px;
       }
+
       .don-heading {
         font-family: $font_Headings;
         font-style: normal;
@@ -890,6 +968,7 @@ div.pets_card.pets_card2 {
         text-align: left;
         margin-bottom: 20px;
         margin-top: 0;
+
         @media screen and (max-width: 767px) {
           font-size: 25px;
           width: 227px;
@@ -901,6 +980,7 @@ div.pets_card.pets_card2 {
     }
   }
 }
+
 .don-image {
   margin-right: 30px;
   content: "";
@@ -909,6 +989,7 @@ div.pets_card.pets_card2 {
   background-repeat: no-repeat;
   background-position: center 10px;
   background-image: url(../../assets/images/donation-dog.png);
+
   @media screen and (max-width: 1279px) {
     margin-right: 0px;
     margin-top: -10px;
@@ -920,6 +1001,7 @@ div.pets_card.pets_card2 {
     height: 150px;
   }
 }
+
 .don-card {
   background-color: $color-primary;
   border-radius: 9px;
@@ -927,6 +1009,7 @@ div.pets_card.pets_card2 {
   height: 43px;
   padding: 10px 15px;
   margin-bottom: 20px;
+
   &:hover {
     background-color: $color-primary-light;
     transition-duration: 0.2s;
@@ -935,6 +1018,7 @@ div.pets_card.pets_card2 {
   @media screen and (max-width: 1279px) {
     margin-bottom: 19px;
   }
+
   @media screen and (max-width: 767px) {
     width: 281px;
     margin-left: auto;
@@ -948,6 +1032,7 @@ div.pets_card.pets_card2 {
     width: 251px;
   }
 }
+
 .don-subheading {
   font-family: $font_Headings;
   font-style: normal;
@@ -959,6 +1044,7 @@ div.pets_card.pets_card2 {
   letter-spacing: 0.06em;
   color: $color-dark-l;
   margin-bottom: 20px;
+
   @media screen and (max-width: 767px) {
     letter-spacing: 0px;
     margin-left: auto;
@@ -967,6 +1053,7 @@ div.pets_card.pets_card2 {
     margin-bottom: 24px;
   }
 }
+
 .don-information {
   font-family: $font_text;
   font-style: italic;
@@ -976,6 +1063,7 @@ div.pets_card.pets_card2 {
   display: flex;
   align-items: center;
   color: $color-dark-m;
+
   @media screen and (max-width: 767px) {
     margin-left: auto;
     margin-right: auto;
@@ -989,6 +1077,7 @@ div.pets_card.pets_card2 {
   //height: 350px;
   background-image: url(../../assets/images/Footer.png);
   padding: 40px 40px 0 40px;
+
   @media screen and (max-width: 1279px) {
     background-image: url(../../assets/images/footer_768.png);
     // height: 639px;
@@ -998,6 +1087,7 @@ div.pets_card.pets_card2 {
     margin-top: -5px;
     padding: 14px 5px 0 5px;
   }
+
   @media screen and (max-width: 767px) {
     background-image: url(../../assets/images/footer_320.jpg);
     padding: 0;
@@ -1006,11 +1096,13 @@ div.pets_card.pets_card2 {
     background-position: 0 0;
     background-size: cover;
   }
+
   .footer-content {
     width: 100%;
     //height: 310px;
     display: flex;
     flex-direction: row;
+
     @media screen and (max-width: 1279px) {
       flex-direction: column;
     }
@@ -1033,22 +1125,27 @@ div.pets_card.pets_card2 {
         display: flex;
         flex-direction: row;
       }
+
       @media screen and (max-width: 1279px) {
         gap: 60px;
       }
+
       .contact {
         width: 278px;
         height: 234px;
         display: flex;
         flex-direction: column;
+
         @media screen and (max-width: 767px) {
           margin: 0 auto;
         }
       }
+
       .location {
         width: 302px;
         height: 234px;
       }
+
       @media screen and (max-width: 767px) {
         flex-direction: column;
         display: flex;
@@ -1068,6 +1165,7 @@ div.pets_card.pets_card2 {
   color: #ffffff;
   margin-bottom: 36px;
   margin-top: 17px;
+
   @media screen and (max-width: 767px) {
     font-size: 25px;
     width: 280px;
@@ -1088,6 +1186,7 @@ div.pets_card.pets_card2 {
   color: #ffffff;
   margin-bottom: 32px;
   margin-top: 16px;
+
   @media screen and (max-width: 1279px) {
     margin-top: 18px;
   }
@@ -1107,6 +1206,7 @@ div.pets_card.pets_card2 {
   display: flex;
   align-items: center;
   margin-bottom: 36px;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -1118,19 +1218,23 @@ div.pets_card.pets_card2 {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
     }
   }
+
   @media screen and (max-width: 767px) {
     margin-top: 1px;
     margin-left: 13px;
   }
 }
+
 .phone {
   display: flex;
   align-items: center;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -1144,12 +1248,14 @@ div.pets_card.pets_card2 {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
       transition-duration: 0.2s;
     }
   }
+
   @media screen and (max-width: 767px) {
     margin-top: -1px;
     margin-left: 19px;
@@ -1160,6 +1266,7 @@ div.pets_card.pets_card2 {
   display: flex;
   align-items: center;
   margin-bottom: 31px;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -1173,12 +1280,14 @@ div.pets_card.pets_card2 {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
       transition-duration: 0.2s;
     }
   }
+
   @media screen and (max-width: 767px) {
     margin-bottom: 37px;
   }
@@ -1187,9 +1296,11 @@ div.pets_card.pets_card2 {
 .boston-adr {
   margin-right: 0;
 }
+
 .loc-london {
   display: flex;
   align-items: center;
+
   a {
     text-decoration: none;
     color: $color-primary;
@@ -1202,6 +1313,7 @@ div.pets_card.pets_card2 {
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $color-primary;
+
     &:hover {
       color: $color-primary-light;
       text-decoration: underline;
@@ -1213,6 +1325,7 @@ div.pets_card.pets_card2 {
 .marg {
   margin-right: 20px;
 }
+
 .footer-puppy {
   @media screen and (max-width: 1279px) {
     align-self: center;
@@ -1221,6 +1334,7 @@ div.pets_card.pets_card2 {
     height: auto;
     margin-top: 81px;
   }
+
   @media screen and (max-width: 767px) {
     width: 260px;
     height: auto;
@@ -1235,6 +1349,7 @@ div.pets_card.pets_card2 {
 
 .toggleButton {
   display: none;
+
   @media screen and (max-width: 767px) {
     display: block;
     position: absolute;
@@ -1243,6 +1358,7 @@ div.pets_card.pets_card2 {
     z-index: 10;
   }
 }
+
 .owerlof {
   display: none;
 }
@@ -1279,6 +1395,7 @@ div.pets_card.pets_card2 {
     top: 33px;
     left: 11px;
   }
+
   /*
   @media screen and (max-width: 374px) {
     width: 100%;
@@ -1309,12 +1426,14 @@ div.pets_card.pets_card2 {
   margin-top: 20px;
   margin-left: 15px;
 }
+
 .active_menu:after {
   transform: translateY(-50%) rotateZ(-90deg);
 
   margin-top: -10px;
   margin-left: 36px;
 }
+
 .active_menu div {
   transform: translateY(-50%) rotateZ(-90deg);
   margin-top: -10px;
@@ -1329,16 +1448,18 @@ div.pets_card.pets_card2 {
   width: 100%;
   display: flex;
   align-items: center;
+
   @media screen and (max-width: 1279px) {
     padding: 0px 10px;
     width: 740px;
     margin-left: auto;
     margin-right: auto;
   }
+
   @media screen and (max-width: 767px) {
-   flex-direction: column;
-   width: 290px;
-   //height: 548px;
+    flex-direction: column;
+    width: 290px;
+    //height: 548px;
   }
 }
 
@@ -1346,14 +1467,16 @@ div.pets_card.pets_card2 {
   margin: 0 auto;
   left: -1080px;
   position: relative;
+
   @media screen and (max-width: 1279px) {
     left: -620px;
   }
+
   @media screen and (max-width: 767px) {
     left: -20px;
     height: 470px;
   }
-  
+
 }
 
 .slider-wrapper {
@@ -1363,15 +1486,17 @@ div.pets_card.pets_card2 {
   overflow: hidden;
   height: 550px;
   width: 1080px;
-  @media screen and (max-width:1279px){
-   max-width: 620px;
+
+  @media screen and (max-width:1279px) {
+    max-width: 620px;
   }
-  @media screen and (max-width:767px){
+
+  @media screen and (max-width:767px) {
     max-width: 300px;
     height: 510px;
     width: 290px;
-    
-   }
+
+  }
 }
 
 .item {
@@ -1379,40 +1504,50 @@ div.pets_card.pets_card2 {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  @media screen and (max-width:1279px){
-    gap: 40px;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  @media screen and (max-width:1279px) {
+    gap: 40px; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     .pets_card:nth-child(3) {
       display: none;
     }
   }
-  @media screen and (max-width:767px){
+
+  @media screen and (max-width:767px) {
     gap: 40px;
-    margin-left: 5px;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    margin-left: 5px; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     .pets_card:nth-child(2) {
       display: none;
     }
   }
 }
+
 #item-right {
-  
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     margin-left: 40px;
-    }
-  
+  }
+
 }
 
 #item-left {
-  
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     //margin-right: -7px;
     margin-right: 40px;
-    }
-  
+  }
+
 }
 
 @keyframes move-right {
-  from {left: -1080px}
-  to {left: -2160px}
+  from {
+    left: -1080px
+  }
+
+  to {
+    left: -2160px
+  }
 }
 
 .transition-right {
@@ -1422,8 +1557,13 @@ div.pets_card.pets_card2 {
 
 
 @keyframes move-left {
-  from {left: -1080px}
-  to {left: 0px}
+  from {
+    left: -1080px
+  }
+
+  to {
+    left: 0px
+  }
 }
 
 .transition-left {
@@ -1433,21 +1573,31 @@ div.pets_card.pets_card2 {
 
 @media screen and (max-width: 1279px) {
   @keyframes move-right {
-    from {left: -620x}
-    to {left: -1240px}
+    from {
+      left: -620x
+    }
+
+    to {
+      left: -1240px
+    }
   }
-  
+
   .transition-right {
     animation-name: move-right;
     animation-duration: 2s;
   }
-  
-  
+
+
   @keyframes move-left {
-    from {left: -620px}
-    to {left: 0px}
+    from {
+      left: -620px
+    }
+
+    to {
+      left: 0px
+    }
   }
-  
+
   .transition-left {
     animation-name: move-left;
     animation-duration: 2s;
@@ -1457,21 +1607,31 @@ div.pets_card.pets_card2 {
 
 @media screen and (max-width: 767px) {
   @keyframes move-right {
-    from {left: -20px}
-    to {left: -310px}
+    from {
+      left: -20px
+    }
+
+    to {
+      left: -310px
+    }
   }
-  
+
   .transition-right {
     animation-name: move-right;
     animation-duration: 2s;
   }
-  
-  
+
+
   @keyframes move-left {
-    from {left: -20px}
-    to {left: 270px}
+    from {
+      left: -20px
+    }
+
+    to {
+      left: 270px
+    }
   }
-  
+
   .transition-left {
     animation-name: move-left;
     animation-duration: 2s;
@@ -1482,19 +1642,20 @@ div.pets_card.pets_card2 {
 .modal-window {
   width: 900px;
   //height: 500px;
-  position: fixed;  
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background:none;
+  background: none;
   z-index: 500;
   border-radius: 9px;
 
-  @media screen and (max-width:1279px){
+  @media screen and (max-width:1279px) {
     width: 630px;
     //height: 402px;
   }
-  @media screen and (max-width:767px){
+
+  @media screen and (max-width:767px) {
     width: 250px;
     height: 392px;
   }
@@ -1502,15 +1663,16 @@ div.pets_card.pets_card2 {
 
 .modal-background {
   //display: none;
-  position: fixed;  
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(41, 41, 41, 0.6);
   z-index: 400;
-  
+
 }
+
 .modal-close-button {
   width: 52px;
   height: 52px;
@@ -1522,6 +1684,7 @@ div.pets_card.pets_card2 {
   position: absolute;
   right: -52px;
   top: -52px;
+
   &:hover {
     background-color: $color-primary-light;
     border-radius: 50px;
@@ -1529,6 +1692,7 @@ div.pets_card.pets_card2 {
     right: -52px;
     top: -52px;
   }
+
   @media screen and (max-widht: 1279) {
     position: absolute;
     right: -52px;
@@ -1543,12 +1707,14 @@ div.pets_card.pets_card2 {
   display: flex;
   flex-direction: row;
   border-radius: 19px;
-  @media screen and (max-width:1279px){
-  width: 630px;    
+
+  @media screen and (max-width:1279px) {
+    width: 630px;
   }
-  @media screen and (max-width:767px){
-  width: 240px;
-  padding: 10px;
+
+  @media screen and (max-width:767px) {
+    width: 240px;
+    padding: 10px;
   }
 }
 
@@ -1557,11 +1723,13 @@ div.pets_card.pets_card2 {
   flex-direction: column;
   margin-right: 20px;
   margin-top: 50px;
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     margin-top: 10px;
     margin-right: 9px;
-    }
+  }
 }
+
 .pets_card.activated {
   background: #ccc;
 }
@@ -1571,66 +1739,74 @@ div.pets_card.pets_card2 {
   height: 500px;
   margin-right: 29px;
   border-radius: 9px;
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     width: 350px;
     height: 350px;
     margin-right: 11px;
   }
-  @media screen and (max-width:767px){
-display: none;
+
+  @media screen and (max-width:767px) {
+    display: none;
   }
 }
 
 .modal-title {
-font-family: $font_Headings;
-font-style: normal;
-font-weight: 400;
-font-size: 35px;
-line-height: 130%;
-letter-spacing: 0.06em;
-color: #000000;
-margin-bottom: 10px;
-@media screen and (max-width:767px){
-  text-align: center;
-}
-}
-.modal-subtitle {
-font-family:  $font_Headings;
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 115%;
-letter-spacing: 0.06em;
-color: #000000;
-margin-bottom: 40px;
-@media screen and (max-width:1279px){
-  margin-bottom: 20px;
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 10px;
+
+  @media screen and (max-width:767px) {
+    text-align: center;
   }
-  @media screen and (max-width:767px){
+}
+
+.modal-subtitle {
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 40px;
+
+  @media screen and (max-width:1279px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width:767px) {
     text-align: center;
   }
 
 }
 
 .modal-description {
-font-family: $font_Headings;
-font-style: normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 110%;
-letter-spacing: 0.06em;
-color: #000000;
-margin-bottom: 40px;
-@media screen and (max-width:1279px){
-  margin-bottom: 20px;
-  font-size: 13px;
-}
-  @media screen and (max-width:767px){
-   text-align: justify;
+  font-family: $font_Headings;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #000000;
+  margin-bottom: 40px;
+
+  @media screen and (max-width:1279px) {
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  @media screen and (max-width:767px) {
+    text-align: justify;
   }
 }
 
-.modal-list{
+.modal-list {
   list-style: $color-primary;
   margin-left: 20px;
 }
@@ -1638,35 +1814,36 @@ margin-bottom: 40px;
 .modal-list-item {
   color: $color-primary;
   margin-bottom: 11px;
-  @media screen and (max-width:1279px){
+
+  @media screen and (max-width:1279px) {
     margin-bottom: 6px;
-    }
+  }
 }
 
 .list-span-title {
-font-family: 'Georgia';
-font-style:normal;
-font-weight: 900;
-font-size: 15px;
-line-height: 110%;
-/* identical to box height, or 17px */
-letter-spacing: 0.06em;
-color: #000000;
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
 }
 
 .list-span-info {
   font-family: 'Georgia';
-font-style:normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 110%;
-/* identical to box height, or 17px */
-letter-spacing: 0.06em;
-color: #000000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  /* identical to box height, or 17px */
+  letter-spacing: 0.06em;
+  color: #000000;
 }
 
-.close-button-hover {  
-    background-color: $color-primary-light;
-    border-radius: 50px;
+.close-button-hover {
+  background-color: $color-primary-light;
+  border-radius: 50px;
   cursor: pointer;
 }
